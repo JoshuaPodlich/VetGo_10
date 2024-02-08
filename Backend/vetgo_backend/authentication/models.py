@@ -6,6 +6,11 @@ class VetGoUser(AbstractUser):
     email = models.EmailField("email address", unique=True)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
+    ROLE_CHOICES = (
+        ('vet_doc', 'Veterinary Doctor'),
+        ('pet_owner', 'Pet Owner'),
+    )
+    role = models.CharField(max_length=9, choices=ROLE_CHOICES, default='pet_owner')
 
     # Required by Django to override the groups and user_permissions fields to specify unique related_names.
     groups = models.ManyToManyField(
