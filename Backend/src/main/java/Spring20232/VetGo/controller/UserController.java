@@ -18,7 +18,7 @@ import static Spring20232.VetGo.model.Pet.PetType.CAT;
 import static Spring20232.VetGo.model.Pet.PetType.DOG;
 
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("user")
 public class UserController {
 
     private final UserService userService;
@@ -55,21 +55,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findByEmail(email));
     }
 
-    @GetMapping(value = "/username/{username}")
-    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
-        return ResponseEntity.status(HttpStatus.OK).body(userRepository.findByUsername(username));
-    }
-
     //Login user through username
-    @GetMapping(value = "/login/{username}/{password}")
-    public ResponseEntity<?> loginUser(@PathVariable String username,
+    @GetMapping(value = "/login/{email}/{password}")
+    public ResponseEntity<?> loginUser(@PathVariable String email,
                                        @PathVariable String password) {
-        User user;
-        if (username.contains("@")) {
-            user = userRepository.findByEmail(username);
-        } else {
-            user = userRepository.findByUsername(username);
-        }
+
+        User user = userRepository.findByEmail(email);
 
         if (user == null)
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unable to find user in the database");
@@ -88,21 +79,17 @@ public class UserController {
 
     }
 
-    @PostMapping(value = "/register/owner/{username}/{email}/{password}")
-    public ResponseEntity<?> registerOwner(@PathVariable String username,
-                                           @PathVariable String email,
+    @PostMapping(value = "/register/owner/{email}/{password}")
+    public ResponseEntity<?> registerOwner(@PathVariable String email,
                                            @PathVariable String password,
                                            @RequestBody Owner registerOwner) {
 
         if (userRepository.findByEmail(email) != null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email has been taken");
-        }
-        if (userRepository.findByUsername(username) != null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username has been taken.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email has been taken.");
         }
 
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-        User user = new User(username, email, bcrypt.encode(password), 1.0, 1.0);
+        User user = new User(email, bcrypt.encode(password), 1.0, 1.0);
         Role role = new Role("ROLE_OWNER");
         Tag tag = new Tag();
         tagRepository.save(tag);
@@ -123,21 +110,17 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(owner);
     }
 
-    @PostMapping(value = "/register/vet/{username}/{email}/{password}")
-    public ResponseEntity<?> registerVet(@PathVariable String username,
-                                         @PathVariable String email,
+    @PostMapping(value = "/register/vet/{email}/{password}")
+    public ResponseEntity<?> registerVet(@PathVariable String email,
                                          @PathVariable String password,
                                          @RequestBody Vet registerVet) {
 
         if (userRepository.findByEmail(email) != null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email has been taken");
         }
-        if (userRepository.findByUsername(username) != null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username has been taken");
-        }
 
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-        User user = new User(username, email, bcrypt.encode(password), 1.0, 1.0);
+        User user = new User(email, bcrypt.encode(password), 1.0, 1.0);
         Role role = new Role("ROLE_VET");
         Tag tag = new Tag();
         tagRepository.save(tag);
@@ -169,7 +152,6 @@ public class UserController {
 
         userRepository.findById(uid)
                 .map(user -> {
-                    user.setUsername(updatedUser.getUsername());
                     user.setEmail(updatedUser.getEmail());
                     user.setPassword(updatedUser.getPassword());
                     return userRepository.save(user);
@@ -224,97 +206,97 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findById(uid));
     }
 
-    @GetMapping(value = "/demo")
-    public String createDemo() {
-        if (userRepository.findByEmail("never@gmail.com") == null) {
-            //Actual password is 123456
-            User user1 = new User("user1", "never@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ" +
-                    ".Q5Nsi", 1.0, 1.0);
-            User user2 = new User("user2", "gonna@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ" +
-                    ".Q5Nsi", 1.0, 1.0);
-            User user3 = new User("user3", "give@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ.Q5Nsi", 1.0, 1.0);
-            User user4 = new User("user4", "you@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ.Q5Nsi", 1.0, 1.0);
-            User user5 = new User("user5", "up@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ.Q5Nsi", 1.0, 1.0);
-            Role role_owner = new Role("ROLE_OWNER");
-            Role role_vet = new Role("ROLE_VET");
-            user1.addUserRoles(role_owner);
-            user2.addUserRoles(role_owner);
-            user3.addUserRoles(role_owner);
-            user4.addUserRoles(role_vet);
-            user5.addUserRoles(role_vet);
-
-            userService.saveUser(user1);
-            userService.saveUser(user2);
-            userService.saveUser(user3);
-            userService.saveUser(user4);
-            userService.saveUser(user5);
-
-            Owner owner1 = new Owner();
-            Owner owner2 = new Owner();
-            Owner owner3 = new Owner();
-
-            Vet vet1 = new Vet();
-            Vet vet2 = new Vet();
-
-            owner1.setFirstName("Never");
-            owner1.setLastName("");
-            owner1.setTelephone("012131313");
-            owner1.setAddress(null);
-            owner1.setUserAccount(user1);
-
-            owner2.setFirstName("Gonna");
-            owner2.setLastName("");
-            owner2.setTelephone("112131313");
-            owner2.setAddress(null);
-            owner2.setUserAccount(user2);
-
-            owner3.setFirstName("Give");
-            owner3.setLastName("");
-            owner3.setTelephone("212131313");
-            owner3.setAddress(null);
-            owner3.setUserAccount(user3);
-
-            vet1.setFirstName("You");
-            vet1.setLastName("");
-            vet1.setTelephone("312131313");
-            vet1.setAddress(null);
-            vet1.setVetLicense("license");
-            vet1.setStatus(true);
-            vet1.setUserAccount(user4);
-
-            vet2.setFirstName("Up");
-            vet2.setLastName("");
-            vet2.setTelephone("412131313");
-            vet2.setAddress(null);
-            vet2.setVetLicense("license");
-            vet2.setStatus(true);
-            vet2.setUserAccount(user5);
-
-            vetRepository.save(vet1);
-            vetRepository.save(vet2);
-
-            ownerRepository.save(owner1);
-            ownerRepository.save(owner2);
-            ownerRepository.save(owner3);
-            Random rand = new Random();
-            Pet pet1 = new Pet(rand.nextLong(), ownerRepository.findById(owner1.getId()).orElse(null), null, "dog1",
-                    DOG, "Labrador", null, true, 12, 11, 11);
-            Pet pet2 = new Pet(rand.nextLong(), ownerRepository.findById(owner2.getId()).orElse(null), null, "cat1",
-                    CAT, "Tabby", null, true, 19, 13, 32);
-            Pet pet3 = new Pet(rand.nextLong(), ownerRepository.findById(owner2.getId()).orElse(null), null, "cat2",
-                    CAT, "Tiger", null, false, 9, 42, 69);
-            petRepository.save(pet1);
-            petRepository.save(pet2);
-            petRepository.save(pet3);
-            owner1.addPetList(pet1);
-            owner2.addPetList(pet2);
-            owner2.addPetList(pet3);
-
-            return "Successfully created demo users and pets";
-        } else {
-            return "Demo users were already created";
-        }
-
-    }
+//    @GetMapping(value = "/demo")
+//    public String createDemo() {
+//        if (userRepository.findByEmail("never@gmail.com") == null) {
+//            //Actual password is 123456
+//            User user1 = new User("user1", "never@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ" +
+//                    ".Q5Nsi", 1.0, 1.0);
+//            User user2 = new User("user2", "gonna@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ" +
+//                    ".Q5Nsi", 1.0, 1.0);
+//            User user3 = new User("user3", "give@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ.Q5Nsi", 1.0, 1.0);
+//            User user4 = new User("user4", "you@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ.Q5Nsi", 1.0, 1.0);
+//            User user5 = new User("user5", "up@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ.Q5Nsi", 1.0, 1.0);
+//            Role role_owner = new Role("ROLE_OWNER");
+//            Role role_vet = new Role("ROLE_VET");
+//            user1.addUserRoles(role_owner);
+//            user2.addUserRoles(role_owner);
+//            user3.addUserRoles(role_owner);
+//            user4.addUserRoles(role_vet);
+//            user5.addUserRoles(role_vet);
+//
+//            userService.saveUser(user1);
+//            userService.saveUser(user2);
+//            userService.saveUser(user3);
+//            userService.saveUser(user4);
+//            userService.saveUser(user5);
+//
+//            Owner owner1 = new Owner();
+//            Owner owner2 = new Owner();
+//            Owner owner3 = new Owner();
+//
+//            Vet vet1 = new Vet();
+//            Vet vet2 = new Vet();
+//
+//            owner1.setFirstName("Never");
+//            owner1.setLastName("");
+//            owner1.setTelephone("012131313");
+//            owner1.setAddress(null);
+//            owner1.setUserAccount(user1);
+//
+//            owner2.setFirstName("Gonna");
+//            owner2.setLastName("");
+//            owner2.setTelephone("112131313");
+//            owner2.setAddress(null);
+//            owner2.setUserAccount(user2);
+//
+//            owner3.setFirstName("Give");
+//            owner3.setLastName("");
+//            owner3.setTelephone("212131313");
+//            owner3.setAddress(null);
+//            owner3.setUserAccount(user3);
+//
+//            vet1.setFirstName("You");
+//            vet1.setLastName("");
+//            vet1.setTelephone("312131313");
+//            vet1.setAddress(null);
+//            vet1.setVetLicense("license");
+//            vet1.setStatus(true);
+//            vet1.setUserAccount(user4);
+//
+//            vet2.setFirstName("Up");
+//            vet2.setLastName("");
+//            vet2.setTelephone("412131313");
+//            vet2.setAddress(null);
+//            vet2.setVetLicense("license");
+//            vet2.setStatus(true);
+//            vet2.setUserAccount(user5);
+//
+//            vetRepository.save(vet1);
+//            vetRepository.save(vet2);
+//
+//            ownerRepository.save(owner1);
+//            ownerRepository.save(owner2);
+//            ownerRepository.save(owner3);
+//            Random rand = new Random();
+//            Pet pet1 = new Pet(rand.nextLong(), ownerRepository.findById(owner1.getId()).orElse(null), null, "dog1",
+//                    DOG, "Labrador", null, true, 12, 11, 11);
+//            Pet pet2 = new Pet(rand.nextLong(), ownerRepository.findById(owner2.getId()).orElse(null), null, "cat1",
+//                    CAT, "Tabby", null, true, 19, 13, 32);
+//            Pet pet3 = new Pet(rand.nextLong(), ownerRepository.findById(owner2.getId()).orElse(null), null, "cat2",
+//                    CAT, "Tiger", null, false, 9, 42, 69);
+//            petRepository.save(pet1);
+//            petRepository.save(pet2);
+//            petRepository.save(pet3);
+//            owner1.addPetList(pet1);
+//            owner2.addPetList(pet2);
+//            owner2.addPetList(pet3);
+//
+//            return "Successfully created demo users and pets";
+//        } else {
+//            return "Demo users were already created";
+//        }
+//
+//    }
 
 }

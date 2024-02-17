@@ -11,7 +11,6 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
-    private String username;
     private String email;
     private String password;
     private double averageRating;
@@ -32,20 +31,11 @@ public class User extends BaseEntity {
     public User() {
     }
 
-    public User(String username, String email, String password, Double latitude, Double longitude) {
-        this.username = username;
+    public User(String email, String password, Double latitude, Double longitude) {
         this.email = email;
         this.password = password;
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
@@ -125,11 +115,11 @@ public class User extends BaseEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Double.compare(user.averageRating, averageRating) == 0 && numReviewed == user.numReviewed && username.equals(user.username) && email.equals(user.email) && password.equals(user.password) && Objects.equals(tags, user.tags) && Objects.equals(userRoles, user.userRoles);
+        return Double.compare(user.averageRating, averageRating) == 0 && numReviewed == user.numReviewed && email.equals(user.email) && password.equals(user.password) && Objects.equals(tags, user.tags) && Objects.equals(userRoles, user.userRoles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, email, password, averageRating, numReviewed, tags, userRoles);
+        return Objects.hash(email, password, averageRating, numReviewed, tags, userRoles);
     }
 }
