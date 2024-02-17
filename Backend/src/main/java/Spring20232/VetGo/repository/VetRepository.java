@@ -12,5 +12,4 @@ import java.util.UUID;
 @Repository
 public interface VetRepository extends JpaRepository<Vet, Long> {
     Vet findByVetLicense(String vetLicense) throws DataAccessException;
-    Vet findByUserAccount(User userAccount) throws DataAccessException;
 }

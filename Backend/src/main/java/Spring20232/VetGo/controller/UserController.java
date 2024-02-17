@@ -5,10 +5,13 @@ import Spring20232.VetGo.model.*;
 import Spring20232.VetGo.repository.*;
 import Spring20232.VetGo.service.PetService;
 import Spring20232.VetGo.service.UserService;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,59 +58,55 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findByEmail(email));
     }
 
-    //Login user through username
-    @GetMapping(value = "/login/{email}/{password}")
-    public ResponseEntity<?> loginUser(@PathVariable String email,
-                                       @PathVariable String password) {
-
-        User user = userRepository.findByEmail(email);
-
-        if (user == null)
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unable to find user in the database");
-
-        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-
-        if (bcrypt.matches(password, user.getPassword())) {
-            if (ownerRepository.findByUserAccount(user) != null)
-                return ResponseEntity.status(HttpStatus.OK).body(ownerRepository.findByUserAccount(user));
-
-            if (vetRepository.findByUserAccount(user) != null)
-                return ResponseEntity.status(HttpStatus.OK).body(vetRepository.findByUserAccount(user));
+    @GetMapping(value = "/login")
+    public ResponseEntity<?> loginUser(@RequestBody ObjectNode loginBody) {
+        try {
+            String email = loginBody.get("email").asText();
+            String password = loginBody.get("password").asText();
+            Object result = userService.authenticateUser(email, password);
+            return ResponseEntity.ok(result);
+        } catch (UsernameNotFoundException | BadCredentialsException | IllegalStateException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password does not match");
-
     }
 
-    @PostMapping(value = "/register/owner/{email}/{password}")
-    public ResponseEntity<?> registerOwner(@PathVariable String email,
-                                           @PathVariable String password,
-                                           @RequestBody Owner registerOwner) {
+    @PostMapping(value = "/register/owner")
+    public ResponseEntity<?> registerOwner(@RequestBody Owner registerOwner) {
 
-        if (userRepository.findByEmail(email) != null) {
+        if (userRepository.findByEmail(registerOwner.getEmail()) != null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email has been taken.");
         }
 
-        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-        User user = new User(email, bcrypt.encode(password), 1.0, 1.0);
         Role role = new Role("ROLE_OWNER");
         Tag tag = new Tag();
         tagRepository.save(tag);
-        user.addUserRoles(role);
-        user.setTags(tag);
-        userService.saveUser(user);
+        registerOwner.addUserRoles(role);
+        registerOwner.setTags(tag);
+        userService.saveUser(registerOwner);
 
-        Owner owner = new Owner();
 
-        owner.setFirstName(registerOwner.getFirstName());
-        owner.setLastName(registerOwner.getLastName());
-        owner.setTelephone(registerOwner.getTelephone());
-        owner.setAddress(registerOwner.getAddress());
-        owner.setUserAccount(user);
+        Owner savedOwner = ownerRepository.save(registerOwner);
 
-        ownerRepository.save(owner);
+        return ResponseEntity.status(HttpStatus.OK).body(savedOwner);
+    }
 
-        return ResponseEntity.status(HttpStatus.OK).body(owner);
+    @PostMapping(value = "/register/vet")
+    public ResponseEntity<?> registerVet(@RequestBody Vet registerVet) {
+
+        if (userRepository.findByEmail(registerVet.getEmail()) != null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email has been taken.");
+        }
+
+        Role role = new Role("ROLE_VET");
+        Tag tag = new Tag();
+        tagRepository.save(tag);
+        registerVet.addUserRoles(role);
+        registerVet.setTags(tag);
+        userService.saveUser(registerVet);
+
+        Vet savedOwner = vetRepository.save(registerVet);
+
+        return ResponseEntity.status(HttpStatus.OK).body(savedOwner);
     }
 
     @PostMapping(value = "/register/vet/{email}/{password}")
@@ -120,7 +119,7 @@ public class UserController {
         }
 
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-        User user = new User(email, bcrypt.encode(password), 1.0, 1.0);
+        User user = new User("", "", email, bcrypt.encode(password), "", new Address());
         Role role = new Role("ROLE_VET");
         Tag tag = new Tag();
         tagRepository.save(tag);
@@ -136,7 +135,6 @@ public class UserController {
         vet.setAddress(registerVet.getAddress());
         vet.setVetLicense(registerVet.getVetLicense());
         vet.setStatus(registerVet.getStatus());
-        vet.setUserAccount(user);
 
         vetRepository.save(vet);
 
@@ -192,18 +190,33 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted user");
     }
 
-    @PutMapping(value = "/update/location/{uid}")
-    public ResponseEntity<?> updateLocation(@RequestBody LocationCoordinates location,
-                                            @PathVariable("uid") Long uid) {
+    @PutMapping(value = "/update/location/owner/{oid}")
+    public ResponseEntity<?> updateOwnerLocation(@RequestBody LocationCoordinates location,
+                                            @PathVariable("oid") Long oid) {
 
-        if (userRepository.findById(uid).isEmpty())
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
-        User user = userRepository.findById(uid).orElse(null);
-        assert user != null;
-        user.setLatitude(location.getLatitude());
-        user.setLongitude(location.getLongitude());
-        userRepository.save(user);
-        return ResponseEntity.status(HttpStatus.OK).body(userRepository.findById(uid));
+        Owner owner = ownerRepository.findById(oid).orElse(null);
+        if (owner == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find owner in database");
+
+        owner.setLatitude(location.getLatitude());
+        owner.setLongitude(location.getLongitude());
+        ownerRepository.save(owner);
+        return ResponseEntity.status(HttpStatus.OK).body(userRepository.findById(oid));
+    }
+
+
+    @PutMapping(value = "/update/location/vet/{vid}")
+    public ResponseEntity<?> updateVetLocation(@RequestBody LocationCoordinates location,
+                                               @PathVariable("vid") Long vid) {
+
+        Vet vet = vetRepository.findById(vid).orElse(null);
+        if (vet == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find owner in database");
+
+        vet.setLatitude(location.getLatitude());
+        vet.setLongitude(location.getLongitude());
+        vetRepository.save(vet);
+        return ResponseEntity.status(HttpStatus.OK).body(userRepository.findById(vid));
     }
 
 //    @GetMapping(value = "/demo")

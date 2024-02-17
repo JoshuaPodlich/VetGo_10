@@ -44,7 +44,6 @@ public class VetController {
 
         vetRepository.findById(vid)
                 .map(vet -> {
-                    vet.setUserAccount(updatedVet.getUserAccount());
                     vet.setAddress(updatedVet.getAddress());
                     vet.setFirstName(updatedVet.getFirstName());
                     vet.setLastName(updatedVet.getLastName());
@@ -97,7 +96,7 @@ public class VetController {
         if (vet == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        return ResponseEntity.status(HttpStatus.OK).body(vet.getUserAccount());
+        return ResponseEntity.status(HttpStatus.OK).body(vet);
     }
 
 

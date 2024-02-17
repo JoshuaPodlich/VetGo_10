@@ -38,8 +38,7 @@ public class OwnerController {
 
     @GetMapping(value = "/userId/{uid}")
     public ResponseEntity<Owner> getOwnerByUserId(@PathVariable Long uid) {
-        User user = userRepository.findById(uid).orElse(null);
-        Owner owner = ownerRepository.findByUserAccount(user);
+        Owner owner = ownerRepository.findById(uid).orElse(null);
         return ResponseEntity.status(HttpStatus.OK).body(owner);
     }
 
@@ -65,7 +64,6 @@ public class OwnerController {
 
         ownerRepository.findById(oid)
                 .map(owner -> {
-                    owner.setUserAccount(updatedOwner.getUserAccount());
                     owner.setAddress(updatedOwner.getAddress());
                     owner.setFirstName(updatedOwner.getFirstName());
                     owner.setLastName(updatedOwner.getLastName());
@@ -103,7 +101,7 @@ public class OwnerController {
         if (owner == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        return ResponseEntity.status(HttpStatus.OK).body(owner.getUserAccount());
+        return ResponseEntity.status(HttpStatus.OK).body(owner);
     }
 
 

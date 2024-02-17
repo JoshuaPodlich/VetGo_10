@@ -1,18 +1,32 @@
 package Spring20232.VetGo.service;
 
+import Spring20232.VetGo.model.Owner;
 import Spring20232.VetGo.model.Role;
 import Spring20232.VetGo.model.User;
+import Spring20232.VetGo.model.Vet;
+import Spring20232.VetGo.repository.OwnerRepository;
 import Spring20232.VetGo.repository.UserRepository;
+import Spring20232.VetGo.repository.VetRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserService implements UserServiceInterface {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private OwnerRepository ownerRepository;
+
+    @Autowired
+    private VetRepository vetRepository;
 
     @Override
     @Transactional
@@ -51,6 +65,32 @@ public class UserService implements UserServiceInterface {
         user = userRepository.findById(uid).orElse(null);
         System.out.println("After password 3: " + (user.getPassword()));
         return true;
+    }
+
+    public Object authenticateUser(String email, String password) {
+        User user = userRepository.findByEmail(email);
+
+        if (user == null) {
+            throw new UsernameNotFoundException("Unable to find user in the database.");
+        }
+
+        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+        if (!bcrypt.matches(password, user.getPassword())) {
+            throw new BadCredentialsException("Password does not match.");
+        }
+
+        Optional<Owner> ownerOptional = ownerRepository.findById(user.getId());
+        Optional<Vet> vetOptional = vetRepository.findById(user.getId());
+
+        if (ownerOptional.isPresent() && vetOptional.isPresent()) {
+            return "User must choose between logging in as vet or owner.";
+        } else if (ownerOptional.isPresent()) {
+            return ownerOptional.get();
+        } else if (vetOptional.isPresent()) {
+            return vetOptional.get();
+        } else {
+            throw new IllegalStateException("User is neither associated with owner nor vet account.");
+        }
     }
 
 }

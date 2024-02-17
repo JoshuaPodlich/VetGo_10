@@ -3,6 +3,7 @@ package Spring20232.VetGo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -10,13 +11,17 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User extends BaseEntity {
     private String email;
     private String password;
-    private double averageRating;
-    private int numReviewed;
-    private Double longitude;
-    private Double latitude;
+    protected String firstName;
+    protected String lastName;
+    protected String telephone;
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    protected Address address;
+
     @OneToOne
     @JoinColumn(name = "user_tags")
     private Tag tags;
@@ -31,11 +36,14 @@ public class User extends BaseEntity {
     public User() {
     }
 
-    public User(String email, String password, Double latitude, Double longitude) {
+    public User(String email, String password, String firstName, String lastName,
+                String telephone, Address address) {
         this.email = email;
         this.password = password;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.telephone = telephone;
+        this.address = address;
     }
 
     public String getEmail() {
@@ -51,7 +59,40 @@ public class User extends BaseEntity {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+        this.password = bcrypt.encode(password);
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Set<Role> getUserRoles() {
@@ -66,38 +107,6 @@ public class User extends BaseEntity {
         this.userRoles.add(role);
     }
 
-    public double getAverageRating() {
-        return averageRating;
-    }
-
-    public void setAverageRating(double averageRating) {
-        this.averageRating = averageRating;
-    }
-
-    public int getNumReviewed() {
-        return numReviewed;
-    }
-
-    public void setNumReviewed(int numReviewed) {
-        this.numReviewed = numReviewed;
-    }
-
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
 
     public Tag getTags() {
         if (tags == null) {
@@ -115,11 +124,14 @@ public class User extends BaseEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Double.compare(user.averageRating, averageRating) == 0 && numReviewed == user.numReviewed && email.equals(user.email) && password.equals(user.password) && Objects.equals(tags, user.tags) && Objects.equals(userRoles, user.userRoles);
+        return  email.equals(user.email) &&
+                password.equals(user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) &&
+                Objects.equals(telephone, user.telephone) && Objects.equals(address, user.address) && Objects.equals(tags, user.tags) &&
+                Objects.equals(userRoles, user.userRoles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, password, averageRating, numReviewed, tags, userRoles);
+        return Objects.hash(email, password, firstName, lastName, telephone, address, tags, userRoles);
     }
 }
