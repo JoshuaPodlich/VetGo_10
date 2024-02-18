@@ -8,10 +8,8 @@ import org.hibernate.annotations.OnDeleteAction;
 import java.util.*;
 
 @Entity
-public class Pet {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long pid;
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Pet extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
@@ -24,20 +22,13 @@ public class Pet {
     @JsonIgnore
     private List<Appointment> appointments = new ArrayList<>();
     private String name;
-    private PetType petType;
-
-    private String petBreed;
-
-    public enum PetType {
-        DOG, CAT, BIRD, REPTILE, FISH, RODENT, OTHER
-    }
 
 
     @ElementCollection
     private List<String> fileLink = new ArrayList<String>();
     @Column(columnDefinition = "TEXT")
     private String petImage;
-    private Boolean isMale;
+    private boolean isMale;
     private int age;
     private int weight;
     private int height;
@@ -45,25 +36,14 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(Long pid, Owner owner, List<Appointment> appointments, String name, PetType petType, String petBreed, List<String> fileLink, Boolean isMale, int age, int weight, int height) {
-        this.pid = pid;
+    public Pet(Owner owner, List<Appointment> appointments, String name, List<String> fileLink, boolean isMale, int age, int weight, int height) {
         this.owner = owner;
         this.appointments = appointments;
         this.name = name;
-        this.petType = petType;
-        this.petBreed = petBreed;
         this.isMale = isMale;
         this.age = age;
         this.weight = weight;
         this.height = height;
-    }
-
-    public Long getPid() {
-        return pid;
-    }
-
-    public void setPid(Long pid) {
-        this.pid = pid;
     }
 
     public Owner getOwner() {
@@ -86,22 +66,6 @@ public class Pet {
         this.name = name;
     }
 
-    public PetType getPetType() {
-        return petType;
-    }
-
-    public void setPetType(PetType petType) {
-        this.petType = petType;
-    }
-
-    public String getPetBreed() {
-        return petBreed;
-    }
-
-    public void setPetBreed(String petBreed) {
-        this.petBreed = petBreed;
-    }
-
     @SuppressWarnings("NewApi")
     public Optional<List<String>> getFileLink() {
         return Optional.ofNullable(fileLink);
@@ -115,11 +79,11 @@ public class Pet {
         this.fileLink.add(fileLink);
     }
 
-    public Boolean getMale() {
+    public boolean getMale() {
         return isMale;
     }
 
-    public void setMale(Boolean male) {
+    public void setMale(boolean male) {
         isMale = male;
     }
 
@@ -164,12 +128,14 @@ public class Pet {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pet pet = (Pet) o;
-        return age == pet.age && weight == pet.weight && height == pet.height && Objects.equals(pid, pet.pid) && Objects.equals(petBreed, pet.petBreed) && Objects.equals(owner, pet.owner) && Objects.equals(appointments, pet.appointments) && Objects.equals(name, pet.name) && petType == pet.petType && Objects.equals(fileLink, pet.fileLink) && Objects.equals(isMale, pet.isMale);
+        return age == pet.age && weight == pet.weight && height == pet.height &&
+                Objects.equals(owner, pet.owner) && Objects.equals(appointments, pet.appointments) &&
+                Objects.equals(name, pet.name) && Objects.equals(fileLink, pet.fileLink) && Objects.equals(isMale, pet.isMale);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(pid, owner, appointments, name, petType, petBreed, fileLink, isMale, age, weight, height);
+        return Objects.hash(owner, appointments, name, fileLink, isMale, age, weight, height);
     }
 
 

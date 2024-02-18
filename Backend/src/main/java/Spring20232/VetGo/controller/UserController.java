@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-import static Spring20232.VetGo.model.Pet.PetType.CAT;
-import static Spring20232.VetGo.model.Pet.PetType.DOG;
-
 @RestController
 @RequestMapping("user")
 public class UserController {

@@ -38,7 +38,7 @@ public class PetService implements PetServiceInterface {
         Map<String, String> metadata = extractMetadata(file);
 
         // Store files in s3
-        String path = String.format("%s/%s", bucketName, pet1.getPid());
+        String path = String.format("%s/%s", bucketName, pet1.getId());
         String filename = String.format("%s-%s", file.getName(), UUID.randomUUID());
 
         try {
@@ -52,7 +52,7 @@ public class PetService implements PetServiceInterface {
     @Override
     public List<byte[]> getPetRecords(Long pid) {
         Pet pet = getPetProfileOrElseThrow(pid);
-        String path = String.format("%s/%s/", bucketName, pet.getPid());
+        String path = String.format("%s/%s/", bucketName, pet.getId());
         List<String> fileList = pet.getFileLink().orElse(null);
 
         if (fileList == null) {

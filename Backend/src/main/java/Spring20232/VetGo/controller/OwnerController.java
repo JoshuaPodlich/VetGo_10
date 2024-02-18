@@ -50,7 +50,7 @@ public class OwnerController {
     }
 
     //    @PreAuthorize("hasRole(@roles.ROLE_OWNER)")
-    @GetMapping(value = "/pet/{oid}")
+    @GetMapping(value = "/pets/{oid}")
     public ResponseEntity<List<Pet>> getPetList(@PathVariable Long oid) {
         return ResponseEntity.status(HttpStatus.OK).body(ownerRepository.findById(oid).orElse(null).getPetList());
     }
