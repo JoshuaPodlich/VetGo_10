@@ -11,7 +11,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class User extends BaseEntity {
     private String email;
     private String password;
@@ -22,16 +21,13 @@ public class User extends BaseEntity {
     @JoinColumn(name = "address_id")
     protected Address address;
 
-    @OneToOne
-    @JoinColumn(name = "user_tags")
-    private Tag tags;
     @ManyToMany
-    @JoinTable(name = "user_role",
+    @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JsonIgnore
-    private Set<Role> userRoles = new HashSet<Role>();
+    private Set<Role> roles = new HashSet<>();
 
     public User() {
     }
@@ -58,10 +54,7 @@ public class User extends BaseEntity {
         return password;
     }
 
-    public void setPassword(String password) {
-        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-        this.password = bcrypt.encode(password);
-    }
+    public void setPassword(String password) { this.password = password; }
 
     public String getFirstName() {
         return firstName;
@@ -95,28 +88,25 @@ public class User extends BaseEntity {
         this.address = address;
     }
 
-    public Set<Role> getUserRoles() {
-        return userRoles;
+    public boolean isUserVet() {
+        return getRoles().stream().anyMatch(role -> role.getName().equals("VET"));
     }
 
-    public void setUserRoles(Set<Role> userRoles) {
-        this.userRoles = userRoles;
+    public boolean isUserOwner() {
+        return getRoles().stream().anyMatch(role -> role.getName().equals("OWNER"));
     }
 
-    public void addUserRoles(Role role) {
-        this.userRoles.add(role);
+    public boolean isUserVetAndOwner() {
+        return isUserVet() && isUserOwner();
     }
 
 
-    public Tag getTags() {
-        if (tags == null) {
-            this.tags = new Tag();
-        }
-        return this.tags;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setTags(Tag tags) {
-        this.tags = tags;
+    public void setRoles(Role role) {
+        roles.add(role);
     }
 
     @Override
@@ -126,12 +116,11 @@ public class User extends BaseEntity {
         User user = (User) o;
         return  email.equals(user.email) &&
                 password.equals(user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) &&
-                Objects.equals(telephone, user.telephone) && Objects.equals(address, user.address) && Objects.equals(tags, user.tags) &&
-                Objects.equals(userRoles, user.userRoles);
+                Objects.equals(telephone, user.telephone) && Objects.equals(address, user.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, password, firstName, lastName, telephone, address, tags, userRoles);
+        return Objects.hash(email, password, firstName, lastName, telephone, address);
     }
 }

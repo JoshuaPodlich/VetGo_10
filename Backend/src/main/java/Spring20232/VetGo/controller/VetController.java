@@ -44,10 +44,10 @@ public class VetController {
 
         vetRepository.findById(vid)
                 .map(vet -> {
-                    vet.setAddress(updatedVet.getAddress());
-                    vet.setFirstName(updatedVet.getFirstName());
-                    vet.setLastName(updatedVet.getLastName());
-                    vet.setTelephone(updatedVet.getTelephone());
+                    vet.getUser().setAddress(updatedVet.getUser().getAddress());
+                    vet.getUser().setFirstName(updatedVet.getUser().getFirstName());
+                    vet.getUser().setLastName(updatedVet.getUser().getLastName());
+                    vet.getUser().setTelephone(updatedVet.getUser().getTelephone());
                     vet.setVetLicense(updatedVet.getVetLicense());
                     vet.setSpecialties(updatedVet.getSpecialties());
                     return vetRepository.save(vet);
@@ -96,7 +96,7 @@ public class VetController {
         if (vet == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        return ResponseEntity.status(HttpStatus.OK).body(vet);
+        return ResponseEntity.status(HttpStatus.OK).body(vet.getUser());
     }
 
 

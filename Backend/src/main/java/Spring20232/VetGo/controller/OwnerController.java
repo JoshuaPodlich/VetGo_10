@@ -64,10 +64,10 @@ public class OwnerController {
 
         ownerRepository.findById(oid)
                 .map(owner -> {
-                    owner.setAddress(updatedOwner.getAddress());
-                    owner.setFirstName(updatedOwner.getFirstName());
-                    owner.setLastName(updatedOwner.getLastName());
-                    owner.setTelephone(updatedOwner.getTelephone());
+                    owner.getUser().setAddress(updatedOwner.getUser().getAddress());
+                    owner.getUser().setFirstName(updatedOwner.getUser().getFirstName());
+                    owner.getUser().setLastName(updatedOwner.getUser().getLastName());
+                    owner.getUser().setTelephone(updatedOwner.getUser().getTelephone());
                     owner.setPetList(updatedOwner.getPetList());
                     return ownerRepository.save(owner);
                 }).orElseGet(() -> {
@@ -101,7 +101,7 @@ public class OwnerController {
         if (owner == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        return ResponseEntity.status(HttpStatus.OK).body(owner);
+        return ResponseEntity.status(HttpStatus.OK).body(owner.getUser());
     }
 
 

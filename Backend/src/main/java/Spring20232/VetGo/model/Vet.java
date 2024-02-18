@@ -8,13 +8,19 @@ import java.util.*;
 
 @Entity
 @Table(name = "vets")
-public class Vet extends User {
+public class Vet extends BaseEntity {
     private String vetLicense;
     private Boolean status;
     private Double longitude;
     private Double latitude;
     private double averageRating;
     private int numReviews;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    @OneToOne
+    @JoinColumn(name = "vet_tags")
+    private Tag tags;
     @ManyToMany
     @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"),
             inverseJoinColumns = @JoinColumn(name = "specialty_id"))
@@ -26,10 +32,9 @@ public class Vet extends User {
     public Vet() {
     }
 
-    public Vet(String firstName, String lastName, String email, String password, String telephone,
-               Address address, String vetLicense, Boolean status, Set<Specialty> specialties,
+    public Vet(User user, String vetLicense, Boolean status, Set<Specialty> specialties,
                List<Appointment> appointments, Double longitude, double latitude, double averageRating, int numReviews) {
-        super(firstName, lastName, email, password, telephone, address);
+        this.user = user;
         this.vetLicense = vetLicense;
         this.status = status;
         this.specialties = specialties;
@@ -38,6 +43,14 @@ public class Vet extends User {
         this.longitude = longitude;
         this.averageRating = averageRating;
         this.numReviews = numReviews;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getVetLicense() {
@@ -103,6 +116,17 @@ public class Vet extends User {
     public Double getLatitude() { return latitude; }
 
     public void setLatitude(Double latitude) { this.latitude = latitude; }
+
+    public Tag getTags() {
+        if (tags == null) {
+            this.tags = new Tag();
+        }
+        return this.tags;
+    }
+
+    public void setTags(Tag tags) {
+        this.tags = tags;
+    }
 
     @Override
     public boolean equals(Object o) {

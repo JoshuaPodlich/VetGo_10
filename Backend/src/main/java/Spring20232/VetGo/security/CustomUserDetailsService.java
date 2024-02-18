@@ -1,6 +1,5 @@
 //package Spring20232.VetGo.security;
 //
-//import Spring20232.VetGo.model.Role;
 //import Spring20232.VetGo.model.User;
 //import Spring20232.VetGo.repository.UserRepository;
 //import org.springframework.security.core.GrantedAuthority;
@@ -34,10 +33,3 @@
 //        }
 //    }
 //
-//    private Collection <? extends GrantedAuthority> mapRolesToAuthorities(Collection <Role> roles) {
-//        Collection<? extends GrantedAuthority> mapRoles = roles.stream()
-//                .map(role -> new SimpleGrantedAuthority(role.getName()))
-//                .collect(Collectors.toList());
-//        return mapRoles;
-//    }
-//}

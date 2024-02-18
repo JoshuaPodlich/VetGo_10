@@ -79,7 +79,7 @@ public class PetService implements PetServiceInterface {
         Pet pet1 = petRepository
                 .findAll()
                 .stream()
-                .filter(pet -> pet.getOwner().getId().equals(pid))
+                .filter(pet -> pet.getOwner().getUser().getId().equals(pid))
                 .findFirst()
                 .orElseThrow(()-> new IllegalStateException(String.format("Pet profile %s not found", pid)));
         return pet1;

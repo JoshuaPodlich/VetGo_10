@@ -70,75 +70,16 @@ public class UserController {
         }
     }
 
-    @PostMapping(value = "/register/owner")
-    public ResponseEntity<?> registerOwner(@RequestBody Owner registerOwner) {
+    @PostMapping(value = "/register")
+    public ResponseEntity<?> registerUser(@RequestBody ObjectNode userInfo) {
 
-        if (userRepository.findByEmail(registerOwner.getEmail()) != null) {
+        if (userRepository.findByEmail(userInfo.get("email").asText()) != null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email has been taken.");
         }
 
-        Role role = new Role("ROLE_OWNER");
-        Tag tag = new Tag();
-        tagRepository.save(tag);
-        registerOwner.addUserRoles(role);
-        registerOwner.setTags(tag);
-        userService.saveUser(registerOwner);
+        User user = userService.registerNewUser(userInfo);
 
-
-        Owner savedOwner = ownerRepository.save(registerOwner);
-
-        return ResponseEntity.status(HttpStatus.OK).body(savedOwner);
-    }
-
-    @PostMapping(value = "/register/vet")
-    public ResponseEntity<?> registerVet(@RequestBody Vet registerVet) {
-
-        if (userRepository.findByEmail(registerVet.getEmail()) != null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email has been taken.");
-        }
-
-        Role role = new Role("ROLE_VET");
-        Tag tag = new Tag();
-        tagRepository.save(tag);
-        registerVet.addUserRoles(role);
-        registerVet.setTags(tag);
-        userService.saveUser(registerVet);
-
-        Vet savedOwner = vetRepository.save(registerVet);
-
-        return ResponseEntity.status(HttpStatus.OK).body(savedOwner);
-    }
-
-    @PostMapping(value = "/register/vet/{email}/{password}")
-    public ResponseEntity<?> registerVet(@PathVariable String email,
-                                         @PathVariable String password,
-                                         @RequestBody Vet registerVet) {
-
-        if (userRepository.findByEmail(email) != null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email has been taken");
-        }
-
-        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-        User user = new User("", "", email, bcrypt.encode(password), "", new Address());
-        Role role = new Role("ROLE_VET");
-        Tag tag = new Tag();
-        tagRepository.save(tag);
-        user.addUserRoles(role);
-        user.setTags(tag);
-        userService.saveUser(user);
-
-        Vet vet = new Vet();
-
-        vet.setFirstName(registerVet.getFirstName());
-        vet.setLastName(registerVet.getLastName());
-        vet.setTelephone(registerVet.getTelephone());
-        vet.setAddress(registerVet.getAddress());
-        vet.setVetLicense(registerVet.getVetLicense());
-        vet.setStatus(registerVet.getStatus());
-
-        vetRepository.save(vet);
-
-        return ResponseEntity.status(HttpStatus.OK).body(vet);
+        return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
     // Updates the currently stored user
@@ -230,8 +171,6 @@ public class UserController {
 //            User user3 = new User("user3", "give@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ.Q5Nsi", 1.0, 1.0);
 //            User user4 = new User("user4", "you@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ.Q5Nsi", 1.0, 1.0);
 //            User user5 = new User("user5", "up@gmail.com", "$2a$10$Oc1TPIeTLBPWBzRwP0jgfOB238SDS8ljGsi4Msiq4EA91WJ.Q5Nsi", 1.0, 1.0);
-//            Role role_owner = new Role("ROLE_OWNER");
-//            Role role_vet = new Role("ROLE_VET");
 //            user1.addUserRoles(role_owner);
 //            user2.addUserRoles(role_owner);
 //            user3.addUserRoles(role_owner);

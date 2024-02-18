@@ -95,7 +95,7 @@ public class ReviewController {
         tagRepository.save(userTag);
 
         vet.setTags(userTag);
-        userRepository.save(vet);
+        userRepository.save(vet.getUser());
 
         return ResponseEntity.status(HttpStatus.OK).body(appointment);
     }

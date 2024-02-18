@@ -1,6 +1,7 @@
 package Spring20232.VetGo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.ser.Serializers;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -9,21 +10,31 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "owners")
-public class Owner extends User {
+public class Owner extends BaseEntity {
     private Double longitude;
     private Double latitude;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Pet> petList = new ArrayList<Pet>();
 
     public Owner() {
     }
 
-    public Owner(String email, String password, String firstName, String lastName, String telephone,
-                 Address address, List<Pet> petList, Double latitude, Double longitude) {
-        super(email, password, firstName, lastName, telephone, address);
+    public Owner(User user, List<Pet> petList, Double latitude, Double longitude) {
+        this.user = user;
         this.petList = petList;
         this.longitude = longitude;
         this.latitude = latitude;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Pet> getPetList() {
