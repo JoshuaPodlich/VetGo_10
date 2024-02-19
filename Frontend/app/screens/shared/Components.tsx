@@ -16,7 +16,7 @@ export const Logo = () => {
             })
     }
     return (
-        <View style={styles.title}>
+        <View style={styles.underdevTitle}>
             <Text style={{ fontSize: 30, fontWeight: "bold" }}>
                 VetGo
             </Text>

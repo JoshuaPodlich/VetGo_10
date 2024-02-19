@@ -33,7 +33,7 @@ function EntryButtons(props: any) {
 
             <TouchableHighlight style={{...styles.secondaryButton, marginTop: 100}}
                 underlayColor={colors.action_Orange}
-                onPress={() => console.error("Emergency map is not done")}>
+                onPress={() => props.navigation.navigate("Emergency")}>
                 <Text style={styles.buttonText}> EMERGENCY </Text>
             </TouchableHighlight>
         </View>

@@ -6,6 +6,25 @@ export const styles: any = StyleSheet.create({
 
         flex: 1,
     },
+    loginBackground: {
+        flex: 1,
+        alignContent: "center", //only takes effect when wrapping occur
+        alignItems: "center",
+        backgroundColor: colors.background_Grey,
+    },
+
+    underdevTitle: {
+        alignItems: "center",
+        flexDirection: "row",
+        backgroundColor: colors.grey,
+        borderRadius: 8,
+        flexShrink: 0,
+        height: "25%",
+        justifyContent: "center",
+        marginTop: 25,
+        width: "80%",
+        marginBottom: 20,
+    },
 
     header: {
         fontSize: 18,

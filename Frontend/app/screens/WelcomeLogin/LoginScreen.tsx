@@ -96,7 +96,7 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
     //endregion
 
     return (
-        <SafeAreaView style={styles.background}>
+        <SafeAreaView style={styles.loginBackground}>
             <Logo />
 
             <View style={{ width: "80%", flex: 1 }}>
