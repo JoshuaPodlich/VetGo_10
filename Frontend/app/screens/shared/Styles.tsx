@@ -44,7 +44,28 @@ export const styles: any = StyleSheet.create({
         padding: 15,
         width: 230,
         color: colors.primary_Blue,
+        backgroundColor: colors.primary_Blue,
     },
+    secondaryButton: {
+        alignItems: "center",
+        borderRadius: 10,
+        justifyContent: "center",
+        margin: 5,
+        padding: 15,
+        width: 230,
+        backgroundColor: colors.action_Orange,
+    },
+
+    submitButton: {
+        alignItems: "center",
+        borderRadius: 10,
+        justifyContent: "center",
+        margin: 5,
+        padding: 15,
+        width: 230,
+        backgroundColor: colors.action_Green,
+    },
+
 
     title: {
         alignItems: "center",

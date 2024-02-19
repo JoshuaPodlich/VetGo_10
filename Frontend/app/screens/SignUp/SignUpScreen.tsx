@@ -231,12 +231,12 @@ function SignUpScreen(props: any) {
                     </View>
 
                     <View id={"buttonGroup"} style={styles.buttonGroup}>
-                        <TouchableHighlight style={{ ...styles.mainButton, backgroundColor: colors.primary_Blue }}
+                        <TouchableHighlight style={{ ...styles.mainButton }}
                             underlayColor={colors.black_underlay} onPress={handleSubmit}>
                             <Text style={styles.buttonText}> SIGNUP </Text>
                         </TouchableHighlight>
 
-                        <TouchableHighlight style={{ ...styles.mainButton, backgroundColor: colors.action_Orange }}
+                        <TouchableHighlight style={{ ...styles.secondaryButton, marginTop: 100}}
                             underlayColor={colors.brightRed_underlayColor}
                             onPress={() => props.navigation.navigate("Map")}>
                             <Text style={styles.buttonText}> EMERGENCY </Text>

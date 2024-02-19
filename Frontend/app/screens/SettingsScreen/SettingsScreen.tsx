@@ -23,39 +23,35 @@ function SettingsScreen(props: any) {
     return (
         <SafeAreaView style={{ ...styles.background, justifyContent: "space-evenly" }}>
             <View style={styles.buttonGroup}>
-                <TouchableHighlight style={{ ...styles.mainButton, backgroundColor: colors.black }}
+                <TouchableHighlight style={{ ...styles.mainButton }}
                     underlayColor={colors.black_underlay}
                     onPress={() => props.navigation.navigate("PaymentStripe")}
                 >
                     <Text style={styles.buttonText}> Payment Stripe </Text>
                 </TouchableHighlight>
 
-                <TouchableHighlight style={{ ...styles.mainButton, backgroundColor: colors.black }}
+                <TouchableHighlight style={{ ...styles.mainButton }}
                     underlayColor={colors.black_underlay}
                     onPress={() => props.navigation.navigate("VetAddCharges", { ...params } as VetAddChargesScreenParams)}
                 >
                     <Text style={styles.buttonText}> VetAddCharges Test </Text>
                 </TouchableHighlight>
 
-                <TouchableHighlight style={{ ...styles.mainButton, backgroundColor: colors.black }}
+                <TouchableHighlight style={{ ...styles.mainButton}}
                     underlayColor={colors.black_underlay}
                     onPress={() => props.navigation.navigate("ChangePassword", { ...params } as ChangePasswordScreenParams)}
                 >
                     <Text style={styles.buttonText}> Change Password </Text>
                 </TouchableHighlight>
 
-                <TouchableHighlight style={{ ...styles.mainButton, backgroundColor: colors.black }}
+                <TouchableHighlight style={{ ...styles.mainButton, marginBottom: 100}}
                     underlayColor={colors.brightRed_underlayColor}
                 // onPress={() => props.navigation.navigate("Map")}
                 >
-                    <Text style={styles.buttonText}> TesT BTN </Text>
+                    <Text style={styles.buttonText}> User Info </Text>
                 </TouchableHighlight>
 
-                <TouchableHighlight style={{ ...styles.mainButton, backgroundColor: colors.lightGrey }}>
-                    <Text style={styles.buttonText}></Text>
-                </TouchableHighlight>
-
-                <TouchableHighlight style={{ ...styles.mainButton, backgroundColor: colors.black }}
+                <TouchableHighlight style={{ ...styles.secondaryButton }}
                     underlayColor={colors.black_underlay}
                     onPress={logout}>
                     <Text style={styles.buttonText}> Log Out </Text>
