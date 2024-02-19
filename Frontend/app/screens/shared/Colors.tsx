@@ -14,4 +14,10 @@ export const colors = {
     white: "#ffffff",
     red: "#FF0000",
     blue: "#3366FF",
+    primary_Blue: "#42A5F5",
+    action_Green: "#4CAF50",
+    action_Orange: "#FF7043",
+    background_Grey: "#F5F5F5",
+    hilight_yellow: "#FFD54F",
+
 }

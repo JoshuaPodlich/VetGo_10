@@ -5,9 +5,10 @@ export const styles: any = StyleSheet.create({
     background: {
         alignContent: "center", //only takes effect when wrapping occur
         alignItems: "center", // secondary axis
-        backgroundColor: colors.lightGrey,
+        backgroundColor: colors.background_Grey,
         flex: 1,
         justifyContent: "flex-start", //main axis - currently col
+        color: colors.background_Grey,
     },
 
     header: {
@@ -42,6 +43,7 @@ export const styles: any = StyleSheet.create({
         margin: 5,
         padding: 15,
         width: 230,
+        color: colors.primary_Blue,
     },
 
     title: {
