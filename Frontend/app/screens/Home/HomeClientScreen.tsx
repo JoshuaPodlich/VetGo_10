@@ -135,7 +135,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     }
 
     return (
-        <SafeAreaView style={styles.background}>
+        <SafeAreaView style={{ flex: 1 }} >
             <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: 'auto', justifyContent: 'space-between' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 200, marginLeft: 20, marginVertical: 20 }}>
                     <FontAwesome5 name='location-arrow' color={colors.blue} size={24} style={{ marginRight: 10 }} />
@@ -168,6 +168,8 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                         )
                         }
                     </View>
+                    
+                    
                 </View>
 
                 <View style={homeStyles.addPetContainer}>
@@ -177,10 +179,17 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                     <Button onPress={() => fetchPets()} style={homeStyles.refreshButton}>
                         <Text>Refresh List</Text>
                     </Button>
+                    
                 </View>
+
+                
+
             </ScrollView>
             <ClientNavbar navigation={props.navigation} {...params} />
+
         </SafeAreaView>
+        
+        
     )
 
 }
