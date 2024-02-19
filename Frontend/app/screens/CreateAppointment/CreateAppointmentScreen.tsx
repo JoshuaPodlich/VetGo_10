@@ -83,7 +83,7 @@ const CreateAppointmentScreen = (props: any) => {
             </View>
         </ScrollView>
         <Text>{error}</Text>
-        <Button style={{ ...styles.mainButton, backgroundColor: colors.green, borderColor: colors.green }}
+        <Button style={{ ...styles.submitButton }}
             onPress={handleSubmit}>
             <Text>Submit</Text>
         </Button>

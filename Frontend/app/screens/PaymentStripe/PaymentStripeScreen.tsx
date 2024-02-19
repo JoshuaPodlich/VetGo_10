@@ -99,7 +99,7 @@ function PaymentStripeScreen(props: any) {
         </ScrollView>
 
         <View id={"buttonGroup"} style={{ ...styles.buttonGroup }}>
-          <TouchableHighlight style={{ ...styles.mainButton, backgroundColor: colors.black }}
+          <TouchableHighlight style={{ ...styles.mainButton }}
             underlayColor={colors.black_underlay}
             onPress={openPaymentSheet}
           >

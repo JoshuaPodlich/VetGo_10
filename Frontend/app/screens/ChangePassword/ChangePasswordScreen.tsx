@@ -158,7 +158,7 @@ function ChangePasswordScreen(props: any) {
                     </View>
 
                     <View id={"buttonGroup"} style={styles.buttonGroup}>
-                        <TouchableHighlight style={{ ...styles.mainButton, backgroundColor: colors.black }}
+                        <TouchableHighlight style={{ ...styles.submitButton}}
                             underlayColor={colors.black_underlay}
                             onPress={handleSubmit}
                         >

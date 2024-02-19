@@ -99,7 +99,7 @@ function LocationScreen(props: { route: LocationScreenRouteProp, navigation: Loc
                 </View>
 
 
-                <Button style={locationStyles.create} onPress={handleSubmit}>
+                <Button style={locationStyles.submitButton} onPress={handleSubmit}>
                     <Text> Submit </Text>
                 </Button>
             </View>

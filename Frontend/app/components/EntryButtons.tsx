@@ -19,21 +19,21 @@ function EntryButtons(props: any) {
 
     return (
         <View id={"buttonGroup"} style={styles.buttonGroup}>
-            <TouchableHighlight style={{...styles.mainButton, backgroundColor: colors.black}}
-                underlayColor={colors.black_underlay}
+            <TouchableHighlight style={{...styles.mainButton}}
+                underlayColor={colors.primary_Blue}
                 onPress={() => cmd(direction)}>
                 <Text style={styles.buttonText}> LOGIN </Text>
             </TouchableHighlight>
 
-            <TouchableHighlight style={{...styles.mainButton, backgroundColor: colors.black}}
-                underlayColor={colors.black_underlay}
+            <TouchableHighlight style={{...styles.mainButton}}
+                underlayColor={colors.primary_Blue}
                 onPress={() => props.navigation.navigate("SignUp")}>
                 <Text style={styles.buttonText}> SIGNUP </Text>
             </TouchableHighlight>
 
-            <TouchableHighlight style={{...styles.mainButton, backgroundColor: colors.brightRed}}
-                underlayColor={colors.brightRed_underlayColor}
-                onPress={() => props.navigation.navigate("Emergency")}>
+            <TouchableHighlight style={{...styles.secondaryButton, marginTop: 100}}
+                underlayColor={colors.action_Orange}
+                onPress={() => console.error("Emergency map is not done")}>
                 <Text style={styles.buttonText}> EMERGENCY </Text>
             </TouchableHighlight>
         </View>

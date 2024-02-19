@@ -359,7 +359,7 @@ function EditPetScreen(props: { route: EditPetScreenRouteProp, navigation: EditP
                     </View>
                 </View>
                 <View style={styles.buttonGroup}>
-                    <Button style={{ ...styles.mainButton, backgroundColor: colors.green, borderColor: colors.green }} onPress={handleSubmit}>
+                    <Button style={{ ...styles.submitButton}} onPress={handleSubmit}>
                         <Text> Save Changes </Text>
                     </Button>
                 </View>

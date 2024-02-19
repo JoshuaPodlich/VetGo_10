@@ -15,19 +15,23 @@ export const homeStyles: any = StyleSheet.create({
 
     petInfo: {
         alignItems: "center",
-        borderBottomColor: colors.grey,
-        borderBottomWidth: 2,
+
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
         paddingVertical: 10,
         width: "100%",
+        backgroundColor: colors.primary_Blue,
+        borderRadius: 30,
+        marginBottom: 10,
     },
 
     createAppointment: {
-        backgroundColor: colors.darkGrey,
+        backgroundColor: colors.action_Orange,
         borderColor: colors.darkGrey,
         width: 120,
+        marginRight: 10,
+        borderRadius: 25,
     },
 
     viewAppointment: {
@@ -81,6 +85,53 @@ export const homeStyles: any = StyleSheet.create({
         borderRadius: 100,
         justifyContent: "center",
         alignItems: "center",
+    },
+
+    addButton: {
+        margin: 5,
+        padding: 15,
+        width: 70,
+        color: colors.primary_Blue,
+        backgroundColor: colors.primary_Blue,
+
+    },
+    refreshButton: {
+        margin: 5,
+        padding: 15,
+        width: 150,
+        color: colors.primary_Blue,
+        backgroundColor: colors.primary_Blue,
+
+    },
+
+    mainButton: {
+        alignItems: "center",
+        borderRadius: 10,
+        justifyContent: "center",
+        margin: 5,
+        padding: 15,
+        width: 230,
+        color: colors.primary_Blue,
+        backgroundColor: colors.primary_Blue,
+    },
+    secondaryButton: {
+        alignItems: "center",
+        borderRadius: 10,
+        justifyContent: "center",
+        margin: 5,
+        padding: 15,
+        width: 230,
+        backgroundColor: colors.action_Orange,
+    },
+
+    submitButton: {
+        alignItems: "center",
+        borderRadius: 10,
+        justifyContent: "center",
+        margin: 5,
+        padding: 15,
+        width: 230,
+        backgroundColor: colors.action_Green,
     },
 
 })

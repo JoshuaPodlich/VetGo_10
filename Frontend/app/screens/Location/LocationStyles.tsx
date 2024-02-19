@@ -50,4 +50,14 @@ export const locationStyles: any = StyleSheet.create({
         fontWeight: "bold",
     },
 
+    submitButton: {
+        alignItems: "center",
+        borderRadius: 10,
+        justifyContent: "center",
+        margin: 5,
+        padding: 15,
+        width: 230,
+        backgroundColor: colors.action_Green,
+    },
+
 })
