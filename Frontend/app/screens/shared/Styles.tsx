@@ -3,11 +3,8 @@ import {colors} from "./Colors"
 
 export const styles: any = StyleSheet.create({
     background: {
-        alignContent: "center", //only takes effect when wrapping occur
-        alignItems: "center", // secondary axis
-        backgroundColor: colors.lightGrey,
+
         flex: 1,
-        justifyContent: "flex-start", //main axis - currently col
     },
 
     header: {
@@ -46,6 +43,7 @@ export const styles: any = StyleSheet.create({
 
     title: {
         alignItems: "center",
+        flexDirection: "row",
         backgroundColor: colors.grey,
         borderRadius: 8,
         flexShrink: 0,
@@ -53,6 +51,7 @@ export const styles: any = StyleSheet.create({
         justifyContent: "center",
         marginTop: 25,
         width: "80%",
+        marginLeft: "10%",
     },
 
     fieldText: {
