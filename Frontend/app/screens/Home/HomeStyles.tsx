@@ -22,7 +22,7 @@ export const homeStyles: any = StyleSheet.create({
         paddingVertical: 10,
         width: "100%",
         backgroundColor: colors.primary_Blue,
-        borderRadius: 25,
+        borderRadius: 30,
         marginBottom: 10,
     },
 
@@ -31,6 +31,7 @@ export const homeStyles: any = StyleSheet.create({
         borderColor: colors.darkGrey,
         width: 120,
         marginRight: 10,
+        borderRadius: 25,
     },
 
     viewAppointment: {
