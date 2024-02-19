@@ -43,6 +43,7 @@ export const styles: any = StyleSheet.create({
 
     title: {
         alignItems: "center",
+        flexDirection: "row",
         backgroundColor: colors.grey,
         borderRadius: 8,
         flexShrink: 0,
@@ -50,6 +51,7 @@ export const styles: any = StyleSheet.create({
         justifyContent: "center",
         marginTop: 25,
         width: "80%",
+        marginLeft: "10%",
     },
 
     fieldText: {
