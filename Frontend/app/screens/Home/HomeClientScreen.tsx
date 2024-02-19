@@ -171,10 +171,10 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                 </View>
 
                 <View style={homeStyles.addPetContainer}>
-                    <Button onPress={() => addPet()}>
+                    <Button onPress={() => addPet()} style={homeStyles.addButton}>
                         <FontAwesome5 name='plus' color={colors.blue} size={24} />
                     </Button>
-                    <Button onPress={() => fetchPets()} style={{ 'marginLeft': 20 }}>
+                    <Button onPress={() => fetchPets()} style={homeStyles.refreshButton}>
                         <Text>Refresh List</Text>
                     </Button>
                 </View>
