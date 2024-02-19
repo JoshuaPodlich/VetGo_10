@@ -3,11 +3,8 @@ import {colors} from "./Colors"
 
 export const styles: any = StyleSheet.create({
     background: {
-        alignContent: "center", //only takes effect when wrapping occur
-        alignItems: "center", // secondary axis
-        backgroundColor: colors.lightGrey,
+
         flex: 1,
-        justifyContent: "flex-start", //main axis - currently col
     },
 
     header: {
