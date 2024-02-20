@@ -3,6 +3,7 @@ package Spring20232.VetGo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -11,41 +12,34 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
-    private String username;
     private String email;
     private String password;
-    private double averageRating;
-    private int numReviewed;
-    private Double longitude;
-    private Double latitude;
+    protected String firstName;
+    protected String lastName;
+    protected String telephone;
     @OneToOne
-    @JoinColumn(name = "user_tags")
-    private Tag tags;
+    @JoinColumn(name = "address_id")
+    protected Address address;
+
     @ManyToMany
-    @JoinTable(name = "user_role",
+    @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JsonIgnore
-    private Set<Role> userRoles = new HashSet<Role>();
+    private Set<Role> roles = new HashSet<>();
 
     public User() {
     }
 
-    public User(String username, String email, String password, Double latitude, Double longitude) {
-        this.username = username;
+    public User(String email, String password, String firstName, String lastName,
+                String telephone, Address address) {
         this.email = email;
         this.password = password;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.telephone = telephone;
+        this.address = address;
     }
 
     public String getEmail() {
@@ -60,64 +54,59 @@ public class User extends BaseEntity {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String password) { this.password = password; }
+
+    public String getFirstName() {
+        return firstName;
     }
 
-    public Set<Role> getUserRoles() {
-        return userRoles;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setUserRoles(Set<Role> userRoles) {
-        this.userRoles = userRoles;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void addUserRoles(Role role) {
-        this.userRoles.add(role);
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public double getAverageRating() {
-        return averageRating;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setAverageRating(double averageRating) {
-        this.averageRating = averageRating;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
-    public int getNumReviewed() {
-        return numReviewed;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setNumReviewed(int numReviewed) {
-        this.numReviewed = numReviewed;
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public boolean isUserVet() {
+        return getRoles().stream().anyMatch(role -> role.getName().equals("VET"));
+    }
+
+    public boolean isUserOwner() {
+        return getRoles().stream().anyMatch(role -> role.getName().equals("OWNER"));
+    }
+
+    public boolean isUserVetAndOwner() {
+        return isUserVet() && isUserOwner();
     }
 
 
-    public Double getLongitude() {
-        return longitude;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Tag getTags() {
-        if (tags == null) {
-            this.tags = new Tag();
-        }
-        return this.tags;
-    }
-
-    public void setTags(Tag tags) {
-        this.tags = tags;
+    public void setRoles(Role role) {
+        roles.add(role);
     }
 
     @Override
@@ -125,11 +114,13 @@ public class User extends BaseEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Double.compare(user.averageRating, averageRating) == 0 && numReviewed == user.numReviewed && username.equals(user.username) && email.equals(user.email) && password.equals(user.password) && Objects.equals(tags, user.tags) && Objects.equals(userRoles, user.userRoles);
+        return  email.equals(user.email) &&
+                password.equals(user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) &&
+                Objects.equals(telephone, user.telephone) && Objects.equals(address, user.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, email, password, averageRating, numReviewed, tags, userRoles);
+        return Objects.hash(email, password, firstName, lastName, telephone, address);
     }
 }

@@ -38,8 +38,7 @@ public class OwnerController {
 
     @GetMapping(value = "/userId/{uid}")
     public ResponseEntity<Owner> getOwnerByUserId(@PathVariable Long uid) {
-        User user = userRepository.findById(uid).orElse(null);
-        Owner owner = ownerRepository.findByUserAccount(user);
+        Owner owner = ownerRepository.findById(uid).orElse(null);
         return ResponseEntity.status(HttpStatus.OK).body(owner);
     }
 
@@ -51,7 +50,7 @@ public class OwnerController {
     }
 
     //    @PreAuthorize("hasRole(@roles.ROLE_OWNER)")
-    @GetMapping(value = "/pet/{oid}")
+    @GetMapping(value = "/pets/{oid}")
     public ResponseEntity<List<Pet>> getPetList(@PathVariable Long oid) {
         return ResponseEntity.status(HttpStatus.OK).body(ownerRepository.findById(oid).orElse(null).getPetList());
     }
@@ -65,11 +64,10 @@ public class OwnerController {
 
         ownerRepository.findById(oid)
                 .map(owner -> {
-                    owner.setUserAccount(updatedOwner.getUserAccount());
-                    owner.setAddress(updatedOwner.getAddress());
-                    owner.setFirstName(updatedOwner.getFirstName());
-                    owner.setLastName(updatedOwner.getLastName());
-                    owner.setTelephone(updatedOwner.getTelephone());
+                    owner.getUser().setAddress(updatedOwner.getUser().getAddress());
+                    owner.getUser().setFirstName(updatedOwner.getUser().getFirstName());
+                    owner.getUser().setLastName(updatedOwner.getUser().getLastName());
+                    owner.getUser().setTelephone(updatedOwner.getUser().getTelephone());
                     owner.setPetList(updatedOwner.getPetList());
                     return ownerRepository.save(owner);
                 }).orElseGet(() -> {
@@ -103,7 +101,7 @@ public class OwnerController {
         if (owner == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        return ResponseEntity.status(HttpStatus.OK).body(owner.getUserAccount());
+        return ResponseEntity.status(HttpStatus.OK).body(owner.getUser());
     }
 
 

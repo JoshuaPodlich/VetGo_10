@@ -1,8 +1,6 @@
 package Spring20232.VetGo.controller;
 
-import Spring20232.VetGo.model.Appointment;
-import Spring20232.VetGo.model.Owner;
-import Spring20232.VetGo.model.Pet;
+import Spring20232.VetGo.model.*;
 import Spring20232.VetGo.repository.OwnerRepository;
 import Spring20232.VetGo.repository.PetRepository;
 import Spring20232.VetGo.service.PetService;
@@ -54,7 +52,7 @@ public class PetController {
     }
 
     // Returns list of appointment that pet has currently
-    @GetMapping(value = "/appointmentList/{pid}")
+    @GetMapping(value = "/get/{pid}/appointments")
     public ResponseEntity<?> getPetAppointmentList(@PathVariable("pid") Long pid) {
         Pet pet = petRepository.findById(pid).orElse(null);
 
@@ -64,7 +62,7 @@ public class PetController {
         return ResponseEntity.status(HttpStatus.OK).body(pet.getAppointments());
     }
 
-    @GetMapping(value = "/appointment/{pid}")
+    @GetMapping(value = "/get/{pid}/appointment")
     public ResponseEntity<?> getPetAppointment(@PathVariable("pid") Long pid) {
         Pet pet = petRepository.findById(pid).orElse(null);
 
@@ -72,6 +70,10 @@ public class PetController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find pet in database");
 
         List<Appointment> appointmentList = pet.getAppointments();
+
+        if (appointmentList.isEmpty())
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Pet has no appointments.");
+
         Appointment petAppointment = null;
 
         for (Appointment a : appointmentList) {
@@ -82,7 +84,7 @@ public class PetController {
                 }
             }
         }
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
 
     @GetMapping(value = "/records/file/{petId}")
@@ -108,24 +110,109 @@ public class PetController {
         return ResponseEntity.status(HttpStatus.OK).body("Successfully able to upload the file");
     }
 
-    // Post a new pet under the current user, returns profile of pet created, null if user doesn't exist
-    @PostMapping(value = "/add/{oid}")
-    public ResponseEntity<?> addPet(@RequestBody Pet pet,
+    @PostMapping(value = "/add/dog/{oid}")
+    public ResponseEntity<?> addDog(@RequestBody Dog dog,
                                     @PathVariable("oid") Long oid) {
         Owner owner = ownerRepository.findById(oid).orElse(null);
 
         if (owner == null)
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
 
-        Pet newPet = new Pet(null, null,null, pet.getName(), pet.getPetType(), pet.getPetBreed(),
-                new ArrayList<>(), pet.getMale(), pet.getAge(), pet.getWeight(), pet.getHeight());
+        dog.setOwner(owner);
+        petRepository.save(dog);
+        owner.addPetList(dog);
 
-        newPet.setOwner(owner);
-        petRepository.save(newPet);
-        owner.addPetList(newPet);
-//        ownerRepository.save(owner);
+        return ResponseEntity.status(HttpStatus.OK).body(dog);
+    }
 
-        return ResponseEntity.status(HttpStatus.OK).body(newPet);
+    @PostMapping(value = "/add/cat/{oid}")
+    public ResponseEntity<?> addCat(@RequestBody Cat cat,
+                                    @PathVariable("oid") Long oid) {
+        Owner owner = ownerRepository.findById(oid).orElse(null);
+
+        if (owner == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
+
+        cat.setOwner(owner);
+        petRepository.save(cat);
+        owner.addPetList(cat);
+
+        return ResponseEntity.status(HttpStatus.OK).body(cat);
+    }
+
+    @PostMapping(value = "/add/bird/{oid}")
+    public ResponseEntity<?> addBird(@RequestBody Bird bird,
+                                    @PathVariable("oid") Long oid) {
+        Owner owner = ownerRepository.findById(oid).orElse(null);
+
+        if (owner == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
+
+        bird.setOwner(owner);
+        petRepository.save(bird);
+        owner.addPetList(bird);
+
+        return ResponseEntity.status(HttpStatus.OK).body(bird);
+    }
+
+    @PostMapping(value = "/add/reptile/{oid}")
+    public ResponseEntity<?> addReptile(@RequestBody Reptile reptile,
+                                     @PathVariable("oid") Long oid) {
+        Owner owner = ownerRepository.findById(oid).orElse(null);
+
+        if (owner == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
+
+        reptile.setOwner(owner);
+        petRepository.save(reptile);
+        owner.addPetList(reptile);
+
+        return ResponseEntity.status(HttpStatus.OK).body(reptile);
+    }
+
+    @PostMapping(value = "/add/fish/{oid}")
+    public ResponseEntity<?> addFish(@RequestBody Fish fish,
+                                        @PathVariable("oid") Long oid) {
+        Owner owner = ownerRepository.findById(oid).orElse(null);
+
+        if (owner == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
+
+        fish.setOwner(owner);
+        petRepository.save(fish);
+        owner.addPetList(fish);
+
+        return ResponseEntity.status(HttpStatus.OK).body(fish);
+    }
+
+    @PostMapping(value = "/add/rodent/{oid}")
+    public ResponseEntity<?> addRodent(@RequestBody Rodent rodent,
+                                     @PathVariable("oid") Long oid) {
+        Owner owner = ownerRepository.findById(oid).orElse(null);
+
+        if (owner == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
+
+        rodent.setOwner(owner);
+        petRepository.save(rodent);
+        owner.addPetList(rodent);
+
+        return ResponseEntity.status(HttpStatus.OK).body(rodent);
+    }
+
+    @PostMapping(value = "/add/other/{oid}")
+    public ResponseEntity<?> addOtherPet(@RequestBody OtherPet pet,
+                                       @PathVariable("oid") Long oid) {
+        Owner owner = ownerRepository.findById(oid).orElse(null);
+
+        if (owner == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
+
+        pet.setOwner(owner);
+        petRepository.save(pet);
+        owner.addPetList(pet);
+
+        return ResponseEntity.status(HttpStatus.OK).body(pet);
     }
 
     @DeleteMapping(value = "/delete/{petId}")
@@ -147,8 +234,6 @@ public class PetController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find pet in database");
 
         currPet.setName(updatedPet.getName());
-        currPet.setPetType(updatedPet.getPetType());
-        currPet.setPetBreed(updatedPet.getPetBreed());
         currPet.setMale(updatedPet.getMale());
         currPet.setAge(updatedPet.getAge());
         currPet.setWeight(updatedPet.getWeight());

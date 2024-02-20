@@ -1,10 +1,7 @@
 package Spring20232.VetGo.controller;
 
 import Spring20232.VetGo.model.*;
-import Spring20232.VetGo.repository.AppointmentRepository;
-import Spring20232.VetGo.repository.ReviewRepository;
-import Spring20232.VetGo.repository.TagRepository;
-import Spring20232.VetGo.repository.UserRepository;
+import Spring20232.VetGo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -25,6 +23,7 @@ public class ReviewController {
     @Autowired
     private UserRepository userRepository;
     @Autowired
+    private VetRepository vetRepository;
     private TagRepository tagRepository;
 
     @GetMapping(value = "/all")
@@ -51,11 +50,20 @@ public class ReviewController {
         Appointment appointment = appointmentRepository.findById(aid).orElse(null);
         User user = userRepository.findById(review.getReviewee()).orElse(null);
 
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User does not exist.");
+        }
+
+        Optional<Vet> vetOptional = vetRepository.findById(user.getId());
+
+        if (vetOptional.isEmpty())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find reviewee (vet) in database");
+
+        Vet vet = vetOptional.get();
+
         if (appointment == null)
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find appointment in database");
 
-        if (user == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
 
         Tag tag = new Tag();
         tag.setAttentive(review.getTags().getAttentive());
@@ -67,17 +75,17 @@ public class ReviewController {
 
         tagRepository.save(tag);
         Review newReview = new Review(review.getReviewer(), review.getReviewee(), review.getDescription(), review.getRating(), appointment, tag);
-        
+
         reviewRepository.save(newReview);
         appointment.addReview(newReview);
         appointmentRepository.save(appointment);
 
-        int numReviewed = user.getNumReviewed() + 1;
-        double rating = (user.getAverageRating() * user.getNumReviewed() + review.getRating()) / numReviewed;
-        user.setNumReviewed(numReviewed);
-        user.setAverageRating(rating);
+        int numReviewed = vet.getNumReviews() + 1;
+        double rating = (vet.getAverageRating() * vet.getNumReviews() + review.getRating()) / numReviewed;
+        vet.setNumReviews(numReviewed);
+        vet.setAverageRating(rating);
 
-        Tag userTag = user.getTags();
+        Tag userTag = vet.getTags();
         userTag.addAttentive(tag.getAttentive());
         userTag.addCleanTidy(tag.getCleanTidy());
         userTag.addPunctual(tag.getPunctual());
@@ -86,8 +94,8 @@ public class ReviewController {
         userTag.addGreatConversation(tag.getGreatConversation());
         tagRepository.save(userTag);
 
-        user.setTags(userTag);
-        userRepository.save(user);
+        vet.setTags(userTag);
+        userRepository.save(vet.getUser());
 
         return ResponseEntity.status(HttpStatus.OK).body(appointment);
     }

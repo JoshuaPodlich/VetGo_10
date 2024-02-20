@@ -1,16 +1,14 @@
 package Spring20232.VetGo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
-public class Role extends BaseEntity{
+@Table(name = "roles")
+public class Role extends BaseEntity {
     private String name;
 
-    public Role() {
-    }
+    public Role() {}
+
     public Role(String name) {
         this.name = name;
     }
@@ -23,3 +21,4 @@ public class Role extends BaseEntity{
         this.name = name;
     }
 }
+

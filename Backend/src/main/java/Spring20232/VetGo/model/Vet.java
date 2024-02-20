@@ -8,12 +8,19 @@ import java.util.*;
 
 @Entity
 @Table(name = "vets")
-public class Vet extends Person {
-    @OneToOne
-    @JoinColumn(name = "vet_user")
-    private User userAccount;
+public class Vet extends BaseEntity {
     private String vetLicense;
     private Boolean status;
+    private Double longitude;
+    private Double latitude;
+    private double averageRating;
+    private int numReviews;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    @OneToOne
+    @JoinColumn(name = "vet_tags")
+    private Tag tags;
     @ManyToMany
     @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"),
             inverseJoinColumns = @JoinColumn(name = "specialty_id"))
@@ -25,21 +32,25 @@ public class Vet extends Person {
     public Vet() {
     }
 
-    public Vet(String firstName, String lastName, String telephone, Address address, User userAccount, String vetLicense, Boolean status, Set<Specialty> specialties, List<Appointment> appointments) {
-        super(firstName, lastName, telephone, address);
-        this.userAccount = userAccount;
+    public Vet(User user, String vetLicense, Boolean status, Set<Specialty> specialties,
+               List<Appointment> appointments, Double longitude, double latitude, double averageRating, int numReviews) {
+        this.user = user;
         this.vetLicense = vetLicense;
         this.status = status;
         this.specialties = specialties;
         this.appointments = appointments;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.averageRating = averageRating;
+        this.numReviews = numReviews;
     }
 
-    public User getUserAccount() {
-        return userAccount;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserAccount(User userAccount) {
-        this.userAccount = userAccount;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getVetLicense() {
@@ -86,17 +97,51 @@ public class Vet extends Person {
         appointments.remove(appointment);
     }
 
+    public double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(double averageRating) { this.averageRating = averageRating; }
+
+    public int getNumReviews() {
+        return numReviews;
+    }
+
+    public void setNumReviews(int numReviews) { this.numReviews = numReviews; }
+
+    public Double getLongitude() { return longitude; }
+
+    public void setLongitude(Double longitude) { this.longitude = longitude; }
+
+    public Double getLatitude() { return latitude; }
+
+    public void setLatitude(Double latitude) { this.latitude = latitude; }
+
+    public Tag getTags() {
+        if (tags == null) {
+            this.tags = new Tag();
+        }
+        return this.tags;
+    }
+
+    public void setTags(Tag tags) {
+        this.tags = tags;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Vet vet = (Vet) o;
-        return userAccount.equals(vet.userAccount) && Objects.equals(vetLicense, vet.vetLicense) && Objects.equals(status, vet.status) && Objects.equals(specialties, vet.specialties) && Objects.equals(appointments, vet.appointments);
+        return  numReviews == vet.numReviews && Double.compare(vet.averageRating, averageRating) == 0 &&
+                Objects.equals(vetLicense, vet.vetLicense) && Objects.equals(status, vet.status) &&
+                Objects.equals(specialties, vet.specialties) && Objects.equals(appointments, vet.appointments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), userAccount, vetLicense, status, specialties, appointments);
+        return Objects.hash(super.hashCode(), vetLicense, status, specialties,
+                            appointments, latitude, longitude, averageRating, numReviews);
     }
 }
