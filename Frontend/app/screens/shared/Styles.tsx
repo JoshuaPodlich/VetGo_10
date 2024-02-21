@@ -65,6 +65,13 @@ export const styles: any = StyleSheet.create({
         width: "100%",
         paddingTop: "25%",
     },
+    loginButtonGroup: {
+        alignItems: "center",
+        flexDirection: "column",
+        justifyContent: "center",
+        width: "100%",
+    },
+
 
     mainButton: {
         alignItems: "center",
