@@ -6,6 +6,14 @@ export const styles: any = StyleSheet.create({
 
         flex: 1,
     },
+    createPet: {
+        flex: 1,
+        justifyContent: "center",
+        marginLeft: 50,
+        marginRight: 50,
+    },
+
+
     loginBackground: {
         flex: 1,
         alignContent: "center", //only takes effect when wrapping occur
@@ -44,11 +52,18 @@ export const styles: any = StyleSheet.create({
         fontWeight: "bold",
     },
 
+    noPetText: {
+        fontSize: 20,
+        fontWeight: "bold",
+        marginLeft: 20,
+    },
+
     buttonGroup: {
-        alignContent: "center",
-        alignItems: "center", // secondary axis
-        justifyContent: "flex-start", //main axis - currently row
+        alignItems: "center",
+        flexDirection: "column",
+        justifyContent: "center",
         width: "100%",
+        paddingTop: "25%",
     },
 
     mainButton: {
