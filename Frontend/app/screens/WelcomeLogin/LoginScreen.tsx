@@ -69,6 +69,11 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
         return isValid
     }
 
+
+    //TODO: change the url 
+    //TODO: change the response
+    //TODO: change the navigation
+    //TODO: change the error message
     async function submitLogin() {
         isSubmittingRef.current = true
 
@@ -95,6 +100,10 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
 
     //endregion
 
+
+    //TODO: email only 
+    //TODO: Change to email and password
+    //TODO: Add forgot password
     return (
         <SafeAreaView style={styles.loginBackground}>
             <Logo />
@@ -105,6 +114,7 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
                         <Text style={{ fontSize: 30, fontWeight: "bold" }}>
                             Login
                         </Text>
+
 
                         <Input
                             value={nameEmail} size={"large"} style={styles.fieldText}
