@@ -11,7 +11,7 @@ export interface WelcomeScreenParams {
 function WelcomeScreen(props: any) {
     let params = props.route.params as  WelcomeScreenParams
     return (
-        <SafeAreaView style={{ ...styles.background, justifyContent: "space-evenly" }}>
+        <SafeAreaView style={{ ...styles.loginBackground, justifyContent: "space-evenly" }}>
             <Logo />
             <EntryButtons direction={"Login"} navigation={props.navigation} />
         </SafeAreaView>
