@@ -19,7 +19,7 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
     let params = props.route.params as LoginScreenParams
 
     //region States
-    const [nameEmail, setNameEmail] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const [emailError, setEmailError] = useState<string>("")
@@ -47,7 +47,7 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
     useFocusEffect(
         React.useCallback(() => {
             return () => {
-                setNameEmail("")
+                setEmail("")
                 setPassword("")
                 setEmailError("")
                 setPasswordError("")
@@ -58,8 +58,8 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
 
     function validateCredentials() {
         let isValid = true
-        if (!nameEmail) {
-            setEmailError("Username or Email is required!")
+        if (!email) {
+            setEmailError("Email is required!")
             isValid = false
         }
         if (!password) {
@@ -76,10 +76,16 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
     //TODO: change the error message
     async function submitLogin() {
         isSubmittingRef.current = true
+        //URL will now send a body with email and password
 
-        let url = BASE_URL + "/api/user/login/" + nameEmail + "/" + password
+        let body = {"email": email, "password": password}
+        let url = BASE_URL + "/api/user/login"
+        console.log(url)
 
-        let currUser = await fetch(url, { method: 'GET' })
+
+        // let url = BASE_URL + "/api/user/login/" + email + "/" + password
+        //changes the url to use body instead of params
+        let currUser = await fetch(url, { method: 'GET', body: JSON.stringify(body) })
             .then((response) => response.json())
             //If response is in json then in success
             .then(responseJson => {
@@ -92,7 +98,7 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
             })
             //If response is not in json then in error
             .catch((error) => {
-                console.error("Invalid Login! \nUsername / Email is not found or password is wrong.")
+                console.error("Invalid Login!")
                 console.error(error)
                 isSubmittingRef.current = false
             })
@@ -117,10 +123,10 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
 
 
                         <Input
-                            value={nameEmail} size={"large"} style={styles.fieldText}
+                            value={email} size={"large"} style={styles.fieldText}
                             placeholder={"Username / Email"}
-                            onChangeText={(nameEmail) => {
-                                setNameEmail(nameEmail)
+                            onChangeText={(email) => {
+                                setEmail(email)
                             }}
                         />
                         <Text style={styles.errorText}>{emailError}</Text>
