@@ -18,7 +18,7 @@ function EntryButtons(props: any) {
     }
 
     return (
-        <View id={"buttonGroup"} style={styles.buttonGroup}>
+        <View id={"buttonGroup"} style={styles.loginButtonGroup}>
             <TouchableHighlight style={{...styles.mainButton}}
                 underlayColor={colors.primary_Blue}
                 onPress={() => cmd(direction)}>
