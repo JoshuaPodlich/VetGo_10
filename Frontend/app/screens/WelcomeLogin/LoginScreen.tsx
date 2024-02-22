@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { SafeAreaView, ScrollView, StyleSheet, Text, View, Pressable, Alert, TouchableHighlight } from "react-native"
+import { SafeAreaView, ScrollView, StyleSheet, Text, View, Pressable, Alert, TouchableHighlight, TouchableOpacity } from "react-native"
 import { Logo } from "../shared/Components"
 import { Input } from "@ui-kitten/components"
 import { useFocusEffect } from "@react-navigation/native"
@@ -106,10 +106,8 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
 
     //endregion
 
-
-    //TODO: email only 
-    //TODO: Change to email and password
     //TODO: Add forgot password
+    //TODO forgot password has not been tested 
     return (
         <SafeAreaView style={styles.loginBackground}>
             <Logo />
@@ -124,7 +122,7 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
 
                         <Input
                             value={email} size={"large"} style={styles.fieldText}
-                            placeholder={"Username / Email"}
+                            placeholder={"Email"}
                             onChangeText={(email) => {
                                 setEmail(email)
                             }}
@@ -139,6 +137,13 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
                             }}
                         />
                         <Text style={styles.errorText}>{passwordError}</Text>
+
+                        
+
+                        <TouchableOpacity style={styles.forgotPasswordButton} onPress={() => props.navigation.navigate("ForgotPassword")}>
+                            <Text style={{ color: colors.primary_Blue }}>Forgot Password?</Text>
+                        </TouchableOpacity>
+                        
                     </View>
 
                     <EntryButtons direction={null} navigation={props.navigation} cmd={handleSubmit} />
