@@ -43,7 +43,7 @@ import ViewNearbyVetsScreen from './app/screens/ClientVetInteraction/ViewNearbyV
 import VetDuringAppointmentMedicalHistoryScreen from './app/screens/DuringAppointment/VetDuringAppointmentMedicalHistoryScreen'
 import AddtionalPetInfo from './app/screens/AdditionalPetInfo/AddtionalPetInfo'
 import EmergencyScreen from './app/screens/Emergency/EmergencyScreen'
-
+import ForgotPaswordScreen from './app/screens/ForgotPassword/ForgotPasswordScreen'
 const Stack = createNativeStackNavigator()
 
 export default function App() {
@@ -90,6 +90,7 @@ export default function App() {
                             <Stack.Screen name="VetDuringAppointment2" component={VetDuringAppointment2Screen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="Account" component={AccountScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="Emergency" component={EmergencyScreen} options={{ title: "Emergency" }} />
+                            <Stack.Screen name="forgotPassword" component={ForgotPaswordScreen} options={{ title: "forgotPassword" }} />
             
                         </Stack.Navigator>
                     </NavigationContainer>
