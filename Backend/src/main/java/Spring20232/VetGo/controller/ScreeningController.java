@@ -3,8 +3,6 @@ package Spring20232.VetGo.controller;
 import Spring20232.VetGo.model.ScreeningOption;
 import Spring20232.VetGo.model.ScreeningQuestion;
 import Spring20232.VetGo.service.ScreeningService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,30 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ScreeningController {
     @Autowired
     private ScreeningService screeningService;
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @GetMapping("/get/root-question/dog")
     public ResponseEntity<?> getDogsRootQuestion() {
         try {
             ScreeningQuestion question = screeningService.getDogsRootQuestion();
-            // TODO: Put the below as SreeningService method instead.
-            ObjectNode questionNode = objectMapper.createObjectNode();
-            questionNode.put("questionId", question.getId());
-            questionNode.put("questionText", question.getQuestionText());
-
-            ArrayNode optionsArray = questionNode.putArray("options");
-            for (ScreeningOption option : question.getOptions()) {
-                ObjectNode optionNode = objectMapper.createObjectNode();
-                optionNode.put("optionId", option.getId());
-                optionNode.put("optionText", option.getOptionText());
-                optionNode.put("isTerminating", option.isTerminating());
-                optionNode.put("result", option.getResult());
-                if (option.getNextQuestion() != null) {
-                    optionNode.put("nextQuestionId", option.getNextQuestion().getId());
-                }
-                optionsArray.add(optionNode);
-            }
+            ObjectNode questionNode = screeningService.createScreeningObjectNode(question);
 
             return ResponseEntity.ok(questionNode);
         }
