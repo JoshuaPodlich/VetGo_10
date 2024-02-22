@@ -25,7 +25,6 @@ const ClientNavbar: React.FC<ClientNavbarParams> = ({ userId, userIsVet, locatio
     
     if (!userId) {
         console.log('Client Navbar is missing user details')
-        return null
     }
 
     useEffect(() => {

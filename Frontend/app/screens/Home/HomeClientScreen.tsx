@@ -151,7 +151,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                     <View style={homeStyles.container}>
                         {(!petsData || petsData.length == 0) &&
                             (<View key={0} style={homeStyles.petInfo}>
-                                <Text style={styles.boldText}> NO PETS </Text>
+                                <Text style={styles.noPetText}> NO PETS </Text>
                             </View>)
                         }
                         {petsData && petsData.length > 0 && petsData.map((petData, index) =>

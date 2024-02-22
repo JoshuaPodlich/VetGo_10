@@ -225,7 +225,8 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
 
     return (
         <SafeAreaView style={styles.background}>
-            <View style={{ width: "80%" }}>
+            
+            <View style={styles.createPet}>
 
                 <Text style={styles.header}> Create Pet </Text>
                 <View>

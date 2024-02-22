@@ -150,7 +150,7 @@ function SignUpScreen(props: any) {
     //#endregion
 
     return (
-        <SafeAreaView style={styles.background}>
+        <SafeAreaView style={styles.loginBackground}>
             <View style={{ width: "80%", marginTop: "10%", flex: 1 }}>
                 <ScrollView>
                     <View id={"signUpGroup"} style={signUpStyles.signUpLoginGroup}>

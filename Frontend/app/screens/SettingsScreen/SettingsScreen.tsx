@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet, Text, View, TouchableHighlight } from "react-native"
+import { SafeAreaView, StyleSheet, Text, View, TouchableHighlight, ScrollView } from "react-native"
 import { styles } from "../shared/Styles"
 import { colors } from "../shared/Colors"
 import ClientNavbar from '../../components/ClientNavbar'
@@ -22,6 +22,8 @@ function SettingsScreen(props: any) {
 
     return (
         <SafeAreaView style={{ ...styles.background, justifyContent: "space-evenly" }}>
+            <ScrollView>
+
             <View style={styles.buttonGroup}>
                 <TouchableHighlight style={{ ...styles.mainButton }}
                     underlayColor={colors.black_underlay}
@@ -57,8 +59,10 @@ function SettingsScreen(props: any) {
                     <Text style={styles.buttonText}> Log Out </Text>
                 </TouchableHighlight>
             </View>
+            </ScrollView>
             <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
+        
     )
 }
 
