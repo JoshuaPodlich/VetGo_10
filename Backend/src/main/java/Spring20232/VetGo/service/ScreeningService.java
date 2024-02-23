@@ -79,7 +79,7 @@ public class ScreeningService {
             optionNode.put("optionId", option.getId());
             optionNode.put("optionText", option.getOptionText());
             optionNode.put("isTerminating", option.isTerminating());
-            optionNode.put("result", option.getResult());
+            //optionNode.put("result", option.getResult());
             if (option.getNextQuestion() != null) {
                 optionNode.put("nextQuestionId", option.getNextQuestion().getId());
             }

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "screening_options")
-public class ScreeningOption extends BaseEntity{
+public class ScreeningOption extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "question_id", nullable = false)
     private ScreeningQuestion question;
@@ -15,15 +15,18 @@ public class ScreeningOption extends BaseEntity{
     @JoinColumn(name = "next_question_id")
     private ScreeningQuestion nextQuestion;
 
-    // Whether the option leads to a terminal question.
+    // Whether the option leads terminal decision (i.e., result).
     private boolean isTerminating;
-    private String result;
+
+    @OneToOne
+    @JoinColumn(name = "result_id")
+    private ScreeningResult result;
 
     public ScreeningOption() {
     }
 
     public ScreeningOption(ScreeningQuestion question, String optionText, ScreeningQuestion nextQuestion,
-                           boolean isTerminating, String result) {
+                           boolean isTerminating, ScreeningResult result) {
         this.question = question;
         this.optionText = optionText;
         this.nextQuestion = nextQuestion;
@@ -63,11 +66,11 @@ public class ScreeningOption extends BaseEntity{
         isTerminating = terminating;
     }
 
-    public String getResult() {
+    public ScreeningResult getResult() {
         return result;
     }
 
-    public void setResult(String result) {
+    public void setResult(ScreeningResult result) {
         this.result = result;
     }
 }

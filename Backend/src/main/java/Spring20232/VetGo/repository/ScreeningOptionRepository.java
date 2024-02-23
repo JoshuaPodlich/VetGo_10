@@ -8,5 +8,4 @@ import java.util.List;
 
 @Repository
 public interface ScreeningOptionRepository extends JpaRepository<ScreeningOption, Long> {
-    List<ScreeningOption> findByQuestionId(Long questionId);
 }

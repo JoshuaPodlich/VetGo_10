@@ -51,7 +51,8 @@ public class ScreeningController {
             }
             else {
                 ScreeningQuestion nextQuestion = screeningService.getNextQuestion(optionId);
-                return ResponseEntity.ok(nextQuestion);
+                ObjectNode questionNode = screeningService.createScreeningObjectNode(nextQuestion);
+                return ResponseEntity.ok(questionNode);
             }
         }
         catch (Exception e) {
