@@ -83,15 +83,4 @@ public class ScreeningController {
         }
     }
 
-    @PutMapping("/session/{sessionId}/change-option/{optionId}")
-    public ResponseEntity<?> editOption(@PathVariable Long sessionId,
-                                        @PathVariable Long optionId) {
-        try {
-            screeningService.editAnsweredOption(sessionId, optionId);
-            return ResponseEntity.ok().body("Option and subsequent answers removed. Please continue your session.");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }
-    }
-
 }

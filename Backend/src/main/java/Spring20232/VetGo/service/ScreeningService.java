@@ -156,33 +156,6 @@ public class ScreeningService {
         return questionNode;
     }
 
-    @Transactional
-    public void editAnsweredOption(Long sessionId, Long optionIdToEdit) {
-        ScreeningSession session = screeningSessionRepository.findById(sessionId)
-                .orElseThrow(() -> new IllegalStateException("Session with id " + sessionId + " does not exist."));
-
-        List<ScreeningOption> answeredOptions = session.getAnsweredOptions();
-        int indexToEdit = -1;
-
-        // Find the index of the option to edit
-        for (int i = 0; i < answeredOptions.size(); i++) {
-            if (answeredOptions.get(i).getId().equals(optionIdToEdit)) {
-                indexToEdit = i;
-                break;
-            }
-        }
-
-        if (indexToEdit != -1) {
-            // Remove all subsequent answers
-            List<ScreeningOption> optionsToRemove = new ArrayList<>(answeredOptions.subList(indexToEdit + 1, answeredOptions.size()));
-            answeredOptions.removeAll(optionsToRemove);
-            session.setAnsweredOptions(answeredOptions);
-            screeningSessionRepository.save(session);
-        } else {
-            throw new NotFoundException("Option with id " + optionIdToEdit + " not found in the session.");
-        }
-    }
-
     public ObjectNode createSessionObjectNode(Long sessionId) {
         ScreeningSession session = screeningSessionRepository.findById(sessionId)
                 .orElseThrow(() -> new IllegalStateException("Session with id " + sessionId + " does not exist."));
