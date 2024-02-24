@@ -2,6 +2,7 @@ package Spring20232.VetGo.service;
 
 import Spring20232.VetGo.model.*;
 import Spring20232.VetGo.repository.*;
+import com.amazonaws.services.alexaforbusiness.model.AlreadyExistsException;
 import com.amazonaws.services.alexaforbusiness.model.NotFoundException;
 import com.amazonaws.services.fms.model.InvalidOperationException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -70,9 +71,37 @@ public class ScreeningService {
     public ScreeningOption processOption(Long optionId, Long sessionId) {
         ScreeningSession session = screeningSessionRepository.findById(sessionId)
                 .orElseThrow(() -> new RuntimeException("Session not found"));
+
         ScreeningOption option = optionRepository.findById(optionId)
                 .orElseThrow(() -> new NotFoundException("Option not found."));
 
+        // Make sure there is not a duplicate option in the session's answered options.
+        if (screeningSessionRepository.isOptionAlreadyAnsweredInSession(sessionId, optionId)) {
+            throw new AlreadyExistsException("Option with id " + optionId + " is already chosen.");
+        }
+
+        // If an option is changed, by default, set it to not completed and no result.
+        session.setCompleted(false);
+        session.setResult(null);
+
+        ScreeningQuestion currentQuestion = option.getQuestion();
+
+        // Find the index of the current question's option in the session's answered options.
+        int currentIndex = -1;
+        for (int i = 0; i < session.getAnsweredOptions().size(); i++) {
+            if (session.getAnsweredOptions().get(i).getQuestion().equals(currentQuestion)) {
+                currentIndex = i;
+                break;
+            }
+        }
+
+        if (currentIndex != -1) {
+            // Remove all options selected after the current question's option.
+            List<ScreeningOption> newAnsweredOptions = new ArrayList<>(session.getAnsweredOptions().subList(0, currentIndex));
+            session.setAnsweredOptions(newAnsweredOptions);
+        }
+
+        // Add or update the current question's option.
         session.getAnsweredOptions().add(option);
 
         return option;
@@ -87,7 +116,7 @@ public class ScreeningService {
             throw new NotFoundException("Question not found.");
         }
 
-        return option.getQuestion();
+        return question;
     }
 
     public ScreeningQuestion getNextQuestion(Long optionId) {
@@ -150,8 +179,54 @@ public class ScreeningService {
             session.setAnsweredOptions(answeredOptions);
             screeningSessionRepository.save(session);
         } else {
-            throw new IllegalStateException("Option with id " + optionIdToEdit + " not found in the session.");
+            throw new NotFoundException("Option with id " + optionIdToEdit + " not found in the session.");
         }
+    }
+
+    public ObjectNode createSessionObjectNode(Long sessionId) {
+        ScreeningSession session = screeningSessionRepository.findById(sessionId)
+                .orElseThrow(() -> new IllegalStateException("Session with id " + sessionId + " does not exist."));
+        ObjectNode sessionNode = objectMapper.createObjectNode();
+
+        sessionNode.put("sessionId", session.getId());
+        sessionNode.put("startTime", session.getStartTime().toString());
+        sessionNode.put("endTime", session.getEndTime() != null ? session.getEndTime().toString() : "null");
+        sessionNode.put("isCompleted", session.isCompleted());
+
+        ArrayNode answeredArray = sessionNode.putArray("answeredDetails");
+        for (ScreeningOption answeredOption : session.getAnsweredOptions()) {
+            ScreeningQuestion question = answeredOption.getQuestion();
+            ObjectNode questionNode = createScreeningObjectNode(question);
+
+            questionNode.put("chosenOption", answeredOption.getId());
+
+            answeredArray.add(questionNode);
+        }
+
+        if (session.isCompleted()) {
+            if (session.getResult() != null) {
+                ObjectNode resultNode = objectMapper.createObjectNode();
+                resultNode.put("id", session.getResult().getId());
+                resultNode.put("resultPriority", session.getResult().getResultPriority().toString());
+                resultNode.put("doNext", session.getResult().getDoNext());
+                resultNode.put("firstAidAdvice", session.getResult().getFirstAidAdvice());
+                resultNode.put("problem", session.getResult().getProblem());
+
+                sessionNode.set("result", resultNode);
+            }
+            else {
+                throw new IllegalStateException("Session is completed, but has no result.");
+            }
+        }
+        // If the session is not completed, get the last option's next question for the Owner to answer.
+        else {
+            ScreeningOption option  = session.getAnsweredOptions().get(session.getAnsweredOptions().size() - 1);
+            ScreeningQuestion question = option.getNextQuestion();
+            ObjectNode questionNode = createScreeningObjectNode(question);
+            answeredArray.add(questionNode);
+        }
+
+        return sessionNode;
     }
 }
 

@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "screening_results")
 public class ScreeningResult extends BaseEntity {
+
     public RESULT_PRIORITY resultPriority;
     @Column(columnDefinition = "TEXT")
     public String doNext;
@@ -58,4 +59,5 @@ public class ScreeningResult extends BaseEntity {
     public void setProblem(String problem) {
         this.problem = problem;
     }
+
 }

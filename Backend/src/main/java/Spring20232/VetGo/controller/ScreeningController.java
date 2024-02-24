@@ -45,9 +45,20 @@ public class ScreeningController {
     public ResponseEntity<?> getQuestionByOption(@PathVariable Long optionId) {
         try{
             ScreeningQuestion question = screeningService.getQuestion(optionId);
-            return ResponseEntity.ok(question);
+            ObjectNode questionNode = screeningService.createScreeningObjectNode(question);
+            return ResponseEntity.ok(questionNode);
         }
         catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/session/{sessionId}/view")
+    public ResponseEntity<?> viewSession(@PathVariable Long sessionId) {
+        try {
+            ObjectNode sessionNode = screeningService.createSessionObjectNode(sessionId);
+            return ResponseEntity.ok(sessionNode);
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
