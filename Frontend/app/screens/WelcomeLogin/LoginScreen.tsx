@@ -141,7 +141,7 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
                         
 
                         <TouchableOpacity style={styles.forgotPasswordButton} onPress={() => props.navigation.navigate("ForgotPassword")}>
-                            <Text style={{ color: colors.primary_Blue }}>Forgot Password?</Text>
+                            <Text style={{ color: colors.action_Orange }}>Forgot Password?</Text>
                         </TouchableOpacity>
                         
                     </View>
