@@ -75,36 +75,39 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
     //TODO: change the navigation
     //TODO: change the error message
     async function submitLogin() {
-        isSubmittingRef.current = true
-        //URL will now send a body with email and password
-
-        let body = {"email": email, "password": password}
-        let url = BASE_URL + "/api/user/login"
-        console.log(url)
-
-
-        // let url = BASE_URL + "/api/user/login/" + email + "/" + password
-        //changes the url to use body instead of params
-        let currUser = await fetch(url, { method: 'GET', body: JSON.stringify(body) })
-            .then((response) => response.json())
-            //If response is in json then in success
-            .then(responseJson => {
-                let params: LocationScreenParams = {
-                    userId: responseJson.id,
-                    userIsVet: responseJson.vetLicense ? true : false
+        isSubmittingRef.current = true;
+    
+        let body = {"email": email, "password": password};
+        let url = BASE_URL + "/api/user/login";
+    
+        try {
+            let response = await fetch(url, { 
+                method: 'POST', 
+                body: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-                props.navigation.navigate("Location", params)
-                isSubmittingRef.current = false
-            })
-            //If response is not in json then in error
-            .catch((error) => {
-                console.error("Invalid Login!")
-                console.error(error)
-                isSubmittingRef.current = false
-            })
+            });
+    
+            if (!response.ok) {
+                throw new Error('Invalid login credentials');
+            }
+    
+            let responseJson = await response.json();
+            let params = {
+                userId: responseJson.id,
+                userIsVet: responseJson.vetLicense ? true : false
+            };
+    
+            props.navigation.navigate("Location", params);
+            isSubmittingRef.current = false;
+        } catch (error) {
+            console.error("Invalid Login!");
+            console.error(error);
+            isSubmittingRef.current = false;
+        }
     }
-
-    //endregion
+    
 
     //TODO: Add forgot password
     //TODO forgot password has not been tested 
