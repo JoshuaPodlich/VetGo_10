@@ -107,22 +107,18 @@ function SignUpScreen(props: any) {
     async function submitSignUpForm() {
         isSubmittingRef.current = true
 
-        let url = BASE_URL + "/api/user/register/" + (isVet ? "vet/" : "owner/") + form.username + "/" + form.email + "/" + form.password
-        console.log(url)
-        let contentBody = (isVet ? {
+        //let url = BASE_URL + "/api/user/register/" + (isVet ? "vet/" : "owner/") + form.username + "/" + form.email + "/" + form.password
+        let url = BASE_URL + "/api/user/register/"
+        let contentBody: any = {
+            email: form.email,
+            password: form.password,
             firstName: form.username,
             lastName: null,
             telephone: null,
-            address: null,
-            vetLicense: form.vetLicense.length > 0 ? form.vetLicense : null,
-            status: false,
-        } : {
-            firstName: form.username,
-            lastName: null,
-            telephone: null,
-            address: null,
-            petList: null,
-        })
+            role: null
+        };
+
+        
         console.log(contentBody)
         let res = await fetch(url, {
             method: 'POST',
@@ -131,13 +127,13 @@ function SignUpScreen(props: any) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(contentBody),
-        }).then((response) => response.text())
+        }).then((response) => response.json());
 
 
         isSubmittingRef.current = false
 
         console.log(res)
-        if (res.includes("id") && res.includes("username")) {
+        if (res.includes("email") ) {
             console.error("Sign Up Successful. \nRedirecting to Login")
 
             props.navigation.popToTop()
