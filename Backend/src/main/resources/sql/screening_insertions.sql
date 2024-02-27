@@ -14,6 +14,8 @@ INSERT INTO screening_questions (question_text) VALUES ("Select one of the areas
 INSERT INTO screening_questions (question_text) VALUES ("How much blood is coming out?"); # ID: 3
 INSERT INTO screening_questions (question_text) VALUES ("What sort of wound is it?"); # ID: 4
 INSERT INTO screening_questions (question_text) VALUES ("Is there an unpleasant odor or discharge coming from the wound?"); # ID: 5
+INSERT INTO screening_questions (question_text) VALUES ("How much blood is coming out?"); # ID: 6
+INSERT INTO screening_questions (question_text) VALUES ("Keep your dog still and calm. Encourage it to lower its head. Wait five minutes. Has the bleeding stopped? If the bleeding gets worse as you are doing this, call your vet immediately."); # ID: 7
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -97,6 +99,48 @@ Try to keep your dog warm, quiet and calm.",
 Many punctures are caused by unclean objects like glass or rusty nails, or by bites. These are certain to cause infection in the deeper tissues which they penetrate.",
 3);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 7
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"If possible keep your dogs head lowered on the journey to prevent choking.
+Do not try to feed your dog; your dog may require an anaesthetic or sedation. These procedures are safer if your dog has not been fed
+Try to keep your dog warm, quiet and calm.",
+"Bleeding from the mouth is commonly due to injuries, but can also be a sign of medical problems like a clotting disorder or gut damage.
+Significant bleeding can lead to shock and dehydration.
+Wounds in this area can cause severe infection.
+There may also be damage to underlying tissues and structures that aren't immediately obvious.
+Veterinary care is essential.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 8
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Well done! you've stopped the bleeding.
+Keep a close eye on your dog for the next few hours. Bleeding is likely to restart from the same area if the dog knocks itself or it gets excited.
+It is important to take your dog for a checkup to rule out abnormalities that can cause bleeding from the mouth.",
+"Bleeding from the mouth is commonly due to injuries, but can also be a sign of medical problems like a clotting disorder or gut damage.
+If the bleeding starts again, it could lead to shock and dehydration.
+Wounds in this area can cause severe infection.
+There may also be damage to underlying tissues and structures that aren't immediately obvious.
+Immediate veterinary care is essential if the bleeding starts again.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 9
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"If possible keep your dogs head lowered on the journey to prevent choking.
+Do not try to feed your dog, your dog may require an anaesthetic or sedation. These procedures are safer if your dog has not been fed
+Try to keep your dog warm, quiet and calm.",
+"Bleeding from the mouth is commonly due to injuries, but can also be a sign of medical problems like a clotting disorder or gut damage.
+Significant bleeding can lead to shock and dehydration.
+Wounds in this area can cause severe infection.
+There may also be damage to underlying tissues and structures that aren't immediately obvious.
+Veterinary care is essential.",
+3);
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
@@ -132,7 +176,7 @@ INSERT INTO screening_options (question_id, is_terminating, option_text, result_
 
  INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (2, false, "Wound", NULL, 3),
-(2, false, "Mouth", NULL, NULL), # NEXT SET TO COMPLETE!
+(2, false, "Mouth", NULL, 6), # NEXT SET TO COMPLETE!
 (2, false, "Nose", NULL, NULL),
 (2, false, "Vulva", NULL, NULL),
 (2, false, "Stools", NULL, NULL),
@@ -151,3 +195,11 @@ INSERT INTO screening_options (question_id, is_terminating, option_text, result_
  INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (5, true, "Yes", 3, NULL),
 (5, true, "No", 4, NULL);
+
+ INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(6, true, "Trickling, streaming, or pulsing out", 7, NULL),
+(6, false, "A few drops", NULL, 7);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(7, true, "Yes", 8, NULL),
+(7, true, "No", 9, NULL);

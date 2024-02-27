@@ -83,4 +83,16 @@ public class ScreeningController {
         }
     }
 
+    @DeleteMapping("/session/{sessionId}/delete")
+    public ResponseEntity<?> deleteSession(@PathVariable Long sessionId) {
+        try {
+            screeningService.deleteSession(sessionId);
+            return ResponseEntity.status(HttpStatus.OK).body("Session with id " + sessionId + " deleted.");
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+
+    }
+
 }

@@ -32,6 +32,8 @@ public class ScreeningService {
     @Autowired
     private ScreeningSessionRepository screeningSessionRepository;
     @Autowired
+    private ScreeningSessionAnsweredOptionRepository screeningSessionAnsweredOptionRepository;
+    @Autowired
     private ObjectMapper objectMapper;
 
     private static long DOG_ROOT_QUESTION = 1;
@@ -75,11 +77,6 @@ public class ScreeningService {
         ScreeningOption option = optionRepository.findById(optionId)
                 .orElseThrow(() -> new NotFoundException("Option not found."));
 
-        // Make sure there is not a duplicate option in the session's answered options.
-        if (screeningSessionRepository.isOptionAlreadyAnsweredInSession(sessionId, optionId)) {
-            throw new AlreadyExistsException("Option with id " + optionId + " is already chosen.");
-        }
-
         // If an option is changed, by default, set it to not completed and no result.
         session.setCompleted(false);
         session.setResult(null);
@@ -88,8 +85,9 @@ public class ScreeningService {
 
         // Find the index of the current question's option in the session's answered options.
         int currentIndex = -1;
-        for (int i = 0; i < session.getAnsweredOptions().size(); i++) {
-            if (session.getAnsweredOptions().get(i).getQuestion().equals(currentQuestion)) {
+        List<ScreeningSessionAnsweredOption> answeredOptions = screeningSessionAnsweredOptionRepository.findByScreeningSession(session);
+        for (int i = 0; i < answeredOptions.size(); i++) {
+            if (answeredOptions.get(i).getOption().getQuestion().equals(currentQuestion)) {
                 currentIndex = i;
                 break;
             }
@@ -97,12 +95,15 @@ public class ScreeningService {
 
         if (currentIndex != -1) {
             // Remove all options selected after the current question's option.
-            List<ScreeningOption> newAnsweredOptions = new ArrayList<>(session.getAnsweredOptions().subList(0, currentIndex));
-            session.setAnsweredOptions(newAnsweredOptions);
+            List<ScreeningSessionAnsweredOption> toBeRemoved = new ArrayList<>(answeredOptions.subList(currentIndex, answeredOptions.size()));
+            screeningSessionAnsweredOptionRepository.deleteAll(toBeRemoved);
         }
 
         // Add or update the current question's option.
-        session.getAnsweredOptions().add(option);
+        ScreeningSessionAnsweredOption newAnsweredOption = new ScreeningSessionAnsweredOption();
+        newAnsweredOption.setSession(session);
+        newAnsweredOption.setOption(option);
+        screeningSessionAnsweredOptionRepository.save(newAnsweredOption);
 
         return option;
     }
@@ -167,8 +168,8 @@ public class ScreeningService {
         sessionNode.put("isCompleted", session.isCompleted());
 
         ArrayNode answeredArray = sessionNode.putArray("answeredDetails");
-        for (ScreeningOption answeredOption : session.getAnsweredOptions()) {
-            ScreeningQuestion question = answeredOption.getQuestion();
+        for (ScreeningSessionAnsweredOption answeredOption : screeningSessionAnsweredOptionRepository.findByScreeningSession(session)) {
+            ScreeningQuestion question = answeredOption.getOption().getQuestion();
             ObjectNode questionNode = createScreeningObjectNode(question);
 
             questionNode.put("chosenOption", answeredOption.getId());
@@ -193,13 +194,18 @@ public class ScreeningService {
         }
         // If the session is not completed, get the last option's next question for the Owner to answer.
         else {
-            ScreeningOption option  = session.getAnsweredOptions().get(session.getAnsweredOptions().size() - 1);
-            ScreeningQuestion question = option.getNextQuestion();
+            ScreeningSessionAnsweredOption option  = screeningSessionAnsweredOptionRepository.findByScreeningSession(session).get(screeningSessionAnsweredOptionRepository.findByScreeningSession(session).size() - 1);
+            ScreeningQuestion question = option.getOption().getNextQuestion();
             ObjectNode questionNode = createScreeningObjectNode(question);
             answeredArray.add(questionNode);
         }
 
         return sessionNode;
+    }
+
+    @Transactional
+    public void deleteSession(Long sessionId) {
+        screeningSessionRepository.deleteById(sessionId);
     }
 }
 

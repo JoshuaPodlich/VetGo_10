@@ -12,8 +12,6 @@ public class ScreeningSession extends BaseEntity {
     private User user;
     @OneToOne
     private Pet pet;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<ScreeningOption> answeredOptions = new ArrayList<>();
     @OneToOne
     private ScreeningResult result;
     private LocalDateTime startTime;
@@ -23,11 +21,10 @@ public class ScreeningSession extends BaseEntity {
     public ScreeningSession() {
     }
 
-    public ScreeningSession(User user, Pet pet, List<ScreeningOption> answeredOptions, ScreeningResult result, LocalDateTime startTime,
+    public ScreeningSession(User user, Pet pet, ScreeningResult result, LocalDateTime startTime,
                             LocalDateTime endTime, boolean isCompleted) {
         this.user = user;
         this.pet = pet;
-        this.answeredOptions = answeredOptions;
         this.result = result;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -49,14 +46,6 @@ public class ScreeningSession extends BaseEntity {
 
     public void setPet(Pet pet) {
         this.pet = pet;
-    }
-
-    public List<ScreeningOption> getAnsweredOptions() {
-        return answeredOptions;
-    }
-
-    public void setAnsweredOptions(List<ScreeningOption> answeredOptions) {
-        this.answeredOptions = answeredOptions;
     }
 
     public ScreeningResult getResult() {

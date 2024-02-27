@@ -2,6 +2,8 @@ package Spring20232.VetGo.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "screening_options")
 public class ScreeningOption extends BaseEntity {
@@ -21,6 +23,9 @@ public class ScreeningOption extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "result_id")
     private ScreeningResult result;
+
+    @OneToMany(mappedBy = "screeningOption", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ScreeningSessionAnsweredOption> sessionAnsweredOptions;
 
     public ScreeningOption() {
     }
