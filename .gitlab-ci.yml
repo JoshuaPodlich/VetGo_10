@@ -5,7 +5,7 @@ stages:
 springboot_build-job:
   stage: springboot_build
   script:
-    - cd VetGo
+    - cd Backend
     - mvn clean package
   tags:
     - springboot_tag
@@ -15,7 +15,7 @@ springboot_build-job:
 springboot_deploy-job:
   stage: springboot_deploy
   script:
-    - cd VetGo
+    - cd Backend
     - mvn package
     - sudo systemctl restart system-deploy
   tags:
