@@ -15,5 +15,5 @@ springboot_deploy-job:
     - mvn package
     - sudo systemctl restart system-deploy
   only:
-    - new-main
+    - main
 
