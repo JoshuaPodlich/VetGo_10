@@ -1,0 +1,19 @@
+stages:
+  - springboot_build
+  - springboot_deploy
+
+springboot_build-job:
+  stage: springboot_build
+  script:
+    - cd VetGo
+    - mvn clean package
+
+springboot_deploy-job:
+  stage: springboot_deploy
+  script:
+    - cd VetGo
+    - mvn package
+    - sudo systemctl restart system-deploy
+  only:
+    - new-main
+
