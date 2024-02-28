@@ -95,4 +95,14 @@ public class ScreeningController {
 
     }
 
+    @GetMapping("/session/get-all/{userId}")
+    public ResponseEntity<?> getAllSessions(@PathVariable Long userId) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(screeningService.getAllSessions(userId));
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 }

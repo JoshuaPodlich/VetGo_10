@@ -207,5 +207,23 @@ public class ScreeningService {
     public void deleteSession(Long sessionId) {
         screeningSessionRepository.deleteById(sessionId);
     }
+
+    public ArrayNode getAllSessions(Long userId) {
+        List<ScreeningSession> sessions = screeningSessionRepository.findAllByUserId(userId);
+        ArrayNode sessionsArrayNode = objectMapper.createArrayNode();
+
+        for (ScreeningSession session : sessions) {
+            ObjectNode sessionNode = objectMapper.createObjectNode();
+            sessionNode.put("id", session.getId());
+            sessionNode.put("startedAt", session.getStartTime().toString());
+            sessionNode.put("completedAt", session.getEndTime() != null ? session.getEndTime().toString() : "null");
+            sessionNode.put("petName", session.getPet().getName());
+            //sessionNode.put("petType", session.getPet().getPetImage()); // Once images are fixed, this will be implemented.
+
+            sessionsArrayNode.add(sessionNode);
+        }
+
+        return sessionsArrayNode;
+    }
 }
 
