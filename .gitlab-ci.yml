@@ -7,6 +7,10 @@ springboot_build-job:
   script:
     - cd VetGo
     - mvn clean package
+  tags:
+    - springboot_tag
+  only:
+    - main
 
 springboot_deploy-job:
   stage: springboot_deploy
@@ -14,6 +18,8 @@ springboot_deploy-job:
     - cd VetGo
     - mvn package
     - sudo systemctl restart system-deploy
+  tags:
+    - springboot_tag
   only:
     - main
 
