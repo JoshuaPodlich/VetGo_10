@@ -55,7 +55,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findByEmail(email));
     }
 
-    @GetMapping(value = "/login")
+    @PostMapping(value = "/login")
     public ResponseEntity<?> loginUser(@RequestBody ObjectNode loginBody) {
         try {
             String email = loginBody.get("email").asText();
