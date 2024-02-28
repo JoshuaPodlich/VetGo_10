@@ -18,6 +18,7 @@ springboot_deploy-job:
     - cd Backend
     - mvn package
     - sudo cp target/*.jar /target/server.jar
+    - sudo chmod +x /target/server.jar
     - sudo systemctl restart deploy.service
   tags:
     - springboot_tag
