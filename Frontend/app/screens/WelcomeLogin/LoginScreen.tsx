@@ -75,38 +75,80 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
     //TODO: change the navigation
     //TODO: change the error message
     async function submitLogin() {
-        isSubmittingRef.current = true;
-    
-        let body = {"email": email, "password": password};
-        let url = BASE_URL + "/api/user/login";
+                 let body = {"email": email, "password": password};
+
     
         try {
-            let response = await fetch(url, { 
-                method: 'POST', 
-                body: JSON.stringify(body),
+            console.log('Submitting login request...');
+            
+            const url = "http://10.48.118.129:8080/user/login";
+            console.log('URL:', url);
+    
+            //const body = { emailJson, passwordJson };
+            console.log('Request body:', body);
+    
+            const response = await fetch(url, {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify(body)
             });
     
+            console.log('Response status:', response.status);
+            console.log('Response status text:', response.statusText);
+            console.log('Response Body:', await response.text());
+            
             if (!response.ok) {
-                throw new Error('Invalid login credentials');
+                throw new Error('Login failed');
             }
     
-            let responseJson = await response.json();
-            let params = {
-                userId: responseJson.id,
-                userIsVet: responseJson.vetLicense ? true : false
-            };
-    
-            props.navigation.navigate("Location", params);
-            isSubmittingRef.current = false;
-        } catch (error) {
-            console.error("Invalid Login!");
-            console.error(error);
-            isSubmittingRef.current = false;
+            const data = await response.json();
+            console.log('Login successful:', data);
+            // Handle successful login, e.g., redirect to another page
+        } catch (error: any) {
+            console.error('Login error:', error.message);
+            // Handle login error, e.g., display an error message to the user
         }
     }
+    
+
+    // async function submitLogin() {
+    //     isSubmittingRef.current = true;
+    
+    //     let body = {"email": email, "password": password};
+    //     let url = BASE_URL + "/user/login";
+    //     console.log("submitLogin: url: ", url);
+    //     console.log("submitLogin: body: ", body);
+
+    //     try {
+    //         let response = await fetch(url, { 
+    //             method: 'POST', 
+    //             body: JSON.stringify(body),
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         });
+    //         console.log("submitLogin: response: ", response);
+    
+    //         if (!response.ok) {
+    //             throw new Error('Invalid login credentials');
+    //         }
+    
+    //         let responseJson = await response.json();
+    //         let params = {
+    //             userId: responseJson.id,
+    //             userIsVet: responseJson.vetLicense ? true : false
+    //         };
+    
+    //         props.navigation.navigate("Location", params);
+    //         isSubmittingRef.current = false;
+    //     } catch (error) {
+    //         console.error("Invalid Login!");
+    //         console.error(error);
+    //         isSubmittingRef.current = false;
+    //     }
+    // }
     
 
     //TODO: Add forgot password
