@@ -17,7 +17,7 @@ springboot_deploy-job:
   script:
     - cd Backend
     - mvn package
-    - sudo systemctl restart system-deploy
+    - sudo systemctl restart deploy.service
   tags:
     - springboot_tag
   only:
