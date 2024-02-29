@@ -36,8 +36,7 @@ public class ScreeningService {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private static long DOG_ROOT_QUESTION = 1;
-    private static long CAT_ROOT_QUESTION = 2;
+    private static long DOG_ROOT_QUESTION = 1; // Other Pet types would have their own, most likely as an enum in the future.
 
     public ScreeningSession startNewSession(Long userId, Long petId) {
         User user = userRepository.findById(userId)

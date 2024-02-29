@@ -41,6 +41,31 @@ public class ScreeningController {
         }
     }
 
+    @GetMapping("/get/root-question/cat")
+    public ResponseEntity<?> getCatsRootQuestion() {
+        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("This feature is currently under development. Please check back later.");
+    }
+
+    @GetMapping("/get/root-question/bird")
+    public ResponseEntity<?> getBirdRootQuestion() {
+        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("This feature is currently under development. Please check back later.");
+    }
+
+    @GetMapping("/get/root-question/fish")
+    public ResponseEntity<?> getFishRootQuestion() {
+        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("This feature is currently under development. Please check back later.");
+    }
+
+    @GetMapping("/get/root-question/reptile")
+    public ResponseEntity<?> getReptileRootQuestion() {
+        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("This feature is currently under development. Please check back later.");
+    }
+
+    @GetMapping("/get/root-question/rodent")
+    public ResponseEntity<?> getRodentRootQuestion() {
+        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("This feature is currently under development. Please check back later.");
+    }
+
     @GetMapping("/get/question/{optionId}")
     public ResponseEntity<?> getQuestionByOption(@PathVariable Long optionId) {
         try{

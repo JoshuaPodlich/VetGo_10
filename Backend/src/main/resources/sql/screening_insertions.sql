@@ -32,6 +32,14 @@ INSERT INTO screening_questions (question_text) VALUES ("Is your dog responding 
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog been coughing or having any breathing difficulties recently?"); # ID: 21
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog been retching or vomited?"); # ID: 22
 INSERT INTO screening_questions (question_text) VALUES ("If it's possible to do so safely, look at your dog's gums. Find an area where there is no pigmentation (in some dogs this is not possible). What color are they?"); # ID: 23
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog having difficulty getting air in or out?"); # ID: 24
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog responding to you?"); # ID: 25
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog able to move around normally?"); # ID: 26
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have been exposed to smoke, toxic gases, or poisons?"); # ID: 27
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have fallen into water, been strangled by its collar, or been electrocuted?"); # ID: 28
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have become very hot or very cold? Remember, dogs can easily overheat in cars, even when they are moving."); # ID: 29
+INSERT INTO screening_questions (question_text) VALUES ("If it's possible to do so safely, look at your dog's gums. Find an area where there is no pigmentation (in some dogs this is not possible). What color are they?"); # ID: 30
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog eating normally?"); # ID: 31
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -452,12 +460,167 @@ If the opportunity arises before you get to the vets, collect a urine sample fro
 Yellow tinged gums are a sign of jaundice which can be caused by liver or blood problems. These conditions can be life threatening and your dog requires urgent veterinary treatment.",
 3);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 36
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+If your dog is unconscious: 1. Pull the tongue forwards. 2. Straighten the neck. 3.Look for any obstructions in the back of the mouth. Remove them carefully by hand if you can see anything.
+If your dog is still not breathing: Gently close the mouth and breath very gently into the nose approximately every 10 seconds.
+If there is no heart beat: Gently compress the chest 15 times then give two breaths. If possible keep going until you get to the vets.",
+"Any condition that causes difficulty breathing is life threatening. Your dog needs urgent veterinary treatment, the quicker treatment is started the more likely it is to be successful.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 37
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+If your dog is unconscious: 1. Pull the tongue forwards. 2. Straighten the neck. 3. Look for any obstructions in the back of the mouth. Remove them carefully by hand if you can see anything.
+If your dog is still not breathing: Gently close the mouth and breath very gently into the nose approximately every 10 seconds.
+If there is no heart beat: Gently compress the chest 30 times then give two breaths. If possible keep going until you get to the vets.",
+"A dog that is off color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 38
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A dog that is off color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 39
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Don't put yourself in danger to rescue your dog; call 911 for the Fire Department.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"Smoke inhalation and toxic fumes can cause systemic poisoning or burns to the lungs.
+Sometimes, these fumes can prevent dogs from breathing, or make it difficult to do so.
+Emergency veterinary care is needed.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 40
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not put yourself in danger!
+Deep or fast flowing water: Do not go into the water in case you get into any difficulties. Try to catch hold of your dog while remaining securely on the bank; alternatively, try to move downstream and catch them at a slower moving or shallower region of the watercourse.
+Electricity: Do not touch your dog until you have turned off the electricity or called 911.
+Check your dog's status:
+If your dog is unconscious: 1. Pull the tongue forwards. 2. Straighten the neck. 3. Look for any obstructions in the back of the mouth. Remove them carefully by hand if you can see anything.
+If your dog is still not breathing: Gently close the mouth and breath very gently into the nose approximately every 10 seconds.
+If there is no heart beat: Gently compress the chest 30 times then give two breaths. If possible, keep going until you get to the vets.
+Do not use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"Drowning is common on dogs but, with immediate treatment, may be survivable.
+Sometimes, dogs may start showing signs of difficulty breathing minutes or even hours after being rescued from the water. This is called Secondary Drowning.
+Strangulation may cause brain damage from lack of oxygen; in addition, bruising of the throat may make the airways swell shut some time after the original injury.
+Electrocution can cause burns throughout the body's internal organs, including the heart and lungs.
+For all these conditions, urgent veterinary attention is required.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 41
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Don't use a lead that may tighten around your dogs neck.",
+"Overheating is potentially life threatening. Urgent veterinary treatment is required to prevent permanent damage to the brain and other organs. Try to keep your dog as cool as possible on the way to the vet by opening windows, wetting the coat, and offering cool or cold water.
+Hypothermia, or getting too cold, is also dangerous and requires immediate veterinary treatment. On the way to the vet, cover your dog with a blanket and keep the environment warm.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 42
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A dog that is off color and having difficulty breathing may be suffering from a life threatening condition.
+A blue tinge to the gums, or 'cyanosis,' is a sign that your dog is not getting enough oxygen around its body. Your dog needs urgent veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 43
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A dog that is off color and having difficulty breathing may be suffering from a life threatening condition.
+Brick red gums are a sign that the circulatory system is not working properly. It can also indicate carbon monoxide poisoning, which is often fatal.
+This is often a very serious sign and your dog needs urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 44
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"This can be a sign of carbon monoxide poisoning, which is potentially fatal.
+A dog that is off color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 45
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Until you see your vet keep your dog warm, quiet and calm.
+Do not use a lead that may tighten around your dogs neck.
+Restrict exercise to lead walks to toilet only.",
+"Breathing problems can be caused by heart, lung, blood or throat problems, amongst others. Many of these conditions are potentially very serious and your dog needs to be checked by over by a vet.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 46
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A dog that is off color and having difficulty breathing may be suffering from a life threatening condition.
+Yellow tinged gums are a sign of jaundice which can be caused by liver or blood problems.
+These conditions can be life threatening and your dog requires urgent veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 47
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet and calm.
+Don't use a lead that may tighten around your dogs neck.
+Restrict exercise to lead walks to toilet only.",
+"Breathing problems can be caused by heart, lung, blood or throat problems, amongst others. Many of these conditions are potentially very serious and your dog needs to be checked by over by a vet.
+A dog that is off color and having difficulty breathing may be suffering from a serious condition, so if they deteriorate they may need urgent veterinary treatment.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 48
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A dog that is off color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
+3);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (1, false, "Bleeding", NULL, 2),
  (1, false, "Bloated", NULL, 17),
- (1, false, "Breathing problems", NULL, NULL), # NEXT SET TO COMPLETE!
+ (1, false, "Breathing problems", NULL, 24), # NEXT SET TO COMPLETE!
  (1, false, "Collapsed", NULL, NULL),
  (1, false, "Coughing or wheezing", NULL, NULL),
  (1, false, "Diarrhoea", NULL, NULL),
@@ -583,3 +746,39 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 (23, true, "Similar to cooked salmon", 33, NULL),
 (23, true, "White or very pale", 34, NULL),
 (23, true, "Yellow tinged", 35, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(24, true, "Yes", 36, NULL),
+(24, false, "No", NULL, 25);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(25, false, "Yes", NULL, 26),
+(25, true, "No", 37, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(26, false, "Yes", NULL, 27),
+(26, true, "No", 38, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(27, true, "Yes", 39, NULL),
+(27, false, "No", NULL, 28);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(28, true, "Yes", 40, NULL),
+(28, false, "No", NULL, 29);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(29, true, "Yes", 41, NULL),
+(29, false, "No", NULL, 30);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(30, true, "Blue tinged", 42, NULL),
+(30, true, "Brick red", 43, NULL),
+(30, false, "Can't tell", NULL, 31),
+(30, true, "Similar to cooked salmon", 44, NULL),
+(30, true, "White or very pale", 45, NULL),
+(30, true, "Yellow tinged", 46, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(31, true, "Yes", 47, NULL),
+(31, true, "No", 48, NULL);
