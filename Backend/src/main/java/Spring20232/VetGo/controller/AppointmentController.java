@@ -3,6 +3,7 @@ package Spring20232.VetGo.controller;
 import Spring20232.VetGo.model.*;
 import Spring20232.VetGo.repository.*;
 import Spring20232.VetGo.service.EmailService;
+import Spring20232.VetGo.service.AppointmentService;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,8 @@ public class AppointmentController {
     AdditionalPetInformationRepository additionalPetInformationRepository;
     @Autowired
     EmailService emailService;
+    @Autowired
+    AppointmentService appointmentService;
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<Appointment>> getAllAppointment() {
@@ -153,11 +156,12 @@ public class AppointmentController {
         String str = objectNode.get("month").asText() + "-" + objectNode.get("day").asText() + "-" + objectNode.get("year").asText();
         LocalDate date = LocalDate.parse(str, formatter);
 
-        Appointment appointment = new Appointment(null, date, null, pet, longitude, latitude, description, null, WAITING,null);
+        Appointment appointment = new Appointment(null, date, null, pet, longitude, latitude, description, null, WAITING, null);
 
         pet.addAppointmentList(appointment);
         appointmentRepository.save(appointment);
         petRepository.save(pet);
+        appointmentService.broadcast(appointment);
 
         return ResponseEntity.status(HttpStatus.OK).body(appointment);
     }
