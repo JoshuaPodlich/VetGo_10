@@ -40,6 +40,15 @@ INSERT INTO screening_questions (question_text) VALUES ("Could your dog have fal
 INSERT INTO screening_questions (question_text) VALUES ("Could your dog have become very hot or very cold? Remember, dogs can easily overheat in cars, even when they are moving."); # ID: 29
 INSERT INTO screening_questions (question_text) VALUES ("If it's possible to do so safely, look at your dog's gums. Find an area where there is no pigmentation (in some dogs this is not possible). What color are they?"); # ID: 30
 INSERT INTO screening_questions (question_text) VALUES ("Is your dog eating normally?"); # ID: 31
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog having any difficulty breathing?"); # ID: 32
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual?"); # ID: 33
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog able to move around and respond to you normally?"); # ID: 34
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog inhaled any smoke or poisonous fumes?"); # ID: 35
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog accidentally strangled itself on its collar or fallen into water?"); # ID: 36
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog collapsed or been less energetic recently? (e.g., less willing to exercise)"); # ID: 37
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog's abdomen (stomach) swollen?"); # ID: 38
+INSERT INTO screening_questions (question_text) VALUES ("If it's possible to do so safely, look at your dog's gums. Find an area where there is no pigmentation (in some dogs this is not possible). What color are they?"); # ID: 39
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog's abdomen (stomach) swollen?"); # ID: 40
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -615,14 +624,231 @@ Do not try to feed your dog until you have checked with your vet practice that i
 "A dog that is off color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
 3);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 49
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"If your dog has being treated with insulin or has been diagnosed with the condition 'insulinoma,' apply honey or sugar to the gums.
+If your dog is unconscious: 1. Pull the tongue forwards. 2. Straighten the neck. 3. Look for any obstructions in the back of the mouth. Remove them carefully by hand if you can see anything.
+If your dog is still not breathing: Gently close the mouth and breath very gently into the nose approximately evey 10 seconds.
+If there is no heart beat: Gently compress the chest 15 times then give two breaths.
+Try to keep your dog warm, quiet and calm.",
+"There are a wide range of possible causes of collapse, including heart disease, brain problems, severe infections, low blood sugar, salt imbalances, dehydration, heat stroke, spinal or bone disease, muscle wasting, and many, many more.
+Any collapsed dog needs immediate veterinary attention to work out what's wrong and then to treat it appropriately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 50
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"If your dog is unconscious: 1. Pull the tongue forwards. 2. Straighten the neck. 3. Look for any obstructions in the back of the mouth. Remove them carefully by hand if you can see anything.
+If your dog is still not breathing: Gently close the mouth and breath very gently into the nose approximately every 10 seconds.
+If there is no heart beat: Gently compress the chest 15 times then give two breaths. If possible, keep going until you get to the vets.
+Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing, they may give you special instructions.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A wide range of diseases of the lungs, airways and heart can cause coughing and wheezing in dogs. This may sometimes worsen to difficulty breathing, which is often fatal if untreated.
+A dog with these signs who is showing other symptoms needs urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 51
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill, they may accidentally bite or scratch.",
+"Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing, they may give you special instructions.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A wide range of diseases of the lungs, airways and heart can cause coughing and wheezing in dogs.
+A dog with these signs who is showing other symptoms needs veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 52
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing, they may give you special instructions.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A wide range of diseases of the lungs, airways and heart can cause coughing and wheezing in dogs.
+A dog with these signs who is showing other symptoms needs veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 53
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not put yourself in danger! Do not enter a burning building or a cloud of fumes. Instead, call 911 for the Fire Department.
+Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing; they may give you special instructions.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet, and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"Toxic fumes and smoke may cause poisoning, or lung damage, or even internal burns.
+All of these conditions can result in a cough or wheezy breathing, but require emergency veterinary attention in case they worsen.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 54
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not put yourself in danger.
+Deep or fast flowing water: Do not go in to rescue your dog, as you may get into difficulties yourself. Try to reach them from the bank, or move downstream to shallower or slower moving parts of the watercourse.
+Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing, they may give you special instructions.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"Drowning is an emergency for dogs as it is for people.
+Sometimes, difficulty breathing can occur hours after inhaling water, and is often signalled by a soft cough or wheezing. This is called Secondary Drowning and is a genuine emergency that may be life threatening if veterinary treatment is not immediate.
+Dogs with a neck injury from strangulation may find their airways swelling shut some time after the injury. This can cause coughing or wheezing, and again needs urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 55
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing, they may give you special instructions.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A wide range of diseases of the lungs, airways and heart can cause coughing and wheezing in dogs.
+A dog with these signs who is showing other symptoms needs urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 56
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing, they may give you special instructions.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A wide range of diseases of the lungs, airways, and heart can cause coughing and wheezing in dogs.
+A distended abdomen may indicate heart disease, tumours, or a twisted gut.
+All of these conditions require urgent veterinary advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 57
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing, they may give you special instructions.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A wide range of diseases of the lungs, airways and heart can cause coughing and wheezing in dogs.
+A blue tinge to the gums or 'cyanosis' is a sign that your dog is not getting enough oxygen around its body. Your dog needs urgent veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 58
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing, they may give you special instructions.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A wide range of diseases of the lungs, airways and heart can cause coughing and wheezing in dogs.
+Brick red gums are a sign that the circulatory system is not working properly. It can be a very serious sign and your dog needs urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 59
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing, they may give you special instructions.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"This can be a sign of carbon monoxide poisoning which is potentially fatal.
+A wide range of diseases of the lungs, airways and heart can cause coughing and wheezing in dogs.
+A dog with these signs who is showing other symptoms needs urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 60
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed, contact your vet.",
+"Keep your dog warm, quiet and calm.
+Don't use a lead that may tighten around your dogs neck.
+Restrict exercise to lead walks to toilet only.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A wide range of diseases of the lungs, airways, and heart can cause coughing and wheezing in dogs.
+A dog with these signs who is showing other symptoms needs veterinary attention.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 61
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing, they may give you special instructions.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A wide range of diseases of the lungs, airways, and heart can cause coughing and wheezing in dogs.
+Very pale gums can be a sign of shock, failure of the circulation, anaemia, or blood loss. These can be life threatening and your dog needs urgent veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 62
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing, they may give you special instructions.
+Don't use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A wide range of diseases of the lungs, airways and heart can cause coughing and wheezing in dogs.
+Yellow tinged gums are a sign of jaundice which can be caused by liver or blood problems. These conditions can be life threatening and your dog requires urgent veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 63
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet and calm.
+Do not use a lead that may tighten around your dogs neck.
+Restrict exercise to lead walks to toilet only.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A wide range of diseases of the lungs, airways and heart can cause coughing and wheezing in dogs.
+A dog with these signs who is showing other symptoms needs veterinary attention.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 64
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Some types of cough are catching. Keep your dog away from other dogs.
+Tell your vet practice that your dog is coughing, they may give you special instructions.
+Do not use a lead that may tighten around your dogs neck.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
+"A wide range of diseases of the lungs, airways and heart can cause coughing and wheezing in dogs.
+A dog with these signs who is showing other symptoms needs urgent veterinary attention.",
+3);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (1, false, "Bleeding", NULL, 2),
  (1, false, "Bloated", NULL, 17),
  (1, false, "Breathing problems", NULL, 24), # NEXT SET TO COMPLETE!
- (1, false, "Collapsed", NULL, NULL),
- (1, false, "Coughing or wheezing", NULL, NULL),
+ (1, true, "Collapsed", 49, NULL),
+ (1, false, "Coughing or wheezing", NULL, 32),
  (1, false, "Diarrhoea", NULL, NULL),
  (1, false, "Drinking more than usual", NULL, NULL),
  (1, false, "Drooing or dribbling", NULL, NULL),
@@ -782,3 +1008,43 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (31, true, "Yes", 47, NULL),
 (31, true, "No", 48, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(32, true, "Yes", 50, NULL),
+(32, false, "No", NULL, 33);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(33, true, "Yes", 51, NULL),
+(33, false, "No", NULL, 34);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(34, false, "Yes", NULL, 35),
+(34, true, "No", 52, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(35, true, "Yes", 53, NULL),
+(35, false, "No", NULL, 36);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(36, true, "Yes", 54, NULL),
+(36, false, "No", NULL, 37);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(37, true, "Yes", 55, NULL),
+(37, false, "No", NULL, 38);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(38, true, "Yes", 56, NULL),
+(38, false, "No", NULL, 39);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(39, true, "Blue tinged", 57, NULL),
+(39, true, "Brick red", 58, NULL),
+(39, false, "Can't tell", NULL, 40),
+(39, true, "Similar to cooked salmon", 59, NULL),
+(39, true, "White or very pale", 61, NULL),
+(39, true, "Yellow tinged", 62, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(40, true, "Yes", 63, NULL),
+(40, true, "No", 64, NULL);
