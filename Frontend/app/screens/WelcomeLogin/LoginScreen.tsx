@@ -106,7 +106,9 @@ console.log('LOGIN SUCCESSFUL LETS GO');
 
 let params = {
     userId: responseBody.id,
-    userIsVet: responseBody.user.userVet ? true : false
+    userIsVet: responseBody.user.userVet ? true : false,
+    latitude: responseBody.user.latitude, // Add the missing latitude property
+    longitude: responseBody.user.longitude
 };
 console.log('params:', params);
 props.navigation.navigate("Location", params);
