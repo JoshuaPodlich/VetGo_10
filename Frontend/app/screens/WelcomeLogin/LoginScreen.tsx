@@ -81,12 +81,13 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
         try {
             console.log('Submitting login request...');
             
-            const url = "http://10.48.118.129:8080/user/login";
-            console.log('URL:', url);
+         let url = BASE_URL + "/user/login";
+    console.log('URL:', url);
     
             //const body = { emailJson, passwordJson };
             console.log('Request body:', body);
     
+
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -95,21 +96,31 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
                 body: JSON.stringify(body)
             });
     
-            console.log('Response status:', response.status);
-            console.log('Response status text:', response.statusText);
-            console.log('Response Body:', await response.text());
+          
+console.log('Response status:', response.status);
+console.log('Response status text:', response.statusText);
+
+const responseBody = await response.json(); // Parse the response body into JSON
+console.log('Response Body:', responseBody);
+console.log('LOGIN SUCCESSFUL LETS GO'); 
+
+let params = {
+    userId: responseBody.id,
+    userIsVet: responseBody.user.userVet ? true : false
+};
+console.log('params:', params);
+props.navigation.navigate("Location", params);
+
+
+
+
             
-            if (!response.ok) {
-                throw new Error('Login failed');
-            }
-    
-            const data = await response.json();
-            console.log('Login successful:', data);
-            // Handle successful login, e.g., redirect to another page
+            
         } catch (error: any) {
             console.error('Login error:', error.message);
             // Handle login error, e.g., display an error message to the user
         }
+
     }
     
 
