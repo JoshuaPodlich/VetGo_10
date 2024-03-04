@@ -25,6 +25,10 @@ interface SignUpForm {
     email: string,
     password: string,
     confirmPassword: string,
+    firstname: string,
+    lastname: string,
+    telephone: string,
+    role: string,
     vetLicense: string
 }
 
@@ -32,8 +36,8 @@ interface SignUpForm {
 function SignUpScreen(props: any) {
     //#region States
 
-    const [form, setForm] = useState<SignUpForm>({ username: "", email: "", password: "", confirmPassword: "", vetLicense: "" })
-    const [errors, setErrors] = useState<SignUpForm>({ username: "", email: "", password: "", confirmPassword: "", vetLicense: "" })
+    const [form, setForm] = useState<SignUpForm>({ username: "", email: "", password: "", confirmPassword: "", vetLicense: "", firstname: "", lastname: "", telephone: "", role: "" })
+    const [errors, setErrors] = useState<SignUpForm>({ username: "", email: "", password: "", confirmPassword: "", vetLicense: "", firstname: "", lastname: "", telephone: "", role: ""})
     const [isVet, setIsVet] = useState(false)
     const isSubmittingRef = useRef<boolean>(false)
     const toggleSwitch = () => {
@@ -58,8 +62,8 @@ function SignUpScreen(props: any) {
     useFocusEffect(
         React.useCallback(() => {
             return () => {
-                setForm({ username: "", email: "", password: "", confirmPassword: "", vetLicense: "" })
-                setErrors({ username: "", email: "", password: "", confirmPassword: "", vetLicense: "" })
+                setForm({ username: "", email: "", password: "", confirmPassword: "", vetLicense: "", firstname: "", lastname: "", telephone: "", role: ""})
+                setErrors({ username: "", email: "", password: "", confirmPassword: "", vetLicense: "", firstname: "", lastname: "", telephone: "", role: ""})
                 isSubmittingRef.current = false
                 setIsVet(false)
             }
@@ -69,7 +73,7 @@ function SignUpScreen(props: any) {
     function validate() {
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/
 
-        setErrors({ username: "", email: "", password: "", confirmPassword: "", vetLicense: "" })
+        setErrors({ username: "", email: "", password: "", confirmPassword: "", vetLicense: "", firstname: "", lastname: "", telephone: "", role: ""})
         let isValid = true
         if (!form.username) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, username: "Username is required!" }))
@@ -101,46 +105,65 @@ function SignUpScreen(props: any) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, vetLicense: "Vet License is required!" }))
             isValid = false
         }
+        if (!form.firstname) {
+            setErrors((prevState: SignUpForm) => ({ ...prevState, firstname: "First Name is required!" }))
+            isValid = false
+        }
+        if (!form.lastname) {
+            setErrors((prevState: SignUpForm) => ({ ...prevState, lastname: "Last Name is required!" }))
+            isValid = false
+        }
+        if (!form.telephone) {
+            setErrors((prevState: SignUpForm) => ({ ...prevState, telephone: "Telephone is required!" }))
+            isValid = false
+        }
+        if (!form.role) {
+            setErrors((prevState: SignUpForm) => ({ ...prevState, role: "Role is required!" }))
+            isValid = false
+        }
+
         return isValid
     }
 
     async function submitSignUpForm() {
         isSubmittingRef.current = true
 
+        let body = {"email": form.email, "password": form.password, "firstName": form.username, "lastName": null, "telephone": null, "role": null}
+
         //let url = BASE_URL + "/api/user/register/" + (isVet ? "vet/" : "owner/") + form.username + "/" + form.email + "/" + form.password
-        let url = BASE_URL + "/api/user/register/"
-        let contentBody: any = {
-            email: form.email,
-            password: form.password,
-            firstName: form.username,
-            lastName: null,
-            telephone: null,
-            role: null
-        };
+        let url = BASE_URL + "/user/register/"
 
         
-        console.log(contentBody)
-        let res = await fetch(url, {
+        console.log(body)
+        const response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(contentBody),
-        }).then((response) => response.json());
+            body: JSON.stringify(body)
+        })
+
+        console.log(response.status)
+        console.log(response.statusText)
+
+        const responseJson = await response.json()
+
+
+
+        // let res = await fetch(url, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(body),
+        // }).then((response) => response.json());
+
+
 
 
         isSubmittingRef.current = false
 
-        console.log(res)
-        if (res.includes("email") ) {
-            console.error("Sign Up Successful. \nRedirecting to Login")
-
-            props.navigation.popToTop()
-            props.navigation.navigate("Login")
-        } else if (!res.includes("created") && res.includes("has been")) {
-            console.error(res)
-        }
     }
 
     //#endregion
@@ -193,6 +216,44 @@ function SignUpScreen(props: any) {
                             }}
                         />
                         <Text style={styles.errorText}>{errors.confirmPassword}</Text>
+
+
+                            <Input clearButtonMode={"always"} size={"large"}
+                                value={form.firstname} style={styles.fieldText}
+                                placeholder={"First Name"}
+                                onChangeText={(newFirstName) => {
+                                    setForm((prevForm: SignUpForm) => ({ ...prevForm, firstname: newFirstName }))
+                                }}
+                            />
+                            <Text style={styles.errorText}>{errors.firstname}</Text>
+
+                            <Input clearButtonMode={"always"} size={"large"}
+                                value={form.lastname} style={styles.fieldText}
+                                placeholder={"Last Name"}
+                                onChangeText={(newLastName) => {
+                                    setForm((prevForm: SignUpForm) => ({ ...prevForm, lastname: newLastName }))
+                                }}
+                            />
+                            <Text style={styles.errorText}>{errors.lastname}</Text>
+
+                            <Input clearButtonMode={"always"} size={"large"}
+                                value={form.telephone} style={styles.fieldText}
+                                placeholder={"Telephone"}
+                                onChangeText={(newTelephone) => {
+                                    setForm((prevForm: SignUpForm) => ({ ...prevForm, telephone: newTelephone }))
+                                }}
+                            />
+                            <Text style={styles.errorText}>{errors.telephone}</Text>
+
+                            <Input clearButtonMode={"always"} size={"large"}
+                                value={form.role} style={styles.fieldText}
+                                placeholder={"Role"}
+                                onChangeText={(newRole) => {
+                                    setForm((prevForm: SignUpForm) => ({ ...prevForm, role: newRole }))
+                                }}
+                            />
+                            <Text style={styles.errorText}>{errors.role}</Text>
+
 
                         <View style={signUpStyles.switchGroup}>
                             <Text style={{
