@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { SafeAreaView, ScrollView, StyleSheet, Text, View, Pressable, Alert, TouchableHighlight } from "react-native"
+import { SafeAreaView, ScrollView, StyleSheet, Text, View, Pressable, Alert, TouchableHighlight, TouchableOpacity } from "react-native"
 import { Logo } from "../shared/Components"
 import { Input } from "@ui-kitten/components"
 import { useFocusEffect } from "@react-navigation/native"
@@ -19,7 +19,7 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
     let params = props.route.params as LoginScreenParams
 
     //region States
-    const [nameEmail, setNameEmail] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const [emailError, setEmailError] = useState<string>("")
@@ -47,7 +47,7 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
     useFocusEffect(
         React.useCallback(() => {
             return () => {
-                setNameEmail("")
+                setEmail("")
                 setPassword("")
                 setEmailError("")
                 setPasswordError("")
@@ -58,8 +58,8 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
 
     function validateCredentials() {
         let isValid = true
-        if (!nameEmail) {
-            setEmailError("Username or Email is required!")
+        if (!email) {
+            setEmailError("Email is required!")
             isValid = false
         }
         if (!password) {
@@ -69,32 +69,101 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
         return isValid
     }
 
+
+    //TODO: change the url 
+    //TODO: change the response
+    //TODO: change the navigation
+    //TODO: change the error message
     async function submitLogin() {
-        isSubmittingRef.current = true
+                 let body = {"email": email, "password": password};
 
-        let url = BASE_URL + "/api/user/login/" + nameEmail + "/" + password
+    
+        try {
+            console.log('Submitting login request...');
+            
+         let url = BASE_URL + "/user/login";
+    console.log('URL:', url);
+    
+            //const body = { emailJson, passwordJson };
+            console.log('Request body:', body);
+    
 
-        let currUser = await fetch(url, { method: 'GET' })
-            .then((response) => response.json())
-            //If response is in json then in success
-            .then(responseJson => {
-                let params: LocationScreenParams = {
-                    userId: responseJson.id,
-                    userIsVet: responseJson.vetLicense ? true : false
-                }
-                props.navigation.navigate("Location", params)
-                isSubmittingRef.current = false
-            })
-            //If response is not in json then in error
-            .catch((error) => {
-                console.error("Invalid Login! \nUsername / Email is not found or password is wrong.")
-                console.error(error)
-                isSubmittingRef.current = false
-            })
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+    
+          
+console.log('Response status:', response.status);
+console.log('Response status text:', response.statusText);
+
+const responseBody = await response.json(); // Parse the response body into JSON
+console.log('Response Body:', responseBody);
+console.log('LOGIN SUCCESSFUL LETS GO'); 
+
+let params = {
+    userId: responseBody.id,
+    userIsVet: responseBody.user.userVet ? true : false
+};
+console.log('params:', params);
+props.navigation.navigate("Location", params);
+
+
+
+
+            
+            
+        } catch (error: any) {
+            console.error('Login error:', error.message);
+            // Handle login error, e.g., display an error message to the user
+        }
+
     }
+    
 
-    //endregion
+    // async function submitLogin() {
+    //     isSubmittingRef.current = true;
+    
+    //     let body = {"email": email, "password": password};
+    //     let url = BASE_URL + "/user/login";
+    //     console.log("submitLogin: url: ", url);
+    //     console.log("submitLogin: body: ", body);
 
+    //     try {
+    //         let response = await fetch(url, { 
+    //             method: 'POST', 
+    //             body: JSON.stringify(body),
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         });
+    //         console.log("submitLogin: response: ", response);
+    
+    //         if (!response.ok) {
+    //             throw new Error('Invalid login credentials');
+    //         }
+    
+    //         let responseJson = await response.json();
+    //         let params = {
+    //             userId: responseJson.id,
+    //             userIsVet: responseJson.vetLicense ? true : false
+    //         };
+    
+    //         props.navigation.navigate("Location", params);
+    //         isSubmittingRef.current = false;
+    //     } catch (error) {
+    //         console.error("Invalid Login!");
+    //         console.error(error);
+    //         isSubmittingRef.current = false;
+    //     }
+    // }
+    
+
+    //TODO: Add forgot password
+    //TODO forgot password has not been tested 
     return (
         <SafeAreaView style={styles.loginBackground}>
             <Logo />
@@ -106,11 +175,12 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
                             Login
                         </Text>
 
+
                         <Input
-                            value={nameEmail} size={"large"} style={styles.fieldText}
-                            placeholder={"Username / Email"}
-                            onChangeText={(nameEmail) => {
-                                setNameEmail(nameEmail)
+                            value={email} size={"large"} style={styles.fieldText}
+                            placeholder={"Email"}
+                            onChangeText={(email) => {
+                                setEmail(email)
                             }}
                         />
                         <Text style={styles.errorText}>{emailError}</Text>
@@ -123,6 +193,13 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
                             }}
                         />
                         <Text style={styles.errorText}>{passwordError}</Text>
+
+                        
+
+                        <TouchableOpacity style={styles.forgotPasswordButton} onPress={() => props.navigation.navigate("ForgotPassword")}>
+                            <Text style={{ color: colors.action_Orange }}>Forgot Password?</Text>
+                        </TouchableOpacity>
+                        
                     </View>
 
                     <EntryButtons direction={null} navigation={props.navigation} cmd={handleSubmit} />
