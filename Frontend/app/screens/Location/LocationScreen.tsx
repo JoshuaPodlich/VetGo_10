@@ -29,6 +29,7 @@ export interface LocationScreenParams {
     longitude: number
 }
 
+
 function LocationScreen(props: { route: { params: LocationScreenParams }, navigation: any }) {
     const { params } = props.route;
     const [errors, setError] = useState<any>({})
@@ -38,19 +39,28 @@ function LocationScreen(props: { route: { params: LocationScreenParams }, naviga
     })
     console.log("LocationScreen -> destinationCoords", destinationCoords)
     console.log("LocationScreen -> params", params)
-
+    let locationMissing = "";
+    let locationFound = true;
     // useEffect(() => {
     //     if (params.latitude === undefined || params.longitude === undefined) {
     //         console.warn("No location saved for the user. Location is required to be sent; it may be null.")
     //     }
     // }, [])
-    if (params.latitude === undefined || params.longitude === undefined) {
-        console.log("No location saved for the user. Location is required to be sent; it may be null.")
-        const locationMissing = true;
-    }
+
+
 
     const fetchDestinationCoords = (latitude: number, longitude: number) => {
         setDestinationCoords({ latitude, longitude })
+    }
+    if (destinationCoords.latitude === undefined || destinationCoords.longitude === undefined) {
+        console.log("No location saved for the user. Location is required to be sent; it may be null.")
+        locationMissing = "Location not found. Please enter a location to continue."
+        locationFound = false;
+    }
+    else {
+        console.log("Location found for the user.")
+        locationMissing = ""
+        locationFound = true;
     }
 
     const handleSubmit = () => {
@@ -80,8 +90,11 @@ function LocationScreen(props: { route: { params: LocationScreenParams }, naviga
                     />
                     <Text style={locationStyles.errorText}>{errors.location}</Text>
                 </View>
-                <Button style={locationStyles.submitButton} onPress={handleSubmit}>
-                    <Text> Submit </Text>
+                {/* if locationMissing is true display error message in red */}
+                <Text style={locationStyles.errorText}>{locationMissing}</Text>
+                
+                <Button style={locationFound ? locationStyles.submitButton : locationStyles.submitButtonDisabled} onPress={handleSubmit} disabled={!locationFound}>
+                    <Text style={locationFound ? locationStyles.submitButtonText : locationStyles.submitButtonTextDisabled}>Submit</Text>
                 </Button>
             </View>
         </SafeAreaView>
