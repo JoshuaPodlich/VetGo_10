@@ -46,9 +46,24 @@ INSERT INTO screening_questions (question_text) VALUES ("Is your dog able to mov
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog inhaled any smoke or poisonous fumes?"); # ID: 35
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog accidentally strangled itself on its collar or fallen into water?"); # ID: 36
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog collapsed or been less energetic recently? (e.g., less willing to exercise)"); # ID: 37
-INSERT INTO screening_questions (question_text) VALUES ("Is your dog's abdomen (stomach) swollen?"); # ID: 38
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog's abdomen (stomach area) swollen?"); # ID: 38
 INSERT INTO screening_questions (question_text) VALUES ("If it's possible to do so safely, look at your dog's gums. Find an area where there is no pigmentation (in some dogs this is not possible). What color are they?"); # ID: 39
-INSERT INTO screening_questions (question_text) VALUES ("Is your dog's abdomen (stomach) swollen?"); # ID: 40
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog eating normally?"); # ID: 40
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual?"); # ID: 41
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog alert and responding to you normally?"); # ID: 42
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have eaten anything poisonous? (e.g., lead or detergent)"); # ID: 43
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have eaten anything inappropriate? (e.g., a toy or bone)"); # ID: 44
+INSERT INTO screening_questions (question_text) VALUES ("How much is your dog straining to pass the stool?"); # ID: 45
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been drinking more than usual recently?"); # ID: 46
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog's abdomen (stomach area) swollen?"); # ID: 47
+INSERT INTO screening_questions (question_text) VALUES ("What does the diarrhea look like in terms of consistency?"); # ID: 48
+INSERT INTO screening_questions (question_text) VALUES ("Is there any blood in the diarrhoea?"); # ID: 49
+INSERT INTO screening_questions (question_text) VALUES ("How much blood is there?"); # ID: 50
+INSERT INTO screening_questions (question_text) VALUES ("If it's possible to do so safely, look at your dog's gums. Find an area where there is no pigmentation (in some dogs this is not possible). What color are they?"); # ID: 51
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog not eating or showing a lack of interest in its usual food?"); # ID: 52
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog had diarrhoea for longer than 24 hours?"); # ID: 53
+INSERT INTO screening_questions (question_text) VALUES ("How many watery stools has your dog passed in the last 24 hours?"); # ID: 54
+INSERT INTO screening_questions (question_text) VALUES ("Is there any blood in the stool?"); # ID: 55
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -841,16 +856,283 @@ Do not try to feed your dog until you have checked with your vet practice that i
 A dog with these signs who is showing other symptoms needs urgent veterinary attention.",
 3);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 65
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Any dog with diarrhoea who is in pain needs veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 66
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Any dog with diarrhoea who is off-colour or has other symptoms needs veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 67
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+Other possible causes include certain types of poisoning, and some toxins (such as detergents) which can severely damage the bowel lining; if this is possible, your dog requires urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 68
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally tumours, other gut disorders, or foreign bodies such as bones, trapped in the large intestine. This requires immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 69
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Constant straining may be due to colitis or other large-bowel disorders; or to a foreign object strapped in the rectum.
+Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Any dog with diarrhoea who is off-color or has other symptoms needs veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 70
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+A dog that is drinking more than usual and has diarrhoea could be suffering from a serious underlying health problem, or may be dangerously dehydrated, and needs immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 71
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+A swollen abdomen may suggest more severe gut damage, such as a twist or torsion. Your dog therefore requires immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 72
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre, such as boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+Occasionally, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+A trace of blood on the stool usually means there has been some injury to the lining of the large bowel or rectum; this may just be due to the diarrhoea, but should be checked out by your vet.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 73
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Blood mixed in, or black stools, suggest a significant intestinal bleed, that requires urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 74
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Blood on the stool suggests a rectal or intestinal bleed, that requires immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 75
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+A blue tinge to the gums or 'cyanosis' is a sign that your dog is not getting enough oxygen around its body. Your dog needs urgent veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 76
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Brick red gums are a sign that the circulatory system is not working properly. It can be a very serious sign and your dog needs urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 77
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Very pale gums can be a sign of shock, failure of the circulation, or blood loss. These can be life threatening and your dog needs urgent veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 78
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Any dog with diarrhoea who is off-color or has other symptoms needs veterinary attention.
+Yellow tinged gums are a sign of jaundice which can be caused by liver or blood problems. These conditions can be life threatening and your dog requires urgent veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 79
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre, such as boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Any dog with diarrhoea who is off-color or has other symptoms needs veterinary attention.
+Diarrhoea can occasionally be a sign of a more serious problem and it is vital to keep a close eye on your dog.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 80
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water.)
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+Occasionally, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening if severe or prolonged.
+Any dog with diarrhoea who is off-color, has other symptoms, or where it does not resolve on its own in a day or so needs veterinary attention.
+Diarrhoea can occasionally be a sign of a more serious problem and it is vital to keep a close eye on your dog.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 81
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre, such as boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances.
+Diarrhoea can occasionally be a sign of a more serious problem and it is vital to keep a close eye on your dog.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 82
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Ongoing watery diarrhoea suggests severe fluid loss, and therefore your dog need immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 83
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
+If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
+Blood in the stool suggests an intestinal bleed, which requires urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 84
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre, such as boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea may be due to a wide range of conditions, particularly gut infections, but also occasionally foreign bodies, tumours, or other gut disorders.
+Occasionally, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become serious if it goes on for too long, especially with watery diarrhoea. As a rule of thumb, less than 3 watery diarrhoea bouts is unlikely to be dangerous, as long as your dog seems well otherwise. If they become unwell, or have further bouts, contact your vet for advice.
+Diarrhoea can occasionally be a sign of a more serious problem and it is vital to keep a close eye on your dog.",
+2);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (1, false, "Bleeding", NULL, 2),
  (1, false, "Bloated", NULL, 17),
- (1, false, "Breathing problems", NULL, 24), # NEXT SET TO COMPLETE!
+ (1, false, "Breathing problems", NULL, 24),
  (1, true, "Collapsed", 49, NULL),
  (1, false, "Coughing or wheezing", NULL, 32),
- (1, false, "Diarrhoea", NULL, NULL),
- (1, false, "Drinking more than usual", NULL, NULL),
+ (1, false, "Diarrhoea", NULL, 41),
+ (1, false, "Drinking more than usual", NULL, NULL), # NEXT SET TO COMPLETE!
  (1, false, "Drooing or dribbling", NULL, NULL),
  (1, false, "Ear problems", NULL, NULL),
  (1, false, "Eye problems", NULL, NULL),
@@ -1048,3 +1330,68 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (40, true, "Yes", 63, NULL),
 (40, true, "No", 64, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(41, true, "Yes", 65, NULL),
+(41, false, "No", NULL, 42);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(42, false, "Yes", NULL, 43),
+(42, true, "No", 66, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(43, true, "Yes", 67, NULL),
+(43, false, "No", NULL, 44);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(44, true, "Yes", 68, NULL),
+(44, false, "No", NULL, 45);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(45, true, "Constantly or most of the time", 69, NULL),
+(45, false, "Normal or slightly more than usual", NULL, 46);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(46, true, "Yes", 70, NULL),
+(46, false, "No", NULL, 47);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(47, true, "Yes", 71, NULL),
+(47, false, "No", NULL, 48);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(48, false, "Similar to a cow dung patty (i.e., thick and shapeless)", NULL, 49),
+(48, false, "Watery", NULL, 54);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(49, false, "Yes", NULL, 50),
+(49, false, "No", NULL, 51);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(50, true, "A trace on the outside of the stool", 72, NULL),
+(50, true, "Blood distributed throughout or a black appearance", 73, NULL),
+(50, true, "More than a trace on the outside of the stool", 74, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(51, true, "Blue tinged", 75, NULL),
+(51, true, "Brick red", 76, NULL),
+(51, false, "Can't tell", NULL, 52),
+(51, false, "Similar to cooked salmon", NULL, 53),
+(51, true, "White or very pale", 77, NULL),
+(51, true, "Yellow tinged", 78, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(52, true, "Yes", 79, NULL),
+(52, false, "No", NULL, 53);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(53, true, "Yes", 80, NULL),
+(53, true, "No", 81, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(54, true, "More than three", 82, NULL),
+(54, false, "Three or fewer", NULL, 55);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(55, true, "Yes", 83, NULL),
+(55, true, "No", 84, NULL);
