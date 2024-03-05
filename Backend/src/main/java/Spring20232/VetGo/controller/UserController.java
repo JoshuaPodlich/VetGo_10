@@ -69,14 +69,13 @@ public class UserController {
 
     @PostMapping(value = "/register")
     public ResponseEntity<?> registerUser(@RequestBody ObjectNode userInfo) {
-
-        if (userRepository.findByEmail(userInfo.get("email").asText()) != null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email has been taken.");
+        try {
+            User user = userService.registerNewUser(userInfo);
+            return ResponseEntity.status(HttpStatus.OK).body(user);
         }
-
-        User user = userService.registerNewUser(userInfo);
-
-        return ResponseEntity.status(HttpStatus.OK).body(user);
+        catch (IllegalArgumentException | BadCredentialsException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     // Updates the currently stored user

@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 
 @Service
@@ -66,8 +67,53 @@ public class UserService implements UserServiceInterface {
         return bcrypt.encode(password);
     }
 
+    // A password must be at least 16 characters long, have at least one uppercase letter,
+    // have at least one number, have at least one symbol (including only the basic U.S. keyboard symbols),
+    // and be at most 48 characters long.
+    public boolean isPasswordValid(String password) {
+        String passwordPattern = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{16,48}$";
+        return Pattern.matches(passwordPattern, password);
+    }
+
+    public boolean isEmailValid(String email) {
+        String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        return Pattern.matches(emailPattern, email);
+    }
+
+    public boolean isTelephoneValid(String telephone) {
+        String telephonePattern = "^\\(?([0-9]{3})\\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
+        return Pattern.matches(telephonePattern, telephone);
+    }
+
     @Transactional
     public User registerNewUser(ObjectNode userInfo) {
+        if (!userInfo.hasNonNull("email") || userInfo.get("email").asText().isEmpty())
+            throw new IllegalArgumentException("An email is required for registration.");
+        if (!userInfo.hasNonNull("password") || userInfo.get("password").asText().isEmpty())
+            throw new IllegalArgumentException("A password is required for registration.");
+        if (!userInfo.hasNonNull("firstName") || userInfo.get("firstName").asText().isEmpty())
+            throw new IllegalArgumentException("A first name is required for registration.");
+        if (!userInfo.hasNonNull("lastName") || userInfo.get("lastName").asText().isEmpty())
+            throw new IllegalArgumentException("A last name is required for registration.");
+        if (!userInfo.hasNonNull("telephone") || userInfo.get("telephone").asText().isEmpty())
+            throw new IllegalArgumentException("A phone number is required for registration.");
+        if (!userInfo.hasNonNull("role") || userInfo.get("role").asText().isEmpty())
+            throw new IllegalArgumentException("A role is required for registration.");
+
+        if (!isEmailValid(userInfo.get("email").asText()))
+            throw new BadCredentialsException("The format of the email is incorrect.");
+
+        if (!isPasswordValid(userInfo.get("password").asText()))
+            throw new BadCredentialsException("The format of the password is incorrect.");
+
+        if (!isTelephoneValid(userInfo.get("telephone").asText())) {
+            throw new BadCredentialsException("The format of the phone number is correct.");
+        }
+
+        if (userRepository.findByEmail(userInfo.get("email").asText()) != null) {
+            throw new BadCredentialsException("An account is already associated with this email.");
+        }
+
         User user = new User();
         user.setEmail(userInfo.get("email").asText());
         user.setPassword(encryptPassword(userInfo.get("password").asText()));
@@ -113,6 +159,9 @@ public class UserService implements UserServiceInterface {
 
             ownerRepository.save(owner);
             vetRepository.save(vet);
+        }
+        else {
+            throw new IllegalArgumentException("The role must be 'owner', 'vet', or 'vet-owner'.");
         }
 
         return newUser;

@@ -1,4 +1,4 @@
-use vetgo_db;
+USE vetgo_db;
 
 # Make sure the tables are clear for inserting the questions and options.
 DELETE FROM screening_options;
@@ -41,7 +41,7 @@ INSERT INTO screening_questions (question_text) VALUES ("Could your dog have bec
 INSERT INTO screening_questions (question_text) VALUES ("If it's possible to do so safely, look at your dog's gums. Find an area where there is no pigmentation (in some dogs this is not possible). What color are they?"); # ID: 30
 INSERT INTO screening_questions (question_text) VALUES ("Is your dog eating normally?"); # ID: 31
 INSERT INTO screening_questions (question_text) VALUES ("Is your dog having any difficulty breathing?"); # ID: 32
-INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual?"); # ID: 33
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 33
 INSERT INTO screening_questions (question_text) VALUES ("Is your dog able to move around and respond to you normally?"); # ID: 34
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog inhaled any smoke or poisonous fumes?"); # ID: 35
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog accidentally strangled itself on its collar or fallen into water?"); # ID: 36
@@ -49,7 +49,7 @@ INSERT INTO screening_questions (question_text) VALUES ("Has your dog collapsed 
 INSERT INTO screening_questions (question_text) VALUES ("Is your dog's abdomen (stomach area) swollen?"); # ID: 38
 INSERT INTO screening_questions (question_text) VALUES ("If it's possible to do so safely, look at your dog's gums. Find an area where there is no pigmentation (in some dogs this is not possible). What color are they?"); # ID: 39
 INSERT INTO screening_questions (question_text) VALUES ("Is your dog eating normally?"); # ID: 40
-INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual?"); # ID: 41
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 41
 INSERT INTO screening_questions (question_text) VALUES ("Is your dog alert and responding to you normally?"); # ID: 42
 INSERT INTO screening_questions (question_text) VALUES ("Could your dog have eaten anything poisonous? (e.g., lead or detergent)"); # ID: 43
 INSERT INTO screening_questions (question_text) VALUES ("Could your dog have eaten anything inappropriate? (e.g., a toy or bone)"); # ID: 44
@@ -64,6 +64,24 @@ INSERT INTO screening_questions (question_text) VALUES ("Is your dog not eating 
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog had diarrhoea for longer than 24 hours?"); # ID: 53
 INSERT INTO screening_questions (question_text) VALUES ("How many watery stools has your dog passed in the last 24 hours?"); # ID: 54
 INSERT INTO screening_questions (question_text) VALUES ("Is there any blood in the stool?"); # ID: 55
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 56
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog able to move around and respond to you normally?"); # ID: 57
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have eaten anything poisonous? (e.g., too much salt)"); # ID: 58
+INSERT INTO screening_questions (question_text) VALUES ("Are there any other symptoms, such as vomiting?"); # ID: 59
+INSERT INTO screening_questions (question_text) VALUES ("What is your dog's appetite like?"); # ID: 60
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog depressed, flat, or in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 61
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responding to you normally?"); # ID: 62
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog showing any nervous signs, such as convulsions, twitching, circling, or unsteady gait?"); # ID: 63
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog eaten something which might be poisonous, such as garden chemicals, detergent, chocolate, or poisonous plants?"); # ID: 64
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog have a suddenly swollen, gas-filled stomach that sounds like a balloon if you pat it?"); # ID: 65
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog eaten something foul tasting, such as a toad or rotting food?"); # ID: 66
+INSERT INTO screening_questions (question_text) VALUES ("Along with the drool, is there any bleeding from the mouth?"); # ID: 67
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog vomiting?"); # ID: 68
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog have discolored teeth or inflamed sore gums?"); # ID: 69
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog only drool when travelling by car?"); # ID: 70
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog only drool when anticipating food?"); # ID: 71
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog always drooled a lot from a young age?"); # ID: 72
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been playing with a stick?"); # ID: 73
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -1123,275 +1141,570 @@ Occasionally, diarrhoea may lead to severe dehydration, salt and acid imbalances
 Diarrhoea can occasionally be a sign of a more serious problem and it is vital to keep a close eye on your dog.",
 2);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 85
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"It is very important to make sure that your dog has free access to water until you leave for the vets.
+Keep your dog warm and quiet.",
+"Drinking more than usual can be a sign of life threatening medical problems including kidney failure, pyometra (infected uterus) or diabetes.
+If your dog is also in pain it suggests a serious health problem, you need to telephone your vet immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 86
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"It is very important to make sure that your dog has free access to water until you leave for the vets.
+Keep your dog warm and quiet.",
+"Drinking more than usual can be a sign of life threatening medical problems including kidney failure, pyometra (infected uterus) or diabetes. You need to telephone your vet immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 87
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Take any packets, labels, etc. with details of the toxin to the vet. If possible, work out how much your dog has eaten.
+It is very important to make sure that your dog has free access to water until you leave for the vets.
+Keep your dog warm and quiet.",
+"Even if your dog appears well you need to call your vet immediately. Some toxins can take a while to start having an effect and the sooner treatment is started the more likely it is to be successful.
+Salt poisoning causes dehydration of the brain and may be fatal without immediate treatment.
+Other toxins may damage the kidneys causing increased thirst, and this damage may prove irreversible if not treated rapidly.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 88
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"It is very important to make sure that your dog has free access to water until you leave for the vets.
+Keep your dog warm and quiet.",
+"Drinking more than usual can be a sign of life threatening medical problems including kidney failure, pyometra (infected uterus) or diabetes. You need to telephone your vet immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 89
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Try to record how much your dog is drinking by measuring how much you put into his water bowl. It will help the vet to establish if there is a problem.
+It is essential to give your dog free access to water until you go to the vets.
+If possible take a fresh urine sample to the vets, it will help them to work out what is wrong with your dog.",
+"Drinking more than usual can be a sign of serious medical problems including kidney failure, Cushing's Disease or diabetes, so you need to get your dog checked by a vet.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 90
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to record how much your dog is drinking by measuring how much you put into his water bowl. It will help the vet to establish if there is a problem.
+It is essential to give your dog free access to water until you go to the vets.
+If possible take a fresh urine sample to the vets, it will help them to work out what is wrong with your dog.",
+"Drinking more than usual can be a sign of serious medical problems including kidney failure, pyometra (infected uterus), Cushing's Disease or diabetes, so you need to get your dog checked by a vet.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 91
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"It is very important to make sure that your dog has free access to water until you leave for the vets.
+Keep your dog warm and quiet.",
+"Drinking more than usual can be a sign of life threatening medical problems including kidney failure, pyometra (infected uterus) or diabetes. You need to telephone your vet immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 92
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not offer your dog any food unless your vet says it is all right to do so.",
+"A dog that is depressed or in pain needs to see a vet urgently.
+Drooling can be a sign of many problems, some of which are very serious. Your vet will need to examine your dog before deciding on the best treatment.
+Possible causes include gastric bloat or torsion, poisoning, nausea, eating something with a foul taste, injury to the mouth, dental disease and gum disease.
+If your dog has been abroad or has been in contact with dogs who have been abroad, your vet will want to rule out infectious diseases such as rabies.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 93
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not offer your dog any food unless your vet says it is all right to do so.",
+"A dog that is depressed or in pain needs to see a vet urgently.
+Drooling can be a sign of many problems, some of which are very serious. Your vet will need to examine your dog before deciding on the best treatment.
+Possible causes include gastric bloat or torsion, poisoning, nausea, eating something with a foul taste, injury to the mouth, dental disease and gum disease.
+If your dog has been abroad or has been in contact with dogs who have been abroad, your vet will want to rule out infectious diseases such as rabies.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 94
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not put yourself at risk - dogs with nervous system problems may bite or snap without meaning to.
+Do not offer your dog any food unless your vet says it is all right to do so.",
+"Drooling combined with nervous system signs may suggest a seizure, poisoning, or brain injury.
+A dog with any of these symptoms combined with drooling needs to see a vet urgently.
+Other possible causes include gastric bloat or torsion, poisoning, nausea, eating something with a foul taste, injury to the mouth, dental disease or gum disease.
+If your dog has been abroad or has been in contact with dogs who have been abroad, your vet will want to rule out infectious diseases such as rabies.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 95
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+If you know what substance your pet has eaten, try to take the packaging with you to the vet as it may contain helpful information which can save time. Do not delay treatment to look for the packaging as you can ring your surgery later when you find it.",
+"A case of suspected poisoning should see your vet as soon as possible to try to limit the effects of the poison.
+There are many poisons apart from those listed in the question, so if you suspect poisoning, always ring for urgent advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 96
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.",
+"This can be a first sign of gastric bloat or torsion, a life-threatening condition which needs urgent treatment, or other tummy problems which need investigation.
+Other possible causes of drooling include poisoning, nausea, eating something with a foul taste, injury to the mouth, dental disease or gum disease.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 97
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not offer your dog food unless your vet says it is all right to, as it may cause further problems.",
+"Toads are mainly encountered by dogs at dawn or dusk in the summer months. They produce very irritant chemicals which can cause severe drooling in dogs and occasionally more serious effects. Ring your surgery for advice at once. If possible, rinse the dogs mouth with cold water but do not let it swallow the water.
+Rotting food can cause drooling, nausea, vomiting and diarrhoea in dogs because of bacteria and toxins produced in decomposition. Ring your surgery for advice at once.
+Other possible causes include gastric bloat or torsion, poisoning, nausea, eating something with a foul taste, injury to the mouth, dental disease and gum disease.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 98
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"If it is safe to do so, check your dog's mouth for injury or a foreign object lodged inside.
+If you cannot examine your dog's mouth, or you cannot see where the blood is coming from, call your vet.
+If you can see an injury or a foreign object which you cannot remove without damage, your dog will still need treatment to remove the object or to repair the injury and prevent infection.
+Do not offer your dog anything to eat or drink unless advised to do so by your vet beucase your dog may need to have sedation or an anaesthetic.
+Try to keep your dog warm, quiet, and calm.",
+"Sticks and bones are very common causes of injury.
+Other possible causes of bleeding and drooling include dental or gum disease or a growth inside the mouth.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 99
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Avoid giving your dog food unless your vet says you can because there could be an injury to the mouth or gut.",
+"The cause of the vomiting or retching and drooling needs to be found and treated.
+Possible causes include gastric bloat or torsion, bacterial or viral infections, dietary problems, eating something with a foul taste, injury to the throat or gullet, dental disease, or gum disease.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 100
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet and calm.",
+"Dogs can drool if their mouth, teeth, or gums are sore. The problem may have been present for some time; but, if your dog is now drooling, it requires treatment as soon as possible. The mouth may be infected and/or painful.
+Other possible causes of drooling include gastric bloat or torsion, poisoning, nausea, eating something with a foul taste, or injuries to the mouth.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 101
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Dogs can suffer from motion sickness just like humans, or from anxiety if they are not used to travelling.
+Your vet could advise you about different ways of making your dog less fearful or could dispense medication for your dog, if needed.",
+"Dogs should be on leads attached to a harness in the car or collar.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 102
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"An increase in saliva production is a normal response to the sight or smell of food or to the familiar sounds which your dog associates with food (e.g., opening a tin or rustling a food bag).
+If you give treats between meals or share bits of your own food with your dog, it is likely to salivate whenever there is any food around.",
+NULL,
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 103
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Many owners wipe their dogs mouth frequently with a towel, or use commercially available wet wipes which are made for that purpose.
+If your dog develops any other symptoms, or you are concerned, call your vet for advice.",
+"Certain breeds and certain individual dogs always drool because of the shape of the mouth and lips (e.g., Bloodhounds, St Bernards, etc.).
+This does not usually need treatment unless there are secondary problems, such as infection in the lip folds and creases. If there is a bad smell from the mouth, call your vet for advice.
+Other possible causes of drooling include gastric bloat or torsion, poisoning, nausea, eating something with a foul taste, or injuries to the mouth.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 104
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Avoid giving your dog food unless your vet says you can because there could be an injury to the mouth.",
+"Sticks can sometimes cause damage in the mouth that is not easily seen. If the drooling started after playing with a stick, your vet will need to examine your dog for signs of a stick injury.
+Other possible causes of drooling include gastric bloat or torsion, poisoning, nausea, eating something with a foul taste, injury to the mouth, dental disease, or gum disease.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 104
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"If your dog develops any other symptoms, call your vet for advice immediately.",
+"Possible causes include gastric bloat or torsion, poisoning, nausea, eating something with a foul taste, injury to the mouth, dental disease, or gum disease.
+If the drooling is not something your dog has always done, it would be advisable to have a check up to find out what is causing it.",
+1);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(1, false, "Bleeding", NULL, 2),
- (1, false, "Bloated", NULL, 17),
- (1, false, "Breathing problems", NULL, 24),
- (1, true, "Collapsed", 49, NULL),
- (1, false, "Coughing or wheezing", NULL, 32),
- (1, false, "Diarrhoea", NULL, 41),
- (1, false, "Drinking more than usual", NULL, NULL), # NEXT SET TO COMPLETE!
- (1, false, "Drooing or dribbling", NULL, NULL),
- (1, false, "Ear problems", NULL, NULL),
- (1, false, "Eye problems", NULL, NULL),
- (1, false, "Fits", NULL, NULL),
- (1, false, "Funny turn", NULL, NULL),
- (1, false, "Itching", NULL, NULL),
- (1, false, "Lameness or limping", NULL, NULL),
- (1, false, "Lump or swelling", NULL, NULL),
- (1, false, "Moulting", NULL, NULL),
- (1, false, "Nail problems", NULL, NULL),
- (1, false, "Not eating", NULL, NULL),
- (1, false, "Off color", NULL, NULL),
- (1, false, "Poison exposure", NULL, NULL),
- (1, false, "Problems after surgery", NULL, NULL),
- (1, false, "Smelly", NULL, NULL),
- (1, false, "Sneezing", NULL, NULL),
- (1, false, "Straining", NULL, NULL),
- (1, false, "Ticks", NULL, NULL),
- (1, false, "Vomitting", NULL, NULL),
- (1, false, "Weight loss", NULL, NULL),
- (1, false, "Wound", NULL, NULL),
- (1, false, "Young puppies", NULL, NULL);
+(1, FALSE, "Bleeding", NULL, 2),
+ (1, FALSE, "Bloated", NULL, 17),
+ (1, FALSE, "Breathing problems", NULL, 24),
+ (1, TRUE, "Collapsed", 49, NULL),
+ (1, FALSE, "Coughing or wheezing", NULL, 32),
+ (1, FALSE, "Diarrhoea", NULL, 41),
+ (1, FALSE, "Drinking more than usual", NULL, 56),
+ (1, FALSE, "Drooing or dribbling", NULL, 61),
+ (1, FALSE, "Ear problems", NULL, NULL), # NEXT SET TO COMPLETE!
+ (1, FALSE, "Eye problems", NULL, NULL),
+ (1, FALSE, "Fits", NULL, NULL),
+ (1, FALSE, "Funny turn", NULL, NULL),
+ (1, FALSE, "Itching", NULL, NULL),
+ (1, FALSE, "Lameness or limping", NULL, NULL),
+ (1, FALSE, "Lump or swelling", NULL, NULL),
+ (1, FALSE, "Moulting", NULL, NULL),
+ (1, FALSE, "Nail problems", NULL, NULL),
+ (1, FALSE, "Not eating", NULL, NULL),
+ (1, FALSE, "Off color", NULL, NULL),
+ (1, FALSE, "Poison exposure", NULL, NULL),
+ (1, FALSE, "Problems after surgery", NULL, NULL),
+ (1, FALSE, "Smelly", NULL, NULL),
+ (1, FALSE, "Sneezing", NULL, NULL),
+ (1, FALSE, "Straining", NULL, NULL),
+ (1, FALSE, "Ticks", NULL, NULL),
+ (1, FALSE, "Vomitting", NULL, NULL),
+ (1, FALSE, "Weight loss", NULL, NULL),
+ (1, FALSE, "Wound", NULL, NULL),
+ (1, FALSE, "Young puppies", NULL, NULL);
 
  INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(2, false, "Wound", NULL, 3),
-(2, false, "Mouth", NULL, 6),
-(2, false, "Nose", NULL, 8), 
-(2, false, "Vulva", NULL, 10), 
-(2, false, "Stools", NULL, 12),
-(2, true, "Vomit or coughing up", 23, NULL);
+(2, FALSE, "Wound", NULL, 3),
+(2, FALSE, "Mouth", NULL, 6),
+(2, FALSE, "Nose", NULL, 8), 
+(2, FALSE, "Vulva", NULL, 10), 
+(2, FALSE, "Stools", NULL, 12),
+(2, TRUE, "Vomit or coughing up", 23, NULL);
 
  INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(3, true, "Trickling, streaming, or pulsing out", 1, NULL),
-(3, false, "A few drops", NULL, 4);
+(3, TRUE, "Trickling, streaming, or pulsing out", 1, NULL),
+(3, FALSE, "A few drops", NULL, 4);
 
  INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(4, true, "Burn (heat or chemical)", 2, NULL),
-(4, false, "Graze (less than skin depth)", NULL, 5),
-(4, true, "Laceration (skin depth or deeper)", 5, NULL),
-(4, true, "Puncture wound (unknown depth)", 6, NULL);
+(4, TRUE, "Burn (heat or chemical)", 2, NULL),
+(4, FALSE, "Graze (less than skin depth)", NULL, 5),
+(4, TRUE, "Laceration (skin depth or deeper)", 5, NULL),
+(4, TRUE, "Puncture wound (unknown depth)", 6, NULL);
 
  INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(5, true, "Yes", 3, NULL),
-(5, true, "No", 4, NULL);
+(5, TRUE, "Yes", 3, NULL),
+(5, TRUE, "No", 4, NULL);
 
  INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(6, true, "Trickling, streaming, or pulsing out", 7, NULL),
-(6, false, "A few drops", NULL, 7);
+(6, TRUE, "Trickling, streaming, or pulsing out", 7, NULL),
+(6, FALSE, "A few drops", NULL, 7);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(7, true, "Yes", 8, NULL),
-(7, true, "No", 9, NULL);
+(7, TRUE, "Yes", 8, NULL),
+(7, TRUE, "No", 9, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(8, true, "Trickling, streaming, or pulsing out", 10, NULL),
-(8, false, "A few drops", NULL, 9);
+(8, TRUE, "Trickling, streaming, or pulsing out", 10, NULL),
+(8, FALSE, "A few drops", NULL, 9);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(9, true, "Yes", 11, NULL),
-(9, true, "No", 12, NULL);
+(9, TRUE, "Yes", 11, NULL),
+(9, TRUE, "No", 12, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(10, true, "Trickling, streaming, or pulsing out", 13, NULL),
-(10, false, "A few drops", NULL, 11);
+(10, TRUE, "Trickling, streaming, or pulsing out", 13, NULL),
+(10, FALSE, "A few drops", NULL, 11);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(11, true, "Yes", 14, NULL),
-(11, true, "No", 15, NULL);
+(11, TRUE, "Yes", 14, NULL),
+(11, TRUE, "No", 15, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(12, true, "Distributed throughout or a black appearence", 16, NULL),
-(12, true, "More than a trace on the outside of the stool", 17, NULL),
-(12, false, "Trace of blood on the outside of the stool", NULL, 13);
+(12, TRUE, "Distributed throughout or a black appearence", 16, NULL),
+(12, TRUE, "More than a trace on the outside of the stool", 17, NULL),
+(12, FALSE, "Trace of blood on the outside of the stool", NULL, 13);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(13, true, "Yes", 18, NULL),
-(13, false, "No", NULL, 14);
+(13, TRUE, "Yes", 18, NULL),
+(13, FALSE, "No", NULL, 14);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(14, false, "Yes", NULL, 15),
-(14, true, "No", 19, NULL);
+(14, FALSE, "Yes", NULL, 15),
+(14, TRUE, "No", 19, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(15, true, "Yes", 20, NULL),
-(15, false, "No", NULL, 16);
+(15, TRUE, "Yes", 20, NULL),
+(15, FALSE, "No", NULL, 16);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(16, true, "Yes", 21, NULL),
-(16, true, "No", 22, NULL);
+(16, TRUE, "Yes", 21, NULL),
+(16, TRUE, "No", 22, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(17, true, "Yes", 24, NULL),
-(17, false, "No", NULL, 18);
+(17, TRUE, "Yes", 24, NULL),
+(17, FALSE, "No", NULL, 18);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(18, false, "Yes", NULL, 19),
-(18, true, "No", 25, NULL);
+(18, FALSE, "Yes", NULL, 19),
+(18, TRUE, "No", 25, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(19, true, "Yes", 26, NULL),
-(19, false, "No", NULL, 20);
+(19, TRUE, "Yes", 26, NULL),
+(19, FALSE, "No", NULL, 20);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(20, false, "Yes", NULL, 21),
-(20, true, "No", 27, NULL);
+(20, FALSE, "Yes", NULL, 21),
+(20, TRUE, "No", 27, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(21, true, "Yes", 28, NULL),
-(21, false, "No", NULL, 22);
+(21, TRUE, "Yes", 28, NULL),
+(21, FALSE, "No", NULL, 22);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(22, true, "Yes", 29, NULL),
-(22, false, "No", NULL, 23);
+(22, TRUE, "Yes", 29, NULL),
+(22, FALSE, "No", NULL, 23);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(23, true, "Blue tinged", 30, NULL),
-(23, true, "Brick red", 31, NULL),
-(23, true, "Can't tell", 32, NULL),
-(23, true, "Similar to cooked salmon", 33, NULL),
-(23, true, "White or very pale", 34, NULL),
-(23, true, "Yellow tinged", 35, NULL);
+(23, TRUE, "Blue tinged", 30, NULL),
+(23, TRUE, "Brick red", 31, NULL),
+(23, TRUE, "Can't tell", 32, NULL),
+(23, TRUE, "Similar to cooked salmon", 33, NULL),
+(23, TRUE, "White or very pale", 34, NULL),
+(23, TRUE, "Yellow tinged", 35, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(24, true, "Yes", 36, NULL),
-(24, false, "No", NULL, 25);
+(24, TRUE, "Yes", 36, NULL),
+(24, FALSE, "No", NULL, 25);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(25, false, "Yes", NULL, 26),
-(25, true, "No", 37, NULL);
+(25, FALSE, "Yes", NULL, 26),
+(25, TRUE, "No", 37, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(26, false, "Yes", NULL, 27),
-(26, true, "No", 38, NULL);
+(26, FALSE, "Yes", NULL, 27),
+(26, TRUE, "No", 38, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(27, true, "Yes", 39, NULL),
-(27, false, "No", NULL, 28);
+(27, TRUE, "Yes", 39, NULL),
+(27, FALSE, "No", NULL, 28);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(28, true, "Yes", 40, NULL),
-(28, false, "No", NULL, 29);
+(28, TRUE, "Yes", 40, NULL),
+(28, FALSE, "No", NULL, 29);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(29, true, "Yes", 41, NULL),
-(29, false, "No", NULL, 30);
+(29, TRUE, "Yes", 41, NULL),
+(29, FALSE, "No", NULL, 30);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(30, true, "Blue tinged", 42, NULL),
-(30, true, "Brick red", 43, NULL),
-(30, false, "Can't tell", NULL, 31),
-(30, true, "Similar to cooked salmon", 44, NULL),
-(30, true, "White or very pale", 45, NULL),
-(30, true, "Yellow tinged", 46, NULL);
+(30, TRUE, "Blue tinged", 42, NULL),
+(30, TRUE, "Brick red", 43, NULL),
+(30, FALSE, "Can't tell", NULL, 31),
+(30, TRUE, "Similar to cooked salmon", 44, NULL),
+(30, TRUE, "White or very pale", 45, NULL),
+(30, TRUE, "Yellow tinged", 46, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(31, true, "Yes", 47, NULL),
-(31, true, "No", 48, NULL);
+(31, TRUE, "Yes", 47, NULL),
+(31, TRUE, "No", 48, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(32, true, "Yes", 50, NULL),
-(32, false, "No", NULL, 33);
+(32, TRUE, "Yes", 50, NULL),
+(32, FALSE, "No", NULL, 33);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(33, true, "Yes", 51, NULL),
-(33, false, "No", NULL, 34);
+(33, TRUE, "Yes", 51, NULL),
+(33, FALSE, "No", NULL, 34);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(34, false, "Yes", NULL, 35),
-(34, true, "No", 52, NULL);
+(34, FALSE, "Yes", NULL, 35),
+(34, TRUE, "No", 52, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(35, true, "Yes", 53, NULL),
-(35, false, "No", NULL, 36);
+(35, TRUE, "Yes", 53, NULL),
+(35, FALSE, "No", NULL, 36);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(36, true, "Yes", 54, NULL),
-(36, false, "No", NULL, 37);
+(36, TRUE, "Yes", 54, NULL),
+(36, FALSE, "No", NULL, 37);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(37, true, "Yes", 55, NULL),
-(37, false, "No", NULL, 38);
+(37, TRUE, "Yes", 55, NULL),
+(37, FALSE, "No", NULL, 38);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(38, true, "Yes", 56, NULL),
-(38, false, "No", NULL, 39);
+(38, TRUE, "Yes", 56, NULL),
+(38, FALSE, "No", NULL, 39);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(39, true, "Blue tinged", 57, NULL),
-(39, true, "Brick red", 58, NULL),
-(39, false, "Can't tell", NULL, 40),
-(39, true, "Similar to cooked salmon", 59, NULL),
-(39, true, "White or very pale", 61, NULL),
-(39, true, "Yellow tinged", 62, NULL);
+(39, TRUE, "Blue tinged", 57, NULL),
+(39, TRUE, "Brick red", 58, NULL),
+(39, FALSE, "Can't tell", NULL, 40),
+(39, TRUE, "Similar to cooked salmon", 59, NULL),
+(39, TRUE, "White or very pale", 61, NULL),
+(39, TRUE, "Yellow tinged", 62, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(40, true, "Yes", 63, NULL),
-(40, true, "No", 64, NULL);
+(40, TRUE, "Yes", 63, NULL),
+(40, TRUE, "No", 64, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(41, true, "Yes", 65, NULL),
-(41, false, "No", NULL, 42);
+(41, TRUE, "Yes", 65, NULL),
+(41, FALSE, "No", NULL, 42);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(42, false, "Yes", NULL, 43),
-(42, true, "No", 66, NULL);
+(42, FALSE, "Yes", NULL, 43),
+(42, TRUE, "No", 66, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(43, true, "Yes", 67, NULL),
-(43, false, "No", NULL, 44);
+(43, TRUE, "Yes", 67, NULL),
+(43, FALSE, "No", NULL, 44);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(44, true, "Yes", 68, NULL),
-(44, false, "No", NULL, 45);
+(44, TRUE, "Yes", 68, NULL),
+(44, FALSE, "No", NULL, 45);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(45, true, "Constantly or most of the time", 69, NULL),
-(45, false, "Normal or slightly more than usual", NULL, 46);
+(45, TRUE, "Constantly or most of the time", 69, NULL),
+(45, FALSE, "Normal or slightly more than usual", NULL, 46);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(46, true, "Yes", 70, NULL),
-(46, false, "No", NULL, 47);
+(46, TRUE, "Yes", 70, NULL),
+(46, FALSE, "No", NULL, 47);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(47, true, "Yes", 71, NULL),
-(47, false, "No", NULL, 48);
+(47, TRUE, "Yes", 71, NULL),
+(47, FALSE, "No", NULL, 48);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(48, false, "Similar to a cow dung patty (i.e., thick and shapeless)", NULL, 49),
-(48, false, "Watery", NULL, 54);
+(48, FALSE, "Similar to a cow dung patty (i.e., thick and shapeless)", NULL, 49),
+(48, FALSE, "Watery", NULL, 54);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(49, false, "Yes", NULL, 50),
-(49, false, "No", NULL, 51);
+(49, FALSE, "Yes", NULL, 50),
+(49, FALSE, "No", NULL, 51);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(50, true, "A trace on the outside of the stool", 72, NULL),
-(50, true, "Blood distributed throughout or a black appearance", 73, NULL),
-(50, true, "More than a trace on the outside of the stool", 74, NULL);
+(50, TRUE, "A trace on the outside of the stool", 72, NULL),
+(50, TRUE, "Blood distributed throughout or a black appearance", 73, NULL),
+(50, TRUE, "More than a trace on the outside of the stool", 74, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(51, true, "Blue tinged", 75, NULL),
-(51, true, "Brick red", 76, NULL),
-(51, false, "Can't tell", NULL, 52),
-(51, false, "Similar to cooked salmon", NULL, 53),
-(51, true, "White or very pale", 77, NULL),
-(51, true, "Yellow tinged", 78, NULL);
+(51, TRUE, "Blue tinged", 75, NULL),
+(51, TRUE, "Brick red", 76, NULL),
+(51, FALSE, "Can't tell", NULL, 52),
+(51, FALSE, "Similar to cooked salmon", NULL, 53),
+(51, TRUE, "White or very pale", 77, NULL),
+(51, TRUE, "Yellow tinged", 78, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(52, true, "Yes", 79, NULL),
-(52, false, "No", NULL, 53);
+(52, TRUE, "Yes", 79, NULL),
+(52, FALSE, "No", NULL, 53);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(53, true, "Yes", 80, NULL),
-(53, true, "No", 81, NULL);
+(53, TRUE, "Yes", 80, NULL),
+(53, TRUE, "No", 81, NULL);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(54, true, "More than three", 82, NULL),
-(54, false, "Three or fewer", NULL, 55);
+(54, TRUE, "More than three", 82, NULL),
+(54, FALSE, "Three or fewer", NULL, 55);
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
-(55, true, "Yes", 83, NULL),
-(55, true, "No", 84, NULL);
+(55, TRUE, "Yes", 83, NULL),
+(55, TRUE, "No", 84, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(56, TRUE, "Yes", 85, NULL),
+(56, FALSE, "No", NULL, 57);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(57, FALSE, "Yes", NULL, 58),
+(57, TRUE, "No", 86, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(58, TRUE, "Yes", 87, NULL),
+(58, FALSE, "No", NULL, 59);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(59, TRUE, "Yes", 88, NULL),
+(59, FALSE, "No", NULL, 60);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(60, TRUE, "Eating normally", 89, NULL),
+(60, TRUE, "Eating, but less than usual", 90, NULL),
+(60, TRUE, "Not eating", 91, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(61, TRUE, "Yes", 92, NULL),
+(61, FALSE, "No", NULL, 62);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(62, FALSE, "Yes", NULL, 63),
+(62, TRUE, "No", 93, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(63, TRUE, "Yes", 94, NULL),
+(63, FALSE, "No", NULL, 64);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(64, TRUE, "Yes", 95, NULL),
+(64, FALSE, "No", NULL, 65);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(65, TRUE, "Yes", 96, NULL),
+(65, FALSE, "No", NULL, 66);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(66, TRUE, "Yes", 97, NULL),
+(66, FALSE, "No", NULL, 67);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(67, TRUE, "Yes", 98, NULL),
+(67, FALSE, "No", NULL, 68);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(68, FALSE, "No, or once only", NULL, 69),
+(68, TRUE, "Yes, vomiting or retching constantly", 99, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(69, TRUE, "Yes", 100, NULL),
+(69, FALSE, "No", NULL, 70);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(70, TRUE, "Yes", 101, NULL),
+(70, FALSE, "No", NULL, 71);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(71, TRUE, "Yes", 102, NULL),
+(71, FALSE, "No", NULL, 72);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(72, TRUE, "Yes", 103, NULL),
+(72, FALSE, "No", NULL, 73);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(73, TRUE, "Yes", 104, NULL),
+(73, TRUE, "No", 105, NULL);
