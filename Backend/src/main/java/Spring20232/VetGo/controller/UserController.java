@@ -58,10 +58,8 @@ public class UserController {
     @PostMapping(value = "/login")
     public ResponseEntity<?> loginUser(@RequestBody ObjectNode loginBody) {
         try {
-            String email = loginBody.get("email").asText();
-            String password = loginBody.get("password").asText();
-            Object result = userService.authenticateUser(email, password);
-            return ResponseEntity.ok(result);
+            Object result = userService.authenticateUser(loginBody);
+            return ResponseEntity.status(HttpStatus.OK).body(result);
         } catch (UsernameNotFoundException | BadCredentialsException | IllegalStateException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }

@@ -5,6 +5,7 @@ import Spring20232.VetGo.repository.OwnerRepository;
 import Spring20232.VetGo.repository.TagRepository;
 import Spring20232.VetGo.repository.UserRepository;
 import Spring20232.VetGo.repository.VetRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class UserService implements UserServiceInterface {
 
     @Autowired
     private TagRepository tagRepository;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Override
     @Transactional
@@ -167,7 +171,9 @@ public class UserService implements UserServiceInterface {
         return newUser;
     }
 
-    public Object authenticateUser(String email, String password) {
+    public Object authenticateUser(ObjectNode userInfo) {
+        String email = userInfo.get("email").asText();
+        String password = userInfo.get("password").asText();
         User user = userRepository.findByEmail(email);
 
         if (user == null) {
@@ -179,14 +185,22 @@ public class UserService implements UserServiceInterface {
             throw new BadCredentialsException("Password does not match.");
         }
 
+        ObjectNode userNode = objectMapper.createObjectNode();
+        userNode.put("id", user.getId());
+        userNode.put("firstName", user.getFirstName());
+        userNode.put("lastName", user.getLastName());
+
         if (user.isUserVetAndOwner()) {
-            return "User must now choose his or her sign-in role.";
+            userNode.put("role", "vet-owner");
+            return userNode;
         }
         else if (user.isUserOwner()) {
-            return ownerRepository.findByUser(user);
+            userNode.put("role", "owner");
+            return userNode;
         }
         else if (user.isUserVet()) {
-            return vetRepository.findByUser(user);
+            userNode.put("role", "vet");
+            return userNode;
         }
         else {
             throw new IllegalStateException("User has no role.");
