@@ -39,6 +39,7 @@ export type RootStackParamList = {
     VetScreening1: undefined
     VetScreening2: undefined
     Account: undefined
+    ForgotPassword: undefined
 }
 
 

@@ -46,3 +46,4 @@ export type PaymentSettingScreenNavigationProp = NavigationProp<RootStackParamLi
 export type Vet1ScreenNavigationProp = NavigationProp<RootStackParamList, 'VetScreening1'>
 export type Vet2ScreenNavigationProp = NavigationProp<RootStackParamList, 'VetScreening2'>
 export type AccountScreenNavigationProp = NavigationProp<RootStackParamList, 'Account'>
+export type ForgotPasswordScreenNavigationProp = NavigationProp<RootStackParamList, 'ForgotPassword'>
