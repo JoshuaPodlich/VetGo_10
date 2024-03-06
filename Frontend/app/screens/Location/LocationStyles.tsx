@@ -60,4 +60,21 @@ export const locationStyles: any = StyleSheet.create({
         backgroundColor: colors.action_Green,
     },
 
+    submitButtonDisabled: {
+        alignItems: "center",
+        borderRadius: 10,
+        justifyContent: "center",
+        margin: 5,
+        padding: 15,
+        width: 230,
+        backgroundColor: colors.grey,
+    },
+
+    submitButtonText: {
+        color: "white",
+    },
+    submitButtonTextDisabled: {
+        color: "black", // Adjust the opacity of the text color for disabled state
+    },
+
 })
