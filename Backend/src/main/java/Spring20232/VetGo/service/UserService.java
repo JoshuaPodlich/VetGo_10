@@ -1,19 +1,21 @@
 package Spring20232.VetGo.service;
 
 import Spring20232.VetGo.model.*;
-import Spring20232.VetGo.repository.OwnerRepository;
-import Spring20232.VetGo.repository.TagRepository;
-import Spring20232.VetGo.repository.UserRepository;
-import Spring20232.VetGo.repository.VetRepository;
+import Spring20232.VetGo.repository.*;
+import com.amazonaws.services.alexaforbusiness.model.NotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import jakarta.transaction.Transactional;
+import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 
@@ -33,7 +35,13 @@ public class UserService implements UserServiceInterface {
     private TagRepository tagRepository;
 
     @Autowired
+    PasswordResetTokenRepository passwordResetTokenRepository;
+
+    @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private EmailService emailService;
 
     @Override
     @Transactional
@@ -205,6 +213,24 @@ public class UserService implements UserServiceInterface {
         else {
             throw new IllegalStateException("User has no role.");
         }
+    }
+
+    public void createPasswordResetToken(Long uid) {
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null)
+            throw new NotFoundException("Unable to find user in database.");
+
+        String token = UUID.randomUUID().toString(); // Work on finding a shorter token to generate.
+        PasswordResetToken resetToken = new PasswordResetToken();
+        resetToken.setToken(token); // Make sure to save the token as a hash later for extra security.
+        resetToken.setUser(user);
+        resetToken.setExpirationDate(LocalDateTime.now().plusMinutes(10));
+        resetToken.setTokenValid(true);
+        passwordResetTokenRepository.save(resetToken);
+
+        System.out.println("Created token!");
+
+        emailService.sendPasswordResetEmail(user.getEmail(), token);
     }
 
 }
