@@ -1,14 +1,13 @@
 package Spring20232.VetGo.repository;
 
 import Spring20232.VetGo.model.Appointment;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
@@ -21,4 +20,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             "sin(radians(latitude)))) " +
             "AS distance FROM appointment HAVING distance < :radius ORDER BY distance LIMIT 0, 20;", nativeQuery = true)
     List<Appointment> findNearbyAppointment(@Param("userLongitude") Double longitude, @Param("userLatitude") Double latitude, @Param("radius") Double radius);
+
+    Appointment findByAid(Long aid) throws DataAccessException;
 }

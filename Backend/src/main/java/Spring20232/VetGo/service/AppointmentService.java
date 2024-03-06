@@ -6,7 +6,6 @@ import Spring20232.VetGo.repository.AppointmentRepository;
 import Spring20232.VetGo.repository.VetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,23 +19,25 @@ import static Spring20232.VetGo.model.Appointment.AppointmentStatus.ACCEPTED;
 public class AppointmentService {
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
+    // Sets the timer deadline for the vet to accept the appointment, in minutes
+    private final Long TIMERDEADLINE = 1L;
+
     @Autowired
     VetRepository vetRepository;
     @Autowired
     AppointmentRepository appointmentRepository;
     public Long broadcast(Appointment appointment) {
-        System.out.println("Broadcasting appointment!");
 
         List<Vet> vets = new ArrayList<>(vetRepository.findAll());
 
         Vet chosenVet = chooseBestVet(vets);
 
-        System.out.println("Chosen vet is " + chosenVet.getUser().getFirstName() + " with Lat: " + chosenVet.getLatitude() + " Long: " + chosenVet.getLongitude());
+        System.out.println("Chosen vet is " + chosenVet.getUser().getFirstName() + " with Lat: " + chosenVet.getLatitude() + " Long: " + chosenVet.getLongitude() + " for AppointmentID: " + appointment.getAid());
 
         appointment.setVet(chosenVet);
         appointmentRepository.save(appointment);
 
-        scheduler.schedule(() -> checkVetResponse(appointment, vets), 1, TimeUnit.MINUTES);
+    scheduler.schedule(() -> checkVetResponse(appointment, vets), TIMERDEADLINE, TimeUnit.MINUTES);
 
 
         return appointment.getAid();
@@ -84,16 +85,15 @@ public class AppointmentService {
             scheduler.schedule(() -> checkVetResponse(appointment, remainingVets), 10, TimeUnit.MINUTES);
         } else {
             // No more vets left, throw an error
-            System.out.println("Mission Failed");
             throw new RuntimeException("No vets available to accept the appointment.");
         }
     }
 
-    @Transactional
+    public Appointment findAppointmentByAid(Long aid) {
+        return appointmentRepository.findByAid(aid);
+    }
+
     private boolean vetHasAccepted(Appointment appointment) {
-        Long id = appointment.getAid();
-        Appointment newAppoint = appointmentRepository.getReferenceById(id);
-        Appointment.AppointmentStatus status = newAppoint.getStatus();
-        return status == ACCEPTED;
+        return findAppointmentByAid(appointment.getAid()).getStatus() == ACCEPTED;
     }
 }
