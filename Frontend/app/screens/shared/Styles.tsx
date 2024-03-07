@@ -251,10 +251,13 @@ export const styles: any = StyleSheet.create({
 
     signUpTextBox: {
 
-        width: 230,
-        margin: 5,
-        padding: 15,
+        //margin: 5,
+        padding: 5,
         borderRadius: 10,
+        width: "100%",
+        borderColor: colors.primary_Blue
+
+
         // backgroundColor: colors.primary_Blue,
     },
 

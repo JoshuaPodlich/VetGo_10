@@ -175,7 +175,7 @@ function SignUpScreen(props: any) {
 
                         <Input
                             clearButtonMode={"always"} size={"large"}
-                            value={form.email} style={styles.fieldText}
+                            value={form.email} style={styles.signUpTextBox}
                             placeholder={"Email"}
                             onChangeText={(newEmail) => {
                                 setForm((prevForm: SignUpForm) => ({ ...prevForm, email: newEmail }))
@@ -185,7 +185,7 @@ function SignUpScreen(props: any) {
 
                         <Input
                             clearButtonMode={"always"} size={"large"}
-                            value={form.password} style={styles.fieldText}
+                            value={form.password} style={styles.signUpTextBox}
                             placeholder={"Password"} secureTextEntry={true}
                             onChangeText={(newPassword) => {
                                 setForm((prevForm: SignUpForm) => ({ ...prevForm, password: newPassword }))
@@ -195,7 +195,7 @@ function SignUpScreen(props: any) {
 
                         <Input
                             clearButtonMode={"always"} size={"large"}
-                            value={form.confirmPassword} style={styles.fieldText}
+                            value={form.confirmPassword} style={styles.signUpTextBox}
                             placeholder={"Confirm Password"} secureTextEntry={true}
                             onChangeText={(newConfirmPassword) => {
                                 setForm((prevForm: SignUpForm) => ({ ...prevForm, confirmPassword: newConfirmPassword }))
@@ -205,7 +205,7 @@ function SignUpScreen(props: any) {
 
 
                             <Input clearButtonMode={"always"} size={"large"}
-                                value={form.firstname} style={styles.fieldText}
+                                value={form.firstname} style={styles.signUpTextBox}
                                 placeholder={"First Name"}
                                 onChangeText={(newFirstName) => {
                                     setForm((prevForm: SignUpForm) => ({ ...prevForm, firstname: newFirstName }))
@@ -214,7 +214,7 @@ function SignUpScreen(props: any) {
                             <Text style={styles.errorText}>{errors.firstname}</Text>
 
                             <Input clearButtonMode={"always"} size={"large"}
-                                value={form.lastname} style={styles.fieldText}
+                                value={form.lastname} style={styles.signUpTextBox}
                                 placeholder={"Last Name"}
                                 onChangeText={(newLastName) => {
                                     setForm((prevForm: SignUpForm) => ({ ...prevForm, lastname: newLastName }))
@@ -223,7 +223,7 @@ function SignUpScreen(props: any) {
                             <Text style={styles.errorText}>{errors.lastname}</Text>
 
                             <Input clearButtonMode={"always"} size={"large"}
-                                value={form.telephone} style={styles.fieldText}
+                                value={form.telephone} style={styles.signUpTextBox}
                                 placeholder={"Telephone"}
                                 onChangeText={(newTelephone) => {
                                     setForm((prevForm: SignUpForm) => ({ ...prevForm, telephone: newTelephone }))
@@ -234,8 +234,8 @@ function SignUpScreen(props: any) {
                             <Dropdown
                             data={roles}
                             value={form.role}
+                            style={styles.signUpTextBox}
                             placeholder='Select Role'
-                            style={styles.fieldText}
                             onChange={(item: unknown) => {
                                 return setForm((prevForm: SignUpForm) => ({ ...prevForm, role: item as string }))
                             } } labelField={'label'} valueField={'label'}                            />
