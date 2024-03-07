@@ -82,9 +82,10 @@ public class AppointmentService {
             appointmentRepository.save(appointment);
 
             // Schedule a task to check vet response after 10 minutes
-            scheduler.schedule(() -> checkVetResponse(appointment, remainingVets), 10, TimeUnit.MINUTES);
+            scheduler.schedule(() -> checkVetResponse(appointment, remainingVets), TIMERDEADLINE, TimeUnit.MINUTES);
         } else {
             // No more vets left, throw an error
+            System.out.println("No vets left to accept.");
             throw new RuntimeException("No vets available to accept the appointment.");
         }
     }
