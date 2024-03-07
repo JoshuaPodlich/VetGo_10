@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+
 import {
     Alert,
     SafeAreaView,
@@ -8,7 +9,7 @@ import {
     Text,
     View,
     Pressable,
-    LayoutAnimation, TouchableHighlight
+    LayoutAnimation, TouchableHighlight, 
 } from "react-native"
 import { CommonActions, useFocusEffect } from "@react-navigation/native"
 import { Input } from "@ui-kitten/components"
@@ -17,6 +18,8 @@ import { styles } from "../shared/Styles"
 import { signUpStyles } from './SignUpStyles'
 import { BASE_URL } from "../shared/Constants"
 import { LocationInterface } from '../shared/Interfaces'
+import { Dropdown } from 'react-native-element-dropdown';
+
 
 export interface SignUpScreenParams {
 }
@@ -30,6 +33,12 @@ interface SignUpForm {
     role: string,
     vetLicense: string
 }
+
+//list of roles to be used in dropdown 
+const roles = [
+    { label: "Owner", value: "owner" },
+    { label: "Vet", value: "vet" }
+]
 
 
 function SignUpScreen(props: any) {
@@ -221,16 +230,17 @@ function SignUpScreen(props: any) {
                                 }}
                             />
                             <Text style={styles.errorText}>{errors.telephone}</Text>
-
-                            <Input clearButtonMode={"always"} size={"large"}
-                                value={form.role} style={styles.fieldText}
-                                placeholder={"Role"}
-                                onChangeText={(newRole) => {
-                                    setForm((prevForm: SignUpForm) => ({ ...prevForm, role: newRole }))
-                                }}
-                            />
+                            
+                            <Dropdown
+                            data={roles}
+                            value={form.role}
+                            placeholder='Select Role'
+                            style={styles.fieldText}
+                            onChange={(item: unknown) => {
+                                return setForm((prevForm: SignUpForm) => ({ ...prevForm, role: item as string }))
+                            } } labelField={'label'} valueField={'label'}                            />
                             <Text style={styles.errorText}>{errors.role}</Text>
-
+                            
 
                         <View style={signUpStyles.switchGroup}>
                             <Text style={{

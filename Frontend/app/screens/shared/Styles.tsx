@@ -240,4 +240,23 @@ export const styles: any = StyleSheet.create({
     },
 
 
+    signUpDropDown: {
+
+        width: 230,
+        margin: 5,
+        padding: 15,
+        borderRadius: 10,
+        backgroundColor: colors.primary_Blue,
+    },
+
+    signUpTextBox: {
+
+        width: 230,
+        margin: 5,
+        padding: 15,
+        borderRadius: 10,
+        // backgroundColor: colors.primary_Blue,
+    },
+
+
 })
