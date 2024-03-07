@@ -232,13 +232,14 @@ function SignUpScreen(props: any) {
                             <Text style={styles.errorText}>{errors.telephone}</Text>
                             
                             <Dropdown
+                            
                             data={roles}
                             value={form.role}
-                            style={styles.signUpTextBox}
+                            style={[styles.signUpDropDown, { width: "97%", padding: 5, borderRadius: 10, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 1, color: colors.background_Grey}]}
                             placeholder='Select Role'
                             onChange={(item: unknown) => {
                                 return setForm((prevForm: SignUpForm) => ({ ...prevForm, role: item as string }))
-                            } } labelField={'label'} valueField={'label'}                            />
+                            } } labelField={'label'} valueField={'label'}                                                         />
                             <Text style={styles.errorText}>{errors.role}</Text>
                             
 

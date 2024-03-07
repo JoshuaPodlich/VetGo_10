@@ -131,8 +131,8 @@ export const styles: any = StyleSheet.create({
         color: colors.brightRed,
         flexShrink: 1,
         fontSize: 16,
-        paddingBottom: 4,
-        paddingTop: 2,
+        // paddingBottom: 4,
+        // paddingTop: 2,
     },
 
 
@@ -247,6 +247,10 @@ export const styles: any = StyleSheet.create({
         padding: 15,
         borderRadius: 10,
         backgroundColor: colors.primary_Blue,
+        //text color and font color and font size
+        fontSize: 18,
+        fontWeight: "bold",
+        fontColor: colors.black,
     },
 
     signUpTextBox: {
@@ -255,7 +259,10 @@ export const styles: any = StyleSheet.create({
         padding: 5,
         borderRadius: 10,
         width: "100%",
-        borderColor: colors.primary_Blue
+        borderColor: colors.primary_Blue,
+        fontSize: 18,
+        fontWeight: "bold",
+        fontColor: colors.black,
 
 
         // backgroundColor: colors.primary_Blue,
