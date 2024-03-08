@@ -9,8 +9,14 @@ function VetRegisterScreen({ navigation }: { navigation: any }) {
   const [vetLicense, setVetLicense] = useState('');
   const [vetCompany, setVetCompany] = useState('');
   const [vetPassword, setVetPassword] = useState('');
+  let error_message = "";
 
   const handleRegister = () => {
+    if(vetID === "" || vetName === "" || vetEmail === "" || vetInsurance === "" || vetLicense === "" || vetCompany === "" || vetPassword === ""){
+    error_message = "Please fill all the fields";
+      return
+    }
+    
  
   };
 
@@ -60,6 +66,9 @@ function VetRegisterScreen({ navigation }: { navigation: any }) {
         value={vetPassword}
         onChangeText={setVetPassword}
       />
+
+        <Text>{error_message}</Text>
+
       <Button title="Register" onPress={handleRegister} />
     </View>
   );
