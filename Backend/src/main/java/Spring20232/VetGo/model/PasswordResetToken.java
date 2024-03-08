@@ -2,6 +2,7 @@ package Spring20232.VetGo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
 
@@ -14,17 +15,20 @@ public class PasswordResetToken extends BaseEntity {
 
     private LocalDateTime expirationDate;
 
-    private boolean isTokenValid;
+    private LocalDateTime creationDate;
+
+    private boolean tokenValid;
 
     public PasswordResetToken() {
 
     }
 
-    public PasswordResetToken(String token, User user, LocalDateTime expirationDate, boolean isTokenValid) {
+    public PasswordResetToken(String token, User user, LocalDateTime expirationDate, LocalDateTime creationDate, boolean tokenValid) {
         this.token = token;
         this.user = user;
         this.expirationDate = expirationDate;
-        this.isTokenValid = isTokenValid;
+        this.creationDate = creationDate;
+        this.tokenValid = tokenValid;
     }
 
     public String getToken() {
@@ -51,11 +55,19 @@ public class PasswordResetToken extends BaseEntity {
         this.expirationDate = expirationDate;
     }
 
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
     public boolean isTokenValid() {
-        return isTokenValid;
+        return tokenValid;
     }
 
     public void setTokenValid(boolean tokenValid) {
-        isTokenValid = tokenValid;
+        this.tokenValid = tokenValid;
     }
 }

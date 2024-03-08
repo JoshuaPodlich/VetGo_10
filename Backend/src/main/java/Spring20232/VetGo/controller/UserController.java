@@ -167,4 +167,17 @@ public class UserController {
 
     }
 
+    @PostMapping(value = "/validate-password-token/{uid}/token/{token}")
+    public ResponseEntity<?> validatePasswordToken(@PathVariable("uid") Long uid,
+                                                   @PathVariable("token") String token) {
+        try {
+            userService.validatePasswordResetToken(uid, token);
+            return ResponseEntity.status(HttpStatus.OK).body("Token matches and is valid.");
+        }
+        catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+
+    }
+
 }

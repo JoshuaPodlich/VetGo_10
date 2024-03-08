@@ -82,6 +82,16 @@ INSERT INTO screening_questions (question_text) VALUES ("Does your dog only droo
 INSERT INTO screening_questions (question_text) VALUES ("Does your dog only drool when anticipating food?"); # ID: 71
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog always drooled a lot from a young age?"); # ID: 72
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog been playing with a stick?"); # ID: 73
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog distressed, disorientated, or in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 74
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog able to move and respond to you normally?"); # ID: 75
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog shaking its head continuously or scratching non-stop?"); # ID: 76
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog developed a head tilt or is it moving around in circles?"); # ID: 77
+INSERT INTO screening_questions (question_text) VALUES ("Is there any swelling in the ear flap?"); # ID: 78
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog distressed, disorientated, or in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 79
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog suddenly gone blind?"); # ID: 80
+INSERT INTO screening_questions (question_text) VALUES ("Is the eye sticking out more than usual?"); # ID: 81
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog squinting such that you cannot see the affected eye(s)?"); # ID: 82
+INSERT INTO screening_questions (question_text) VALUES ("Does the eye look red?"); # ID: 83
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -1353,7 +1363,7 @@ Take care. When dogs are injured or ill they may accidentally bite or scratch.",
 Other possible causes of drooling include gastric bloat or torsion, poisoning, nausea, eating something with a foul taste, injury to the mouth, dental disease, or gum disease.",
 3);
 
-INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 104
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 105
 ("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
 If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
 If any of the symptoms are not listed contact your vet.
@@ -1362,6 +1372,136 @@ If your dog is not better in 24 hours contact your vet.",
 "Possible causes include gastric bloat or torsion, poisoning, nausea, eating something with a foul taste, injury to the mouth, dental disease, or gum disease.
 If the drooling is not something your dog has always done, it would be advisable to have a check up to find out what is causing it.",
 1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 106
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and shaking its head.
+Put some socks on your dogs feet to stop any self damage.
+Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Ear problems can be due to infections, parasites, or foreign bodies such as grass seeds inside the ear.
+In some cases, the inner ear may also be affected, leading to an inner ear infection, which can cause changes in balance, posture, and behaviour.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 107
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and shaking its head.
+Put some socks on your dogs feet to stop any self damage.
+Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
+Do not try to feed your dog unless your vet practice tells you it is OK to do so.",
+"Ear problems can be due to infections, parasites, or foreign bodies such as grass seeds inside the ear.
+In some cases, the inner ear may also be affected, leading to an inner ear infection, which can cause changes in balance, posture, and behaviour.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 108
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and shaking its head.
+Put some socks on your dogs feet to stop any self damage.
+Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Ear problems can be due to infections or parasites.
+Continuous scratching or shaking may suggest the presence of a foreign body such as a grass seed inside the ear, which needs to be removed as soon as possible.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 109
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and shaking its head.
+If necessary put some socks on your dogs feet to stop any self damage.
+Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Ear problems can be due to infections, parasites, or foreign bodies such as grass seeds inside the ear.
+In some cases, the inner ear may also be affected, leading to an inner ear infection, which can cause changes in balance, posture, and behaviour.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 110
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to distract your dog from scratching and shaking its head.
+Put some socks on your dogs feet to stop any self damage.
+Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
+Stop feeding your dog for 8 hours prior to taking your dogs to the vet, it may be necessary to sedate or anaesthetise your dog, this is safer if your dog has been starved.",
+"Ear problems can be due to infections, parasites, or foreign bodies such as grass seeds inside the ear.
+Swelling of the ear flap is common following an ear problem as scratching and shaking the head damage the small blood vessels, leading to a \"blood blister\" forming inside the ear.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 111
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Try to distract your dog from scratching and shaking its head.
+Put some socks on your dogs feet to stop any self damage.
+Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
+Stop feeding your dog for 8 hours prior to taking your dogs to the vet, it may be necessary to sedate or anaesthetise your dog, this is safer if your dog has been starved.",
+"Ear problems can be due to infections, parasites, or foreign bodies such as grass seeds inside the ear.
+In some cases, the inner ear may also be affected, leading to an inner ear infection, which can cause changes in balance, posture, and behaviour.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 112
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not allow your dog to scratch at its eye.
+If necessary put some socks on your dogs feet to stop any self damage.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Eye problems can be due to damage to the surface, infections, trauma to the eyeball, abnormal pressure in the eye (glaucoma), abscesses behind the eyeball, or penetrating foreign bodies.
+Sometimes, damage to parts of the brain or to the nerves of the head can also cause eye problems, and these need urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 113
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not allow your dog to scratch at its eye.
+If necessary put some socks on your dogs feet to stop any self damage.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Eye problems can be due to damage to the surface, infections, trauma to the eyeball, abnormal pressure in the eye (glaucoma), abscesses behind the eyeball, or penetrating foreign bodies.
+Sometimes, damage to parts of the brain or to the nerves of the head can also cause eye problems, and these need urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 114
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not allow your dog to scratch at its eye.
+Hold a clean damp dressing over the eye.
+If necessary put some socks on your dogs feet to stop any self damage.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Eye problems can be due to damage to the surface, infections, trauma to the eyeball, abnormal pressure in the eye (glaucoma), abscesses behind the eyeball, or penetrating foreign bodies.
+In some breeds and some individuals, the eyeball is only loosely held within the socket and can start to \"pop out\" under pressure.
+This is an emergency and requires urgent veterinary advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 115
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not allow your dog to scratch or rub at its eye.
+If necessary put some socks on your dogs feet to stop any self damage.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Eye problems can be due to damage to the surface, infections, trauma to the eyeball, abnormal pressure in the eye (glaucoma), abscesses behind the eyeball, or penetrating foreign bodies.
+Sometimes, damage to parts of the brain or to the nerves of the head can also cause eye problems, and these need urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 116
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not allow your dog to scratch or rub at its eye.
+If necessary put some socks on your dogs feet to stop any self damage.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Eye problems can be due to damage to the surface, infections, trauma to the eyeball, abnormal pressure in the eye (glaucoma), abscesses behind the eyeball, or penetrating foreign bodies.",
+3);
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -1374,8 +1514,8 @@ INSERT INTO screening_options (question_id, is_terminating, option_text, result_
  (1, FALSE, "Diarrhoea", NULL, 41),
  (1, FALSE, "Drinking more than usual", NULL, 56),
  (1, FALSE, "Drooing or dribbling", NULL, 61),
- (1, FALSE, "Ear problems", NULL, NULL), # NEXT SET TO COMPLETE!
- (1, FALSE, "Eye problems", NULL, NULL),
+ (1, FALSE, "Ear problems", NULL, 74), 
+ (1, FALSE, "Eye problems", NULL, 79), # NEXT SET TO COMPLETE!
  (1, FALSE, "Fits", NULL, NULL),
  (1, FALSE, "Funny turn", NULL, NULL),
  (1, FALSE, "Itching", NULL, NULL),
@@ -1708,3 +1848,43 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (73, TRUE, "Yes", 104, NULL),
 (73, TRUE, "No", 105, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(74, TRUE, "Yes", 106, NULL),
+(74, FALSE, "No", NULL, 75);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(75, FALSE, "Yes", NULL, 76),
+(75, TRUE, "No", 107, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(76, TRUE, "Yes", 108, NULL),
+(76, FALSE, "No", NULL, 77);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(77, TRUE, "Yes", 109, NULL),
+(77, FALSE, "No", NULL, 78);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(78, TRUE, "Yes", 110, NULL),
+(78, TRUE, "No", 111, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(79, TRUE, "Yes", 112, NULL),
+(79, FALSE, "No", NULL, 80);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(80, TRUE, "Yes", 113, NULL),
+(80, FALSE, "No", NULL, 81);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(81, TRUE, "Yes", 114, NULL),
+(81, FALSE, "No", NULL, 82);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(82, TRUE, "Yes", 115, NULL),
+(82, FALSE, "No", NULL, 83);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(83, TRUE, "Yes", 116, NULL),
+(83, FALSE, "No", NULL, NULL); # DO NEXT QUESTION!

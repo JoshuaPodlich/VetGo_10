@@ -6,6 +6,8 @@ import com.amazonaws.services.alexaforbusiness.model.NotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import jakarta.transaction.Transactional;
+
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,8 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -74,9 +78,9 @@ public class UserService implements UserServiceInterface {
     }
 
     @Transactional
-    public String encryptPassword(String password) {
+    private String encryptString(String str) {
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-        return bcrypt.encode(password);
+        return bcrypt.encode(str);
     }
 
     // A password must be at least 16 characters long, have at least one uppercase letter,
@@ -128,7 +132,7 @@ public class UserService implements UserServiceInterface {
 
         User user = new User();
         user.setEmail(userInfo.get("email").asText());
-        user.setPassword(encryptPassword(userInfo.get("password").asText()));
+        user.setPassword(encryptString(userInfo.get("password").asText()));
         user.setFirstName(userInfo.get("firstName").asText());
         user.setLastName(userInfo.get("lastName").asText());
         user.setTelephone(userInfo.get("telephone").asText());
@@ -215,15 +219,45 @@ public class UserService implements UserServiceInterface {
         }
     }
 
+    private String generateToken() {
+        String charLower = "abcdefghijklmnopqrstuvwxyz";
+        String charUpper = charLower.toUpperCase();
+        String num = "0123456789";
+        String string_data = charUpper + num;
+        SecureRandom random = new SecureRandom();
+
+        StringBuilder sb = new StringBuilder(8);
+        for (int i = 0; i < 8; i++) {
+            int rndCharAt = random.nextInt(string_data.length());
+            char rndChar = string_data.charAt(rndCharAt);
+
+            sb.append(rndChar);
+        }
+
+        return sb.toString();
+    }
+
+    private void invalidateExistingTokens(User user) {
+        List<PasswordResetToken> existingTokens = passwordResetTokenRepository.findAllByUserAndTokenValid(user, true);
+        for (PasswordResetToken existingToken : existingTokens) {
+            existingToken.setTokenValid(false);
+            passwordResetTokenRepository.save(existingToken);
+        }
+    }
+
     public void createPasswordResetToken(Long uid) {
         User user = userRepository.findById(uid).orElse(null);
         if (user == null)
             throw new NotFoundException("Unable to find user in database.");
 
-        String token = UUID.randomUUID().toString(); // Work on finding a shorter token to generate.
+        invalidateExistingTokens(user); // Make sure to invalidate any existing (i.e., valid) tokens before creating a new one.
+
+        //String token = UUID.randomUUID().toString(); // Work on finding a shorter token to generate.
+        String token = generateToken();
         PasswordResetToken resetToken = new PasswordResetToken();
-        resetToken.setToken(token); // Make sure to save the token as a hash later for extra security.
+        resetToken.setToken(encryptString(token));
         resetToken.setUser(user);
+        resetToken.setCreationDate(LocalDateTime.now());
         resetToken.setExpirationDate(LocalDateTime.now().plusMinutes(10));
         resetToken.setTokenValid(true);
         passwordResetTokenRepository.save(resetToken);
@@ -231,6 +265,33 @@ public class UserService implements UserServiceInterface {
         System.out.println("Created token!");
 
         emailService.sendPasswordResetEmail(user.getEmail(), token);
+    }
+
+    @Transactional
+    public void validatePasswordResetToken(Long uid, String token) {
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null)
+            throw new NotFoundException("Unable to find user in database.");
+
+        PasswordResetToken resetToken = passwordResetTokenRepository.findByUser(user);
+        if (resetToken == null)
+            throw new NotFoundException("Token does not exist under that user in database.");
+
+        if (!resetToken.isTokenValid())
+            throw new RuntimeException("Token is not valid.");
+
+        if (LocalDateTime.now().isAfter(resetToken.getExpirationDate())) {
+            resetToken.setTokenValid(false);
+            throw new RuntimeException("Token has expired.");
+        }
+
+        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+        if (!bcrypt.matches(token.toUpperCase(), resetToken.getToken())) {
+            throw new BadCredentialsException("Token does not match.");
+        }
+
+        // Token is valid, has not expired, and matches the one in the database, so finally invalidate after use.
+        resetToken.setTokenValid(false);
     }
 
 }
