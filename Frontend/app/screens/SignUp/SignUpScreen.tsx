@@ -154,6 +154,14 @@ function SignUpScreen(props: any) {
         console.log('Response:', response);
         console.log('Response Body:', responseBody);
         isSubmittingRef.current = false
+        
+        if(response.status === 200){
+            if(form.role === "vet"){
+                props.navigation.navigate("VetLogin", {email: form.email})
+            } else {
+                props.navigation.navigate("Login")
+            }
+        }
 
     } catch (error: any) {
         console.error('Error:', error.message);
@@ -241,38 +249,6 @@ function SignUpScreen(props: any) {
                                 return setForm((prevForm: SignUpForm) => ({ ...prevForm, role: item as string }))
                             } } labelField={'label'} valueField={'label'}                                                         />
                             <Text style={styles.errorText}>{errors.role}</Text>
-                            
-
-                        <View style={signUpStyles.switchGroup}>
-                            <Text style={{
-                                fontSize: 15,
-                                fontWeight: "normal",
-                                marginRight: 10,
-                            }}>
-                                Are you a Vet?
-                            </Text>
-                            <Switch
-                                trackColor={{ true: '#53d769' }}
-                                ios_backgroundColor="#8e8e93"
-                                onValueChange={toggleSwitch}
-                                value={isVet}
-                            />
-                        </View>
-
-                        {isVet &&
-                            <>
-                                <Input
-                                    clearButtonMode={"always"} size={"large"}
-                                    value={form.vetLicense} style={styles.fieldText}
-                                    placeholder={"Vet License"}
-                                    onChangeText={(newVetLicense) => {
-                                        setForm((prevForm: SignUpForm) => ({ ...prevForm, vetLicense: newVetLicense }))
-                                    }}
-                                />
-                                <Text style={styles.errorText}>{errors.vetLicense}</Text>
-                            </>
-                        }
-
                     </View>
 
                     <View id={"buttonGroup"} style={styles.buttonGroup}>
@@ -281,7 +257,7 @@ function SignUpScreen(props: any) {
                             <Text style={styles.buttonText}> SIGNUP </Text>
                         </TouchableHighlight>
 
-                        <TouchableHighlight style={{ ...styles.secondaryButton, marginTop: 100}}
+                        <TouchableHighlight style={{ ...styles.secondaryButton, marginTop: 20}}
                             underlayColor={colors.brightRed_underlayColor}
                             onPress={() => props.navigation.navigate("Map")}>
                             <Text style={styles.buttonText}> EMERGENCY </Text>
