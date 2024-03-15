@@ -89,9 +89,42 @@ INSERT INTO screening_questions (question_text) VALUES ("Has your dog developed 
 INSERT INTO screening_questions (question_text) VALUES ("Is there any swelling in the ear flap?"); # ID: 78
 INSERT INTO screening_questions (question_text) VALUES ("Is your dog distressed, disorientated, or in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 79
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog suddenly gone blind?"); # ID: 80
-INSERT INTO screening_questions (question_text) VALUES ("Is the eye sticking out more than usual?"); # ID: 81
+INSERT INTO screening_questions (question_text) VALUES ("Is an eye, or both eyes, sticking out more than usual?"); # ID: 81
 INSERT INTO screening_questions (question_text) VALUES ("Is your dog squinting such that you cannot see the affected eye(s)?"); # ID: 82
-INSERT INTO screening_questions (question_text) VALUES ("Does the eye look red?"); # ID: 83
+INSERT INTO screening_questions (question_text) VALUES ("Does an eye, or both eyes, look red?"); # ID: 83
+INSERT INTO screening_questions (question_text) VALUES ("After looking at the pupils, are they both the same size?"); # ID: 84
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog avoiding light?"); # ID: 85
+INSERT INTO screening_questions (question_text) VALUES ("Is there any discharge from either eye?"); # ID: 86
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog having a fit at the moment?"); # ID: 87
+INSERT INTO screening_questions (question_text) VALUES ("For how long has the fit been occurring?"); # ID: 88
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog alert, moving around, and responding to you normally?"); # ID: 89
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog distressed, disorientated, or in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 90
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog behaving strangely? (e.g., twitching, turning around in circles, or moving as if drunk)"); # ID: 91
+INSERT INTO screening_questions (question_text) VALUES ("After looking at the pupils, are they both the same size?"); # ID: 92
+INSERT INTO screening_questions (question_text) VALUES ("After looking at the eyes again, do the pupils get smaller in the light and larger in the dark? Click 'Yes' if your dog is blind, and your vet already knows this."); # ID: 93
+INSERT INTO screening_questions (question_text) VALUES ("After looking at the eyes again, do they move or twitch abnormally?"); # ID: 94
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been exposed to any poisons? (e.g., slug/snail bait poison)"); # ID: 95
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog distressed, disorientated, or in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 96
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog alert, moving around, and responding to you normally?"); # ID: 97
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been involved in a fall, been hit by a car, or become very hot or very cold?"); # ID: 98
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been coughing, collapsing, or exhibiting less stamina than usual recently?"); # ID: 99
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been drinking more than usual recently?"); # ID: 100
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog eaten anything poisonous? (e.g., slug bait, marijuana, or anti-freeze)"); # ID: 101
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog behaving strangely? (e.g., twitching, turning around in circles, or moving as if drunk)"); # ID: 102
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog's head now tilted to one side?"); # ID: 103
+INSERT INTO screening_questions (question_text) VALUES ("After looking at the pupils, are they both the same size?"); # ID: 104
+INSERT INTO screening_questions (question_text) VALUES ("After looking at the eyes again, do the pupils get smaller in the light and larger in the dark? Click 'Yes' if your dog is blind, and your vet already knows this."); # ID: 105
+INSERT INTO screening_questions (question_text) VALUES ("After looking at the eyes again, do they move or twitch abnormally?"); # ID: 106
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog's abdomen (stomach area) swollen?"); # ID: 107
+INSERT INTO screening_questions (question_text) VALUES ("Pick up the skin of the scruff of your dog's neck and then release it. Does it fall back into place?"); # ID: 108
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in distress or off-color?"); # ID: 109
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog constantly scratching or biting itself?"); # ID: 110
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog causing damage to itself by scratching?"); # ID: 111
+INSERT INTO screening_questions (question_text) VALUES ("Do you see any fleas on your dog?"); # ID: 112
+INSERT INTO screening_questions (question_text) VALUES ("Are there any red areas, scabs, greasy areas, or scurf (dandruff)?"); # ID: 113
+INSERT INTO screening_questions (question_text) VALUES ("Quickly brush your dog's fur, ideally using a flea comb. Gather any debris on a damp piece of white paper. After waiting a few minutes, are there any black particles that release a red pigment?"); # ID: 114
+INSERT INTO screening_questions (question_text) VALUES ("Are there any red areas, scabs, greasy areas, or scurf (dandruff)?"); # ID: 115
+INSERT INTO screening_questions (question_text) VALUES ("Are there any red areas, scabs, greasy areas, or scurf (dandruff)?"); # ID: 116
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -279,7 +312,7 @@ If your dog is not better in 24 hours contact your vet.",
 "Bitches can have other problems when they are in season. If you are at all worried about your bitch contact your vet for advice.
 If the bleeding seems to be getting heavier, contact your vet.",
 "It is normal for bitches to loose a small amount of blood when they are in season.
-Some behaviour changes are also normal and include restlessness, nervousness and increased attractiveness to male dogs.",
+Some behavior changes are also normal and include restlessness, nervousness and increased attractiveness to male dogs.",
 0);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 15
@@ -426,7 +459,7 @@ Always telephone the vets before going to the practice. The vet may need to give
 Take care. When dogs are injured or ill they may accidentally bite or scratch.",
 "Try to keep your dog warm, quiet and calm.
 Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
-"A dog that is bloated and off color could be suffering from life threatening condition such as heart failure, internal bleeding or a tumor. Your dog needs to be checked over by a vet urgently.",
+"A dog that is bloated and off-color could be suffering from life threatening condition such as heart failure, internal bleeding or a tumor. Your dog needs to be checked over by a vet urgently.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 28
@@ -454,7 +487,7 @@ Always telephone the vets before going to the practice. The vet may need to give
 Take care. When dogs are injured or ill they may accidentally bite or scratch.",
 "Try to keep your dog warm, quiet and calm.
 Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
-"A dog that is bloated and off color could be suffering from life threatening condition such as heart failure, internal bleeding or a tumor.
+"A dog that is bloated and off-color could be suffering from life threatening condition such as heart failure, internal bleeding or a tumor.
 A blue tinge to the gums or 'cyanosis' is a sign that your dog is not getting enough oxygen around its body. Your dog needs urgent veterinary treatment.",
 3);
 
@@ -464,7 +497,7 @@ Always telephone the vets before going to the practice. The vet may need to give
 Take care. When dogs are injured or ill they may accidentally bite or scratch.",
 "Try to keep your dog warm, quiet and calm.
 Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
-"A dog that is bloated and off color could be suffering from life threatening condition such as heart failure, internal bleeding or a tumor.
+"A dog that is bloated and off-color could be suffering from life threatening condition such as heart failure, internal bleeding or a tumor.
 Brick red gums are a sign that the circulatory system is not working properly. It can be a very serious sign and your dog needs urgent veterinary attention.",
 3);
 
@@ -497,7 +530,7 @@ Take care. When dogs are injured or ill they may accidentally bite or scratch.",
 "Try to keep your dog warm and calm.
 Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
 If the opportunity arises before you arrive at the vets, collect a urine sample from your dog.",
-"A dog that is bloated and off color could be suffering from life threatening condition such as heart failure, internal bleeding or a tumor.
+"A dog that is bloated and off-color could be suffering from life threatening condition such as heart failure, internal bleeding or a tumor.
 Very pale gums can be a sign of shock, failure of the circulation, or blood loss. These can be life threatening and your dog needs urgent veterinary treatment.",
 3);
 
@@ -508,7 +541,7 @@ Take care. When dogs are injured or ill they may accidentally bite or scratch.",
 "Keep your dog warm.
 Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
 If the opportunity arises before you get to the vets, collect a urine sample from your dog.",
-"A dog that is bloated and off color could be suffering from life threatening condition such as heart failure, liver disease, internal bleeding or a tumor.
+"A dog that is bloated and off-color could be suffering from life threatening condition such as heart failure, liver disease, internal bleeding or a tumor.
 Yellow tinged gums are a sign of jaundice which can be caused by liver or blood problems. These conditions can be life threatening and your dog requires urgent veterinary treatment.",
 3);
 
@@ -533,7 +566,7 @@ Try to keep your dog warm, quiet and calm.
 If your dog is unconscious: 1. Pull the tongue forwards. 2. Straighten the neck. 3. Look for any obstructions in the back of the mouth. Remove them carefully by hand if you can see anything.
 If your dog is still not breathing: Gently close the mouth and breath very gently into the nose approximately every 10 seconds.
 If there is no heart beat: Gently compress the chest 30 times then give two breaths. If possible keep going until you get to the vets.",
-"A dog that is off color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
+"A dog that is off-color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 38
@@ -543,7 +576,7 @@ Take care. When dogs are injured or ill they may accidentally bite or scratch.",
 "Don't use a lead that may tighten around your dogs neck.
 Try to keep your dog warm, quiet and calm.
 Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
-"A dog that is off color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
+"A dog that is off-color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 39
@@ -596,7 +629,7 @@ Take care. When dogs are injured or ill they may accidentally bite or scratch.",
 "Do not use a lead that may tighten around your dogs neck.
 Try to keep your dog warm, quiet and calm.
 Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
-"A dog that is off color and having difficulty breathing may be suffering from a life threatening condition.
+"A dog that is off-color and having difficulty breathing may be suffering from a life threatening condition.
 A blue tinge to the gums, or 'cyanosis,' is a sign that your dog is not getting enough oxygen around its body. Your dog needs urgent veterinary treatment.",
 3);
 
@@ -607,7 +640,7 @@ Take care. When dogs are injured or ill they may accidentally bite or scratch.",
 "Don't use a lead that may tighten around your dogs neck.
 Try to keep your dog warm, quiet and calm.
 Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
-"A dog that is off color and having difficulty breathing may be suffering from a life threatening condition.
+"A dog that is off-color and having difficulty breathing may be suffering from a life threatening condition.
 Brick red gums are a sign that the circulatory system is not working properly. It can also indicate carbon monoxide poisoning, which is often fatal.
 This is often a very serious sign and your dog needs urgent veterinary attention.",
 3);
@@ -620,7 +653,7 @@ Take care. When dogs are injured or ill they may accidentally bite or scratch.",
 Try to keep your dog warm, quiet and calm.
 Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
 "This can be a sign of carbon monoxide poisoning, which is potentially fatal.
-A dog that is off color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
+A dog that is off-color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 45
@@ -641,7 +674,7 @@ Take care. When dogs are injured or ill they may accidentally bite or scratch.",
 "Don't use a lead that may tighten around your dogs neck.
 Try to keep your dog warm, quiet and calm.
 Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
-"A dog that is off color and having difficulty breathing may be suffering from a life threatening condition.
+"A dog that is off-color and having difficulty breathing may be suffering from a life threatening condition.
 Yellow tinged gums are a sign of jaundice which can be caused by liver or blood problems.
 These conditions can be life threatening and your dog requires urgent veterinary treatment.",
 3);
@@ -655,7 +688,7 @@ If any of the symptoms are not listed contact your vet.",
 Don't use a lead that may tighten around your dogs neck.
 Restrict exercise to lead walks to toilet only.",
 "Breathing problems can be caused by heart, lung, blood or throat problems, amongst others. Many of these conditions are potentially very serious and your dog needs to be checked by over by a vet.
-A dog that is off color and having difficulty breathing may be suffering from a serious condition, so if they deteriorate they may need urgent veterinary treatment.",
+A dog that is off-color and having difficulty breathing may be suffering from a serious condition, so if they deteriorate they may need urgent veterinary treatment.",
 2);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 48
@@ -664,7 +697,7 @@ Always telephone the vets before going to the practice. The vet may need to give
 Take care. When dogs are injured or ill they may accidentally bite or scratch.",
 "Try to keep your dog warm, quiet and calm.
 Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.",
-"A dog that is off color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
+"A dog that is off-color and having difficulty breathing may be suffering from a life threatening condition and needs urgent veterinary treatment.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 49
@@ -905,7 +938,7 @@ Do not try to feed your dog until you have checked with your vet practice that i
 Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
 "Diarrhoea may be due to a wide range of conditions, particularly gut infections such as Parvo, Salmonella and Campylobacter, but also occasionally foreign bodies, tumours, or other gut disorders.
 If severe or prolonged, diarrhoea may lead to severe dehydration, salt and acid imbalances, which may become life-threatening.
-Any dog with diarrhoea who is off-colour or has other symptoms needs veterinary attention.",
+Any dog with diarrhoea who is off-color or has other symptoms needs veterinary attention.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 67
@@ -1382,7 +1415,7 @@ Put some socks on your dogs feet to stop any self damage.
 Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
 Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
 "Ear problems can be due to infections, parasites, or foreign bodies such as grass seeds inside the ear.
-In some cases, the inner ear may also be affected, leading to an inner ear infection, which can cause changes in balance, posture, and behaviour.",
+In some cases, the inner ear may also be affected, leading to an inner ear infection, which can cause changes in balance, posture, and behavior.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 107
@@ -1394,7 +1427,7 @@ Put some socks on your dogs feet to stop any self damage.
 Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
 Do not try to feed your dog unless your vet practice tells you it is OK to do so.",
 "Ear problems can be due to infections, parasites, or foreign bodies such as grass seeds inside the ear.
-In some cases, the inner ear may also be affected, leading to an inner ear infection, which can cause changes in balance, posture, and behaviour.",
+In some cases, the inner ear may also be affected, leading to an inner ear infection, which can cause changes in balance, posture, and behavior.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 108
@@ -1418,7 +1451,7 @@ If necessary put some socks on your dogs feet to stop any self damage.
 Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
 Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
 "Ear problems can be due to infections, parasites, or foreign bodies such as grass seeds inside the ear.
-In some cases, the inner ear may also be affected, leading to an inner ear infection, which can cause changes in balance, posture, and behaviour.",
+In some cases, the inner ear may also be affected, leading to an inner ear infection, which can cause changes in balance, posture, and behavior.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 110
@@ -1444,7 +1477,7 @@ Put some socks on your dogs feet to stop any self damage.
 Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
 Stop feeding your dog for 8 hours prior to taking your dogs to the vet, it may be necessary to sedate or anaesthetise your dog, this is safer if your dog has been starved.",
 "Ear problems can be due to infections, parasites, or foreign bodies such as grass seeds inside the ear.
-In some cases, the inner ear may also be affected, leading to an inner ear infection, which can cause changes in balance, posture, and behaviour.",
+In some cases, the inner ear may also be affected, leading to an inner ear infection, which can cause changes in balance, posture, and behavior.",
 1);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 112
@@ -1503,6 +1536,447 @@ Do not try to feed your dog unless your vet practice tells you it is ok to do so
 "Eye problems can be due to damage to the surface, infections, trauma to the eyeball, abnormal pressure in the eye (glaucoma), abscesses behind the eyeball, or penetrating foreign bodies.",
 3);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 117
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not allow your dog to scratch or rub at its eye.
+If necessary put some socks on your dogs feet to stop any self damage.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Eye problems can be due to damage to the surface, infections, trauma to the eyeball, abnormal pressure in the eye (glaucoma), abscesses behind the eyeball, or penetrating foreign bodies.
+Sometimes, damage to parts of the brain or to the nerves of the head can also cause eye problems, and these need urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 118
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not allow your dog to scratch or rub at its eye.
+If necessary put some socks on your dogs feet to stop any self damage.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Eye problems can be due to damage to the surface, infections, trauma to the eyeball, abnormal pressure in the eye (glaucoma), abscesses behind the eyeball, or penetrating foreign bodies.
+Sometimes, damage to parts of the brain or to the nerves of the head can also cause eye problems, and these need urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 119
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Do not allow your dog to scratch or rub at its eye.
+If necessary put some socks on your dog's feet to stop any self damage.",
+"Eye problems can be due to damage to the surface, infections, trauma to the eyeball, abnormal pressure in the eye (glaucoma), abscesses behind the eyeball, or penetrating foreign bodies.
+In this case, an infection of the front of the eye (conjunctivitis) is likely.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 120
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Do not allow your dog to scratch or rub at its eye.
+If necessary put some socks on your dogs feet to stop any self damage.
+Do not try to feed your dog for 8 hours before your appointment in case your dog needs sedation or an anaesthetic.",
+"Eye problems can be due to damage to the surface, infections, trauma to the eyeball, abnormal pressure in the eye (glaucoma), abscesses behind the eyeball, or penetrating foreign bodies.
+Although the eye is non-painful and showing no other signs, eyes are delicate and any problems need to be checked out.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 121
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Take great care. When dogs are fitting or have recently been fitting they may be disorientated. They may accidentally bite or scratch.
+Move away any objects that could injure your dog.
+Keep the lighting dim.",
+"There are a wide range of conditions that can cause fitting, including epilepsy, poisonings, meningitis, strokes and brain injuries.
+Your vet will need to examine your dog and possibly carry out some more tests to determine exactly what the cause is.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 122
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Take great care. When dogs are fitting or have recently been fitting they may be disorientated. They may accidentally bite or scratch.
+Move away any objects that could injure your dog.
+Keep the lighting dim.",
+"There are a wide range of conditions that can cause fitting, including epilepsy, poisonings, meningitis, strokes and brain injuries.
+Whatever the cause, a fit lasting over 5 minutes is a potentially life-threatening condition called status epilepticus, and your dog needs emergency veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 123
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Take great care. When dogs are fitting or have recently been fitting they may be disorientated. They may accidentally bite or scratch.
+Move away any objects that could injure your dog.
+Keep the lighting dim.",
+"There are a wide range of conditions that can cause fitting, including epilepsy, poisonings, meningitis, strokes and brain injuries.
+Whatever the cause, a fit that may have lasted over 5 minutes is a potentially life-threatening condition called status epilepticus, and your dog needs emergency veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 124
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Take great care. When dogs are fitting or have recently been fitting they may be disorientated. They may accidentally bite or scratch.
+Move away any objects that could injure your dog.
+Keep the lighting dim.",
+"There are a wide range of conditions that can cause fitting, including epilepsy, poisonings, meningitis, strokes and brain injuries.
+Whatever the cause, multiple fits without return of normal consciousness in between are a potentially life-threatening condition called status epilepticus, and your dog needs emergency veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 125
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Take great care. When dogs are fitting or have recently been fitting they may be disorientated. They may accidentally bite or scratch.
+Move away any objects that could injure your dog.
+Keep the lighting dim.",
+"There are a wide range of conditions that can cause fitting, including epilepsy, poisonings, meningitis, strokes and brain injuries.
+If your dog is not recovering normally after a fit, they need urgent veterinary assessment to rule out serious underlying diseases.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 126
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Take great care. When dogs are fitting or have recently been fitting they may be disorientated. They may accidentally bite or scratch.
+Move away any objects that could injure your dog.
+Keep the lighting dim.",
+"There are a wide range of conditions that can cause fitting, including epilepsy, poisonings, meningitis, strokes and brain injuries.
+If your dog is in pain or distress, then whatever the cause, they need urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 127
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Take great care. When dogs are fitting or have recently been fitting they may be disorientated. They may accidentally bite or scratch.
+Move away any objects that could injure your dog.
+Keep the lighting dim.",
+"There are a wide range of conditions that can cause fitting, including epilepsy, poisonings, meningitis, strokes, and brain injuries.
+If your dog is not recovering normally after a fit, it needs urgent veterinary assessment to rule out serious underlying diseases.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 128
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Take great care. When dogs are fitting or have recently been fitting they may be disorientated. They may accidentally bite or scratch.
+Move away any objects that could injure your dog.
+Keep the lighting dim.",
+"There are a wide range of conditions that can cause fitting, including epilepsy, poisonings, meningitis, strokes, and brain injuries.
+Unequal pupils suggest a malfunction in the parts of the brain that control the eyes, which needs urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 129
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Take great care. When dogs are fitting or have recently been fitting they may be disorientated. They may accidentally bite or scratch.
+Move away any objects that could injure your dog.
+Keep the lighting dim.",
+"There are a wide range of conditions that can cause fitting, including epilepsy, poisonings, meningitis, strokes, and brain injuries.
+If the eyes are not responding normally to light, this may suggest blindness, or a malfunction of the parts of the brain controlling the pupils. This requires immediate veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 130
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Take great care. When dogs are fitting or have recently been fitting they may be disorientated. They may accidentally bite or scratch.
+Move away any objects that could injure your dog.
+Keep the lighting dim.",
+"There are a wide range of conditions that can cause fitting, including epilepsy, poisonings, meningitis, strokes and brain injuries.
+This movement of the eyes may suggest that your dog is still fitting, or that the parts of the brain controlling eye movement are malfunctioning, in which case they need urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 131
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Take great care. When dogs are fitting they do not know where they are or what is happening. They may accidentally bite or scratch.
+Keep the lighting dim.
+Do not try to feed your dog.
+Try to keep your dog warm, quiet and calm.
+If it is possible to do so safely have a look at your dog's gums. Note the color and tell your vet when you arrive.
+If possible take details of the poison to the vets.",
+"A wide range of toxins are capable of causing fits in dogs, including theobromine (chocolate), metaldehyde (slug/snail bait), cannabis, and many more.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 132
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep in a quiet darkened room for a few hours.
+Withhold food and water for an hour then offer little and often.
+Make a note of some details of what happened, it may help your vet to reach a diagnosis.
+Keep your dog warm, quiet and calm.
+Restrict exercise. Give lead walks to the toilet only.",
+"There are a wide range of conditions that can cause fitting, including epilepsy, poisonings, meningitis, strokes and brain injuries.
+Your vet will need to examine your dog and possibly carry out some more tests to determine the exact cause.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 133
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is OK to do so.
+If it is possible to do so safely have a look at your dog's gums. Note the color and tell your vet when you arrive at the surgery.",
+"There are a wide range of medical conditions that can cause a \"funny turn\"; many of these are diseases or malfunctions of the brain and inner ear, but diseases of almost any body system can cause them as well.
+Any abnormalities in your dog's behavior in association with pain or distress require urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 134
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is okay to do so.
+If it is possible to do so safely, have a look at your dog's gums. Note the color and tell your vet when you arrive at the surgery.",
+"There are a wide range of medical conditions that can cause a \"funny turn\"; many of these are diseases or malfunctions of the brain and inner ear.
+Any abnormalities in your dog's responsiveness suggest a problem with your dog's brain, requiring urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 135
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is okay to do so.
+If it is possible to do so safely, have a look at your dog's gums. Note the color and tell your vet when you arrive at the surgery.",
+"Internal bleeding, hyperthermia (overheating) and hypothermia (being too cold) can all lead to a wide range of symptoms and secondary problems.
+These all require urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 136
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is okay to do so.
+If it is possible to do so safely, have a look at your dog's gums. Note the color and tell your vet when you arrive at the surgery.",
+"There are a wide range of medical conditions that can cause a \"funny turn\"; many of these are diseases or malfunctions of the brain and inner ear, but diseases of almost any body system can cause them as well.
+A dog experiencing coughing, collapsing, or reduced stamina could be showing signs of serious health issues ranging from cardiac conditions to neurological disorders.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 137
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is okay to do so.
+If it is possible to do so safely, have a look at your dog's gums. Note the color and tell your vet when you arrive at the surgery.",
+"There are a wide range of medical conditions that can cause a \"funny turn\"; many of these are diseases or malfunctions of the brain and inner ear, but diseases of almost any body system can cause them as well.
+Dehydration can be a problem in itself, but increased thirst may also indicate a hormonal problem, salt poisoning, or a pyometra (womb infection), among other problems, all of which require immediate veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 138
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is okay to do so.
+Make a note of what they may have eaten so your vet knows what to expect.",
+"There are a wide range of toxins that can cause a \"funny turn\"; many of these affect the brain either directly (e.g., cannabis, salt, chocolate or antifreeze) or indirectly (e.g., xylitol).
+Even if your dog seems well now, the earlier they receive treatment the better the outcome is likely to be.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 139
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is Okay to do so.
+If it is possible to do so safely, have a look at your dog's gums. Note the color and tell your vet when you arrive at the surgery.",
+"There are a wide range of medical conditions that can cause a \"funny turn\"; many of these are diseases or malfunctions of the brain and inner ear, but diseases of almost any body system can cause them as well.
+Any abnormalities in your dog's balance or behavior suggest a problem with its brain, requiring urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 140
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is okay to do so.
+If it is possible to do so safely, have a look at your dog's gums. Note the color and tell your vet when you arrive at the surgery.",
+"There are a wide range of medical conditions that can cause a \"funny turn\"; many of these are diseases or malfunctions of the brain and inner ear.
+Any abnormalities in your dog's responsiveness suggest a problem with your dog's brain (e.g., a stroke) or ears (e.g., vestibular syndrome or an inner ear infection), requiring urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 141
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is OK to do so.
+If it is possible to do so safely, have a look at your dog's gums. Note the color and tell your vet when you arrive at the surgery.",
+"There are a wide range of medical conditions that can cause a \"funny turn\"; many of these are diseases or malfunctions of the brain and inner ear.
+Any abnormalities in your dog's eye reflexes suggest a problem with your dog's brain, requiring urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 142
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is okay to do so.
+If it is possible to do so safely, have a look at your dog's gums. Note the color and tell your vet when you arrive at the surgery.",
+"There are a wide range of medical conditions that can cause a \"funny turn\"; many of these are diseases or malfunctions of the brain and inner ear.
+Any abnormalities in your dog's vision suggest a problem with your dog's eyes or brain, requiring urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 143
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is okay to do so.
+If it is possible to do so safely have a look at your dog's gums. Note the color and tell your vet when you arrive at the surgery.",
+"There are a wide range of medical conditions that can cause a \"funny turn\"; many of these are diseases or malfunctions of the brain and inner ear, but diseases of almost any body system can cause them as well.
+Any abnormalities in your dog's nervous system like this suggest a problem with their brain, requiring urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 144
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is okay to do so.
+If it is possible to do so safely, have a look at your dog's gums. Note the color and tell your vet when you arrive at the surgery.",
+"This could be a sign of a torsion (gastric dilation and volvulus), which is a potentially life-threatening emergency. Your dog needs immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 145
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is okay to do so.
+If it is possible to do so safely, have a look at your dog's gums. Note the color and tell your vet when you talk to the surgery.",
+"There are a wide range of medical conditions that can cause a \"funny turn\"; many of these are diseases or malfunctions of the brain and inner ear, but diseases of almost any body system can cause them as well.
+Your dog needs to be checked out by a vet to determine the exact cause.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 146
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is okay to do so.
+If it is possible to do so safely, have a look at your dog's gums. Note the color and tell your vet when you arrive at the surgery.",
+"There are a wide range of medical conditions that can cause a \"funny turn\"; many of these are diseases or malfunctions of the brain and inner ear, but diseases of almost any body system can cause them as well.
+Failure of the \"pinch test\" suggests that your dog might be seriously dehydrated, and thus in need of immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 147
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and biting itself.
+Put some socks on your dog's feet or put a t-shirt on your dog to stop any self damage while you call your vet.",
+"Itchiness can be due to a wide range of possible causes, including parasites, allergies, and skin infections.
+Whatever the cause, if your dog is in distress or seems unwell, then it needs rapid veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 148
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and biting itself.
+Put some socks on your dog's feet or put a t-shirt on your dog to stop any self damage while you call your vet.",
+"Itchiness can be due to a wide range of possible causes, including parasites, allergies, and skin infections.
+Your vet may need to examine your dog and may need to carry out extra tests to determine the cause and the best treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 149
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and biting itself.
+Put some socks on your dog's feet or put a t-shirt on your dog to stop any self damage while you call your vet.",
+"Itchiness can be due to a wide range of possible causes, including parasites, allergies, and skin infections.
+Your vet may need to examine your dog and may need to carry out extra tests to determine the cause and the best treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 150
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to distract your dog from scratching and biting itself.
+Put some socks on your dog's feet or put a t-shirt on your dog to stop any self damage.
+If you can not stop your dog from scratching contact your vet.",
+"It is likely that your dog has fleas.
+Ask your vet for advice before treating for fleas, as the other skin symptoms suggest that there may be other problems (e.g., mites, allergies, or infection) as well.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 151
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Try to distract your dog from scratching and biting itself.
+Put some socks on your dog's feet or put a t-shirt on your dog to stop any self damage.
+If you can not stop your dog from scratching or biting, contact your vet.",
+"It is likely that your dog has fleas.
+You need to contact your vet to obtain products with which you can treat your pet, and your vet will give you advice on how to use these products.
+If the problem does not resolve after treatment, contact your vet for more advice.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 152
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to distract your dog from scratching and biting itself.
+Put some socks on your dog's feet or put a t-shirt on your dog to stop any self damage.
+If you can not stop your dog from scratching contact your vet.",
+"It is likely that your dog has fleas.
+Ask your vet for advice before treating for fleas in this instance, as the other skin signs might suggest that there are other problems (e.g., mites, allergies, or infection) as well.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 153
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Try to distract your dog from scratching and biting itself.
+Put some socks on your dog's feet or put a t-shirt on your dog to stop any self damage.
+If you can not stop your dog from scratching contact your vet.",
+"It is likely that your dog has fleas.
+You need to contact your vet to obtain products to treat your pet with. They will give you advice on how to use these products.
+If the problem does not resolve, contact your vet for further advice.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 154
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to distract your dog from scratching and biting itself.
+Put some socks on your dog's feet or put a t-shirt on your dog to stop any self damage.
+If you can not stop your dog from scratching contact your vet.",
+"Itchiness can be due to a wide range of possible causes, including parasites, allergies, and skin infections.
+Your vet will need to examine your dog and may need to carry out extra tests to determine the cause and the best treatment.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 155
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Try to distract your dog from scratching and biting itself.
+Put some socks on your dog's feet or put a t-shirt on your dog to stop any self damage.
+If you can not stop your dog from scratching contact your vet.",
+"Itchiness can be due to a wide range of possible causes, including parasites, allergies, and skin infections.
+Your vet will need to examine your dog and may need to carry out extra tests to determine the cause and the best treatment.",
+1);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
@@ -1515,16 +1989,16 @@ INSERT INTO screening_options (question_id, is_terminating, option_text, result_
  (1, FALSE, "Drinking more than usual", NULL, 56),
  (1, FALSE, "Drooing or dribbling", NULL, 61),
  (1, FALSE, "Ear problems", NULL, 74), 
- (1, FALSE, "Eye problems", NULL, 79), # NEXT SET TO COMPLETE!
- (1, FALSE, "Fits", NULL, NULL),
- (1, FALSE, "Funny turn", NULL, NULL),
- (1, FALSE, "Itching", NULL, NULL),
+ (1, FALSE, "Eye problems", NULL, 79),
+ (1, FALSE, "Fits", NULL, 87),
+ (1, FALSE, "Funny turn", NULL, 96),
+ (1, FALSE, "Itching", NULL, 109),
  (1, FALSE, "Lameness or limping", NULL, NULL),
  (1, FALSE, "Lump or swelling", NULL, NULL),
  (1, FALSE, "Moulting", NULL, NULL),
  (1, FALSE, "Nail problems", NULL, NULL),
  (1, FALSE, "Not eating", NULL, NULL),
- (1, FALSE, "Off color", NULL, NULL),
+ (1, FALSE, "Off-color", NULL, NULL),
  (1, FALSE, "Poison exposure", NULL, NULL),
  (1, FALSE, "Problems after surgery", NULL, NULL),
  (1, FALSE, "Smelly", NULL, NULL),
@@ -1887,4 +2361,138 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (83, TRUE, "Yes", 116, NULL),
-(83, FALSE, "No", NULL, NULL); # DO NEXT QUESTION!
+(83, FALSE, "No", NULL, 84);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(84, FALSE, "Yes", NULL, 85),
+(84, TRUE, "No", 117, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(85, TRUE, "Yes", 118, NULL),
+(85, FALSE, "No", NULL, 86);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(86, TRUE, "Yes", 119, NULL),
+(86, TRUE, "No", 120, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(87, FALSE, "Yes", NULL, 88),
+(87, FALSE, "No", NULL, 89);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(88, TRUE, "Less than 5 minutes", 121, NULL),
+(88, TRUE, "More than 5 minutes", 122, NULL),
+(88, TRUE, "Don't know", 123, NULL),
+(88, TRUE, "Several fits without returning to normal in between", 124, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(89, FALSE, "Yes", NULL, 90),
+(89, TRUE, "No", 125, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(90, TRUE, "Yes", 126, NULL),
+(90, FALSE, "No", NULL, 91);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(91, TRUE, "Yes", 127, NULL),
+(91, FALSE, "No", NULL, 92);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(92, FALSE, "Yes", NULL, 93),
+(92, TRUE, "No", 128, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(93, FALSE, "Yes", NULL, 94),
+(93, TRUE, "No", 129, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(94, TRUE, "Yes", 130, NULL),
+(94, FALSE, "No", NULL, 95);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(95, TRUE, "Yes", 131, NULL),
+(95, TRUE, "No", 132, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(96, TRUE, "Yes", 133, NULL),
+(96, FALSE, "No", NULL, 97);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(97, FALSE, "Yes", NULL, 98),
+(97, TRUE, "No", 134, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(98, TRUE, "Yes", 135, NULL),
+(98, FALSE, "No", NULL, 99);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(99, TRUE, "Yes", 136, NULL),
+(99, FALSE, "No", NULL, 100);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(100, TRUE, "Yes", 137, NULL),
+(100, FALSE, "No", NULL, 101);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(101, TRUE, "Yes", 138, NULL),
+(101, FALSE, "No", NULL, 102);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(102, TRUE, "Yes", 139, NULL),
+(102, FALSE, "No", NULL, 103);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(103, TRUE, "Yes", 140, NULL),
+(103, FALSE, "No", NULL, 104);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(104, FALSE, "Yes", NULL, 105),
+(104, TRUE, "No", 141, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(105, FALSE, "Yes", NULL, 106),
+(105, TRUE, "No", 142, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(106, TRUE, "Yes", 143, NULL),
+(106, FALSE, "No", NULL, 107);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(107, TRUE, "Yes", 144, NULL),
+(107, FALSE, "No", NULL, 108);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(108, TRUE, "Yes", 145, NULL),
+(108, TRUE, "No", 146, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(109, TRUE, "Yes", 147, NULL),
+(109, FALSE, "No", NULL, 110);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(110, TRUE, "Yes", 148, NULL),
+(110, FALSE, "No", NULL, 111);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(111, TRUE, "Yes", 149, NULL),
+(111, FALSE, "No", NULL, 112);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(112, FALSE, "Yes", NULL, 113),
+(112, FALSE, "No", NULL, 114);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(113, TRUE, "Yes", 150, NULL),
+(113, TRUE, "No", 151, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(114, FALSE, "Yes", NULL, 115),
+(114, FALSE, "No", NULL, 116);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(115, TRUE, "Yes", 152, NULL),
+(115, TRUE, "No", 153, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(116, TRUE, "Yes", 154, NULL),
+(116, TRUE, "No", 155, NULL);
