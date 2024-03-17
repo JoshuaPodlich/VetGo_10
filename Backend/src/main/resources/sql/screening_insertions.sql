@@ -125,6 +125,35 @@ INSERT INTO screening_questions (question_text) VALUES ("Are there any red areas
 INSERT INTO screening_questions (question_text) VALUES ("Quickly brush your dog's fur, ideally using a flea comb. Gather any debris on a damp piece of white paper. After waiting a few minutes, are there any black particles that release a red pigment?"); # ID: 114
 INSERT INTO screening_questions (question_text) VALUES ("Are there any red areas, scabs, greasy areas, or scurf (dandruff)?"); # ID: 115
 INSERT INTO screening_questions (question_text) VALUES ("Are there any red areas, scabs, greasy areas, or scurf (dandruff)?"); # ID: 116
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been involved in a car accident, fall, or any other serious accident?"); # ID: 117
+INSERT INTO screening_questions (question_text) VALUES ("Can your dog stand up and move around?"); # ID: 118
+INSERT INTO screening_questions (question_text) VALUES ("Does the dog's leg appear to be at an unusual angle?"); # ID: 119
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been lame (i.e., limping or having difficulty walking) for more than half an hour?"); # ID: 120
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog upset or in pain?"); # ID: 121
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog putting any weight on the leg?"); # ID: 122
+INSERT INTO screening_questions (question_text) VALUES ("Monitor your dog closely for half an hour. Has anything changed?"); # ID: 123
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog upset or in pain?"); # ID: 124
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog putting any weight on the leg?"); # ID: 125
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog depressed, flat, or in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual?"); # ID: 126
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, moving around, and responding to you normally?"); # ID: 127
+INSERT INTO screening_questions (question_text) VALUES ("Does the swelling or lump cause your dog pain when touched?"); # ID: 128
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been involved in a fall or been hit by a car?"); # ID: 129
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have been bitten by a snake?"); # ID: 130
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been stung by a bee or wasp?"); # ID: 131
+INSERT INTO screening_questions (question_text) VALUES ("Where is the lump or swelling?"); # ID: 132
+INSERT INTO screening_questions (question_text) VALUES ("Is the lump or swelling in any of the following places: midline of the stomach, over the site of an old injury, in the area under the tail, or the groin area?"); # ID: 133
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog vomited or been off-color since the swelling appeared?"); # ID: 134
+INSERT INTO screening_questions (question_text) VALUES ("In relation to the anus, where is the lump or swelling?"); # ID: 135
+INSERT INTO screening_questions (question_text) VALUES ("In relation to the head or neck, where is the lump or swelling?"); # ID: 136
+INSERT INTO screening_questions (question_text) VALUES ("Is the area hot, inflamed, or sore?"); # ID: 137
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog pregnant?"); # ID: 138
+INSERT INTO screening_questions (question_text) VALUES ("Is the swelling on the mammary gland smooth and even, or is it lumpy?"); # ID: 139
+INSERT INTO screening_questions (question_text) VALUES ("Has the swelling been present for longer than 30 minutes?"); # ID: 140
+INSERT INTO screening_questions (question_text) VALUES ("Is the penis dry or bleeding?"); # ID: 141
+INSERT INTO screening_questions (question_text) VALUES ("Monitor closely for 15 more minutes. Is the penis still swollen?"); # ID: 142
+INSERT INTO screening_questions (question_text) VALUES ("In relation to the vulva, where is the swelling?"); # ID: 143
+INSERT INTO screening_questions (question_text) VALUES ("Is the swelling on the vulva even, or is there a lump?"); # ID: 144
+INSERT INTO screening_questions (question_text) VALUES ("Is your female dog in season or pregnant?"); # ID: 145
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -309,9 +338,9 @@ INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priori
 If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
 If any of the symptoms are not listed contact your vet.
 If your dog is not better in 24 hours contact your vet.",
-"Bitches can have other problems when they are in season. If you are at all worried about your bitch contact your vet for advice.
+"Female dogs can have other problems when they are in season. If you are at all worried about your female dog, contact your vet for advice.
 If the bleeding seems to be getting heavier, contact your vet.",
-"It is normal for bitches to loose a small amount of blood when they are in season.
+"It is normal for female dogs to loose a small amount of blood when they are in season.
 Some behavior changes are also normal and include restlessness, nervousness and increased attractiveness to male dogs.",
 0);
 
@@ -428,10 +457,10 @@ INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priori
 If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
 If any of the symptoms are not listed contact your vet.
 If your dog is not better in 24 hours contact your vet.",
-"Inform your vet practice that your bitch is pregnant, they will be able to give you important advice about worming, diet and care and may want to check her over.",
+"Inform your vet practice that your female dog is pregnant, they will be able to give you important advice about worming, diet and care and may want to check her over.",
 "It is normal for the abdomen to be distended during pregnancy, and this on its own is not usually a cause for concern.
 If the distension has increased dramatically in a short space of time it could suggest a serious condition such a a twisted stomach or internal bleeding - in this case contact your vet immediately.
-If you have any other concerns about your bitch or if your bitch has any other symptoms contact your vet.",
+If you have any other concerns about your female dog, or if your femael dog has any other symptoms, contact your vet.",
 1);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 25
@@ -1977,6 +2006,500 @@ If you can not stop your dog from scratching contact your vet.",
 Your vet will need to examine your dog and may need to carry out extra tests to determine the cause and the best treatment.",
 1);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 156
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to prevent movement of your dog as much as possible.
+You can try to hold an ice pack in a towel gently on to the affected area to ease the pain and reduce the swelling.
+Do not feed your dog. Anaesthetic or sedation may be required, these procedures are safer if your dog has not been fed.
+Try to keep your dog warm, quiet and calm.",
+"Lameness can be caused by bone, muscle, tendon, ligament, nerve, or brain damage, as well as skin and pad lesions, and in some cases it can be hard to tell what the cause is.
+Your vet will probably need to examine your dog and may need to carry out further tests such as X-rays to determine the cause and the best treatment options.
+Following a serious accident there may be even more serious internal injuries, so get your dog seen by a vet as soon as possible.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 157
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Lameness can be caused by bone, muscle, tendon, ligament, nerve, or brain damage, as well as skin and pad lesions, and in some cases it can be hard to tell what the cause is.
+Your vet will probably need to examine your dog and may need to carry out further tests such as X-rays to determine the cause and the best treatment option.
+A dog who cannot move freely needs immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 158
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to prevent movement of your dog as much as possible.
+You can try to hold an ice pack in a towel gently on to the affected area to ease the pain and reduce the swelling.
+Do not feed your dog. Anaesthetic or sedation may be required, these procedures are safer if your dog has not been fed.
+Try to keep your dog warm, quiet and calm.",
+"Abnormal angles in the leg suggest a serious problem, probably a fractured bone.
+This requires urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 159
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to prevent movement of your dog as much as possible.
+You can try to hold an ice pack in a towel gently on to the affected area to ease the pain and reduce the swelling.
+Do not feed your dog. Anaesthetic or sedation may be required, these procedures are safer if your dog has not been fed.
+Try to keep your dog warm, quiet and calm.",
+"Lameness can be caused by bone, muscle, tendon, ligament, nerve or brain damage, as well as skin and pad lesions, and in some cases it can be hard to tell what the cause is.
+Your vet will probably need to examine your dog and may need to carry out further tests such as X-rays to determine the cause and the best treatment options.
+Significant or severe pain suggests a more serious problem, such as a fracture or ligament rupture, requiring immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 160
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only
+Do not feed your dog for 8 hours before the appointment until you have asked your vet practice if it is ok to do so. Make sure water is available at all times",
+"Lameness can be caused by bone, muscle, tendon, ligament, nerve or brain damage, as well as skin and pad lesions, and in some cases it can be hard to tell what the cause is.
+Your vet will probably need to examine your dog and may need to carry out further tests such as X-rays to determine the cause and the best treatment options.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 161
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to prevent movement of your dog as much as possible.
+You can try to hold an ice pack in a towel gently on to the affected area to ease the pain and reduce the swelling.
+Do not feed your dog. Anaesthetic or sedation may be required, these procedures are safer if your dog has not been fed.
+Try to keep your dog warm, quiet and calm.",
+"Lameness can be caused by bone, muscle, tendon, ligament, nerve or brain damage, as well as skin and pad lesions, and in some cases it can be hard to tell what the cause is.
+Your vet will probably need to examine your dog and may need to carry out further tests such as X-rays to determine the cause and the best treatment options.
+Being unable to weight bear suggests a more serious problem, such as a fracture, requiring urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 162
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Keep a close eye on your dog for the next few days but with luck there should be no further problems.
+There is no need to take your dog to the vets at the moment.
+Keep your dog rested for 24 hours.",
+"Keep a close eye on your dog for the next few days but with luck there should be no further problems.
+There is no need to take your dog to the vets at the moment.
+Keep your dog rested for 24 hours.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 163
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to prevent movement of your dog as much as possible.
+You can try to hold an ice pack in a towel gently on to the affected area to ease the pain and reduce the swelling.
+Do not feed your dog. Anaesthetic or sedation may be required, these procedures are safer if your dog has not been fed.
+Try to keep your dog warm, quiet and calm.",
+"Lameness can be caused by bone, muscle, tendon, ligament, nerve or brain damage, as well as skin and pad lesions, and in some cases it can be hard to tell what the cause is.
+Your vet will probably need to examine your dog and may need to carry out further tests such as X-rays to determine the cause and the best treatment options.
+Significant or severe pain suggests a more serious problem, such as a fracture or ligament rupture, requiring immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 164
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to prevent movement of your dog as much as possible.
+You can try to hold an ice pack in a towel gently on to the affected area to ease the pain and reduce the swelling.
+Do not feed your dog. Anaesthetic or sedation may be required, these procedures are safer if your dog has not been fed.
+Try to keep your dog warm, quiet and calm.",
+"Lameness can be caused by bone, muscle, tendon, ligament, nerve or brain damage, as well as skin and pad lesions, and in some cases it can be hard to tell what the cause is.
+Your vet will probably need to examine your dog and may need to carry out further tests such as X-rays to determine the cause and the best treatment options.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 165
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to prevent movement of your dog as much as possible.
+You can try to hold an ice pack in a towel gently on to the affected area to ease the pain and reduce the swelling.
+Do not feed your dog. Anaesthetic or sedation may be required, these procedures are safer if your dog has not been fed.
+Try to keep your dog warm, quiet and calm.",
+"Lameness can be caused by bone, muscle, tendon, ligament, nerve or brain damage, as well as skin and pad lesions, and in some cases it can be hard to tell what the cause is.
+Your vet will probably need to examine your dog and may need to carry out further tests such as X-rays to determine the cause and the best treatment options.
+Inability to weight bear suggests a serious issue like a fracture, and requires urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 166
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, fractures, hernias, abscesses, and of course tumours.
+Your vet may need to examine your dog carefully to determine the exact cause.
+However, if your dog is distressed or in pain, this requires urgent attention, whatever the cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 167
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, fractures, hernias, abscesses, and of course tumours.
+Your vet may need to examine your dog carefully to determine the exact cause.
+A swelling along with your dog being off colour or ill in themself, however, suggests a potentially more serious cause requiring immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 168
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, fractures, hernias, abscesses, and of course tumours.
+Your vet may need to examine your dog carefully to determine the exact cause.
+A hot or painful swelling typically suggests an infection or abscess, so seek veterinary attention at this point.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 169
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Lumps and swellings have a wide range of causes, including bruises or strains and fractured.
+There may also be more serious internal injuries, so seek immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 170
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Snake bites, particularly from rattlesnakes, are not uncommon in the U.S., and lead to severe local swelling.
+In more severe cases, however, death of tissue, kidney failure, and even suffocation (if the bite is near the nose or neck) can occur, so seek urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 171
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Dogs will usually recover from stings without any treatment but sometimes they can have allergic reactions.
+If you can see the sting pull it out whole.
+Keep a close eye on your dog if shows any signs of having distress or difficulty breathing contact your vet immediately.
+If your dog has had an allergic reaction to a sting in the past contact your vet immediately.
+If the swelling is excessive contact your vet immediately.",
+"Insect stings and bites frequently result in mild/moderate local swelling.
+As long as your dog is not distressed, and the swelling does not impede breathing, it is likely to resolve on its own in 12-24 hours.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 172
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump or run.
+Do not feed your dog for 8 hours before the appointment until your vet practice has told you it is ok to do so. Make sure water is available at all times
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, fractures, abscesses, hernias, and of course tumours.
+Your vet may need to examine your dog carefully to determine the exact cause.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 173
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"It is possible that the lump is a hernia; while these can be harmless, in some cases, internal organs can become trapped, causing serious illness.
+As the other symptoms suggest that this might be happening now, seek urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 174
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump or run.
+Do not feed your dog for 8 hours before the appointment until your vet practice has told you it is ok to do so. Make sure water is available at all times
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, fractures, abscesses, and of course tumours.
+Your vet may need to examine your dog carefully to determine the exact cause.
+In this case, it is possible that the lump is a hernia; while these can be harmless, in some cases, internal organs can become trapped, causing serious illness if not treated appropriately. While this has not yet happened, keep a close eye on your dog for signs of any problems, such as pain or vomiting.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 175
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"This may be a rectal prolapse, which requires urgent veterinary attention to repair. Immediately contact your vet for advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 176
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, hernias, abscesses, and of course tumours.
+Your vet may need to examine your dog carefully to determine the exact cause.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 177
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump or run.
+Do not feed your dog for 8 hours before the appointment until your vet practice has told you it is ok to do so. Make sure water is available at all times
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, fractures, hernias, abscesses, swollen lymph glands due to infection, and of course tumours.
+Your vet may need to examine your dog carefully to determine the exact cause.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 178
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump or run.
+Do not feed your dog for 8 hours before the appointment until your vet practice has told you it is ok to do so. Make sure water is available at all times
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, fractures, hernias, abscesses, and of course tumours.
+Swellings of the ear are most commonly due to a \"blood blister\" inside the ear flap, often due to an ear disease.
+Your vet may need to examine your dog carefully to determine the exact cause.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 179
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Swellings on or around the eye may indicate infection, injury, or even tumours, of the eye or eyelid.
+Eyes are delicate, so seek immediate veterinary assistance.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 180
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, fractures, hernias, abscesses, and of course tumours.
+Your vet may need to examine your dog carefully to determine the exact cause.
+Any swelling around the head or neck is potentially dangerous as it can obstruct the airway, so seek veterinary advice immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 181
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Hot, swollen and/or sore mammary glands suggest mastitis, an infection. This needs immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 182
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump or run.
+Do not feed your dog for 8 hours before the appointment until your vet practice has told you it is ok to do so. Make sure water is available at all times
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Mammary lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, mastitis, and of course tumours.
+Your vet will need to examine your dog carefully to determine the exact cause.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 183
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"If you have any other concerns about your female dog contact your vet.
+Inform your vet practice that your female dog is pregnant, they will be able to give you important advice and may want to check her over.",
+"It is normal for the mammary gland to be swollen during pregnancy.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 184
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump or run.
+Do not feed your dog for 8 hours before the appointment until your vet practice has told you it is okay to do so. Make sure water is available at all times.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"While it is normal for the mammary glands to be enlarged in pregnancy, especially late pregnancy, lumpy swelling may indicate early mastitis, or even a mammary tumour, so it is best to get it checked out by your vet.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 185
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump or run.
+Do not feed your dog for 8 hours before the appointment or until your vet practice has told you it is okay to do so.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, fractures, hernias, abscesses, and of course tumours.
+Your vet may need to examine your dog carefully to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 186
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at the area.
+If possible, strap the penis to the stomach using a clean, damp sheet.",
+"The normal erections that healthy male dogs (entire or neutered) do not usually last this long.
+Other possible causes include priaprism or paraphimosis, where the penis becomes trapped outside the body. Without treatment this can lead to severe tissue damage, so seek urgent veterinary assistance.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 187
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at the area.
+If possible, strap the penis to the stomach using a clean, damp sheet.",
+"Damage to the mucosa (i.e., the red skin on the outside) of the penis can cause bleeding, and is commonly due to infection, trauma, or the penis becoming trapped outside the body (i.e., paraphimosis or priaprism). It may also be due to a type of tumour called a \"transmissible venereal tumour\".
+If untreated, these conditions can all lead to serious tissue damage, so urgent veterinary attention is required.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 188
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at the area.
+If possible, strap the penis to the stomach using a clean, damp sheet.",
+"Normal erections would be expected to subside by now; however, some conditions, such as paraphimosis or priaprism, may lead to abnormally prolonged erections that can cause severe tissue damage without treatment, so immediately contact your vet for advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 189
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Continue to monitor over the next few days. There is no need to take your dog to the vets if this doesn't happen again.",
+"Male dogs, even if neutered, do become excited sometimes and develop erections. It is normally nothing to worry about in terms of their health.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 190
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, fractures, hernias, abscesses, and of course tumours.
+Your vet may need to examine your dog carefully to determine the exact cause.
+Lumps in multiple sites suggest a more serious or generalized condition, so seek immediate veterinary advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 191
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"This may be a vaginal prolapse; if so, your female dog will need urgent veterinary treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 192
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet and calm.
+Do not feed your dog for 8h before the appointment until you have checked with your vet practice that it is ok to do so.
+Restrict exercise, lead walk to the toilet only.
+Do not allow your dog to lick at or scratch the lump or swelling.
+If you can not stop your dog from licking or scratching at the lump or swelling contact your vet for advice.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, hernias, abscesses, and of course tumours.
+Your vet may need to examine your dog carefully to determine the exact cause.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 193
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"If the swelling has not reduced in few weeks, contact your vet for further advice.
+If the skin becomes sore contact your vet for advice.",
+"This is a normal finding and a good way of telling if your female dog is in season.
+If you notice any other symptoms that you do not expect, contact your vet for advice.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 194
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet and calm.
+Do not feed your dog for 8h before the appointment unless you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run.
+Do not allow your dog to lick at or scratch the lump or swelling.",
+"Lumps and swellings have a wide range of causes, including insects stings or bites, bruises or strains, hernias, abscesses, and of course tumours.
+Your vet may need to examine your dog carefully to determine the exact cause.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 195
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump or run.
+Do not feed your dog for 8 hours before the appointment until your vet practice has told you it is ok to do so.",
+"Swelling of the abdomen or stomach may be a sign of a torsion (gastric dilation and volvulus); this is a life threatening condition that needs emergency treatment, so seek urgent veterinary assistance.",
+3);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
@@ -1993,8 +2516,8 @@ INSERT INTO screening_options (question_id, is_terminating, option_text, result_
  (1, FALSE, "Fits", NULL, 87),
  (1, FALSE, "Funny turn", NULL, 96),
  (1, FALSE, "Itching", NULL, 109),
- (1, FALSE, "Lameness or limping", NULL, NULL),
- (1, FALSE, "Lump or swelling", NULL, NULL),
+ (1, FALSE, "Lameness or limping", NULL, 117),
+ (1, FALSE, "Lump or swelling", NULL, 126),
  (1, FALSE, "Moulting", NULL, NULL),
  (1, FALSE, "Nail problems", NULL, NULL),
  (1, FALSE, "Not eating", NULL, NULL),
@@ -2496,3 +3019,128 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (116, TRUE, "Yes", 154, NULL),
 (116, TRUE, "No", 155, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(117, TRUE, "Yes", 156, NULL),
+(117, FALSE, "No", NULL, 118);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(118, FALSE, "Yes", NULL, 119),
+(118, TRUE, "No", 157, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(119, TRUE, "Yes", 158, NULL),
+(119, FALSE, "No", NULL, 120);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(120, FALSE, "Yes", NULL, 121),
+(120, FALSE, "No", NULL, 123);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(121, TRUE, "Yes", 159, NULL),
+(121, FALSE, "No", NULL, 122);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(122, TRUE, "Yes", 160, NULL),
+(122, TRUE, "No", 161, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(123, TRUE, "Much better", 162, NULL),
+(123, FALSE, "No change or getting worse", NULL, 124);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(124, TRUE, "Yes", 163, NULL),
+(124, FALSE, "No", NULL, 125);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(125, TRUE, "Yes", 164, NULL),
+(125, TRUE, "No", 165, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(126, TRUE, "Yes", 166, NULL),
+(126, FALSE, "No", NULL, 127);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(127, FALSE, "Yes", NULL, 128),
+(127, TRUE, "No", 167, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(128, TRUE, "Yes", 168, NULL),
+(128, FALSE, "No", NULL, 129);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(129, TRUE, "Yes", 169, NULL),
+(129, FALSE, "No", NULL, 130);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(130, TRUE, "Yes", 170, NULL),
+(130, FALSE, "No", NULL, 131);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(131, TRUE, "Yes", 171, NULL),
+(131, FALSE, "No", NULL, 132);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(132, FALSE, "Another area", NULL, 133),
+(132, FALSE, "Anus", NULL, 135),
+(132, FALSE, "Head or neck", NULL, 136),
+(132, FALSE, "Mammary gland (i.e., series of milk-producing glands and ducts)", NULL, 137),
+(132, TRUE, "Leg", 185, NULL),
+(132, FALSE, "Penis", NULL, 140),
+(132, TRUE, "Several areas", 190, NULL),
+(132, FALSE, "Vulva", NULL, 143),
+(132, TRUE, "Whole abdomen (stomach) area", 195, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(133, FALSE, "Yes", NULL, 134),
+(133, TRUE, "No", 172, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(134, TRUE, "Yes", 173, NULL),
+(134, TRUE, "No", 174, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(135, TRUE, "Coming out through the anus", 175, NULL),
+(135, TRUE, "On the anus", 176, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(136, TRUE, "Another single area", 177, NULL),
+(136, TRUE, "Ear", 178, NULL),
+(136, TRUE, "Eye", 179, NULL),
+(136, TRUE, "Several places", 180, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(137, TRUE, "Yes", 181, NULL),
+(137, FALSE, "No", NULL, 138);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(138, FALSE, "Yes", NULL, 139),
+(138, TRUE, "No", 182, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(139, TRUE, "Smooth and even", 183, NULL),
+(139, TRUE, "Lumpy", 184, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(140, TRUE, "Yes", 186, NULL),
+(140, FALSE, "No", NULL, 141);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(141, TRUE, "Yes", 187, NULL),
+(141, FALSE, "No", NULL, 142);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(142, TRUE, "Yes", 188, NULL),
+(142, TRUE, "No", 189, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(143, TRUE, "Coming out through the vulva", 191, NULL),
+(143, FALSE, "On the vulva", NULL, 144);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(144, FALSE, "Even", NULL, 145),
+(144, TRUE, "Lump", 192, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(145, TRUE, "Yes", 193, NULL),
+(145, TRUE, "No", 194, NULL);
