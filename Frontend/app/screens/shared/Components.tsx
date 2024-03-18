@@ -2,7 +2,7 @@ import React from 'react'
 import { styles } from "./Styles"
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete"
 import { BASE_URL, EMAIL_PUBLIC_KEY, EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, GOOGLE_MAPS_APIKEY } from "./Constants"
-import { Text, View } from "react-native"
+import { Text, View, Image } from "react-native"
 import emailjs from "@emailjs/browser"
 
 export const Logo = () => {
@@ -17,10 +17,14 @@ export const Logo = () => {
     }
     return (
         <View style={styles.underdevTitle}>
-            <Text style={{ fontSize: 30, fontWeight: "bold" }}>
+            {/* <Text style={{ fontSize: 30, fontWeight: "bold" }}>
                 VetGo
             </Text>
-            <Text numberOfLines={1}>--UNDER DEVELOPMENT--</Text>
+            <Text numberOfLines={1}>--UNDER DEVELOPMENT--</Text> */}
+            <Image
+                    source={require('../ScreenImages/VetGoLogo.png')}
+                    style={styles.logoImage}
+                />
         </View>
     )
 }
