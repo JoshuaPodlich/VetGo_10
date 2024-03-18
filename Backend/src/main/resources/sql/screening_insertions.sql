@@ -154,6 +154,27 @@ INSERT INTO screening_questions (question_text) VALUES ("Monitor closely for 15 
 INSERT INTO screening_questions (question_text) VALUES ("In relation to the vulva, where is the swelling?"); # ID: 143
 INSERT INTO screening_questions (question_text) VALUES ("Is the swelling on the vulva even, or is there a lump?"); # ID: 144
 INSERT INTO screening_questions (question_text) VALUES ("Is your female dog in season or pregnant?"); # ID: 145
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responding to you normally?"); # ID: 146
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog seem to be in pain? Specifically, a dog in pain may be subdued, grumpy, hunched over, or may whine a lot."); # ID: 147
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog scratching itself?"); # ID: 148
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog distressed or causing damage to itself by scratching?"); # ID: 149
+INSERT INTO screening_questions (question_text) VALUES ("Are there patches of skin that feel greasy, look red, or seem scurfy (i.e., covered with dandruff)?"); # ID: 150
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog drinking more than usual?"); # ID: 151
+INSERT INTO screening_questions (question_text) VALUES ("Are there any bald patches?"); # ID: 152
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog drinking more than usual?"); # ID: 153
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog drinking more than usual?"); # ID: 154
+INSERT INTO screening_questions (question_text) VALUES ("Are your dog's nails overgrown or very sharp?"); # ID: 155
+INSERT INTO screening_questions (question_text) VALUES ("Is a nail cracked, broken, or bleeding?"); # ID: 156
+INSERT INTO screening_questions (question_text) VALUES ("Apply firm pressure to the bleeding part for several minutes. Afterwards, has the bleeding stopped?"); # ID: 157
+INSERT INTO screening_questions (question_text) VALUES ("Is the nail injury very painful for the dog?"); # ID: 158
+INSERT INTO screening_questions (question_text) VALUES ("Repeat the firm pressure for several minutes. Afterwards, has the bleeding stopped?"); # ID: 159
+INSERT INTO screening_questions (question_text) VALUES ("Is the nail injury very painful?"); # ID: 160
+INSERT INTO screening_questions (question_text) VALUES ("Is blood dripping or spurting out?"); # ID: 161
+INSERT INTO screening_questions (question_text) VALUES ("Is the nail injury very painful?"); # ID: 162
+INSERT INTO screening_questions (question_text) VALUES ("Is the nail injury very painful?"); # ID: 163
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog have brittle, crumbly, or abnormally shaped nails?"); # ID: 164
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog have a sore, swollen, or red area where the nail meets the skin?"); # ID: 165
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog have dew claws on any of its legs which are prone to injury?"); # ID: 166
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -2500,6 +2521,258 @@ Do not feed your dog for 8 hours before the appointment until your vet practice 
 "Swelling of the abdomen or stomach may be a sign of a torsion (gastric dilation and volvulus); this is a life threatening condition that needs emergency treatment, so seek urgent veterinary assistance.",
 3);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 196
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not offer your dog anything to eat or drink unless you have been advised by your surgery that it is safe to do so.",
+"Dullness and lethargy can be signs of serious illness, which may or may not be related to the moulting problem. Your dog should have an examination to find the cause and decide the right treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 197
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not offer your dog anything to eat or drink unless you have been advised by your surgery that it is safe to do so.",
+"The cause of the pain needs to be found and treated. It may be related to the moulting, or it may be a separate problem.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 198
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching or itching itself, as it may cause further damage.
+Using a pet t-shirt or Elizabethan Collar (i.e., pet cone) may help.",
+"The cause of the moulting and the itchiness needs to be investigated to give the right treatment.
+Your vet will be able to prescribe medications to ease the itching and prevent further damage.
+Possible causes include parasites such as fleas or mites, bacterial or fungal infection or allergic skin disease.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 199
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Try to distract your dog from scratching or itching itself, as it may cause further damage.",
+"The cause of the moulting and the itchiness needs to be investigated to give the right treatment.
+Scratching is distressing and can lead to skin damage, weight loss, and bad temper.
+Possible causes include parasites, such as fleas or mites, bacterial or fungal infection, or allergic skin disease.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 200
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to give your vet as much information as possible about how long your dog has been drinking more than usual, when the skin changes started, and when last in season (if your dog is an unspayed female).
+Try to prevent your dog from licking or scratching at the sore patches.
+A pet t-shirt or Elizabethan Collar (i.e., pet cone) may help.",
+"A dog drinking more than usual should always be examined because this can be a sign of serious illnesses, such as diabetes, hormonal problems, kidney or liver problems, or womb infection.
+Some of these illnesses may also cause skin and coat changes.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 201
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Prevent your dog from licking or scratching at the sore patches.
+Using a pet t-shirt or an Elizabethan Collar (i.e., pet cone) may help.",
+"Because there are other skin symptoms as well as moulting, your dog should be examined to find the cause of the problem.
+Possible causes include parasites, such as fleas or mites, bacterial or fungal infection, or allergic skin disease.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 202
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to give your vet as much information as possible about how long your dog has been drinking more than usual, when the skin changes started, and when last in season (if your dog is an unspayed female)",
+"A dog drinking more than usual should always be examined because this can be a sign of serious illnesses, such as diabetes, hormonal problems, kidney or liver problems, or pyometra (i.e., womb infection).
+Some of these illnesses may also cause skin and coat changes.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 203
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Prevent your dog from licking or scratching at the bald patches.
+Using a pet t-shirt or an Elizabethan Collar (i.e., pet cone) may help.",
+"The cause of the bald patches should be investigated. In a normal moult the hair loss should be balanced by new hair growth with no baldness.
+Possible causes include parasites, such as fleas or mites, bacterial or fungal infection, or allergic skin disease.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 204
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to give your vet as much information as possible about how long your dog has been drinking more than usual, when the skin changes started, and when last in season (if your dog is an unspayed female)",
+"A dog drinking more than usual should always be examined because this can be a sign of serious illnesses, such as diabetes, hormonal problems, kidney or liver problems, or pyometra (i.e., womb infection).
+Some of these illnesses may also cause skin and coat changes.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 205
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Remove excess hair by brushing once or twice daily. Avoid brushing too vigorously because this can make the coat scurfy (i.e., covered with dandruff) but will not speed up the moulting process.",
+"If your dog remains healthy, and there are no other skin symptoms, this is probably a normal moult.
+In some dogs, moulting is not related to the seasons, possibly because people keep our homes heated all year round.
+If your dog's coat is matted or tangled, dead hair becomes difficult to remove, exacerbating shedding issues. To alleviate discomfort, consider having your dog professionally groomed or clipped.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 206
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Nails can be clipped at home if you have suitable clippers, and your dog is co-operative.
+White nails are easier to clip than dark colored nails. With white nails, you can see the \"quick\", the pink part inside. This contains nerves and blood vessels. If cut too close, the nail will bleed and it will be painful.
+If in doubt, trim a small amount frequently. Avoid any twisting action when clipping.
+If you prefer, ask your vet, vet nurse, or groomer to clip your dog's nails or to show you how, and then do them at home when you feel confident.
+If you accidentally make a nail bleed, apply firm pressure for several minutes. If bleeding is not stopping, call your vet for advice.",
+"Overgrown or sharp nails can be caused by exercising on soft ground. Regular walking on pavements can help to wear down nails.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 207
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"If your dog is in a lot of pain, call your vet for advice. It is possible that the injury is more serious than is obvious.
+Try to prevent your dog from licking the injured nail as this may do further damage.",
+"The nail may be infected; there may be a foreign body embedded under it; or the toe may be broken.
+In any case, this needs immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 208
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"If the broken nail is not bleeding and is not painful, keep it clean and observe closely. Warm salty water is a good cleaning fluid.
+A light bandage can safeguard the nail during healing, but it must not be wrapped too tightly.",
+"Broken nails may become infected, like any other wound, so watch for signs of pain, swelling, discharge, or excessive licking. Call your vet for advice if any of these occur. If the nail becomes infected or painful, it will need immediate veterinary treatment.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 209
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"If your dog is in a lot of pain, call your vet for advice. It is possible that the injury is more serious than is obvious.
+Try to prevent your dog from licking the injured nail as this may do further damage.",
+"The nail may be infected; there may be a foreign body embedded under it; or the toe may be broken.
+In any case, this needs immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 210
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"If the broken nail is not bleeding and is not painful, keep it clean and observe closely. Warm salty water is a good cleaning fluid.
+A light bandage can safeguard the nail during healing, but it must not be wrapped too tightly.",
+"Broken nails may become infected, like any other wound, so watch for signs of pain, swelling, discharge, or excessive licking. Call your vet for advice if any of these occur. If the nail becomes infected or painful, it will need immediate veterinary treatment.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 211
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"If possible, wrap the nail with a bandage to manage bleeding until you reach the vet. Use a clean cotton handkerchief, pillowcase, or dish towel for the bandage, but ensure it's not tied too tightly to avoid restricting blood flow to the foot. 
+Avoid feeding your dog before visiting the vet, as sedation or anesthesia may be necessary.",
+"Bleeding which you are unable to stop with firm pressure for several minutes will need to be treated.
+Your vet may need to cauterise the end of the nail, with chemicals or heat, to stop the bleeding.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 212
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"If your dog is in a lot of pain, call your vet for advice. It is possible that the injury is more serious than is obvious.
+Try to prevent your dog from licking the injured nail as this may do further damage.",
+"The nail may be infected; there may be a foreign body embedded under it; or the toe may be broken.
+In any case, this needs immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 213
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"If the broken nail is not bleeding and is not painful, keep it clean and observe closely. Warm salty water is a good cleaning fluid.
+A light bandage can safeguard the nail during healing, but it must not be wrapped too tightly.",
+"Broken nails may become infected, like any other wound, so watch for signs of pain, swelling, discharge, or excessive licking. Call your vet for advice if any of these occur. If the nail becomes infected or painful, it will need immediate veterinary treatment.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 214
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"If your dog is in a lot of pain, call your vet for advice. It is possible that the injury is more serious than is obvious.
+Try to prevent your dog from licking the injured nail as this may do further damage.",
+"While a broken nail is usually uncomfortable, severe pain suggests that it may be pinching; the nail may be infected; there may be a foreign body embedded under it; or the toe may be broken.
+In any case, this needs immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 215
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"If the broken nail is not bleeding and is not painful, keep it clean and observe closely. Warm salty water is a good cleaning fluid.
+A light bandage can safeguard the nail during healing, but it must not be wrapped too tightly.",
+"Broken nails may become infected, like any other wound, so watch for signs of pain, swelling, discharge, or excessive licking. Call your vet for advice if any of these occur. If the nail becomes infected or painful, it will need immediate veterinary treatment.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 216
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+NULL,
+"This can be a sign of other illnesses, and your dog should have a full health check.
+Try to give your vet as much information as possible about how long the nails have been like they are.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 217
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Bathe the foot or toe in warm, salty water if your dog will allow this. Try to prevent licking.
+If any kind of bandage is used, it must not be applied tightly around the leg.",
+"Infection in the nail bed is very common and is often caused by a very small injury, sometimes made worse by licking due to pain.
+Occasionally, these symptoms may be due to immune diseases, but this is rare.
+Your dog may need antibiotics to treat this problem. If it is very painful, your vet might give painkillers or anti-inflammatories.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 218
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Dew claws are like a thumb, situated on the inside of the leg but a little higher up. They do not normally come into contact with the ground.
+Dew claws can occur on both front and back legs, or sometimes on only one back leg. Sometimes back dew claws can be double claws, which may have small pads attached to them.
+In some breeds, it is traditional to keep the dew claws. In others, they may be removed soon after birth, leaving only a tiny scar or bump at the site.
+Dew claws which are not prone to injury may still need to be clipped more often than other claws because they do not wear down naturally.",
+"If dew claws cause a problem because they get injured frequently, they can be surgically removed under anaesthetic. Your vet will explain all the advantages and disadvantages of this operation.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 219
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"A regular exercise routine and a healthy diet will maintain the good condition of most dogs' nails. If needed, trim them frequently but in small amounts, or opt to have them trimmed at your vet's office or a grooming salon.
+If you have any other concerns about your dogs nails, ask for advice at your veterinary surgery.",
+NULL,
+0);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
@@ -2518,8 +2791,8 @@ INSERT INTO screening_options (question_id, is_terminating, option_text, result_
  (1, FALSE, "Itching", NULL, 109),
  (1, FALSE, "Lameness or limping", NULL, 117),
  (1, FALSE, "Lump or swelling", NULL, 126),
- (1, FALSE, "Moulting", NULL, NULL),
- (1, FALSE, "Nail problems", NULL, NULL),
+ (1, FALSE, "Moulting (Shedding)", NULL, 146),
+ (1, FALSE, "Nail problems", NULL, 155),
  (1, FALSE, "Not eating", NULL, NULL),
  (1, FALSE, "Off-color", NULL, NULL),
  (1, FALSE, "Poison exposure", NULL, NULL),
@@ -3144,3 +3417,88 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (145, TRUE, "Yes", 193, NULL),
 (145, TRUE, "No", 194, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(146, FALSE, "Yes", NULL, 147),
+(146, TRUE, "No", 196, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(147, TRUE, "Yes", 197, NULL),
+(147, FALSE, "No", NULL, 148);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(148, FALSE, "Yes", NULL, 149),
+(148, FALSE, "No", NULL, 150);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(149, TRUE, "Yes", 198, NULL),
+(149, TRUE, "No", 199, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(150, FALSE, "Yes", NULL, 151),
+(150, FALSE, "No", NULL, 152);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(151, TRUE, "Yes", 200, NULL),
+(151, TRUE, "No", 201, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(152, FALSE, "Yes", NULL, 153),
+(152, FALSE, "No", NULL, 154);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(153, TRUE, "Yes", 202, NULL),
+(153, TRUE, "No", 203, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(154, TRUE, "Yes", 204, NULL),
+(154, TRUE, "No", 205, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(155, TRUE, "Yes", 206, NULL),
+(155, FALSE, "No or not sure", NULL, 156);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(156, FALSE, "Bleeding", NULL, 157),
+(156, FALSE, "Cracked or broken, but no bleeding", NULL, 163),
+(156, FALSE, "No", NULL, 164);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(157, FALSE, "Yes", NULL, 158),
+(157, FALSE, "No", NULL, 159);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(158, TRUE, "Yes", 207, NULL),
+(158, TRUE, "No", 208, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(159, FALSE, "Yes", NULL, 160),
+(159, FALSE, "No", NULL, 161);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(160, TRUE, "Yes", 209, NULL),
+(160, TRUE, "No", 210, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(161, TRUE, "Yes, dripping or spurting out", 211, NULL),
+(161, FALSE, "No, slight oozing only", NULL, 162);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(162, TRUE, "Yes", 212, NULL),
+(162, TRUE, "No", 213, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(163, TRUE, "Yes", 214, NULL),
+(163, TRUE, "No", 215, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(164, TRUE, "Yes", 216, NULL),
+(164, FALSE, "No", NULL, 165);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(165, TRUE, "Yes", 217, NULL),
+(165, FALSE, "No", NULL, 166);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(166, TRUE, "Yes", 218, NULL),
+(166, TRUE, "No", 219, NULL);
