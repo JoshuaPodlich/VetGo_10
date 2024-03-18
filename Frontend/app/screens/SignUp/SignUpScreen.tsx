@@ -119,6 +119,10 @@ function SignUpScreen(props: any) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, telephone: "Telephone is required!" }))
             isValid = false
         }
+        else if (form.telephone.length < 10) {
+            setErrors((prevState: SignUpForm) => ({ ...prevState, telephone: "Invalid Telephone Number!" }))
+            isValid = false
+        }
         if (!form.role) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, role: "Role is required!" }))
             isValid = false
@@ -251,7 +255,7 @@ function SignUpScreen(props: any) {
                             <Text style={styles.errorText}>{errors.role}</Text>
                     </View>
 
-                    <View id={"buttonGroup"} style={styles.buttonGroup}>
+                    <View id={"buttonGroup"} style={styles.signUpButtonGroup}>
                         <TouchableHighlight style={{ ...styles.mainButton }}
                             underlayColor={colors.black_underlay} onPress={handleSubmit}>
                             <Text style={styles.buttonText}> SIGNUP </Text>
