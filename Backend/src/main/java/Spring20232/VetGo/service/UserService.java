@@ -300,6 +300,8 @@ public class UserService implements UserServiceInterface {
         User user = userRepository.findById(uid).orElse(null);
         if (user == null) throw new NotFoundException("Unable to find user in database.");
 
+        invalidateExistingPasswordResetSessions(user); // Make sure to invalidate any existing (i.e., valid) reset sessions before creating a new one.
+
         String sessionToken = UUID.randomUUID().toString();
         PasswordResetSession resetSession = new PasswordResetSession();
         resetSession.setSessionToken(encryptString(sessionToken));
@@ -313,7 +315,7 @@ public class UserService implements UserServiceInterface {
     }
 
     @Transactional
-    public void validatePasswordResetSession(Long uid, String sessionToken) {
+    public PasswordResetSession validatePasswordResetSession(Long uid, String sessionToken) {
         User user = userRepository.findById(uid).orElse(null);
         if (user == null) throw new NotFoundException("Unable to find user in database.");
 
@@ -328,34 +330,35 @@ public class UserService implements UserServiceInterface {
         }
 
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-        if (!bcrypt.matches(sessionToken.toUpperCase(), resetSession.getSessionToken())) {
+        if (!bcrypt.matches(sessionToken, resetSession.getSessionToken())) {
             throw new BadCredentialsException("Session token does not match.");
         }
 
-        // Session token is valid, has not expired, and matches the one in the database, so finally invalidate after use.
-        resetSession.setSessionValid(false);
+        return resetSession;
     }
 
     @Transactional
-    public void changeUserPassword(Long uid, String newPassword) {
+    public void changeUserPassword(Long uid, String newPassword, PasswordResetSession resetSession) {
         User user = userRepository.findById(uid).orElse(null);
         if (user == null) throw new NotFoundException("Unable to find user in database.");
+
+        if (!isPasswordValid(newPassword)) throw new BadCredentialsException("The format of the password is incorrect.");
 
         String encryptedPassword = encryptString(newPassword);
         user.setPassword(encryptedPassword);
         userRepository.save(user);
 
-        // Invalidate all active password reset sessions for this user.
-        invalidateExistingPasswordResetSessions(user);
+        // Session token is valid, has not expired, and matches the one in the database, so finally invalidate after use.
+        resetSession.setSessionValid(false);
 
         System.out.println("Password updated successfully for user ID: " + uid);
     }
 
     private void invalidateExistingPasswordResetSessions(User user) {
-        List<PasswordResetToken> existingSessions = passwordResetTokenRepository.findAllByUserAndTokenValid(user, true);
-        for (PasswordResetToken existingSession : existingSessions) {
-            existingSession.setTokenValid(false);
-            passwordResetTokenRepository.save(existingSession);
+        List<PasswordResetSession> existingSessions = passwordResetSessionRepository.findAllByUserAndSessionValid(user, true);
+        for (PasswordResetSession existingSession : existingSessions) {
+            existingSession.setSessionValid(false);
+            passwordResetSessionRepository.save(existingSession);
         }
     }
 

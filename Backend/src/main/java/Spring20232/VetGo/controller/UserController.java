@@ -181,14 +181,14 @@ public class UserController {
 
     }
 
-    @PostMapping(value = "/change-password/{uid}/session/{sessionToken}")
+    @PostMapping(value = "/change-password/{uid}/session")
     public ResponseEntity<?> changePassword(@PathVariable("uid") Long uid,
                                             @RequestBody ObjectNode requestBody) {
         try {
             String sessionToken = requestBody.get("sessionToken").asText();
             String newPassword = requestBody.get("newPassword").asText();
-            userService.validatePasswordResetSession(uid, sessionToken);
-            userService.changeUserPassword(uid, newPassword);
+            PasswordResetSession resetSession = userService.validatePasswordResetSession(uid, sessionToken);
+            userService.changeUserPassword(uid, newPassword, resetSession);
             return ResponseEntity.status(HttpStatus.OK).body("Password has been successfully changed.");
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
