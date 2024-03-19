@@ -39,7 +39,10 @@ public class UserService implements UserServiceInterface {
     private TagRepository tagRepository;
 
     @Autowired
-    PasswordResetTokenRepository passwordResetTokenRepository;
+    private PasswordResetTokenRepository passwordResetTokenRepository;
+
+    @Autowired
+    private PasswordResetSessionRepository passwordResetSessionRepository;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -77,7 +80,6 @@ public class UserService implements UserServiceInterface {
         return true;
     }
 
-    @Transactional
     private String encryptString(String str) {
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
         return bcrypt.encode(str);
@@ -86,17 +88,17 @@ public class UserService implements UserServiceInterface {
     // A password must be at least 16 characters long, have at least one uppercase letter,
     // have at least one number, have at least one symbol (including only the basic U.S. keyboard symbols),
     // and be at most 48 characters long.
-    public boolean isPasswordValid(String password) {
+    private boolean isPasswordValid(String password) {
         String passwordPattern = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{16,48}$";
         return Pattern.matches(passwordPattern, password);
     }
 
-    public boolean isEmailValid(String email) {
+    private boolean isEmailValid(String email) {
         String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         return Pattern.matches(emailPattern, email);
     }
 
-    public boolean isTelephoneValid(String telephone) {
+    private boolean isTelephoneValid(String telephone) {
         String telephonePattern = "^\\(?([0-9]{3})\\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
         return Pattern.matches(telephonePattern, telephone);
     }
@@ -237,7 +239,7 @@ public class UserService implements UserServiceInterface {
         return sb.toString();
     }
 
-    private void invalidateExistingTokens(User user) {
+    private void invalidateExistingResetTokens(User user) {
         List<PasswordResetToken> existingTokens = passwordResetTokenRepository.findAllByUserAndTokenValid(user, true);
         for (PasswordResetToken existingToken : existingTokens) {
             existingToken.setTokenValid(false);
@@ -250,7 +252,7 @@ public class UserService implements UserServiceInterface {
         if (user == null)
             throw new NotFoundException("Unable to find user in database.");
 
-        invalidateExistingTokens(user); // Make sure to invalidate any existing (i.e., valid) tokens before creating a new one.
+        invalidateExistingResetTokens(user); // Make sure to invalidate any existing (i.e., valid) tokens before creating a new one.
 
         //String token = UUID.randomUUID().toString(); // Work on finding a shorter token to generate.
         String token = generateToken();
@@ -293,5 +295,69 @@ public class UserService implements UserServiceInterface {
         // Token is valid, has not expired, and matches the one in the database, so finally invalidate after use.
         resetToken.setTokenValid(false);
     }
+
+    public String createPasswordResetSession(Long uid) {
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null) throw new NotFoundException("Unable to find user in database.");
+
+        String sessionToken = UUID.randomUUID().toString();
+        PasswordResetSession resetSession = new PasswordResetSession();
+        resetSession.setSessionToken(encryptString(sessionToken));
+        resetSession.setUser(user);
+        resetSession.setCreationDate(LocalDateTime.now());
+        resetSession.setExpirationDate(LocalDateTime.now().plusMinutes(10));
+        resetSession.setSessionValid(true);
+        passwordResetSessionRepository.save(resetSession);
+
+        return sessionToken;
+    }
+
+    @Transactional
+    public void validatePasswordResetSession(Long uid, String sessionToken) {
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null) throw new NotFoundException("Unable to find user in database.");
+
+        PasswordResetSession resetSession = passwordResetSessionRepository.findByUserAndSessionValid(user, true);
+        if (resetSession == null) throw new NotFoundException("Session does not exist under that user in database.");
+
+        if (!resetSession.isSessionValid()) throw new RuntimeException("Session is not valid.");
+
+        if (LocalDateTime.now().isAfter(resetSession.getExpirationDate())) {
+            resetSession.setSessionValid(false);
+            throw new RuntimeException("Session has expired.");
+        }
+
+        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+        if (!bcrypt.matches(sessionToken.toUpperCase(), resetSession.getSessionToken())) {
+            throw new BadCredentialsException("Session token does not match.");
+        }
+
+        // Session token is valid, has not expired, and matches the one in the database, so finally invalidate after use.
+        resetSession.setSessionValid(false);
+    }
+
+    @Transactional
+    public void changeUserPassword(Long uid, String newPassword) {
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null) throw new NotFoundException("Unable to find user in database.");
+
+        String encryptedPassword = encryptString(newPassword);
+        user.setPassword(encryptedPassword);
+        userRepository.save(user);
+
+        // Invalidate all active password reset sessions for this user.
+        invalidateExistingPasswordResetSessions(user);
+
+        System.out.println("Password updated successfully for user ID: " + uid);
+    }
+
+    private void invalidateExistingPasswordResetSessions(User user) {
+        List<PasswordResetToken> existingSessions = passwordResetTokenRepository.findAllByUserAndTokenValid(user, true);
+        for (PasswordResetToken existingSession : existingSessions) {
+            existingSession.setTokenValid(false);
+            passwordResetTokenRepository.save(existingSession);
+        }
+    }
+
 
 }

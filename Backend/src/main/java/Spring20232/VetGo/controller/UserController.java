@@ -172,12 +172,28 @@ public class UserController {
                                                    @PathVariable("token") String token) {
         try {
             userService.validatePasswordResetToken(uid, token);
-            return ResponseEntity.status(HttpStatus.OK).body("Token matches and is valid.");
+            String resetSessionToken = userService.createPasswordResetSession(uid);
+            return ResponseEntity.status(HttpStatus.OK).body(resetSessionToken);
         }
         catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
 
     }
+
+    @PostMapping(value = "/change-password/{uid}/session/{sessionToken}")
+    public ResponseEntity<?> changePassword(@PathVariable("uid") Long uid,
+                                            @RequestBody ObjectNode requestBody) {
+        try {
+            String sessionToken = requestBody.get("sessionToken").asText();
+            String newPassword = requestBody.get("newPassword").asText();
+            userService.validatePasswordResetSession(uid, sessionToken);
+            userService.changeUserPassword(uid, newPassword);
+            return ResponseEntity.status(HttpStatus.OK).body("Password has been successfully changed.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 
 }
