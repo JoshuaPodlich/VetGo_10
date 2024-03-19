@@ -239,5 +239,11 @@ export const styles: any = StyleSheet.create({
         color: 'green',
     },
 
+    logoImage: {
+        width: 400,
+        height: 400,
+        resizeMode: 'contain',
+    },
+
 
 })
