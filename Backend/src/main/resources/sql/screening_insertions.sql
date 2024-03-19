@@ -175,6 +175,22 @@ INSERT INTO screening_questions (question_text) VALUES ("Is the nail injury very
 INSERT INTO screening_questions (question_text) VALUES ("Does your dog have brittle, crumbly, or abnormally shaped nails?"); # ID: 164
 INSERT INTO screening_questions (question_text) VALUES ("Does your dog have a sore, swollen, or red area where the nail meets the skin?"); # ID: 165
 INSERT INTO screening_questions (question_text) VALUES ("Does your dog have dew claws on any of its legs which are prone to injury?"); # ID: 166
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog depressed, flat, or in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 167
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, moving around, and responding to you normally?"); # ID: 168
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog drinking more than usual?"); # ID: 169
+INSERT INTO screening_questions (question_text) VALUES ("Pick up the skin of the scruff of your dog's neck and then release it. Does it fall back into place?"); # ID: 170
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have eaten anything poisonous? (e.g., rat poison, or mice or rats that have been poisoned)"); # ID: 171
+INSERT INTO screening_questions (question_text) VALUES ("Are there any other symptoms, such as vomiting or coughing?"); # ID: 172
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 173
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog moving around and responding to you normally?"); # ID: 174
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been drinking more than usual?"); # ID: 175
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have been exposed to toxic gases or poisons? (e.g., marijuana, sedatives, rat poison, or dead mice/rats that have been poisoned)"); # ID: 176
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog having any difficulty breathing?"); # ID: 177
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been involved in a fall, been hit by a car, or become very hot or very cold?"); # ID: 178
+INSERT INTO screening_questions (question_text) VALUES ("Recently, has your dog exhibited symptoms such as coughing, collapsing, or reduced stamina?"); # ID: 179
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog behaving strangely? (e.g., twitching, turning around in circles, or moving as if drunk)"); # ID: 180
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog's abdomen (stomach area) become more swollen than usual?"); # ID: 181
+INSERT INTO screening_questions (question_text) VALUES ("Pick up the skin of the scruff of your dog's neck and then release it. Does it fall back into place?"); # ID: 182
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -2773,6 +2789,188 @@ If you have any other concerns about your dogs nails, ask for advice at your vet
 NULL,
 0);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 220
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.",
+"Loss of appetite is a common symptom, and can be due to a wide range of problems, including stomach upsets, infections, hormonal problems, pain, and tumours.
+Your vet will have to examine your dog carefully and may need to carry out additional tests to determine the cause.
+If your dog is showing other symptoms, it needs urgent veterinary attention, as some of these conditions are very serious.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 221
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.",
+"Loss of appetite is a common symptom, and can be due to a wide range of problems, including stomach upsets, infections, hormonal problems, pain, and tumours.
+Your vet will have to examine your dog carefully and may need to carry out additional tests to determine the cause.
+If your dog is showing other symptoms, they need urgent attention, as some of these conditions are very serious.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 222
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.",
+"Loss of appetite is a common symptom, and can be due to a wide range of problems, including stomach upsets, infections, hormonal problems, pain, and tumours.
+Changes in drinking suggest that these conditions are more likely, so your dog needs urgent veterinary attention, as some of these conditions are very serious.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 223
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.",
+"Loss of appetite is a common symptom, and can be due to a wide range of problems, including stomach upsets, infections, hormonal problems, pain, and tumours.
+Your vet will have to examine your dog carefully and may need to carry out additional tests to determine the cause.
+The \"skin pinch test\" suggests your dog may be clinically dehydrated, so it needs urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 224
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Attempt to identify any potential exposures your dog may have had, so you can inform your vet about the possible cause of the issue.",
+"Many poisons cause stomach pain and nausea, resulting in a loss of appetite.
+Some of these are very dangerous and potentially fatal without rapid treatment, so seek urgent veterinary assistance.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 225
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, calm, and quiet.",
+"Loss of appetite is a common symptom, and can be due to a wide range of problems, including stomach upsets, infections, hormonal problems, pain, and tumours.
+Your vet will have to examine your dog carefully and may need to carry out additional tests to determine the cause.
+If your dog is showing other symptoms, it needs immediate veterinary attention, as some of these conditions are very serious.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 226
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet and calm. Restrict exercise , keep in one room if possible.
+Offer some tasty food that has been warmed slightly.
+Try hand feeding some food.",
+"Loss of appetite is a common symptom, and can be due to a wide range of problems, including stomach upsets, infections, hormonal problems, pain, and tumours.
+Your vet will have to examine your dog carefully and may need to carry out additional tests to determine the cause.
+If your dog shows any other symptoms, it may need urgent attention, as some of these conditions are very serious.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 227
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, calm, and quiet.",
+"Being \"off-color\" is a non-specific symptom of illness, but should not be ignored, especially if your dog is in pain or distress.
+Your vet will need to examine your dog carefully and may need to do further tests to determine the cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 228
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, calm, and quiet.",
+"Being \"off-color\" is a non-specific symptom of illness, but should not be ignored.
+If your dog is not responding normally to you, this might be a sign of a more serious illness.
+Your vet will need to examine your dog carefully and may need to do further tests to determine the cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 229
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet, and calm.
+Try to estimate how much your dog is drinking in a day and tell the vet.",
+"Being \"off-color\" is a non-specific symptom of illness, but should not be ignored.
+Drinking more may suggest infection (e.g., a pyometra, or womb infection), hormone disorders, or dehydration, all of which are potentially life-threatening if untreated.
+Your vet will need to examine your dog carefully and may need to do further tests to determine the cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 230
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet, and calm.
+Attempt to identify any potential exposures your dog may have had so you can inform your vet about the possible cause of the issue.",
+"Being \"off-color\" is a non-specific symptom of illness, but should not be ignored.
+Many poisons cause initially vague symptoms, so seek veterinary advice as soon as possible to maximise the chances of successful treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 231
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet, and calm.",
+"Being \"off-color\" is a non-specific symptom of illness, but should not be ignored.
+Difficulty breathing is a potentially life-threatening situation, so seek urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 232
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet, and calm.",
+"Being \"off-color\" is a non-specific symptom of illness, but should not be ignored.
+Following injury, hypothermia, or overheating, a wide range of body systems may be affected, resulting in organ damage and/or internal bleeding; as a result, your dog should be checked out by your vet as soon as possible.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 233
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet, and calm.",
+"Being \"off-color\" is a non-specific symptom of illness, but should not be ignored.
+A decrease in stamina, along with symptoms like coughing or collapsing, may indicate an issue with the heart or lungs.
+Your vet will need to examine your dog carefully and may need to do further tests to determine the cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 234
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet, and calm.",
+"Being \"off-color\" is a non-specific symptom of illness, but should not be ignored.
+Abnormal behaviour suggests a problem in the brain or balance organs, but metabolic problems or poisoning are also possible.
+Your vet will need to examine your dog carefully and may need to do further tests to determine the cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 235
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet, and calm.",
+"Being \"off-color\" is a non-specific symptom of illness, but should not be ignored.
+Distension of the abdomen may suggest a torsion (gastric dilation and volvulus), which is a life threatening emergency; it can also be due to heart or liver disease, among other problems.
+Seek veterinary attention immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 236
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet, and calm.
+Limit your dog's physical activity to short, leashed walks for bathroom breaks only.",
+"Being \"off-color\" is a non-specific symptom of illness, but should not be ignored.
+Your vet will need to examine your dog carefully and may need to do further tests to determine the cause.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 237
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet, and calm.",
+"Being \"off-color\" is a non-specific symptom of illness, but should not be ignored.
+Your vet will need to examine your dog carefully and may need to do further tests to determine the cause.
+If the skin at the scruff of the neck forms a 'tent' and does not quickly return to its original position, this may indicate severe dehydration.
+In some conditions, severe dehydration can occur even when a dog is drinking a lot.",
+3);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
@@ -2793,8 +2991,8 @@ INSERT INTO screening_options (question_id, is_terminating, option_text, result_
  (1, FALSE, "Lump or swelling", NULL, 126),
  (1, FALSE, "Moulting (Shedding)", NULL, 146),
  (1, FALSE, "Nail problems", NULL, 155),
- (1, FALSE, "Not eating", NULL, NULL),
- (1, FALSE, "Off-color", NULL, NULL),
+ (1, FALSE, "Not eating", NULL, 167),
+ (1, FALSE, "Off-color", NULL, 173),
  (1, FALSE, "Poison exposure", NULL, NULL),
  (1, FALSE, "Problems after surgery", NULL, NULL),
  (1, FALSE, "Smelly", NULL, NULL),
@@ -3502,3 +3700,67 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (166, TRUE, "Yes", 218, NULL),
 (166, TRUE, "No", 219, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(167, TRUE, "Yes", 220, NULL),
+(167, FALSE, "No", NULL, 168);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(168, FALSE, "Yes", NULL, 169),
+(168, TRUE, "No", 221, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(169, TRUE, "Yes", 222, NULL),
+(169, FALSE, "No", NULL, 170);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(170, FALSE, "Yes", NULL, 171),
+(170, TRUE, "No", 223, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(171, TRUE, "Yes", 224, NULL),
+(171, FALSE, "No", NULL, 172);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(172, TRUE, "Yes", 225, NULL),
+(172, TRUE, "No", 226, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(173, TRUE, "Yes", 227, NULL),
+(173, FALSE, "No", NULL, 174);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(174, FALSE, "Yes", NULL, 175),
+(174, TRUE, "No", 228, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(175, TRUE, "Yes", 229, NULL),
+(175, FALSE, "No", NULL, 176);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(176, TRUE, "Yes", 230, NULL),
+(176, FALSE, "No", NULL, 177);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(177, TRUE, "Yes", 231, NULL),
+(177, FALSE, "No", NULL, 178);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(178, TRUE, "Yes", 232, NULL),
+(178, FALSE, "No", NULL, 179);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(179, TRUE, "Yes", 233, NULL),
+(179, FALSE, "No", NULL, 180);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(180, TRUE, "Yes", 234, NULL),
+(180, FALSE, "No", NULL, 181);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(181, TRUE, "Yes", 235, NULL),
+(181, FALSE, "No", NULL, 182);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(182, TRUE, "Yes", 236, NULL),
+(182, TRUE, "No", 237, NULL);
