@@ -2,7 +2,7 @@ package Spring20232.VetGo.controller;
 
 import Spring20232.VetGo.model.*;
 import Spring20232.VetGo.repository.*;
-import Spring20232.VetGo.service.EmailServiceImpl;
+import Spring20232.VetGo.service.EmailService;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,7 +33,7 @@ public class AppointmentController {
     @Autowired
     AdditionalPetInformationRepository additionalPetInformationRepository;
     @Autowired
-    EmailServiceImpl emailService;
+    EmailService emailService;
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<Appointment>> getAllAppointment() {

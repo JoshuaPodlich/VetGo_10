@@ -16,7 +16,7 @@ public class ScreeningResult extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     public String problem;
 
-    public enum RESULT_PRIORITY {LOW, MIDDLE, HIGH, URGENT}
+    public enum RESULT_PRIORITY {SELF_CARE, MIDDLE, HIGH, URGENT}
 
     public ScreeningResult() {
     }

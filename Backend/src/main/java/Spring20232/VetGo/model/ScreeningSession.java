@@ -18,6 +18,9 @@ public class ScreeningSession extends BaseEntity {
     private LocalDateTime endTime;
     private boolean isCompleted;
 
+    @OneToMany(mappedBy = "screeningSession", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ScreeningSessionAnsweredOption> answeredOptions = new ArrayList<>();
+
     public ScreeningSession() {
     }
 
