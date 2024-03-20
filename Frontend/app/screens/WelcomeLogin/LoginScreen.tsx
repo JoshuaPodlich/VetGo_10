@@ -173,7 +173,7 @@ props.navigation.navigate("Location", params);
             <View style={{ width: "80%", flex: 1 }}>
                 <ScrollView>
                     <View style={styles.signUpLoginGroup}>
-                        <Text style={{ fontSize: 30, fontWeight: "bold" }}>
+                        <Text style={{ fontSize: 30, fontWeight: "bold", marginTop: 30 }}>
                             Login
                         </Text>
 

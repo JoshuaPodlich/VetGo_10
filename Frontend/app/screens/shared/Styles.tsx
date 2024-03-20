@@ -65,6 +65,14 @@ export const styles: any = StyleSheet.create({
         width: "100%",
         paddingTop: "25%",
     },
+
+    signUpButtonGroup: {
+        alignItems: "center",
+        flexDirection: "column",
+        justifyContent: "center",
+        width: "100%",
+        paddingTop: "5%",
+    },
     loginButtonGroup: {
         alignItems: "center",
         flexDirection: "column",
@@ -131,8 +139,8 @@ export const styles: any = StyleSheet.create({
         color: colors.brightRed,
         flexShrink: 1,
         fontSize: 16,
-        paddingBottom: 4,
-        paddingTop: 2,
+        // paddingBottom: 4,
+        // paddingTop: 2,
     },
 
 
@@ -243,6 +251,35 @@ export const styles: any = StyleSheet.create({
         width: 400,
         height: 400,
         resizeMode: 'contain',
+    },
+
+
+    signUpDropDown: {
+
+        width: 230,
+        margin: 5,
+        padding: 15,
+        borderRadius: 10,
+        backgroundColor: colors.primary_Blue,
+        //text color and font color and font size
+        fontSize: 18,
+        fontWeight: "bold",
+        fontColor: colors.black,
+    },
+
+    signUpTextBox: {
+
+        //margin: 5,
+        padding: 5,
+        borderRadius: 10,
+        width: "100%",
+        borderColor: colors.primary_Blue,
+        fontSize: 18,
+        fontWeight: "bold",
+        fontColor: colors.black,
+
+
+        // backgroundColor: colors.primary_Blue,
     },
 
 

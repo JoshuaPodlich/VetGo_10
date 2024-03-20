@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+
 import {
     Alert,
     SafeAreaView,
@@ -8,7 +9,7 @@ import {
     Text,
     View,
     Pressable,
-    LayoutAnimation, TouchableHighlight
+    LayoutAnimation, TouchableHighlight, 
 } from "react-native"
 import { CommonActions, useFocusEffect } from "@react-navigation/native"
 import { Input } from "@ui-kitten/components"
@@ -17,6 +18,8 @@ import { styles } from "../shared/Styles"
 import { signUpStyles } from './SignUpStyles'
 import { BASE_URL } from "../shared/Constants"
 import { LocationInterface } from '../shared/Interfaces'
+import { Dropdown } from 'react-native-element-dropdown';
+
 
 export interface SignUpScreenParams {
 }
@@ -30,6 +33,12 @@ interface SignUpForm {
     role: string,
     vetLicense: string
 }
+
+//list of roles to be used in dropdown 
+const roles = [
+    { label: "Owner", value: "owner" },
+    { label: "Vet", value: "vet" }
+]
 
 
 function SignUpScreen(props: any) {
@@ -110,6 +119,10 @@ function SignUpScreen(props: any) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, telephone: "Telephone is required!" }))
             isValid = false
         }
+        else if (form.telephone.length < 10) {
+            setErrors((prevState: SignUpForm) => ({ ...prevState, telephone: "Invalid Telephone Number!" }))
+            isValid = false
+        }
         if (!form.role) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, role: "Role is required!" }))
             isValid = false
@@ -117,6 +130,12 @@ function SignUpScreen(props: any) {
 
         return isValid
     }
+
+    const handleRoleChange = (selectedRole: any) => {
+        setForm({ ...form, role: selectedRole.value });
+        console.log(selectedRole)
+        console.log(form.role)
+      };
 
     async function submitSignUpForm() {
         isSubmittingRef.current = true
@@ -145,11 +164,20 @@ function SignUpScreen(props: any) {
         console.log('Response:', response);
         console.log('Response Body:', responseBody);
         isSubmittingRef.current = false
+        
+        if(response.status === 200){
+            if(form.role === "vet"){
+                props.navigation.navigate("VetLogin", {email: form.email})
+            } else {
+                props.navigation.navigate("Login")
+            }
+        }
 
     } catch (error: any) {
         console.error('Error:', error.message);
     }
 }
+
 
     //#endregion
 
@@ -166,7 +194,7 @@ function SignUpScreen(props: any) {
 
                         <Input
                             clearButtonMode={"always"} size={"large"}
-                            value={form.email} style={styles.fieldText}
+                            value={form.email} style={styles.signUpTextBox}
                             placeholder={"Email"}
                             onChangeText={(newEmail) => {
                                 setForm((prevForm: SignUpForm) => ({ ...prevForm, email: newEmail }))
@@ -176,7 +204,7 @@ function SignUpScreen(props: any) {
 
                         <Input
                             clearButtonMode={"always"} size={"large"}
-                            value={form.password} style={styles.fieldText}
+                            value={form.password} style={styles.signUpTextBox}
                             placeholder={"Password"} secureTextEntry={true}
                             onChangeText={(newPassword) => {
                                 setForm((prevForm: SignUpForm) => ({ ...prevForm, password: newPassword }))
@@ -186,7 +214,7 @@ function SignUpScreen(props: any) {
 
                         <Input
                             clearButtonMode={"always"} size={"large"}
-                            value={form.confirmPassword} style={styles.fieldText}
+                            value={form.confirmPassword} style={styles.signUpTextBox}
                             placeholder={"Confirm Password"} secureTextEntry={true}
                             onChangeText={(newConfirmPassword) => {
                                 setForm((prevForm: SignUpForm) => ({ ...prevForm, confirmPassword: newConfirmPassword }))
@@ -196,7 +224,7 @@ function SignUpScreen(props: any) {
 
 
                             <Input clearButtonMode={"always"} size={"large"}
-                                value={form.firstname} style={styles.fieldText}
+                                value={form.firstname} style={styles.signUpTextBox}
                                 placeholder={"First Name"}
                                 onChangeText={(newFirstName) => {
                                     setForm((prevForm: SignUpForm) => ({ ...prevForm, firstname: newFirstName }))
@@ -205,7 +233,7 @@ function SignUpScreen(props: any) {
                             <Text style={styles.errorText}>{errors.firstname}</Text>
 
                             <Input clearButtonMode={"always"} size={"large"}
-                                value={form.lastname} style={styles.fieldText}
+                                value={form.lastname} style={styles.signUpTextBox}
                                 placeholder={"Last Name"}
                                 onChangeText={(newLastName) => {
                                     setForm((prevForm: SignUpForm) => ({ ...prevForm, lastname: newLastName }))
@@ -214,63 +242,34 @@ function SignUpScreen(props: any) {
                             <Text style={styles.errorText}>{errors.lastname}</Text>
 
                             <Input clearButtonMode={"always"} size={"large"}
-                                value={form.telephone} style={styles.fieldText}
+                                value={form.telephone} style={styles.signUpTextBox}
                                 placeholder={"Telephone"}
                                 onChangeText={(newTelephone) => {
                                     setForm((prevForm: SignUpForm) => ({ ...prevForm, telephone: newTelephone }))
                                 }}
                             />
                             <Text style={styles.errorText}>{errors.telephone}</Text>
-
-                            <Input clearButtonMode={"always"} size={"large"}
-                                value={form.role} style={styles.fieldText}
-                                placeholder={"Role"}
-                                onChangeText={(newRole) => {
-                                    setForm((prevForm: SignUpForm) => ({ ...prevForm, role: newRole }))
-                                }}
-                            />
+                            
+                            <Dropdown
+                            data={roles}
+                            value={form.role}
+                            onChange={handleRoleChange} // Call handleRoleChange when a role is selected
+                            style={[
+                                styles.signUpDropDown,
+                                { width: "97%", padding: 5, borderRadius: 10, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 1, color: colors.background_Grey }
+                            ]}
+                            placeholder='Select Role' labelField={'label'} valueField={'label'}    />
+                            
                             <Text style={styles.errorText}>{errors.role}</Text>
-
-
-                        <View style={signUpStyles.switchGroup}>
-                            <Text style={{
-                                fontSize: 15,
-                                fontWeight: "normal",
-                                marginRight: 10,
-                            }}>
-                                Are you a Vet?
-                            </Text>
-                            <Switch
-                                trackColor={{ true: '#53d769' }}
-                                ios_backgroundColor="#8e8e93"
-                                onValueChange={toggleSwitch}
-                                value={isVet}
-                            />
-                        </View>
-
-                        {isVet &&
-                            <>
-                                <Input
-                                    clearButtonMode={"always"} size={"large"}
-                                    value={form.vetLicense} style={styles.fieldText}
-                                    placeholder={"Vet License"}
-                                    onChangeText={(newVetLicense) => {
-                                        setForm((prevForm: SignUpForm) => ({ ...prevForm, vetLicense: newVetLicense }))
-                                    }}
-                                />
-                                <Text style={styles.errorText}>{errors.vetLicense}</Text>
-                            </>
-                        }
-
                     </View>
 
-                    <View id={"buttonGroup"} style={styles.buttonGroup}>
+                    <View id={"buttonGroup"} style={styles.signUpButtonGroup}>
                         <TouchableHighlight style={{ ...styles.mainButton }}
                             underlayColor={colors.black_underlay} onPress={handleSubmit}>
                             <Text style={styles.buttonText}> SIGNUP </Text>
                         </TouchableHighlight>
 
-                        <TouchableHighlight style={{ ...styles.secondaryButton, marginTop: 100}}
+                        <TouchableHighlight style={{ ...styles.secondaryButton, marginTop: 20}}
                             underlayColor={colors.brightRed_underlayColor}
                             onPress={() => props.navigation.navigate("Map")}>
                             <Text style={styles.buttonText}> EMERGENCY </Text>
