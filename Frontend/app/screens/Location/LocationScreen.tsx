@@ -41,6 +41,8 @@ function LocationScreen(props: { route: { params: LocationScreenParams }, naviga
     console.log("LocationScreen -> params", params)
     let locationMissing = "";
     let locationFound = true;
+    destinationCoords.latitude = 42.032974;
+    destinationCoords.longitude = -93.581543;
     // useEffect(() => {
     //     if (params.latitude === undefined || params.longitude === undefined) {
     //         console.warn("No location saved for the user. Location is required to be sent; it may be null.")
