@@ -191,6 +191,35 @@ INSERT INTO screening_questions (question_text) VALUES ("Recently, has your dog 
 INSERT INTO screening_questions (question_text) VALUES ("Is your dog behaving strangely? (e.g., twitching, turning around in circles, or moving as if drunk)"); # ID: 180
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog's abdomen (stomach area) become more swollen than usual?"); # ID: 181
 INSERT INTO screening_questions (question_text) VALUES ("Pick up the skin of the scruff of your dog's neck and then release it. Does it fall back into place?"); # ID: 182
+INSERT INTO screening_questions (question_text) VALUES ("If you are concerned your dog has eaten something poisonous, what has it recently eaten?"); # ID: 183
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responding to you normally?"); # ID: 184
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog behaving normally?"); # ID: 185
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog showing signs of pain?"); # ID: 186
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog breathing normally?"); # ID: 187
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog vomited since eating the baby oil?"); # ID: 188
+INSERT INTO screening_questions (question_text) VALUES ("Is there any blood in the vomit?"); # ID: 189
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have eaten anything else inappropriate or poisonous? (e.g., bleach, aspirin, or a toy)"); # ID: 190
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been drinking more than usual recently?"); # ID: 191
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog trying to vomit but nothing is coming up?"); # ID: 192
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog had diarrhoea since eating the baby oil?"); # ID: 193
+INSERT INTO screening_questions (question_text) VALUES ("Was there any blood in the diarrhoea?"); # ID: 194
+INSERT INTO screening_questions (question_text) VALUES ("What is the consistency of the diarrhoea like?"); # ID: 195
+INSERT INTO screening_questions (question_text) VALUES ("How much is your dog straining to pass the stool?"); # ID: 196
+INSERT INTO screening_questions (question_text) VALUES ("Is the dog's abdomen (stomach area) distended or sore?"); # ID: 197
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have eaten anything else inappropriate, such as a toy or bone?"); # ID: 198
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been drinking noticeably more than usual recently?"); # ID: 199
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog flat or in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 200
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responding to you normally?"); # ID: 201
+INSERT INTO screening_questions (question_text) VALUES ("Is there any bleeding coming from the wound?"); # ID: 202
+INSERT INTO screening_questions (question_text) VALUES ("How much blood is coming out?"); # ID: 203
+INSERT INTO screening_questions (question_text) VALUES ("Have any stitches become dislodged? In cases of dog castration, sometimes there are no stitches visible on the skin."); # ID: 204
+INSERT INTO screening_questions (question_text) VALUES ("Have the edges of the wound separated?"); # ID: 205
+INSERT INTO screening_questions (question_text) VALUES ("How long is it since the operation?"); # ID: 206
+INSERT INTO screening_questions (question_text) VALUES ("Is there any swelling under the wound?"); # ID: 207
+INSERT INTO screening_questions (question_text) VALUES ("How would you describe the swelling?"); # ID: 208
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog vomited or been off-color since the swelling appeared?"); # ID: 209
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog licking or chewing at the wound?"); # ID: 210
+INSERT INTO screening_questions (question_text) VALUES ("Is there another problem that you have not been asked about?"); # ID: 211
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -2971,6 +3000,401 @@ If the skin at the scruff of the neck forms a 'tent' and does not quickly return
 In some conditions, severe dehydration can occur even when a dog is drinking a lot.",
 3);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 238
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Contact your vet immediately - your dog will probably need urgent treatment even if they seem fine now.
+Remember, your vet will want to know some details about your dog (how old and heavy it is, does he/she have any underlying health issues, etc.), as well as full details of what and how much he/she has eaten.
+Keep your dog warm, quiet, and calm.
+Do not offer food unless your vet says it is okay.",
+"Aspirin is the active ingredient in some over-the-counter painkilling tablets and gels
+Aspirin damages the systems that maintain the stomach and gut lining, and kidney function.
+The onset of symptoms is usually in 8-12 hours; the first signs are normally vomiting and diarrhoea (possibly with blood). In the long run, there may be kidney failure or liver damage.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 239
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Contact your vet immediately - your dog will probably need urgent treatment even if they seem fine now.
+Remember, your vet will want to know some details about your dog (how old and heavy it is, does he/she have any underlying health issues, etc.), as well as full details of what and how much he/she has eaten.
+Keep your dog warm, quiet, and calm.
+Do not offer food unless your vet says it is okay.",
+"Azaleas, also known as Rhododendrons, are hardy evergreen shrubs, widely planted in gardens.
+All parts of the plant contain toxic substances, primarily grayanotoxins. These act on the sodium channels in cell membranes leading rapid-onset to toxic effects.
+Symptoms may arise in as little as 20 minutes, although 1-2 hours is more common. 
+Symptoms of poisoning typically include gastrointestinal signs (excessive salivation, vomiting and diarrhoea, abdominal tenderness), neuromuscular problems (trembling, wobbliness, lethargy, muscle weakness, collapse) and heart issues (slow, weak heartbeat). 
+Signs may persist for several days before recovery or, less commonly, death due to respiratory paralysis.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 240
+("Your vet may give you telephone advice or may ask to see you.
+Always call your vet before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+NULL,
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, abnormal behavior can be a sign of medical problems and should always be checked out by your vet.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 241
+("Your vet may give you telephone advice or may ask to see you.
+Always call your vet before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+NULL,
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, abnormal behavior can be a sign of medical problems and should always be checked out by your vet.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 242
+("Your vet may give you telephone advice or may ask to see you.
+Always call your vet before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Although baby oil is normally harmless, if your dog is in pain it may require urgent treatment.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 242
+("Your vet may give you telephone advice or may ask to see you.
+Always call your vet before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+NULL,
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, abnormal behavior can be a sign of medical problems and should always be checked out by your vet.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 243
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, blood in the vomit can be a sign of serious illness.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 244
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Bleach and other caustic substances, however, can seriously injure the gut and may be life-threatening.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 245
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, drinking more than usual and vomiting can be a sign of serious illness.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 246
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, drinking more than usual and vomiting can be a sign of serious illness.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 247
+("If it is day time contact your vet now. If it is the evening, and there is no change in your pet's condition, it is probably safe to wait until the morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Although baby oil is normally harmless, since your dog has been sick it is worth getting him checked over by a vet.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 248
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.",
+"Your dog is likely to be fine, but keep a very close eye on your dog and call your vet if you are concerned or you see any other symptoms.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except it can have a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 249
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, bloody diarrhoea can be a sign of serious illness.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 250
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, watery diarrhoea can be a sign of serious illness, and may lead to serious dehydration.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 251
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+The straining may not be related to the baby oil - other possible causes include foreign bodies or colitis.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 252
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, a swollen abdomen can be a sign of serious illness.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 253
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, eating inappropriate objects can be dangerous.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 254
+("If it is day time contact your vet now. If it is the evening, and there is no change in your pet's condition, it is probably safe to wait until the morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, drinking more than usual can be a sign of serious illness.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 255
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Although baby oil is normally harmless, diarrhoea can be a sign of another illness.
+Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 256
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs, or move unnecessarily.",
+"Post operative pain should be well controlled; if it is not, contact your vet immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 257
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs or move unnecessarily.",
+"While dogs may be a bit sleepy after surgery, they should still be moving around and responsive. If not, contact your vet for advice immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 258
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs or move unnecessarily.
+If it is safe to do so apply some gentle pressure to the wound with a clean towel.",
+"Opening of the wound with bleeding may be due to complete failure of the stitches, or infection within the wound.
+The most common cause is dogs licking or chewing at their wounds, or other dogs in the household \"helping\" to try and clean the site. In either case, it needs immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 259
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs or move unnecessarily.
+If it is safe to do so apply some gentle pressure to the wound with a clean towel.",
+"Opening of the wound with bleeding may be due to complete failure of the stitches, or infection within the wound.
+The most common cause is dogs licking or chewing at their wounds, or other dogs in the household \"helping\" to try and clean the site. In either case, seek veterinary advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 260
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs or move unnecessarily.
+If possible wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"The wound needs to be held closed if it is to heal properly; if they have failed your dog needs urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 261
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs or move unnecessarily.
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"Stitches are necessary to hold the skin together while it heals; they are most important for the first 7 days.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 262
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"If the skin edges come apart (ie you can see reddish tissue) contact your vet for advice.
+Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound.
+If you can not stop your dog from licking or scratching at the wound contact your vet immediately.",
+"The stitches are needed to hold the wound together while it heals; after the first 7 days, they are less important but still need checking.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 263
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs or move unnecessarily.
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"Significant swelling is commonly due to inflammation, infection, or a seroma (i.e., fluid building up under the skin).",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 264
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs, or move unnecessarily.",
+"The presence of swelling and other symptoms suggests that there might be infection in the wound or other surgical complications; seek veterinary advice immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 265
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet, and calm.
+Use a t-shirt around the wound and socks on the feet to prevent your dog from licking or scratching at the wound.
+If you can not stop your dog from licking or scratching at the wound, contact your vet immediately.",
+"Although swelling may be due to infection of the wound, it can also be part of the healing process.
+Your vet will likely want to examine it, but if your dog is otherwise in good health, it's not considered an emergency.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 266
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"It is quite common for dogs to try to lick or chew at their surgical wound.
+It is vital to not let them do this.
+\"Buster\" or \"Elizabethan\" collars provided by your vet are an excellent way to prevent licking for most wound sites. Dogs may resent them to start off with but quickly grow used to them.
+Dogs can sleep and usually eat whilst wearing a buster collar.
+If you can't stop your dog from licking at its wound contact your vet.",
+"The bacteria and other bugs on your dogs tongue and feet can cause wound infections.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 267
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet, and calm.
+Do not allow your dog to jump, go upstairs, or move unnecessarily.",
+"There are a range of possible problems after surgery, so contact your vet for advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 268
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Keep a close eye on your dog; if there are any further problems, contact your vet.",
+"It is common for dogs to be a bit quieter than normal for a few days after surgery.
+They should be happy to move around the room normally and should be bright and responsive.",
+0);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
@@ -2993,8 +3417,8 @@ INSERT INTO screening_options (question_id, is_terminating, option_text, result_
  (1, FALSE, "Nail problems", NULL, 155),
  (1, FALSE, "Not eating", NULL, 167),
  (1, FALSE, "Off-color", NULL, 173),
- (1, FALSE, "Poison exposure", NULL, NULL),
- (1, FALSE, "Problems after surgery", NULL, NULL),
+ (1, FALSE, "Poison exposure", NULL, 183),
+ (1, FALSE, "Problems after surgery", NULL, 200),
  (1, FALSE, "Smelly", NULL, NULL),
  (1, FALSE, "Sneezing", NULL, NULL),
  (1, FALSE, "Straining", NULL, NULL),
@@ -3764,3 +4188,174 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (182, TRUE, "Yes", 236, NULL),
 (182, TRUE, "No", 237, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(183, TRUE, "Aspirin", 238, NULL),
+(183, TRUE, "Azalea", 239, NULL),
+(183, FALSE, "Baby oil", NULL, 184);
+-- (183, FALSE, "Baby wipes", NULL, NULL),
+-- (183, FALSE, "Blu-Tak or similar adhesives", NULL, NULL),
+-- (183, FALSE, "Blue cheese", NULL, NULL),
+-- (183, FALSE, "Blue-green alage", NULL, NULL),
+-- (183, FALSE, "Cannabis", NULL, NULL),
+-- (183, FALSE, "Chalk", NULL, NULL),
+-- (183, FALSE, "Chocolate", NULL, NULL),
+-- (183, FALSE, "Coal (real or artificial)", NULL, NULL),
+-- (183, FALSE, "Conkers", NULL, NULL),
+-- (183, FALSE, "Crayons", NULL, NULL),
+-- (183, FALSE, "Daffodil (Narcissus)", NULL, NULL),
+-- (183, FALSE, "Diclofenac", NULL, NULL),
+-- (183, FALSE, "Emollient cream (e.g., E45)", NULL, NULL),
+-- (183, FALSE, "Folic acid", NULL, NULL),
+-- (183, FALSE, "Fuchsias", NULL, NULL),
+-- (183, FALSE, "Grapes (currants, raisins, and sultanas)", NULL, NULL),
+-- (183, FALSE, "Graphite pencils", NULL, NULL),
+-- (183, FALSE, "Holly (Ilex species)", NULL, NULL),
+-- (183, FALSE, "Honeysuckle (Lonicera species)", NULL, NULL),
+-- (183, FALSE, "Hormone Replacement Therapy (HRT) tablets or creams", NULL, NULL),
+-- (183, FALSE, "Ibuprofen-based painkillers", NULL, NULL),
+-- (183, FALSE, "Icepacks (methylcellulose)", NULL, NULL),
+-- (183, FALSE, "Inch Plant/Spiderwort (Tradescantia)", NULL, NULL),
+-- (183, FALSE, "Iron tablets/supplements", NULL, NULL),
+-- (183, FALSE, "Leeks or chives", NULL, NULL),
+-- (183, FALSE, "Lipstick", NULL, NULL),
+-- (183, FALSE, "Macadamia nuts", NULL, NULL),
+-- (183, FALSE, "Matches", NULL, NULL),
+-- (183, FALSE, "Mistletoe (Viscum album)", NULL, NULL),
+-- (183, FALSE, "Nappies", NULL, NULL),
+-- (183, FALSE, "Nappy rash cream", NULL, NULL),
+-- (183, FALSE, "Onions or garlic", NULL, NULL),
+-- (183, FALSE, "Oral contraceptives", NULL, NULL),
+-- (183, FALSE, "Paper", NULL, NULL),
+-- (183, FALSE, "Paracetamol-based painkillers", NULL, NULL),
+-- (183, FALSE, "Pencils or pencil lead", NULL, NULL),
+-- (183, FALSE, "Plant foot", NULL, NULL),
+-- (183, FALSE, "Polystyrene", NULL, NULL),
+-- (183, FALSE, "Rhododendron", NULL, NULL),
+-- (183, FALSE, "Rodenticides/rat bait", NULL, NULL),
+-- (183, FALSE, "Rotting food", NULL, NULL),
+-- (183, FALSE, "Rowan (Sobus aucuparia)", NULL, NULL),
+-- (183, FALSE, "Rubbers or erasers", NULL, NULL),
+-- (183, FALSE, "Salt", NULL, NULL),
+-- (183, FALSE, "Silica gel", NULL, NULL),
+-- (183, FALSE, "Slug bait (Ferric phosphate)", NULL, NULL),
+-- (183, FALSE, "Slug bait (Metaldehyde)", NULL, NULL),
+-- (183, FALSE, "Slug bait (Methiocarb)", NULL, NULL),
+-- (183, FALSE, "Snake bite", NULL, NULL),
+-- (183, FALSE, "Toad venom", NULL, NULL),
+-- (183, FALSE, "Wandering dude (Tradescantia)", NULL, NULL),
+-- (183, FALSE, "Wax candles", NULL, NULL),
+-- (183, FALSE, "Xylitol in gum or peanut butter", NULL, NULL),
+-- (183, FALSE, "Zinc oxide creams (e.g., Sudocrem)", NULL, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(184, FALSE, "Yes", NULL, 185),
+(184, TRUE, "No", 240, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(185, FALSE, "Yes", NULL, 186),
+(185, TRUE, "No", 241, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(186, TRUE, "Yes", 242, NULL),
+(186, FALSE, "No", NULL, 187);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(187, FALSE, "Yes", NULL, 188),
+(187, TRUE, "No", 243, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(188, FALSE, "Yes", NULL, 189),
+(188, FALSE, "No", NULL, 193);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(189, TRUE, "Yes", 243, NULL),
+(189, FALSE, "No", NULL, 190);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(190, TRUE, "Yes", 244, NULL),
+(190, FALSE, "No", NULL, 191);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(191, TRUE, "Yes", 245, NULL),
+(191, FALSE, "No", NULL, 192);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(192, TRUE, "Yes", 246, NULL),
+(192, TRUE, "No", 247, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(193, FALSE, "Yes", NULL, 194),
+(193, TRUE, "No", 248, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(194, TRUE, "Yes", 249, NULL),
+(194, FALSE, "No", NULL, 195);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(195, FALSE, "Cow pat", NULL, 196),
+(195, TRUE, "Watery", 250, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(196, TRUE, "Constantly or most of the time", 251, NULL),
+(196, FALSE, "Normal or slightly more than usual", NULL, 197);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(197, TRUE, "Yes", 252, NULL),
+(197, FALSE, "No", NULL, 198);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(198, TRUE, "Yes", 253, NULL),
+(198, FALSE, "No", NULL, 199);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(199, TRUE, "Yes", 254, NULL),
+(199, TRUE, "No", 255, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(200, TRUE, "Yes", 256, NULL),
+(200, FALSE, "No", NULL, 201);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(201, FALSE, "Yes", NULL, 202),
+(201, TRUE, "No", 257, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(202, FALSE, "Yes", NULL, 203),
+(202, FALSE, "No", NULL, 204);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(203, TRUE, "Blood is dripping or trickling out", 258, NULL),
+(203, TRUE, "One or two drops only", 259, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(204, FALSE, "Yes", NULL, 205),
+(204, FALSE, "No", NULL, 207);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(205, TRUE, "Yes", 260, NULL),
+(205, FALSE, "No", NULL, 206);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(206, TRUE, "Less than 7 days", 261, NULL),
+(206, TRUE, "More than 7 days", 262, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(207, FALSE, "Yes", NULL, 208),
+(207, FALSE, "No", NULL, 210);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(208, TRUE, "Large", 263, NULL),
+(208, FALSE, "Small", NULL, 209);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(209, TRUE, "Yes", 264, NULL),
+(209, TRUE, "No", 265, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(210, TRUE, "Large", 266, NULL),
+(210, FALSE, "Small", NULL, 211);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(211, TRUE, "Yes", 267, NULL),
+(211, TRUE, "No", 268, NULL);
