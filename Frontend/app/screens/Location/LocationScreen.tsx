@@ -34,8 +34,8 @@ function LocationScreen(props: { route: { params: LocationScreenParams }, naviga
     const { params } = props.route;
     const [errors, setError] = useState<any>({})
     const [destinationCoords, setDestinationCoords] = useState<LocationInterface>({
-        latitude: params.latitude,
-        longitude: params.longitude,
+        latitude: params.latitude || 0,
+        longitude: params.longitude || 0,
     })
     console.log("LocationScreen -> destinationCoords", destinationCoords)
     console.log("LocationScreen -> params", params)
