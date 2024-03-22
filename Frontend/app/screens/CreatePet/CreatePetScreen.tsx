@@ -127,6 +127,9 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
         let url = BASE_URL + "/pet/add/dog/" + params.userId; // Assuming dog is the pet type, update it according to the actual pet type
         let body = {"name": petForm.name, "age": petForm.age, "weight": petForm.weight, "height": petForm.height, "breed": petForm.breed, "petSize": petForm.petSize, "energyLevel": petForm.energyLevel, "furType": petForm.furType, "male": petForm.sex}
 
+        console.log('Submitting create pet request...');
+        console.log('URL:', url);   
+        console.log('Request body:', body);
 
         const response = await fetch(url, {
             method: 'POST',
@@ -142,6 +145,15 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
         const responseBody = await response.json(); // Parse the response body into JSON
         console.log('Response:', response);
         console.log('Response Body:', responseBody);
+
+        if (response.status === 200) {
+            // Pet creation successful
+            props.navigation.navigate("Home", { ...params } as HomeScreenParams);
+        }
+        else {
+            // Handle errors
+            Alert.alert("Error", "Failed to create pet. Please try again later.");
+        }
 
         // let res = await fetch(url, {
         //     method: 'POST',
