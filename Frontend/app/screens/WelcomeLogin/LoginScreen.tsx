@@ -103,12 +103,20 @@ console.log('Response status text:', response.statusText);
 const responseBody = await response.json(); // Parse the response body into JSON
 console.log('Response Body:', responseBody);
 console.log('LOGIN SUCCESSFUL LETS GO'); 
+            let lat = 0;
+            let long =0;
+if (lat === undefined) {
+     lat = 0;
+}
+if (long === undefined) {
+     long = 0;
+}
 
 let params = {
     userId: responseBody.id,
-    userIsVet: responseBody.user.userVet ? true : false,
-    latitude: responseBody.user.latitude, // Add the missing latitude property
-    longitude: responseBody.user.longitude
+    userIsVet: false,
+    latitude: lat, // Add the missing latitude property
+    longitude: long
 };
 console.log('params:', params);
 props.navigation.navigate("Location", params);

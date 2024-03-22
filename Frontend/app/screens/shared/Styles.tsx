@@ -282,5 +282,15 @@ export const styles: any = StyleSheet.create({
         // backgroundColor: colors.primary_Blue,
     },
 
+    createPetTextfield: {
+        backgroundColor: colors.white,
+        borderRadius: 3,
+        borderWidth: 1,
+        fontSize: 20,
+        fontWeight: "normal",
+        height: 50,
+        width: "100%",
+    },
+
 
 })

@@ -94,9 +94,9 @@ function SignUpScreen(props: any) {
         if (!form.password) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, password: "Password is required!" }))
             isValid = false
-        } else if (form.password.length < 6) {
-            setErrors((prevState: SignUpForm) => ({ ...prevState, password: "Password must contain at least 6 characters!" }))
-            isValid = false
+        } else if (!form.password.match(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{16,48}$/)) {
+            setErrors((prevState: SignUpForm) => ({ ...prevState, password: "Password must match the specified format!" }))
+            isValid = false;
         }
         if (!form.confirmPassword.match(form.password) || !form.password) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, confirmPassword: "Password does not match" }))
@@ -172,8 +172,15 @@ function SignUpScreen(props: any) {
                 props.navigation.navigate("Login")
             }
         }
-
+// the error message will return as a string instead of json so to read that 
+// we need to use response.text() instead of response.json()
+        else if(response.status === 400){
+            const error = await response.text()
+            console.log('Error:', error)
+            Alert.alert("Error", error)
+        }
     } catch (error: any) {
+        
         console.error('Error:', error.message);
     }
 }
