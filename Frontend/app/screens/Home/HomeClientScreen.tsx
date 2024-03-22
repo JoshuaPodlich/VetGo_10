@@ -51,27 +51,51 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     }, [])
 
 
-
     const fetchPets = async () => {
         setLoading(true)
-        const res = await fetch(BASE_URL + "/owner/pet/" + params.userId)
-
+        const res = await fetch(BASE_URL + "/pet/get/all")
         const tempPetList: pet[] = await res.json()
         setPets(tempPetList)
         const tempPetsData: { pet: any, appointment: any }[] = []
-        for (let i = 0; i < tempPetList.length; i++) {
-            const res = await fetch(BASE_URL + "/pet/appointment/" + tempPetList[i].pid)
-            let tempAppointment: appointment = await res.text()
-                .then(text => text.length ? JSON.parse(text) : "NO_APT")
-                .catch(err => console.log(err))
-            tempPetsData.push({ pet: tempPetList[i], appointment: tempAppointment })
-        }
 
-        // params.user.petList = tempPetList
+        for (let i = 0; i < tempPetList.length; i++) {
+           // const res = await fetch(BASE_URL + "/pet/appointment/" + tempPetList[i].pid)
+            //let tempAppointment: appointment = await res.text()
+                //.then(text => text.length ? JSON.parse(text) : "NO_APT")
+               // .catch(err => console.log(err))
+            tempPetsData.push({ pet: tempPetList[i], appointment: "NO_APT"})
+        }
 
         setPetsData(tempPetsData)
         setLoading(false)
+
+
+
+
+
     }
+
+
+    // const fetchPets = async () => {
+    //     setLoading(true)
+    //     const res = await fetch(BASE_URL + "/owner/pet/" + params.userId)
+
+    //     const tempPetList: pet[] = await res.json()
+    //     setPets(tempPetList)
+    //     const tempPetsData: { pet: any, appointment: any }[] = []
+    //     for (let i = 0; i < tempPetList.length; i++) {
+    //         const res = await fetch(BASE_URL + "/pet/appointment/" + tempPetList[i].pid)
+    //         let tempAppointment: appointment = await res.text()
+    //             .then(text => text.length ? JSON.parse(text) : "NO_APT")
+    //             .catch(err => console.log(err))
+    //         tempPetsData.push({ pet: tempPetList[i], appointment: tempAppointment })
+    //     }
+
+    //     // params.user.petList = tempPetList
+
+    //     setPetsData(tempPetsData)
+    //     setLoading(false)
+    // }
 
 
     //region Create / Accept Appointment
