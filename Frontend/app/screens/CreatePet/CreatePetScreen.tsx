@@ -125,33 +125,52 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
 
     async function submitCreatePet() {
         let url = BASE_URL + "/pet/add/dog/" + params.userId; // Assuming dog is the pet type, update it according to the actual pet type
-        
-        let res = await fetch(url, {
+        let body = {"name": petForm.name, "age": petForm.age, "weight": petForm.weight, "height": petForm.height, "breed": petForm.breed, "petSize": petForm.petSize, "energyLevel": petForm.energyLevel, "furType": petForm.furType, "male": petForm.sex}
+
+
+        const response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                "name": petForm.name,
-                "age": petForm.age,
-                "weight": petForm.weight,
-                "height": petForm.height,
-                "breed": petForm.breed,
-                "petSize": petForm.petSize,
-                "energyLevel": petForm.energyLevel,
-                "furType": petForm.furType,
-                "male": petForm.sex
-            }),
-        });
+            body: JSON.stringify(body)
+        })
+
+        console.log(response.status)
+        //console.log(response.statusText)
+
+        const responseBody = await response.json(); // Parse the response body into JSON
+        console.log('Response:', response);
+        console.log('Response Body:', responseBody);
+
+        // let res = await fetch(url, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         "name": petForm.name,
+        //         "age": petForm.age,
+        //         "weight": petForm.weight,
+        //         "height": petForm.height,
+        //         "breed": petForm.breed,
+        //         "petSize": petForm.petSize,
+        //         "energyLevel": petForm.energyLevel,
+        //         "furType": petForm.furType,
+        //         "male": petForm.sex
+        //     }),
+        // });
+        // console.log(res)
+
     
-        if (res.ok) {
-            // Pet creation successful
-            props.navigation.navigate("Home", { ...params } as HomeScreenParams);
-        } else {
-            // Handle errors
-            Alert.alert("Error", "Failed to create pet. Please try again later.");
-        }
+        // if (res.ok) {
+        //     // Pet creation successful
+        //     props.navigation.navigate("Home", { ...params } as HomeScreenParams);
+        // } else {
+        //     // Handle errors
+        //     Alert.alert("Error", "Failed to create pet. Please try again later.");
+        // }
     }
     
 
@@ -176,7 +195,7 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
         <SafeAreaView style={styles.background}>
             
             <View style={styles.createPet}>
-
+            <ScrollView>
                 <Text style={styles.header}> Create Pet </Text>
                 <View>
 
@@ -320,6 +339,7 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
                         <Text> Save Changes </Text>
                     </Button>
                 </View>
+                </ScrollView>
             </View>
             <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
