@@ -269,36 +269,39 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
                         }}
                     />
                     <Text style={styles.errorText}>{errors.height}</Text>
-                    <Text> Size </Text>
-    <TextInput
-        value={petForm.petSize}
-        placeholder="Pet Size"
-        onChangeText={(newValue: string) => {
-            setPetForm((prevState: CreatePetForm) => ({ ...prevState, petSize: newValue }))
-        }}
-        style={styles.textInput} // Add appropriate styles
-    />
 
-    <Text> Energy Level </Text>
-    <TextInput
-        value={petForm.energyLevel}
-        placeholder="Energy Level"
-        onChangeText={(newValue: string) => {
-            setPetForm((prevState: CreatePetForm) => ({ ...prevState, energyLevel: newValue }))
-        }}
-        style={styles.textInput} // Add appropriate styles
-    />
+                    <Text style={{paddingTop: 10}}> Size </Text>
+                    <Textfield
+                        value={petForm.petSize}
+                        placeholder="Pet Size"
+                        onChangeText={(newValue: string) => {
+                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, petSize: newValue }))
+                        }}
+                        />
 
-    <Text> Fur Type </Text>
-    <TextInput
-        value={petForm.furType}
-        placeholder="Fur Type"
-        onChangeText={(newValue: string) => {
-            setPetForm((prevState: CreatePetForm) => ({ ...prevState, furType: newValue }))
-        }}
-        style={styles.textInput} // Add appropriate styles
-    />
-                    <View style={{ marginLeft: 5 }}>
+                    <Text style={{paddingTop: 10}} > Energy Level </Text>
+                    <Textfield 
+                        value={petForm.energyLevel}
+                        placeholder="Energy Level"
+                        onChangeText={(newValue: string) => {
+                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, energyLevel: newValue }))
+                        }}
+                        style={{backgroundColor: 'lightgray', 
+                        borderRadius: 8, 
+                        padding: 10, 
+                        fontSize: 16, 
+                        color: 'black' }}
+                    />
+
+                    <Text style={{paddingTop: 10}}> Fur Type </Text>
+                    <Textfield
+                        value={petForm.furType}
+                        placeholder="Fur Type"
+                        onChangeText={(newValue: string) => {
+                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, furType: newValue }))
+                        }}
+                    />
+                    <View style={{ marginLeft: 5, paddingTop: 20 }}>
                         <Text style={{ marginBottom: 10, marginTop: -20 }}>Sex</Text>
                         <Layout
                             style={{
