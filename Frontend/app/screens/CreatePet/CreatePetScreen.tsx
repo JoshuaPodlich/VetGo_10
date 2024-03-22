@@ -18,24 +18,46 @@ export interface CreatePetScreenParams {
     userIsVet: boolean,
     location: LocationInterface,
 }
-
 interface CreatePetForm {
-    name: string, age: number, weight: number, height: number, type: string, sex: boolean, breed: string
+    name: string, age: number, weight: number, height: number, type: string, sex: boolean, breed: string,
+    petSize: string, energyLevel: string, furType: string // New values
 }
+
 interface CreatePetErrors {
-    name: string, age: string, weight: string, height: string, type: string, sex: string, breed: string
+    name: string, age: string, weight: string, height: string, type: string, sex: string, breed: string, petSize: string, energyLevel: string, furType: string // New values
 }
 
 function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: CreatePetScreenNavigationProp }) {
 
     const params: CreatePetScreenParams = props.route.params as CreatePetScreenParams
     const titles = ['DOG', 'CAT', 'BIRD', 'REPTILE', 'FISH', 'RODENT', 'OTHER']
-    const [petForm, setPetForm] = useState<CreatePetForm>({ name: "", age: 0, weight: 0, height: 0, type: titles[0], sex: true, breed: "" })
-    const [errors, setErrors] = useState<CreatePetErrors>({ name: "", age: "", weight: "", height: "", type: "", sex: "", breed: "" })
+    const [petForm, setPetForm] = useState<CreatePetForm>({ 
+        name: "", 
+        age: 0, 
+        weight: 0, 
+        height: 0, 
+        type: titles[0], 
+        sex: true, 
+        breed: "", 
+        petSize: "", // Initialize new values
+        energyLevel: "", // Initialize new values
+        furType: "" // Initialize new values
+    })
+    const [errors, setErrors] = useState<CreatePetErrors>({ 
+        name: "", 
+        age: "", 
+        weight: "", 
+        height: "", 
+        type: "", 
+        sex: "", 
+        breed: "",
+        petSize: "", // Initialize new values
+        energyLevel: "", // Initialize new values
+        furType: "" // Initialize new values
+    })
     const isSubmittingRef = useRef<boolean>(false)
 
     const [selectedIndex, setSelectedIndex] = useState<IndexPath>(new IndexPath(0))
-
 
     useEffect(() => {
     }, [])
@@ -51,9 +73,8 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
         }
     }
 
-
     function validate(): boolean {
-        setErrors({ name: "", age: "", weight: "", height: "", type: "", sex: "", breed: "" })
+        setErrors({ name: "", age: "", weight: "", height: "", type: "", sex: "", breed: "", petSize: "", energyLevel: "", furType: "" })
         let isValid = true
         if (!petForm.name) {
             setErrors((prevState: CreatePetErrors) => ({ ...prevState, name: "Pet name is required!" }))
@@ -63,32 +84,48 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
             setErrors((prevState: CreatePetErrors) => ({ ...prevState, type: "Pet type is required!" }))
             isValid = false
         }
-        if (petForm.age == 0) {
+        if (petForm.age === 0) { // Use strict equality check
             setErrors((prevState: CreatePetErrors) => ({ ...prevState, age: "Pet age is required!" }))
             isValid = false
         } else {
-            
+            // Additional validation if needed
         }
-        if (petForm.weight == 0) {
+        if (petForm.weight === 0) { // Use strict equality check
             setErrors((prevState: CreatePetErrors) => ({ ...prevState, weight: "Pet weight is required!" }))
             isValid = false
         } else {
-            
+            // Additional validation if needed
         }
-        if (petForm.height == 0) {
+        if (petForm.height === 0) { // Use strict equality check
             setErrors((prevState: CreatePetErrors) => ({ ...prevState, height: "Pet height is required!" }))
             isValid = false
-        } else {
-            
+        } 
+        if (!petForm.breed) {
+            setErrors((prevState: CreatePetErrors) => ({ ...prevState, breed: "Pet breed is required!" }))
+            isValid = false
+        }
+        if (!petForm.furType) {
+            setErrors((prevState: CreatePetErrors) => ({ ...prevState, furType: "Pet fur type is required!" }))
+            isValid = false
+        }
+        if (!petForm.energyLevel) {
+            setErrors((prevState: CreatePetErrors) => ({ ...prevState, energyLevel: "Pet energy level is required!" }))
+            isValid = false
+        }
+        if (!petForm.petSize) {
+            setErrors((prevState: CreatePetErrors) => ({ ...prevState, petSize: "Pet size is required!" }))
+            isValid = false
+        }
+        else {
+            // Additional validation if needed
         }
 
         return isValid
     }
 
     async function submitCreatePet() {
-       
-        let url = BASE_URL + "/pet/add/" + params.userId
-
+        let url = BASE_URL + "/pet/add/dog/" + params.userId; // Assuming dog is the pet type, update it according to the actual pet type
+        
         let res = await fetch(url, {
             method: 'POST',
             headers: {
@@ -96,24 +133,27 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "age": petForm.age,
-                "height": petForm.height,
-                "isMale": Number(petForm.sex),
                 "name": petForm.name,
-                "owner": params.userId,
-                "petType": titles.indexOf(petForm.type),
-                "petBreed": petForm.breed,
+                "age": petForm.age,
                 "weight": petForm.weight,
-                "pid": null,
-                "appointments": null
+                "height": petForm.height,
+                "breed": petForm.breed,
+                "petSize": petForm.petSize,
+                "energyLevel": petForm.energyLevel,
+                "furType": petForm.furType,
+                "male": petForm.sex
             }),
-        })
-        console.log("-------------------------?????????????????????")
-        console.log(res)
-       
-        props.navigation.navigate("Home", { ...params } as HomeScreenParams)
-        
+        });
+    
+        if (res.ok) {
+            // Pet creation successful
+            props.navigation.navigate("Home", { ...params } as HomeScreenParams);
+        } else {
+            // Handle errors
+            Alert.alert("Error", "Failed to create pet. Please try again later.");
+        }
     }
+    
 
     function back() {
         let homeScreenParams: HomeScreenParams = {
@@ -210,6 +250,35 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
                         }}
                     />
                     <Text style={styles.errorText}>{errors.height}</Text>
+                    <Text> Size </Text>
+    <TextInput
+        value={petForm.petSize}
+        placeholder="Pet Size"
+        onChangeText={(newValue: string) => {
+            setPetForm((prevState: CreatePetForm) => ({ ...prevState, petSize: newValue }))
+        }}
+        style={styles.textInput} // Add appropriate styles
+    />
+
+    <Text> Energy Level </Text>
+    <TextInput
+        value={petForm.energyLevel}
+        placeholder="Energy Level"
+        onChangeText={(newValue: string) => {
+            setPetForm((prevState: CreatePetForm) => ({ ...prevState, energyLevel: newValue }))
+        }}
+        style={styles.textInput} // Add appropriate styles
+    />
+
+    <Text> Fur Type </Text>
+    <TextInput
+        value={petForm.furType}
+        placeholder="Fur Type"
+        onChangeText={(newValue: string) => {
+            setPetForm((prevState: CreatePetForm) => ({ ...prevState, furType: newValue }))
+        }}
+        style={styles.textInput} // Add appropriate styles
+    />
                     <View style={{ marginLeft: 5 }}>
                         <Text style={{ marginBottom: 10, marginTop: -20 }}>Sex</Text>
                         <Layout
