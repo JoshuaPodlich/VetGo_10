@@ -24,25 +24,29 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
 
 
     const getAppointments = async () => {
-        const url = BASE_URL + "/appointment/all";
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        }).then( response => {
-            console.log('Response status:', response.status);
-            console.log('Response status text:', response.statusText);
-            console.log('Response raw:', response.text());
+       const url = BASE_URL + "/appointment/all";
+           try {
+               const response = await fetch(url, {
+                   method: 'GET',
+                   headers: {
+                       'Content-Type': 'application/json'
+                   },
+               });
 
-            const responseBody = response.json();
-            const appointments = responseBody.all;
-            console.log('Appointments:', appointments);
+               console.log('Response status:', response.status);
+               console.log('Response status text:', response.statusText);
 
-            setAppointments(appointments);
-        });
+               if (!response.ok) {
+                   throw new Error('Failed to fetch appointments');
+               }
 
+               const responseBody = await response.json();
+               console.log('Response body:', responseBody); // Log entire response body
 
+               setAppointments(responseBody);
+           } catch (error) {
+               console.error('Error fetching appointments:', error);
+           }
     }
 
     useEffect(() => {
@@ -55,9 +59,9 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
         <SafeAreaView style={styles.background}>
             <Text style={{ marginRight: 'auto', marginLeft: 20, fontSize: 28, fontWeight: 'bold', }}>My Appointments</Text>
             <ScrollView>
-{/*                 <View> */}
-{/*                     {appointments.map(appointment => <AppointmentCard key={appointment.aid} appointmentData={appointment} userId={params.userId} petName={appointment.pet.name} />)} */}
-{/*                 </View> */}
+                <View>
+                    {appointments.map(appointment => <AppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} />)}
+                </View>
             </ScrollView>
             <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
@@ -66,15 +70,15 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
 }
 
 interface AppointmentCardParams {
-    userId: string,
+    key: int,
     appointmentData: appointment,
     petName: string
 }
-const AppointmentCard = ({ userId, appointmentData, petName }: AppointmentCardParams) => {
+const AppointmentCard = ({ key, appointmentData, petName }: AppointmentCardParams) => {
     const [showDetails, setShowDetails] = useState(false)
     const cancelAppointment = async () => {
-        console.log(appointmentData.aid, userId)
-        await axios.put(BASE_URL + "/appointment/remove/" + appointmentData.aid + "/" + userId)
+        console.log(key)
+        await axios.delete(BASE_URL + "/appointment/delete/" + appointmentData.aid)
         console.error(`Appointment for ${petName} has been cancelled.`)
     }
 
