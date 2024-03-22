@@ -42,7 +42,7 @@ function ViewAppointmentVetScreen(props: any) {
     const [loading, setLoading] = useState(true)
     const [petOwner, setPetOwner] = useState<any>(null)
 
-    const [appointmentData, setAppointmentData] = useState<AppointmentData>({ appointmentId: "", location: { latitude: 0, longitude: 0 }, time: "", description: "", status: "", petId: "", petName: "", petAge: 0, clientId: "", clientUserName: "", clientEmail: "", vetId: "", vetUserName: "", vetEmail: "" })
+    const [appointmentData, setAppointmentData] = useState<AppointmentData>({ appointmentId: "", location: { latitude: 0, longitude: 0 }, time: "", status: "", petId: "", vetId: "" })
     //endregion
     useEffect(() => {
         fetchAndHydrateData()
@@ -50,7 +50,7 @@ function ViewAppointmentVetScreen(props: any) {
 
     async function fetchAndHydrateData() {
         setLoading(true)
-        setAppointmentData({ appointmentId: "", location: { latitude: 0, longitude: 0 }, time: "", description: "", status: "", petId: "", petName: "", petAge: 0, clientId: "", clientUserName: "", clientEmail: "", vetId: "", vetUserName: "", vetEmail: "" })
+        setAppointmentData({ appointmentId: "", location: { latitude: 0, longitude: 0 }, time: "", status: "", petId: "", vetId: "" })
 
         // Get Appointment and vet data
         let url = BASE_URL + "/appointment/get/" + params.appointmentId
@@ -60,14 +60,9 @@ function ViewAppointmentVetScreen(props: any) {
             appointmentId: responseAppointmentData.aid,
             location: { latitude: responseAppointmentData.latitude, longitude: responseAppointmentData.longitude },
             time: responseAppointmentData.time,
-            description: responseAppointmentData.description,
             status: responseAppointmentData.status,
             petId: responseAppointmentData.pet.pid,
-            petName: responseAppointmentData.petName,
-            petAge: responseAppointmentData.petName,
-            vetId: responseAppointmentData.vet ? responseAppointmentData.vet.userAccount.id : "",
-            vetUserName: responseAppointmentData.vet ? responseAppointmentData.vetUserName : "",
-            vetEmail: responseAppointmentData.vet ? responseAppointmentData.vet.userAccount.email : ""
+            vetId: responseAppointmentData.vet_id
         }))
 
         // Get pet owner data
