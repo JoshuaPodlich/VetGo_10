@@ -307,6 +307,26 @@ INSERT INTO screening_questions (question_text) VALUES ("Could your dog have swa
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog been drinking more than usual recently?"); # ID: 296
 INSERT INTO screening_questions (question_text) VALUES ("Pick up the skin at the scruff of your dog's neck and release. Does it fall back into place?"); # ID: 297
 INSERT INTO screening_questions (question_text) VALUES ("How many times has your dog been sick in the last 24 hours?"); # ID: 298
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 299
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog moving around and responding to you normally?"); # ID: 300
+INSERT INTO screening_questions (question_text) VALUES ("Pick up the skin of the scruff of your dog's neck. Does if fall quickly back into place?"); # ID: 301
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been eating normally?"); # ID: 302
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been drinking more than usual recently?"); # ID: 303
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog depressed, flat, or in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 304
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, moving around, and responding to you normally?"); # ID: 305
+INSERT INTO screening_questions (question_text) VALUES ("What sort of wound is it?"); # ID: 306
+INSERT INTO screening_questions (question_text) VALUES ("Is there an unpleasant odor or any discharge coming from the wound?"); # ID: 307
+INSERT INTO screening_questions (question_text) VALUES ("Has your puppy been crying persistently for longer than 20 minutes?"); # ID: 308
+INSERT INTO screening_questions (question_text) VALUES ("Has your puppy had convulsions or collapsed?"); # ID: 309
+INSERT INTO screening_questions (question_text) VALUES ("Is your puppy depressed or less active than usual?"); # ID: 310
+INSERT INTO screening_questions (question_text) VALUES ("Is your puppy feeding normally?"); # ID: 311
+INSERT INTO screening_questions (question_text) VALUES ("Does your puppy have a blue tinge around its mouth?"); # ID: 312
+INSERT INTO screening_questions (question_text) VALUES ("Have any of the litter mates died recently?"); # ID: 313
+INSERT INTO screening_questions (question_text) VALUES ("Is there an injury or wound?"); # ID: 314
+INSERT INTO screening_questions (question_text) VALUES ("Is your puppy bloated (compare with a healthy puppy)?"); # ID: 315
+INSERT INTO screening_questions (question_text) VALUES ("Is your puppy gaining weight as quickly as its litter mates?"); # ID: 316
+INSERT INTO screening_questions (question_text) VALUES ("Does your puppy have diarrhoea or vomiting?"); # ID: 317
+INSERT INTO screening_questions (question_text) VALUES ("Does your puppy have any other specific symptoms that we haven't asked about?"); # ID: 318
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -4553,6 +4573,260 @@ Once your dog has recovered, verify with your vet that its worming treatments ar
 If your dog cannot even keep water down, or develops any other symptoms, contact your vet for advice.",
 0);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 368
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.",
+"Weight loss in dogs may be due to a wide range of conditions, including inadequate nutrition, inability to eat (e.g., dental disease), regurgitation (e.g., megaoesophagus), chronic vomiting, metabolic disease (e.g., kidney or liver problems, or diabetes), gut disease (e.g., parasites, pancreatic insufficiency or inflammatory bowel disease), growths or tumours, or any serious systemic disease (e.g., heart disease).
+Your vet will probably want to examine your dog carefully, and possibly run further tests, to determine the exact cause, especially as they are in pain; this may or may not be causing the weight loss but does suggest a serious health issue.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 369
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.",
+"Weight loss in dogs may be due to a wide range of conditions, including inadequate nutrition, inability to eat (e.g., dental disease), regurgitation (e.g., megaoesophagus), chronic vomiting, metabolic disease (e.g., kidney or liver problems, or diabetes), gut disease (e.g., parasites, pancreatic insufficiency or inflammatory bowel disease), growths or tumours, or any serious systemic disease (e.g., heart disease).
+Your vet will probably want to examine your dog carefully, and possibly run further tests, to determine the exact cause, especially as they are in pain; this may or may not be causing the weight loss but does suggest a serious health issue.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 370
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.",
+"Weight loss in dogs may be due to a wide range of conditions, including inadequate nutrition, inability to eat (e.g., dental disease), regurgitation (e.g., megaoesophagus), chronic vomiting, metabolic disease (e.g., kidney or liver problems, or diabetes), gut disease (e.g., parasites, pancreatic insufficiency or inflammatory bowel disease), growths or tumours, or any serious systemic disease (e.g., heart disease).
+The \"skin pinch test\" above suggests that it may also be seriously dehydrated.
+Your vet will probably want to examine your dog carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 371
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise; lead walks to the toilet only.
+Before you go to the vets make a note of the amount and type of food that you are feeding your dog.",
+"Weight loss in dogs may be due to a wide range of conditions, including inadequate nutrition, inability to eat (e.g., dental disease), regurgitation (e.g., megaoesophagus), chronic vomiting, metabolic disease (e.g., kidney or liver problems, or diabetes), gut disease (e.g., parasites, pancreatic insufficiency or inflammatory bowel disease), growths or tumours, or any serious systemic disease (e.g., heart disease).
+Your vet will probably want to examine your dog carefully, and possibly run further tests, to determine the exact cause.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 372
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Keep your dog warm, quiet and calm.",
+"Weight loss in dogs may be due to a wide range of conditions, including inadequate nutrition, inability to eat (e.g., dental disease), regurgitation (e.g., megaoesophagus), chronic vomiting, metabolic disease (e.g., kidney or liver problems, or diabetes), gut disease (e.g., parasites, pancreatic insufficiency or inflammatory bowel disease), growths or tumours, or any serious systemic disease (e.g., heart disease).
+Increased thirst suggests a systemic problem, and needs veterinary attention.
+Your vet will probably want to examine your dog carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 373
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise; lead walks to the toilet only.
+Before you go to the vets make a note of the amount and type of food that you are feeding your dog.",
+"Weight loss in dogs may be due to a wide range of conditions, including inadequate nutrition, inability to eat (e.g., dental disease), regurgitation (e.g., megaoesophagus), chronic vomiting, metabolic disease (e.g., kidney or liver problems, or diabetes), gut disease (e.g., parasites, pancreatic insufficiency or inflammatory bowel disease), growths or tumours, or any serious systemic disease (e.g., heart disease).
+Your vet will probably want to examine your dog carefully, and possibly run further tests, to determine the exact cause.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 374
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"Wounds may be more severe than they look, as well as damage to the skin; there may be muscle, nerve, bone or even internal injuries, as well as the risks from blood loss and infection.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 375
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"Wounds may be more severe than they look, as well as damage to the skin; there may be muscle, nerve, bone or even internal injuries, as well as the risks from blood loss and infection.
+If your dog is not moving freely or responding normally, the injury may be more severe than it appears, so seek urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 376
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not put yourself in danger; make sure that you do not come into contact with hot surface or caustic substances.
+Remember that animals in pain may bite or scratch without meaning to.
+Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound.
+If the burn seems open, or there are chemicals on it, wash the area with clean water.
+If possible wrap a non-adhesive dressing around the affected area on the way to the surgery, where cling film is ideal, to keep it clean and prevent bacterial invasion.",
+"Burns can result in severe tissue damage, pain, and fluid loss (that may lead to shock and even death). They are also highly susceptible to infection, and therefore require emergency veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 377
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"Wounds may be more severe than they look, as well as damage to the skin; there may be muscle, nerve, bone or even internal injuries, as well as the risks from blood loss and infection.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 378
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"Wounds may be more severe than they look, as well as damage to the skin; there may be muscle, nerve, bone or even internal injuries, as well as the risks from blood loss and infection.
+Puncture wounds are particularly dangerous because it is very difficult to know how deep they are or what structures might be damaged. They are also very prone to establish deep infections and abscesses.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 379
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"While grazes are rarely dangerous in themselves, your dog may have developed an infection that will require treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 380
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"If the graze is small and mild, home treatment may be adequate. If you are in any doubt, contact your vet for advice.
+If the wound becomes swollen, smelly, or sore for the dog, contact your vet immediately.
+If you can't stop your dog from licking or scratching at the wound, contact your vet for advice.
+Prepare some boiled water, allow to cool. Stir in a teaspoon of salt.
+Use clean cotton wool to gently drip the salty water over the wound. If there is any embedded dirt, contact your vet.",
+"While grazes are rarely dangerous, if reasonably small, it is important to monitor for signs of infection or other complications (e.g., worsening pain or swelling, or any discharge).",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 381
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Persistent crying suggests pain or distress, the cause of which needs to be determined by your vet.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 382
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Convulsions or collapse may mean a fever, a serious infection, or a brain or spinal problem. In any case, your puppy requires urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 383
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Dropping activity levels are often the first sign of a significant health problem in a young puppy.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 384
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Young puppies are much more fragile than adults, so it's always worth getting them checked out.
+Reluctance to feed is a potential emergency, so definitely seek veterinary advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 385
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Bluish gums suggest difficulty getting enough oxygen into the blood; this is an emergency requiring urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 386
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Young puppies are much more delicate than older dogs.
+If other members of the litter have recently died, there could be an infectious or hereditary disease problem that will need urgent treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 387
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Wounds are much more serious in smaller puppies, so always seek veterinary advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 388
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Young puppies are much more delicate than older dogs, so if you have any concerns, it’s always worth contacting your vet for advice.
+Bloating may be a sign of gut or rectal disorders.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 389
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Young puppies are much more fragile than adults, so it's always worth getting them checked out.
+Failure to thrive is always a concern, so definitely seek veterinary attention.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 390
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Diarrhoea and vomiting may be a sign of Parvovirus, which is often fatal in young puppies.
+Whatever the cause, young puppies often cannot survive dehydration from even moderate vomiting or diarrhoea, so seek urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 391
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Young puppies are much more delicate than older dogs, so if you have any concerns, it’s always worth contacting your vet for advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 392
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Young puppies are much more delicate than older dogs, so if you have any concerns, its always worth contacting your vet for advice.",
+1);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
@@ -4582,9 +4856,9 @@ INSERT INTO screening_options (question_id, is_terminating, option_text, result_
  (1, FALSE, "Straining", NULL, 271),
  (1, FALSE, "Ticks", NULL, 285),
  (1, FALSE, "Vomitting", NULL, 289),
- (1, FALSE, "Weight loss", NULL, NULL),
- (1, FALSE, "Wound", NULL, NULL),
- (1, FALSE, "Young puppies", NULL, NULL);
+ (1, FALSE, "Weight loss", NULL, 299),
+ (1, FALSE, "Wound", NULL, 304),
+ (1, FALSE, "Young puppies", NULL, 308);
 
  INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (2, FALSE, "Wound", NULL, 3),
@@ -5871,3 +6145,85 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (298, TRUE, "More than five", 366, NULL),
 (298, TRUE, "Less than five", 367, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(299, TRUE, "Yes", 368, NULL),
+(299, FALSE, "No", NULL, 300);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(300, FALSE, "Yes", NULL, 301),
+(300, TRUE, "No", 369, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(301, FALSE, "Yes", NULL, 302),
+(301, TRUE, "No", 370, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(302, TRUE, "Yes", 371, NULL),
+(302, FALSE, "No", NULL, 303);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(303, TRUE, "Yes", 372, NULL),
+(303, TRUE, "No", 373, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(304, TRUE, "Yes", 374, NULL),
+(304, FALSE, "No", NULL, 305);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(305, FALSE, "Yes", NULL, 306),
+(305, TRUE, "No", 375, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(306, TRUE, "Burn (heat or chemical)", 376, NULL),
+(306, FALSE, "Graze (less than skin depth)", NULL, 307),
+(306, TRUE, "Laceration (skin depth or deeper)", 377, NULL),
+(306, TRUE, "Puncture wound (unknown depth)", 378, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(307, TRUE, "Yes", 379, NULL),
+(307, TRUE, "No", 380, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(308, TRUE, "Yes", 381, NULL),
+(308, FALSE, "No", NULL, 309);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(309, TRUE, "Yes", 382, NULL),
+(309, FALSE, "No", NULL, 310);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(310, TRUE, "Yes", 383, NULL),
+(310, FALSE, "No", NULL, 311);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(311, FALSE, "Yes", NULL, 312),
+(311, TRUE, "No", 384, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(312, TRUE, "Yes", 385, NULL),
+(312, FALSE, "No", NULL, 313);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(313, TRUE, "Yes", 386, NULL),
+(313, FALSE, "No", NULL, 314);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(314, TRUE, "Yes", 387, NULL),
+(314, FALSE, "No", NULL, 315);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(315, TRUE, "Yes", 388, NULL),
+(315, FALSE, "No", NULL, 316);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(316, FALSE, "Yes", NULL, 317),
+(316, TRUE, "No", 389, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(317, TRUE, "Yes", 390, NULL),
+(317, FALSE, "No", NULL, 318);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(318, TRUE, "Yes", 391, NULL),
+(318, TRUE, "No", 392, NULL);
