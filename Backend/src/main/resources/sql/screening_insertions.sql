@@ -279,6 +279,24 @@ INSERT INTO screening_questions (question_text) VALUES ("Is your dog distressed 
 INSERT INTO screening_questions (question_text) VALUES ("Is your dog having difficulty breathing?"); # ID: 268
 INSERT INTO screening_questions (question_text) VALUES ("How often is your dog sneezing?"); # ID: 269
 INSERT INTO screening_questions (question_text) VALUES ("Is there any discharge from the nose?"); # ID: 270
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 271
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog alert, moving around, and responding to you normally?"); # ID: 272
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog straining to pass urine or stools?"); # ID: 273
+INSERT INTO screening_questions (question_text) VALUES ("How much is your dog straining?"); # ID: 274
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been treated with chemotherapy recently?"); # ID: 275
+INSERT INTO screening_questions (question_text) VALUES ("Is there any blood in the urine?"); # ID: 276
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been exposed to any poisons? (e.g., rat poison or mice/rats that have been poisoned)"); # ID: 277
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog eaten any inappropriate objects? (e.g., toys or bones)"); # ID: 278
+INSERT INTO screening_questions (question_text) VALUES ("How much is your dog straining?"); # ID: 279
+INSERT INTO screening_questions (question_text) VALUES ("Is there blood in the stool?"); # ID: 280
+INSERT INTO screening_questions (question_text) VALUES ("How much is your dog straining?"); # ID: 281
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been producing normal amounts of urine in the last 24 hours?"); # ID: 282
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog eaten any inappropriate objects? (e.g., toys or bones)"); # ID: 283
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been treated with chemotherapy recently?"); # ID: 284
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responding normally to you?"); # ID: 285
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog seem unwell or in pain?"); # ID: 286
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog have ticks on its skin at the moment?"); # ID: 287
+INSERT INTO screening_questions (question_text) VALUES ("Are you confident to remove ticks yourself with a proper tick removal device?"); # ID: 288
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -4140,6 +4158,252 @@ If your dog is scratching at its nose, try to put socks on its feet to prevent a
 "Sneezing suggests irritation of the nasal passages; this may be due to a foreign body (e.g., grass seed), infection, or a growth.",
 1);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 334
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Dogs may strain to pass urine or faeces, or to pass puppies when whelping (i.e., giving birth).
+Straining to urinate is an emergency that may suggest a blocked bladder - seek immediate veterinary attention.
+Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum.
+Straining to whelp without success or progress is an emergency requiring immediate veterinary attention if puppy and mother are to be saved.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 335
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only",
+"Dogs may strain to pass urine or faeces, or to pass puppies when whelping (i.e., giving birth).
+Straining to urinate is an emergency that may suggest a blocked bladder - seek immediate veterinary attention.
+Straining to defecate is often due to constipation.
+Straining to whelp without success or progress is an emergency requiring immediate veterinary attention if puppy and mother are to be saved.
+In any case, if your dog is not responding normally, contact your vet immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 336
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only",
+"Constant straining to urinate is an emergency that may suggest a blocked bladder; seek immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 337
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only",
+"Chemotherapy makes urinary tract infections and abnormal bleeding more likely.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 338
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only
+Collect a urine sample for your vet if possible.",
+"Straining to urinate with red or pink urine may suggest a serious urinary tract infection.
+Inability to urinate is an emergency that may suggest a blocked bladder; seek immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 339
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet and calm.
+Try to collect a urine sample, it will help your vet to work out what is wrong with your dog.
+Encourage your dog to take extra fluids, you can try mixing a little water in to your dogs food.",
+"Occasionally straining to urinate may suggest a urinary tract infection.
+If they are unable to pass urine, however, this is an emergency that may suggest a blocked bladder; seek immediate veterinary attention.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 340
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Try to collect a urine sample, it will help your vet to work out what is wrong with your dog.
+Try to take the packaging of the poison, if known, to the vet to help them determine the best treatment option.",
+"Many rat poisons can cause abnormal bleeding; this may be the first sign of a severe poisoning.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 341
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Try to collect a urine sample, it will help your vet to work out what is wrong with your dog.
+Try to take the packaging of the poison, if known, to the vet to help them determine the best treatment option.",
+"Many rat poisons can cause abnormal bleeding; this may be the first sign of a severe poisoning.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 342
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum, especially if it is prone to eating inappropriate objects.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 343
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Constant straining to defecate is often due to constipation, but it could also be caused by colitis or a foreign body in the rectum.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 344
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum.
+Blood in the stools suggests some damage to the gut wall, or the presence of a growth or polyp.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 345
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet and calm.",
+"Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 346
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Dogs may strain constantly to pass urine or faeces, or to pass puppies when whelping (i.e., giving birth).
+Straining to urinate is an emergency that may suggest a blocked bladder; seek immediate veterinary attention.
+Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum.
+Straining to whelp without success or progress is an emergency requiring immediate veterinary attention if puppy and mother are to be saved.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 347
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Straining to urinate is an emergency that may suggest a blocked bladder; seek immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 348
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Straining to urinate, without passage of normal amount of urine, is an emergency that may suggest a blocked bladder; seek immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 349
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Straining to urinate is an emergency that may suggest a urinary infection or a blocked bladder; seek immediate veterinary attention.
+Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum, especially if they are prone to eat inappropriate objects.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 350
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Straining to urinate is an emergency that may suggest a urinary infection or a blocked bladder; seek immediate veterinary attention.
+Straining to defecate is often due to constipation, but could also be caused by colitis; gut problems are more common after chemotherapy.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 351
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet and calm.
+Try to collect a urine sample, as it will help your vet to work out what is wrong with your dog.",
+"Straining to urinate is an emergency that may suggest a blocked bladder, so seek immediate veterinary attention if they seem unable to produce urine; alternatively, it may suggest a urinary infection.
+Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum.
+Straining to whelp (i.e., giving birth) without success or progress is an emergency requiring immediate veterinary attention if a puppy and a mother are to be saved.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 352
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.",
+"A dog which is dull or unresponsive needs to see a vet urgently to diagnose and treat the cause.
+Ticks can cause serious illnesses, such as Lyme disease, but the presence of ticks can be coincidental to other illnesses.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 353
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.",
+"A dog which is unwell or in pain needs to see a vet to have the cause diagnosed and treated.
+Ticks can cause serious illnesses, such as Lyme disease, but the presence of ticks can be coincidental to other illnesses.
+The main signs of Lyme disease are lameness, loss of appetite, depression, fever, and sometimes breathing problems.
+Other diseases which may be occasionally transmitted by ticks include babesiosis and ehrlichiosis.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 354
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Prevention is much better than removal, so ask at your vet for advice on which product will best suit your dog. These are usually spot-on medications applied to the skin.
+If your dog travels abroad, it is important to have a tick prevention programm in place before travel.
+Avoid walking in areas of long grass or woodlands in the summer months.
+If your dog does pick up a tick, visit your vet so he or she can remove the tick and advise on preventing ticks in the future.
+Do not try to pull a tick out without the proper removal device because you could end up leaving small parts behind, which could cause irritation and infection.",
+"Ticks are small gray/brown parasites with rounded bodies. They are only a few millimeters in size before they attach to the dog and take a meal of blood. They then become engorged and swollen and drop off after a few days.
+Ticks can cause pain and irritation, and they can transmit serious illnesses to the dog or other hosts, including humans.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 355
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"If you are certain that they are ticks (not warts or similar) then it is safe to remove them with a suitable device. If uncertain, make an appointment with your vet or vet nurse.
+Do not try to pull a tick out without the proper removal device as leaving parts behind can cause irritation and infection.
+Prevention is much better than removal, so ask at your veterinary surgery for advice on which product will best suit your dog. These are usually spot-on medications applied to the skin.
+If your dog travels abroad, it is important to have a good tick prevention programme in place before travel. Ask your veterinary surgery for advice.
+Avoid walking your dog in areas of long grass or woodland in the summer months.",
+"Ticks are small gray/brown parasites with rounded bodies. They are only a few millimeters in size before they attach to the dog and take a meal of blood. They then become engorged and swollen and drop off after a few days.
+Ticks can cause pain and irritation, and they can transmit serious illnesses to the dog or other hosts, including humans.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 356
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Do not try to pull a tick out without the proper removal device as leaving small parts behind can cause irritation and infection.
+Prevention is much better than removal, so ask at your veterinary surgery for advice on which product will best suit your dog. These are usually spot-on medications applied to the skin.
+If your dog travels abroad, it is important to have a tick prevention programm in place before travel.
+Avoid walking in areas of long grass or woodlands in the summer months.",
+"Ticks are small gray/brown parasites with rounded bodies. They are only a few millimeters in size before they attach to the dog and take a meal of blood. They then become engorged and swollen and drop off after a few days.
+It is important to have the tick removed because they can cause pain and irritation and can transmit serious illnesses. If you're interested, your vet can demonstrate how to properly remove ticks at home using the appropriate tick removal tool.",
+1);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
@@ -4166,8 +4430,8 @@ INSERT INTO screening_options (question_id, is_terminating, option_text, result_
  (1, FALSE, "Problems after surgery", NULL, 200),
  (1, FALSE, "Smelly", NULL, 212),
  (1, FALSE, "Sneezing", NULL, 267),
- (1, FALSE, "Straining", NULL, NULL),
- (1, FALSE, "Ticks", NULL, NULL),
+ (1, FALSE, "Straining", NULL, 271),
+ (1, FALSE, "Ticks", NULL, 285),
  (1, FALSE, "Vomitting", NULL, NULL),
  (1, FALSE, "Weight loss", NULL, NULL),
  (1, FALSE, "Wound", NULL, NULL),
@@ -5343,3 +5607,78 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (270, TRUE, "Yes", 332, NULL),
 (270, TRUE, "No", 333, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(271, TRUE, "Yes", 334, NULL),
+(271, FALSE, "No", NULL, 272);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(272, FALSE, "Yes", NULL, 273),
+(272, TRUE, "No", 335, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(273, FALSE, "Urine", NULL, 274),
+(273, FALSE, "Stools", NULL, 278),
+(273, FALSE, "Not sure or nothing coming out", NULL, 281);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(274, TRUE, "Constantly or most of the time", 336, NULL),
+(274, FALSE, "Occasionally", NULL, 275);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(275, TRUE, "Yes", 337, NULL),
+(275, FALSE, "No", NULL, 276);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(276, FALSE, "Yes, urine is very pale pink", NULL, 277),
+(276, TRUE, "Yes, urine is red or pink", 338, NULL),
+(276, TRUE, "No", 339, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(277, TRUE, "Yes", 340, NULL),
+(277, TRUE, "No", 341, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(278, TRUE, "Yes", 342, NULL),
+(278, FALSE, "No", NULL, 279);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(279, TRUE, "Constantly or most of the time", 343, NULL),
+(279, FALSE, "Occasionally", NULL, 280);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(280, TRUE, "Yes", 344, NULL),
+(280, TRUE, "No", 345, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(281, TRUE, "Constantly or most of the time", 346, NULL),
+(281, FALSE, "Occasionally", NULL, 282);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(282, FALSE, "Yes", NULL, 283),
+(282, TRUE, "Not sure", 347, NULL),
+(282, TRUE, "No", 348, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(283, TRUE, "Yes", 349, NULL),
+(283, FALSE, "No", NULL, 284);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(284, TRUE, "Yes", 350, NULL),
+(284, TRUE, "No", 351, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(285, FALSE, "Yes", NULL, 286),
+(285, TRUE, "No", 352, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(286, TRUE, "Yes", 353, NULL),
+(286, FALSE, "No", NULL, 287);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(287, FALSE, "Yes or maybe (not sure what they look like)", NULL, 288),
+(287, TRUE, "No, but would like to prevent it", 354, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(288, TRUE, "Yes", 355, NULL),
+(288, TRUE, "No", 356, NULL);
