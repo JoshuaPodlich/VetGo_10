@@ -17,12 +17,10 @@ public class Pet extends BaseEntity {
     @JsonIgnore
     private Owner owner;
 
-
     @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Appointment> appointments = new ArrayList<>();
     private String name;
-
 
     @ElementCollection
     private List<String> fileLink = new ArrayList<String>();
@@ -66,9 +64,8 @@ public class Pet extends BaseEntity {
         this.name = name;
     }
 
-    @SuppressWarnings("NewApi")
-    public Optional<List<String>> getFileLink() {
-        return Optional.ofNullable(fileLink);
+    public List<String> getFileLink() {
+        return fileLink;
     }
 
     public void setFileLink(List<String> fileLink) {
@@ -136,6 +133,20 @@ public class Pet extends BaseEntity {
     @Override
     public int hashCode() {
         return Objects.hash(owner, appointments, name, fileLink, isMale, age, weight, height);
+    }
+
+    public void updateFrom(Pet updatedPet) {
+        if (updatedPet.getName() != null) {
+            this.setName(updatedPet.getName());
+        }
+        if (updatedPet.getFileLink() != null && !updatedPet.getFileLink().isEmpty()) {
+            this.setFileLink(updatedPet.getFileLink());
+        }
+
+        this.setMale(updatedPet.getMale());
+        this.setAge(updatedPet.getAge());
+        this.setWeight(updatedPet.getWeight());
+        this.setHeight(updatedPet.getHeight());
     }
 
 

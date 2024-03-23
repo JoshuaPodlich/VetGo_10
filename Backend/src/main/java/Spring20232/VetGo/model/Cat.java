@@ -56,4 +56,21 @@ public class Cat extends Pet {
     public void setTemperament(String temperament) {
         this.temperament = temperament;
     }
+
+    public void updateFrom(Cat updatedCat) {
+        super.updateFrom(updatedCat);
+
+        if (updatedCat.getBreed() != null) {
+            this.setBreed(updatedCat.getBreed());
+        }
+        this.setIndoor(updatedCat.isIndoor());
+
+        if (updatedCat.getFurLength() != null) {
+            this.setFurLength(updatedCat.getFurLength());
+        }
+        if (updatedCat.getTemperament() != null) {
+            this.setTemperament(updatedCat.getTemperament());
+        }
+    }
+
 }

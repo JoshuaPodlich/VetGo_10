@@ -4,6 +4,7 @@ import Spring20232.VetGo.model.*;
 import Spring20232.VetGo.repository.OwnerRepository;
 import Spring20232.VetGo.repository.PetRepository;
 import Spring20232.VetGo.service.PetService;
+import com.amazonaws.services.mq.model.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -37,6 +38,16 @@ public class PetController {
         List<Pet> petList = new ArrayList<>();
         petRepository.findAll().forEach(petList::add);
         return ResponseEntity.status(HttpStatus.OK).body(petList);
+    }
+
+    @GetMapping(value = "/get/all/user/{uid}")
+    public ResponseEntity<?> getAllOwnersPets(@PathVariable("uid") Long uid) {
+        try {
+            return ResponseEntity.ok().body(petService.getOwnersPets(uid));
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @SuppressWarnings("NewApi")
@@ -110,155 +121,177 @@ public class PetController {
         return ResponseEntity.status(HttpStatus.OK).body("Successfully able to upload the file");
     }
 
-    @PostMapping(value = "/add/dog/{oid}")
+    @PostMapping(value = "/add/dog/{uid}")
     public ResponseEntity<?> addDog(@RequestBody Dog dog,
-                                    @PathVariable("oid") Long oid) {
-        Owner owner = ownerRepository.findById(oid).orElse(null);
-
-        if (owner == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
-
-        dog.setOwner(owner);
-        petRepository.save(dog);
-        owner.addPetList(dog);
-
-        return ResponseEntity.status(HttpStatus.OK).body(dog);
+                                    @PathVariable("uid") Long uid) {
+        try {
+            petService.addOwnerPet(dog, uid);
+            return ResponseEntity.status(HttpStatus.OK).body("Dog successfully added.");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
-    @PostMapping(value = "/add/cat/{oid}")
+    @PostMapping(value = "/add/cat/{uid}")
     public ResponseEntity<?> addCat(@RequestBody Cat cat,
-                                    @PathVariable("oid") Long oid) {
-        Owner owner = ownerRepository.findById(oid).orElse(null);
-
-        if (owner == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
-
-        cat.setOwner(owner);
-        petRepository.save(cat);
-        owner.addPetList(cat);
-
-        return ResponseEntity.status(HttpStatus.OK).body(cat);
+                                    @PathVariable("uid") Long uid) {
+        try {
+            petService.addOwnerPet(cat, uid);
+            return ResponseEntity.status(HttpStatus.OK).body("Cat successfully added.");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
-    @PostMapping(value = "/add/bird/{oid}")
+    @PostMapping(value = "/add/bird/{uid}")
     public ResponseEntity<?> addBird(@RequestBody Bird bird,
-                                    @PathVariable("oid") Long oid) {
-        Owner owner = ownerRepository.findById(oid).orElse(null);
-
-        if (owner == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
-
-        bird.setOwner(owner);
-        petRepository.save(bird);
-        owner.addPetList(bird);
-
-        return ResponseEntity.status(HttpStatus.OK).body(bird);
+                                    @PathVariable("uid") Long uid) {
+        try {
+            petService.addOwnerPet(bird, uid);
+            return ResponseEntity.status(HttpStatus.OK).body("Bird successfully added.");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
-    @PostMapping(value = "/add/reptile/{oid}")
+    @PostMapping(value = "/add/reptile/{uid}")
     public ResponseEntity<?> addReptile(@RequestBody Reptile reptile,
-                                     @PathVariable("oid") Long oid) {
-        Owner owner = ownerRepository.findById(oid).orElse(null);
-
-        if (owner == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
-
-        reptile.setOwner(owner);
-        petRepository.save(reptile);
-        owner.addPetList(reptile);
-
-        return ResponseEntity.status(HttpStatus.OK).body(reptile);
+                                     @PathVariable("uid") Long uid) {
+        try {
+            petService.addOwnerPet(reptile, uid);
+            return ResponseEntity.status(HttpStatus.OK).body("Reptile successfully added.");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
-    @PostMapping(value = "/add/fish/{oid}")
+    @PostMapping(value = "/add/fish/{uid}")
     public ResponseEntity<?> addFish(@RequestBody Fish fish,
-                                        @PathVariable("oid") Long oid) {
-        Owner owner = ownerRepository.findById(oid).orElse(null);
-
-        if (owner == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
-
-        fish.setOwner(owner);
-        petRepository.save(fish);
-        owner.addPetList(fish);
-
-        return ResponseEntity.status(HttpStatus.OK).body(fish);
+                                        @PathVariable("uid") Long uid) {
+        try {
+            petService.addOwnerPet(fish, uid);
+            return ResponseEntity.status(HttpStatus.OK).body("Fish successfully added.");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
-    @PostMapping(value = "/add/rodent/{oid}")
+    @PostMapping(value = "/add/rodent/{uid}")
     public ResponseEntity<?> addRodent(@RequestBody Rodent rodent,
-                                     @PathVariable("oid") Long oid) {
-        Owner owner = ownerRepository.findById(oid).orElse(null);
-
-        if (owner == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
-
-        rodent.setOwner(owner);
-        petRepository.save(rodent);
-        owner.addPetList(rodent);
-
-        return ResponseEntity.status(HttpStatus.OK).body(rodent);
+                                     @PathVariable("uid") Long uid) {
+        try {
+            petService.addOwnerPet(rodent, uid);
+            return ResponseEntity.status(HttpStatus.OK).body("Rodent successfully added.");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
-    @PostMapping(value = "/add/other/{oid}")
+    @PostMapping(value = "/add/other/{uid}")
     public ResponseEntity<?> addOtherPet(@RequestBody OtherPet pet,
-                                       @PathVariable("oid") Long oid) {
-        Owner owner = ownerRepository.findById(oid).orElse(null);
-
-        if (owner == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
-
-        pet.setOwner(owner);
-        petRepository.save(pet);
-        owner.addPetList(pet);
-
-        return ResponseEntity.status(HttpStatus.OK).body(pet);
+                                       @PathVariable("uid") Long uid) {
+        try {
+            petService.addOwnerPet(pet, uid);
+            return ResponseEntity.status(HttpStatus.OK).body("Other type of pet successfully added.");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
-    @DeleteMapping(value = "/delete/{petId}")
-    public ResponseEntity<String> deletePet(@PathVariable("petId") Long pid) {
-        Pet pet = petRepository.findById(pid).orElse(null);
-        if (pet == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find pet in database");
-
-        petRepository.delete(pet);
-        return ResponseEntity.status(HttpStatus.OK).body("Deleted " + pid);
+    @DeleteMapping(value = "/delete/{pid}")
+    public ResponseEntity<String> deletePet(@PathVariable("pid") Long pid) {
+        try {
+            petService.deleteOwnersPet(pid);
+            return ResponseEntity.ok().body("Deleted pet with id " + pid + ".");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
-    @PutMapping(value = "/update/{petId}")
-    public ResponseEntity<?> updatePet(@RequestBody Pet updatedPet, @PathVariable("petId") Long pid) {
+    @PutMapping(value = "/update/dog/{pid}")
+    public ResponseEntity<?> updateDog(@RequestBody Dog updatedDog, @PathVariable("pid") Long pid) {
+        try {
+            petService.updateOwnersDog(pid, updatedDog);
+            return ResponseEntity.ok().body("Updated dog with id " + pid + ".");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
 
-        @SuppressWarnings("NewApi") Pet currPet = petRepository.findById(pid).orElse(null);
+    }
 
-        if (currPet == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find pet in database");
+    @PutMapping(value = "/update/cat/{pid}")
+    public ResponseEntity<?> updateCat(@RequestBody Cat updatedCat, @PathVariable("pid") Long pid) {
+        try {
+            petService.updateOwnersCat(pid, updatedCat);
+            return ResponseEntity.ok().body("Updated cat with id " + pid + ".");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 
-        currPet.setName(updatedPet.getName());
-        currPet.setMale(updatedPet.getMale());
-        currPet.setAge(updatedPet.getAge());
-        currPet.setWeight(updatedPet.getWeight());
-        currPet.setHeight(updatedPet.getHeight());
+    @PutMapping(value = "/update/bird/{pid}")
+    public ResponseEntity<?> updateBird(@RequestBody Bird updatedBird, @PathVariable("pid") Long pid) {
+        try {
+            petService.updateOwnersBird(pid, updatedBird);
+            return ResponseEntity.ok().body("Updated bird with id " + pid + ".");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 
-        petRepository.save(currPet);
+    @PutMapping(value = "/update/reptile/{pid}")
+    public ResponseEntity<?> updateReptile(@RequestBody Reptile updatedReptile, @PathVariable("pid") Long pid) {
+        try {
+            petService.updateOwnersReptile(pid, updatedReptile);
+            return ResponseEntity.ok().body("Updated reptile with id " + pid + ".");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 
-        return ResponseEntity.status(HttpStatus.OK).body(currPet);
-//        if(petRepository.findById(pid) == null) {
-//            return "Pet doesn't exist.";
-//        }
-//
-//        petRepository.findById(pid)
-//                .map(petProfile -> {
-//                    petProfile.setName(updatedPet.getName());
-//                    petProfile.setAge(updatedPet.getAge());
-//                    petProfile.setHeight(updatedPet.getHeight());
-//                    petProfile.setWeight(updatedPet.getWeight());
-//                    petProfile.setMale(updatedPet.getMale());
-//                    return petRepository.save(petProfile);
-//                }).orElseGet(() -> {
-//                    return petRepository.save(updatedPet);
-//                });
-//
-//        return "Successfully updated pet profile";
+    @PutMapping(value = "/update/fish/{pid}")
+    public ResponseEntity<?> updateFish(@RequestBody Fish updatedFish, @PathVariable("pid") Long pid) {
+        try {
+            petService.updateOwnersFish(pid, updatedFish);
+            return ResponseEntity.ok().body("Updated fish with id " + pid + ".");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @PutMapping(value = "/update/rodent/{pid}")
+    public ResponseEntity<?> updateRodent(@RequestBody Rodent updatedRodent, @PathVariable("pid") Long pid) {
+        try {
+            petService.updateOwnersRodent(pid, updatedRodent);
+            return ResponseEntity.ok().body("Updated rodent with id " + pid + ".");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @PutMapping(value = "/update/other/{pid}")
+    public ResponseEntity<?> updateOtherPet(@RequestBody OtherPet updatedOtherPet, @PathVariable("pid") Long pid) {
+        try {
+            petService.updateOwnersOtherPet(pid, updatedOtherPet);
+            return ResponseEntity.ok().body("Updated other type of pet with id " + pid + ".");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
 }

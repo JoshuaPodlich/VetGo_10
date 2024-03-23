@@ -29,10 +29,6 @@ public class UserController {
     private VetRepository vetRepository;
     @Autowired
     private OwnerRepository ownerRepository;
-    @Autowired
-    private PetRepository petRepository;
-    @Autowired
-    private TagRepository tagRepository;
 
     @Autowired
     public UserController(UserService userService) {

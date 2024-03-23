@@ -10,5 +10,5 @@ import java.util.UUID;
 
 @Repository
 public interface OwnerRepository extends JpaRepository<Owner, Long> {
-    Owner findByUser(User userAccount) throws DataAccessException;
+    Owner findByUser(User userAccount);
 }

@@ -57,4 +57,22 @@ public class Reptile extends Pet {
     public void setTempRequirement(String tempRequirement) {
         this.tempRequirement = tempRequirement;
     }
+
+    public void updateFrom(Reptile updatedReptile) {
+        super.updateFrom(updatedReptile);
+
+        if (updatedReptile.getSpecies() != null) {
+            this.setSpecies(updatedReptile.getSpecies());
+        }
+        if (updatedReptile.getHabitatType() != null) {
+            this.setHabitatType(updatedReptile.getHabitatType());
+        }
+        if (updatedReptile.getDietType() != null) {
+            this.setDietType(updatedReptile.getDietType());
+        }
+        if (updatedReptile.getTempRequirement() != null) {
+            this.setTempRequirement(updatedReptile.getTempRequirement());
+        }
+    }
+
 }
