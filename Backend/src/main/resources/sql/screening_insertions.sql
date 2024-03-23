@@ -297,6 +297,16 @@ INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, ale
 INSERT INTO screening_questions (question_text) VALUES ("Does your dog seem unwell or in pain?"); # ID: 286
 INSERT INTO screening_questions (question_text) VALUES ("Does your dog have ticks on its skin at the moment?"); # ID: 287
 INSERT INTO screening_questions (question_text) VALUES ("Are you confident to remove ticks yourself with a proper tick removal device?"); # ID: 288
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 289
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responding normally to you?"); # ID: 290
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog trying to vomit but nothing is coming up?"); # ID: 291
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog's abdomen (stomach area) swollen?"); # ID: 292
+INSERT INTO screening_questions (question_text) VALUES ("Is there any blood in the vomit?"); # ID: 293
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have eaten anything poisonous? (e.g., bleach, aspirin, or ibuprofen)"); # ID: 294
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have swallowed anything inappropriate? (e.g., a toy, ball, or bones)"); # ID: 295
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been drinking more than usual recently?"); # ID: 296
+INSERT INTO screening_questions (question_text) VALUES ("Pick up the skin at the scruff of your dog's neck and release. Does it fall back into place?"); # ID: 297
+INSERT INTO screening_questions (question_text) VALUES ("How many times has your dog been sick in the last 24 hours?"); # ID: 298
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -4404,6 +4414,145 @@ Avoid walking in areas of long grass or woodlands in the summer months.",
 It is important to have the tick removed because they can cause pain and irritation and can transmit serious illnesses. If you're interested, your vet can demonstrate how to properly remove ticks at home using the appropriate tick removal tool.",
 1);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 357
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g., diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+As your dog is displaying signs of pain, your vet will probably want to examine them carefully, and possibly run further tests to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 358
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g., diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+As your dog is displaying signs of pain, your vet will probably want to examine them carefully, and possibly run further tests to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 359
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Attempts to vomit without production, or bringing up just some white froth, are commonly signs of a torsion (i.e., gastric dilation and volvulus). This is a potentially life-threatening emergency that requires urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 360
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Bloating may be a sign of a torsion (i.e., gastric dilation and volvulus); this is a potentially life-threatening emergency that requires urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 361
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g. diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+Blood in the vomit may be due to irritation from the vomiting, or there may be a stomach bleed.
+Your vet will probably want to examine them carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 362
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Try to work out what your dog might have been exposed to so that you can tell the vet.",
+"Many poisons cause vomiting, and some are caustic, burning the intestinal tract.
+Dogs with poisoning always need veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 363
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g., diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+As your dog is displaying other symptoms, your vet will probably want to examine them carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 364
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g., diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+As your dog is displaying other symptoms, your vet will probably want to examine them carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 365
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.
+Try to keep your dog warm, quiet and calm.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g., diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+As your dog is displaying other symptoms, your vet will probably want to examine them carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 366
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g., diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+As your dog is vomiting profusely, your vet will probably want to examine them carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 367
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Occasionally, vomiting may indicate a serious issue, so it's important to monitor your dog closely. 
+Initially, withhold water for only two hours. To maintain hydration, you can offer small amounts of an electrolyte solution recommended by your vet. 
+If your dog is unable to retain the solution, seek veterinary advice immediately. 
+After 12 hours, introduce a bland diet low in fat and fiber, such as boiled white rice and fish, feeding small portions frequently. 
+Limit physical activity, and ensure your dog stays warm, quiet, and comfortable. 
+Practice good hygiene by washing your hands thoroughly after handling your dog, as some causes of vomiting can be transmissible to humans. 
+Once your dog has recovered, verify with your vet that its worming treatments are up to date.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+If your dog cannot even keep water down, or develops any other symptoms, contact your vet for advice.",
+0);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
@@ -4432,7 +4581,7 @@ INSERT INTO screening_options (question_id, is_terminating, option_text, result_
  (1, FALSE, "Sneezing", NULL, 267),
  (1, FALSE, "Straining", NULL, 271),
  (1, FALSE, "Ticks", NULL, 285),
- (1, FALSE, "Vomitting", NULL, NULL),
+ (1, FALSE, "Vomitting", NULL, 289),
  (1, FALSE, "Weight loss", NULL, NULL),
  (1, FALSE, "Wound", NULL, NULL),
  (1, FALSE, "Young puppies", NULL, NULL);
@@ -5682,3 +5831,43 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (288, TRUE, "Yes", 355, NULL),
 (288, TRUE, "No", 356, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(289, TRUE, "Yes", 357, NULL),
+(289, FALSE, "No", NULL, 290);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(290, FALSE, "Yes", NULL, 291),
+(290, TRUE, "No", 358, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(291, TRUE, "Yes", 359, NULL),
+(291, FALSE, "No", NULL, 292);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(292, TRUE, "Yes", 360, NULL),
+(292, FALSE, "No", NULL, 293);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(293, TRUE, "Yes", 361, NULL),
+(293, FALSE, "No", NULL, 294);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(294, TRUE, "Yes", 362, NULL),
+(294, FALSE, "No", NULL, 295);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(295, TRUE, "Yes", 363, NULL),
+(295, FALSE, "No", NULL, 296);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(296, TRUE, "Yes", 364, NULL),
+(296, FALSE, "No", NULL, 297);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(297, FALSE, "Yes", NULL, 298),
+(297, TRUE, "No", 365, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(298, TRUE, "More than five", 366, NULL),
+(298, TRUE, "Less than five", 367, NULL);
