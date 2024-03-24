@@ -36,8 +36,6 @@ const ScreeningQuestionsScreen = (props: any) => {
     const [sessionId, setSession] = useState<any>()
     const [question, setQuestion] = useState<any>({ questionText: "Start screening questions using the buttom at the bottom of the page", startButtonText: "Start Screening Questions" })
     const [answer, setAnswer] = useState<Screening>({ selectedOptionId: "", })
-    //const [options, setOptions] = useState<OptionsList>({ optionId: [1, 2, 3], optionText: ["test1", "test2", "test3"] })
-    //const [options, setOptions] = useState<any>({ list: [ { label: "test1", value: 1}, { label: "test2", value: 2}, { label: "test3", value: 3} ] })
     const [options, setOptions] = useState<any[]>([])
     const [terminate, setTerminate] = useState<any>({ isTerminating: false, showTopText: true })
     const [result, setResult] = useState<any>({ resultPriority: "", doNext: "", firstAidAdvice: "", problem: "" })
@@ -96,23 +94,6 @@ const ScreeningQuestionsScreen = (props: any) => {
             console.error('Error:', error.message);
         }
 
-        /*const res = await fetch(BASE_URL + "/pet/get/all")
-        const tempPetList: pet[] = await res.json()
-        setPets(tempPetList)
-        const tempPetsData: { pet: any, appointment: any }[] = []
-
-        for (let i = 0; i < tempPetList.length; i++) {
-           // const res = await fetch(BASE_URL + "/pet/appointment/" + tempPetList[i].pid)
-            //let tempAppointment: appointment = await res.text()
-                //.then(text => text.length ? JSON.parse(text) : "NO_APT")
-               // .catch(err => console.log(err))
-            tempPetsData.push({ pet: tempPetList[i], appointment: "NO_APT"})
-        }
-
-        setPetsData(tempPetsData)
-        */
-        //setLoading(false)
-
 
 
 
@@ -137,7 +118,6 @@ const ScreeningQuestionsScreen = (props: any) => {
     
                 const responseBody = await response.json();
                 //console.log(responseBody);
-                //setTerminate(responseBody)
                 //console.log(terminate.isTerminating)
                 if(terminate.isTerminating)
                 {
