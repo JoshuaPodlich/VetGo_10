@@ -38,7 +38,7 @@ public class OwnerController {
 
     @GetMapping(value = "/userId/{uid}")
     public ResponseEntity<Owner> getOwnerByUserId(@PathVariable Long uid) {
-        Owner owner = ownerRepository.findById(uid).orElse(null);
+        Owner owner = ownerRepository.findByUserId(uid);
         return ResponseEntity.status(HttpStatus.OK).body(owner);
     }
 

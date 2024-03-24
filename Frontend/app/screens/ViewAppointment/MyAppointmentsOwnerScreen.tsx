@@ -18,27 +18,59 @@ export interface MyAppointmentsOwnerScreenParams {
 }
 
 const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRouteProp, navigation: MyAppointmentsOwnerScreenNavigationProp }) => {
-    const params: MyAppointmentsOwnerScreenParams = props.route.params!
+    const params: MyAppointmentsOwnerScreenParams = props.route.params;
     const [appointments, setAppointments] = useState<any[]>([])
 
-
-    const fetchPetIdList = async (): Promise<string[]> => {
-        const res = await fetch(BASE_URL + "/owner/pet/" + params.userId)
-
-        let tempPetList: any[] = await res.json()
-        let petIdList: string[] = []
-        for (let i = 0; i < tempPetList.length; i++) {
-            petIdList.push(tempPetList[i].pid)
-        }
-        return petIdList
-    }
-
-
     const getAppointments = async () => {
-        let petIdList: string[] = await fetchPetIdList()
-        const allAppointments: any[] = (await axios.get(BASE_URL + "/appointment/all")).data
-        const myAppointments = allAppointments.filter(appointment => petIdList.includes(appointment.pet.pid))
-        setAppointments(myAppointments)
+        try {
+            const ownerUrl = BASE_URL + "/owner/userId/" + params.userId;
+            console.log("url: " + ownerUrl);
+            const ownerResponse = await fetch(ownerUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            let owner = await ownerResponse.json()
+            const ownerId = owner.id;
+
+            console.log("Params: " + params);
+            const petUrl = BASE_URL + "/owner/pets/" + ownerId;
+            console.log("url: " + petUrl);
+            const petResponse = await fetch(petUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            let tempPetList = await petResponse.json()
+            let petIdList: string[] = []
+            let allAppointments: any[] = [];
+
+            for (let i = 0; i < tempPetList.length; i++) {
+                petIdList.push(tempPetList[i].id)
+            }
+
+            await Promise.all(petIdList.map(async (petId) => {
+                const url = BASE_URL + "/appointment/all/" + petId;
+                console.log("url: " + url);
+                const app = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+
+                const appointments = await app.json();
+                allAppointments.push(...appointments);
+            }));
+
+            setAppointments(allAppointments)
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     }
 
     useEffect(() => {
@@ -69,9 +101,8 @@ interface AppointmentCardParams {
 const AppointmentCard = ({ userId, appointmentData, petName }: AppointmentCardParams) => {
     const [showDetails, setShowDetails] = useState(false)
     const cancelAppointment = async () => {
-        console.log(appointmentData.aid, userId)
-        await axios.put(BASE_URL + "/appointment/remove/" + appointmentData.aid + "/" + userId)
-        console.error(`Appointment for ${petName} has been cancelled.`)
+        await axios.delete(BASE_URL + "/appointment/delete/" + appointmentData.aid)
+        console.log(`Appointment for ${petName} has been cancelled.`)
     }
 
     return (

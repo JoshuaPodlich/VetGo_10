@@ -20,7 +20,7 @@ public class AppointmentService {
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
     // Sets the timer deadline for the vet to accept the appointment, in minutes
-    private final Long TIMERDEADLINE = 1L;
+    private final Long TIMERDEADLINE = 10L;
 
     @Autowired
     VetRepository vetRepository;

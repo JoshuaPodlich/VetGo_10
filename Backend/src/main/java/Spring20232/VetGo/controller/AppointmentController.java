@@ -50,7 +50,7 @@ public class AppointmentController {
         List<Appointment> apList = new ArrayList<>();
         for (Appointment app:appointmentRepository.findAll()) {
             Appointment aa = app;
-            if(app.getStatus()==COMPLETED &&app.getPet().getId().equals(pid)) // need to get only completed appointment in future
+            if(app.getPet().getId().equals(pid))
             {
                 apList.add(app);
             }
