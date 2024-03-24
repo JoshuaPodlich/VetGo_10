@@ -1,5 +1,5 @@
 // GET THIS WHEN LAUNCH EXPO
-export const BASE_URL = "http://192.168.1.10:8080"
+export const BASE_URL = "http://192.168.0.201:8080"
 
 // Enter google map apikey here
 export const GOOGLE_MAPS_APIKEY = "AIzaSyDWnSxiDejxmDuRd1EKPGVf5574vGe5ydM"
