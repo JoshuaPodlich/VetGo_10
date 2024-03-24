@@ -14,39 +14,62 @@ import { useEffect, useState } from 'react'
 export interface MyAppointmentsVetScreenParams {
     userId: string,
     userIsVet: boolean,
-    location: LocationInterface,
-    vetId: int,
+    location: LocationInterface
 }
 
 const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRouteProp, navigation: MyAppointmentsVetScreenNavigationProp }) => {
-    const params: MyAppointmentsVetScreenParams = props.route.params!
+    const params: MyAppointmentsVetScreenParams = props.route.params;
     const [appointments, setAppointments] = useState<any[]>([])
+    let vetid;
 
 
     const getAppointments = async () => {
-       const url = BASE_URL + "/appointment/all";
-           try {
-               const response = await fetch(url, {
-                   method: 'GET',
-                   headers: {
-                       'Content-Type': 'application/json'
-                   },
-               });
+        try {
+            console.log("Params: " + params);
+            const vetUrl = BASE_URL + "/vet/id/user/" + params.userId;
+            console.log("url: " + vetUrl);
+            const vetResponse = await fetch(vetUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
 
-               console.log('Response status:', response.status);
-               console.log('Response status text:', response.statusText);
+            console.log('Vet Response status:', vetResponse.status);
+            console.log('Vet Response status text:', vetResponse.statusText);
 
-               if (!response.ok) {
-                   throw new Error('Failed to fetch appointments');
-               }
+            if (!vetResponse.ok) {
+                throw new Error('Failed to fetch vet');
+            }
 
-               const responseBody = await response.json();
-               console.log('Response body:', responseBody); // Log entire response body
+            const vetResponseBody = await vetResponse.json();
+            console.log('Vet Response body:', vetResponseBody); // Log entire response body
 
-               setAppointments(responseBody);
-           } catch (error) {
-               console.error('Error fetching appointments:', error);
-           }
+            vetid = vetResponseBody.id;
+
+            const appointmentsUrl = BASE_URL + "/appointment/all/vet/" + vetid;
+            const appointmentsResponse = await fetch(appointmentsUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            console.log('Appointments Response status:', appointmentsResponse.status);
+            console.log('Appointments Response status text:', appointmentsResponse.statusText);
+
+            if (!appointmentsResponse.ok) {
+                throw new Error('Failed to fetch appointments');
+            }
+
+            const appointmentsResponseBody = await appointmentsResponse.json();
+            console.log('Appointments Response body:', appointmentsResponseBody); // Log entire response body
+
+            setAppointments(appointmentsResponseBody);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+
     }
 
     useEffect(() => {
@@ -55,12 +78,21 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
         console.log('length' + appointments.length)
     }, [])
 
+    const acceptedAppointments = appointments.filter(appointment => appointment.status === 'ACCEPTED');
+    const waitingAppointments = appointments.filter(appointment => appointment.status === 'WAITING');
+
     return (
         <SafeAreaView style={styles.background}>
             <Text style={{ marginRight: 'auto', marginLeft: 20, fontSize: 28, fontWeight: 'bold', }}>My Appointments</Text>
             <ScrollView>
                 <View>
-                    {appointments.map(appointment => <AppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} />)}
+                    {acceptedAppointments.map(appointment => <MyAppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} />)}
+                </View>
+            </ScrollView>
+            <Text style={{ marginRight: 'auto', marginLeft: 20, fontSize: 28, fontWeight: 'bold', }}>Available Appointments</Text>
+            <ScrollView>
+                <View>
+                    {waitingAppointments.map(appointment => <AvailableAppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} vetId={appointment.vetId}/>)}
                 </View>
             </ScrollView>
             <ClientNavbar navigation={props.navigation} {...params} />
@@ -69,12 +101,20 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
     )
 }
 
-interface AppointmentCardParams {
+interface MyAppointmentCardParams {
     key: int,
     appointmentData: appointment,
     petName: string
 }
-const AppointmentCard = ({ key, appointmentData, petName }: AppointmentCardParams) => {
+interface AvailableAppointmentCardParams {
+    key: int,
+    appointmentData: appointment,
+    petName: string,
+    vetId: int
+}
+
+
+const MyAppointmentCard = ({ key, appointmentData, petName }: MyAppointmentCardParams) => {
     const [showDetails, setShowDetails] = useState(false)
     const cancelAppointment = async () => {
         console.log(key)
@@ -110,6 +150,53 @@ const AppointmentCard = ({ key, appointmentData, petName }: AppointmentCardParam
                 <Button style={{
                     marginHorizontal: 4,
                 }} size='small' onPress={() => setShowDetails(s => !s)}><Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
+
+            </Layout>
+        </Card >
+    )
+}
+
+const AvailableAppointmentCard = ({ key, appointmentData, petName, vetId }: AvailableAppointmentCardParams) => {
+    const [showDetails, setShowDetails] = useState(false)
+    const cancelAppointment = async () => {
+        console.log(key)
+        await axios.delete(BASE_URL + "/appointment/delete/" + appointmentData.aid)
+        console.error(`Appointment for ${petName} has been cancelled.`)
+    }
+    const acceptAppointment = async () => {
+            console.log("VetId: " + vetId)
+            await axios.put(BASE_URL + "/appointment/accept/" + appointmentData.aid + "/" + vetId)
+            console.log(`Appointment for ${petName} has been accepted.`)
+        }
+
+    return (
+        <Card style={{
+            margin: 10,
+            width: '100%',
+        }}>
+            <View>
+                <Text category='h5'>{petName}</Text>
+            </View>
+            <Text category='label'>Scheduled for {appointmentData.time ?? ""}</Text>
+            <Text category='s1' style={{
+                marginVertical: 8,
+                fontStyle: 'italic',
+            }}>Status: {appointmentData.status ?? ""}</Text>
+            <Text style={{
+                marginVertical: 8,
+                display: showDetails ? 'flex' : 'none'
+            }}>Reason for visit: {appointmentData.description ?? ""}</Text>
+            <Layout style={{
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+                marginTop: 16,
+            }}>
+                <Button style={{
+                    marginHorizontal: 4,
+                }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
+                <Button style={{
+                    marginHorizontal: 4,
+                }} size='small' onPress={acceptAppointment}>Accept</Button>
 
             </Layout>
         </Card >

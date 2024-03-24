@@ -58,6 +58,18 @@ public class AppointmentController {
         return ResponseEntity.status(HttpStatus.OK).body(apList);
     }
 
+    @GetMapping(value = "/all/vet/{vid}")
+    public ResponseEntity<List<Appointment>> getAllAppointmentByVet(@PathVariable Long vid) {
+        List<Appointment> apList = new ArrayList<>();
+        for (Appointment app:appointmentRepository.findAll()) {
+            if(app.getVet().getId().equals(vid))
+            {
+                apList.add(app);
+            }
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(apList);
+    }
+
     @GetMapping(value = "/get/{aid}")
     public ResponseEntity<Appointment> getAppointment(@PathVariable Long aid) {
         return ResponseEntity.status(HttpStatus.OK).body(appointmentRepository.findById(aid).orElse(null));

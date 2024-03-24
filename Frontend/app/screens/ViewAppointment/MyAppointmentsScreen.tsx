@@ -18,9 +18,9 @@ function MyAppointmentsScreen(props: any) {
 
     useEffect(() => {
         if (params.userIsVet) {
-            props.navigation.navigate("MyAppointmentsVet")
+            props.navigation.navigate("MyAppointmentsVet", { userId: params.userId, userIsVet: params.userIsVet, location: params.location })
         } else {
-            props.navigation.navigate("MyAppointmentsOwner")
+            props.navigation.navigate("MyAppointmentsOwner", { userId: params.userId, userIsVet: params.userIsVet, location: params.location })
         }
     }, [])
 

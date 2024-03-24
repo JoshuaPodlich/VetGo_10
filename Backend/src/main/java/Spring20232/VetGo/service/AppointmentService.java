@@ -30,7 +30,7 @@ public class AppointmentService {
 
         List<Vet> vets = new ArrayList<>(vetRepository.findAll());
 
-        Vet chosenVet = chooseBestVet(vets);
+        Vet chosenVet = chooseBestVet(vets, appointment);
 
         System.out.println("Chosen vet is " + chosenVet.getUser().getFirstName() + " with Lat: " + chosenVet.getLatitude() + " Long: " + chosenVet.getLongitude() + " for AppointmentID: " + appointment.getAid());
 
@@ -43,12 +43,12 @@ public class AppointmentService {
         return appointment.getAid();
     }
 
-    private Vet chooseBestVet(List<Vet> vets) {
+    private Vet chooseBestVet(List<Vet> vets, Appointment appointment) {
         Vet vet = new Vet();
         double distance = 99999;
 
         for (Vet elem: vets) {
-            if (Math.sqrt(Math.pow(elem.getLatitude(), 2) + Math.pow(elem.getLongitude(), 2)) < distance) {
+            if (Math.sqrt(Math.pow((elem.getLatitude() - appointment.getLatitude()), 2) + Math.pow((elem.getLongitude() - appointment.getLongitude()), 2)) < distance) {
                 distance = Math.sqrt(Math.pow(elem.getLatitude(), 2) + Math.pow(elem.getLongitude(), 2));
                 vet = elem;
             }
@@ -73,7 +73,7 @@ public class AppointmentService {
 
         // If there are remaining vets, repeat the process with the next best vet
         if (!remainingVets.isEmpty()) {
-            Vet nextBestVet = chooseBestVet(remainingVets);
+            Vet nextBestVet = chooseBestVet(remainingVets, appointment);
             System.out.println("Next best vet is " + nextBestVet.getUser().getFirstName() +
                     " with Lat: " + nextBestVet.getLatitude() +
                     " Long: " + nextBestVet.getLongitude());
