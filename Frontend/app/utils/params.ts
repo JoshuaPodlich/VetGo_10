@@ -15,6 +15,7 @@ import { MyAppointmentsScreenParams } from '../screens/ViewAppointment/MyAppoint
 import { PaymentStripeScreenParams } from '../screens/PaymentStripe/PaymentStripeScreen'
 import { SettingsScreenParams } from '../screens/SettingsScreen/SettingsScreen'
 import { ViewNearbyVetsParams } from '../screens/ClientVetInteraction/ViewNearbyVetsScreen'
+import { ScreeningQuestionsParams } from '../screens/ScreeningQuestions/ScreeningQuestionsScreen'
 
 export type RootStackParamList = {
     Welcome: WelcomeScreenParams
@@ -40,6 +41,7 @@ export type RootStackParamList = {
     VetScreening2: undefined
     Account: undefined
     ForgotPassword: undefined
+    ScreeningQuestions: ScreeningQuestionsParams
 }
 
 

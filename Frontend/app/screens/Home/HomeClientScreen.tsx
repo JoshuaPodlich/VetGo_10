@@ -21,6 +21,7 @@ import { PaymentStripeScreenParams } from '../PaymentStripe/PaymentStripeScreen'
 import { SettingsScreenParams } from '../SettingsScreen/SettingsScreen'
 import { colors } from '../shared/Colors'
 import axios from 'axios'
+import { ScreeningQuestionsParams } from '../ScreeningQuestions/ScreeningQuestionsScreen'
 
 export interface HomeClientScreenParams {
     userId: string,
@@ -104,7 +105,13 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
             ...params,
             petId: pets[index].pid
         }
-        props.navigation.navigate("CreateAppointment", createAppointmentParams)
+        //props.navigation.navigate("CreateAppointment", createAppointmentParams)
+
+        let screeningQuestionsParams: ScreeningQuestionsParams = {
+            ...params,
+            petId: pets[index].pid
+        }
+        props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
     }
 
     function viewAppointment(index: number) {

@@ -45,6 +45,8 @@ import AddtionalPetInfo from './app/screens/AdditionalPetInfo/AddtionalPetInfo'
 import EmergencyScreen from './app/screens/Emergency/EmergencyScreen'
 import ForgotPaswordScreen from './app/screens/ForgotPassword/ForgotPasswordScreen'
 import VetLoginScreen from './app/screens/VetLogin/VetLoginScreen'
+
+import ScreeningQuestionsScreen from './app/screens/ScreeningQuestions/ScreeningQuestionsScreen'
 const Stack = createNativeStackNavigator()
 
 export default function App() {
@@ -93,6 +95,7 @@ export default function App() {
                             <Stack.Screen name="Emergency" component={EmergencyScreen} options={{ title: "Emergency" }} />
                             <Stack.Screen name="forgotPassword" component={ForgotPaswordScreen} options={{ title: "forgotPassword" }} />
                             <Stack.Screen name="VetLogin" component={VetLoginScreen} options={{ title: "VetLogin" }} />
+                            <Stack.Screen name="ScreeningQuestions" component={ScreeningQuestionsScreen as React.FC} options={{title: ""}} />
                         </Stack.Navigator>
                     </NavigationContainer>
                 </ApplicationProvider>
