@@ -56,4 +56,21 @@ public class Bird extends Pet {
     public void setPlumageColor(String plumageColor) {
         this.plumageColor = plumageColor;
     }
+
+    public void updateFrom(Bird updatedBird) {
+        super.updateFrom(updatedBird);
+
+        if (updatedBird.getSpecies() != null) {
+            this.setSpecies(updatedBird.getSpecies());
+        }
+        this.setCanFly(updatedBird.isCanFly());
+
+        if (updatedBird.getVocalLevel() != null) {
+            this.setVocalLevel(updatedBird.getVocalLevel());
+        }
+        if (updatedBird.getPlumageColor() != null) {
+            this.setPlumageColor(updatedBird.getPlumageColor());
+        }
+    }
+
 }

@@ -57,4 +57,24 @@ public class Dog extends Pet {
     public void setFurType(String furType) {
         this.furType = furType;
     }
+
+    public void updateFrom(Dog updatedDog) {
+        super.updateFrom(updatedDog);
+
+        if (updatedDog.getBreed() != null) {
+            this.setBreed(updatedDog.getBreed());
+        }
+
+        if (updatedDog.getPetSize() != null) {
+            this.setPetSize(updatedDog.getPetSize());
+        }
+
+        if (updatedDog.getEnergyLevel() != null) {
+            this.setEnergyLevel(updatedDog.getEnergyLevel());
+        }
+
+        if (updatedDog.getFurType() != null) {
+            this.setFurType(updatedDog.getFurType());
+        }
+    }
 }

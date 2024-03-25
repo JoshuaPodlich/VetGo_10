@@ -55,4 +55,22 @@ public class OtherPet extends Pet {
     public void setDietRequirement(String dietRequirement) {
         this.dietRequirement = dietRequirement;
     }
+
+    public void updateFrom(OtherPet updatedOtherPet) {
+        super.updateFrom(updatedOtherPet);
+
+        if (updatedOtherPet.getSpecies() != null) {
+            this.setSpecies(updatedOtherPet.getSpecies());
+        }
+        if (updatedOtherPet.getSpecialCareNeeds() != null) {
+            this.setSpecialCareNeeds(updatedOtherPet.getSpecialCareNeeds());
+        }
+        if (updatedOtherPet.getHabitRequirements() != null) {
+            this.setHabitRequirements(updatedOtherPet.getHabitRequirements());
+        }
+        if (updatedOtherPet.getDietRequirement() != null) {
+            this.setDietRequirement(updatedOtherPet.getDietRequirement());
+        }
+    }
+
 }

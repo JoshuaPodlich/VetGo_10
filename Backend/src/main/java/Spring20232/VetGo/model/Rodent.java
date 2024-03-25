@@ -57,4 +57,20 @@ public class Rodent extends Pet {
     public void setNocturnal(boolean nocturnal) {
         isNocturnal = nocturnal;
     }
+
+    public void updateFrom(Rodent updatedRodent) {
+        super.updateFrom(updatedRodent);
+
+        if (updatedRodent.getSpecies() != null) {
+            this.setSpecies(updatedRodent.getSpecies());
+        }
+        if (updatedRodent.getSocialNeeds() != null) {
+            this.setSocialNeeds(updatedRodent.getSocialNeeds());
+        }
+        if (updatedRodent.getDietType() != null) {
+            this.setDietType(updatedRodent.getDietType());
+        }
+        this.setNocturnal(updatedRodent.isNocturnal());
+    }
+
 }

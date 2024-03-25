@@ -56,4 +56,19 @@ public class Fish extends Pet {
     public void setSchoolingFish(boolean schoolingFish) {
         isSchoolingFish = schoolingFish;
     }
+
+    public void updateFrom(Fish updatedFish) {
+        super.updateFrom(updatedFish);
+
+        if (updatedFish.getSpecies() != null) {
+            this.setSpecies(updatedFish.getSpecies());
+        }
+
+        if (updatedFish.getWaterType() != null) {
+            this.setWaterType(updatedFish.getWaterType());
+        }
+        this.setTankSizeGallons(updatedFish.getTankSizeGallons());
+        this.setSchoolingFish(updatedFish.isSchoolingFish());
+    }
+
 }

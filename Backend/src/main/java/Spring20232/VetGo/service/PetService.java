@@ -1,11 +1,16 @@
 package Spring20232.VetGo.service;
 
 import Spring20232.VetGo.filestore.FileStore;
-import Spring20232.VetGo.model.Pet;
+import Spring20232.VetGo.model.*;
+import Spring20232.VetGo.repository.OwnerRepository;
 import Spring20232.VetGo.repository.PetRepository;
+import Spring20232.VetGo.repository.UserRepository;
+import com.amazonaws.services.alexaforbusiness.model.NotFoundException;
 import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +21,13 @@ import java.util.*;
 @Service
 public class PetService implements PetServiceInterface {
     private final PetRepository petRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private OwnerRepository ownerRepository;
+
     private final FileStore fileStore;
 
     @Autowired
@@ -53,7 +65,7 @@ public class PetService implements PetServiceInterface {
     public List<byte[]> getPetRecords(Long pid) {
         Pet pet = getPetProfileOrElseThrow(pid);
         String path = String.format("%s/%s/", bucketName, pet.getId());
-        List<String> fileList = pet.getFileLink().orElse(null);
+        List<String> fileList = pet.getFileLink();
 
         if (fileList == null) {
             return null;
@@ -83,5 +95,90 @@ public class PetService implements PetServiceInterface {
                 .findFirst()
                 .orElseThrow(()-> new IllegalStateException(String.format("Pet profile %s not found", pid)));
         return pet1;
+    }
+
+    @Transactional
+    public void addOwnerPet(Pet pet, Long uid) {
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null) throw new NotFoundException("Unable to find user in database.");
+
+        Owner owner = ownerRepository.findByUser(user);
+        if (owner == null) throw new NotFoundException("Unable to find owner in database.");
+
+        pet.setOwner(owner);
+        petRepository.save(pet);
+        owner.addPetList(pet);
+    }
+
+    public List<Pet> getOwnersPets(Long uid) {
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null) throw new NotFoundException("Unable to find user in database.");
+        Owner owner = ownerRepository.findByUser(user);
+        if (owner == null) throw new NotFoundException("Unable to find owner in database.");
+
+        return new ArrayList<>(petRepository.findAllByOwner(owner));
+    }
+
+    public void deleteOwnersPet(Long pid) {
+        Pet pet = petRepository.findById(pid).orElse(null);
+        if (pet == null) throw new NotFoundException("Unable to find pet in database.");
+
+        petRepository.delete(pet);
+    }
+
+    @Transactional
+    public void updateOwnersDog(Long pid, Dog updatedDog) {
+        Dog existingPet = (Dog) petRepository.findById(pid).orElse(null);
+        if (existingPet == null) throw new NotFoundException("Unable to find cat in database.");
+
+        existingPet.updateFrom(updatedDog);
+    }
+
+    @Transactional
+    public void updateOwnersCat(Long pid, Cat updatedCat) {
+        Cat existingPet = (Cat) petRepository.findById(pid).orElse(null);
+        if (existingPet == null) throw new NotFoundException("Unable to find cat in database.");
+
+        existingPet.updateFrom(updatedCat);
+    }
+
+    @Transactional
+    public void updateOwnersBird(Long pid, Bird updatedBird) {
+        Bird existingPet = (Bird) petRepository.findById(pid).orElse(null);
+        if (existingPet == null) throw new NotFoundException("Unable to find cat in database.");
+
+        existingPet.updateFrom(updatedBird);
+    }
+
+    @Transactional
+    public void updateOwnersReptile(Long pid, Reptile updatedReptile) {
+        Reptile existingPet = (Reptile) petRepository.findById(pid).orElse(null);
+        if (existingPet == null) throw new NotFoundException("Unable to find cat in database.");
+
+        existingPet.updateFrom(updatedReptile);
+    }
+
+    @Transactional
+    public void updateOwnersFish(Long pid, Fish updatedFish) {
+        Fish existingPet = (Fish) petRepository.findById(pid).orElse(null);
+        if (existingPet == null) throw new NotFoundException("Unable to find cat in database.");
+
+        existingPet.updateFrom(updatedFish);
+    }
+
+    @Transactional
+    public void updateOwnersRodent(Long pid, Rodent updatedRodent) {
+        Rodent existingPet = (Rodent) petRepository.findById(pid).orElse(null);
+        if (existingPet == null) throw new NotFoundException("Unable to find cat in database.");
+
+        existingPet.updateFrom(updatedRodent);
+    }
+
+    @Transactional
+    public void updateOwnersOtherPet(Long pid, OtherPet updatedOtherPet) {
+        OtherPet existingPet = (OtherPet) petRepository.findById(pid).orElse(null);
+        if (existingPet == null) throw new NotFoundException("Unable to find cat in database.");
+
+        existingPet.updateFrom(updatedOtherPet);
     }
 }
