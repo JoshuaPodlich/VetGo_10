@@ -267,6 +267,20 @@ export const styles: any = StyleSheet.create({
         fontColor: colors.black,
     },
 
+    ScreeningDropDown: {
+
+        width: 230,
+        height: "10%",
+        margin: 5,
+        padding: 15,
+        borderRadius: 10,
+        backgroundColor: colors.primary_Blue,
+        //text color and font color and font size
+        fontSize: 18,
+        fontWeight: "bold",
+        fontColor: colors.black,
+    },
+
     signUpTextBox: {
 
         //margin: 5,
