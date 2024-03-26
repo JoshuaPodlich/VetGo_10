@@ -68,7 +68,7 @@ function EmergencyScreen() {
             <View style={emStyles.nearByVets}>
             <ScrollView>
                 {/* displays the emergencyVets */}
-                <Text style={{ fontSize: 20, fontWeight: "bold", marginTop: 30, color: colors.action_Orange, paddingBottom: 20}}  >
+                <Text style={{ fontSize: 20, fontWeight: "bold", marginTop: 30, color: colors. action_Green, paddingBottom: 20}}  >
                             Near By Vets</Text>
                 <View style={emStyles.infoContainer}>
                     <Text style={emStyles.infoText}>Name: {emergencyVets.vet1.name}</Text>
