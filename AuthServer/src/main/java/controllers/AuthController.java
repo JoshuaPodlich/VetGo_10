@@ -1,8 +1,22 @@
 package controllers;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import obj.LoginRequest;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collections;
+import java.util.Date;
 
 @RestController
 public class AuthController {
@@ -15,7 +29,7 @@ public class AuthController {
         this.authenticationManager = authenticationManager;
     }
 
-    /*@PostMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         System.out.println("hit");
         Authentication authentication;
@@ -36,7 +50,7 @@ public class AuthController {
                 .compact();
 
         return ResponseEntity.ok().body(Collections.singletonMap("token", token));
-    }*/
+    }
 
 
 }
