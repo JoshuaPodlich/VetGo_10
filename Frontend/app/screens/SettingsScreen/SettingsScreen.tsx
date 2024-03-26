@@ -6,6 +6,7 @@ import ClientNavbar from '../../components/ClientNavbar'
 import { LocationInterface } from '../shared/Interfaces'
 import { VetAddChargesScreenParams } from '../VetAddCharges/VetAddChargesScreen'
 import { ChangePasswordScreenParams } from '../ChangePassword/ChangePasswordScreen'
+import {UserInfoScreenParams} from '../UserInfo/UserInfoScreen'
 
 
 export interface SettingsScreenParams {
@@ -48,8 +49,8 @@ function SettingsScreen(props: any) {
 
                 <TouchableHighlight style={{ ...styles.mainButton, marginBottom: 100}}
                     underlayColor={colors.brightRed_underlayColor}
-                // onPress={() => props.navigation.navigate("Map")}
-                >
+                    onPress={() => props.navigation.navigate("UserInfo", { ...params } as UserInfoScreenParams)}
+                    >
                     <Text style={styles.buttonText}> User Info </Text>
                 </TouchableHighlight>
 
