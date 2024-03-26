@@ -17,7 +17,7 @@ const userInfo = {
     lastName: 'Doe',
 };
 
-function UserInfoScreen() {
+function UserInfoScreen(props: any) {
     return (
         <View style={userStyles.container}>
             <Text style={{ fontSize: 30, fontWeight: "bold", marginTop: 30, color: colors.action_Orange, paddingBottom: 20}}  >
@@ -29,7 +29,8 @@ function UserInfoScreen() {
                 <Text style={userStyles.userInfoText}>First Name: {userInfo.firstName}</Text>
                 <Text style={userStyles.userInfoText}>Last Name: {userInfo.lastName}</Text>
             </View>
-            <TouchableOpacity style={styles.mainButton} onPress={() => console.log('Return button pressed')}>
+            <TouchableOpacity style={{...styles.mainButton, marginTop: 50}} onPress={() => props.navigation.goBack()
+}>
                 <Text style={userStyles.returnButtonText}>Return</Text>
             </TouchableOpacity>
         </View>
@@ -39,7 +40,6 @@ function UserInfoScreen() {
 const userStyles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
     },
     title: {
