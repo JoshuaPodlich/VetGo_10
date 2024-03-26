@@ -84,7 +84,7 @@ const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRout
             <Text style={{ marginRight: 'auto', marginLeft: 20, fontSize: 28, fontWeight: 'bold', }}>My Appointments</Text>
             <ScrollView>
                 <View>
-                    {appointments.map(appointment => <AppointmentCard key={appointment.aid} appointmentData={appointment} userId={params.userId} petName={appointment.pet.name} />)}
+                    {appointments.map(appointment => <AppointmentCard key={appointment.aid} appointmentData={appointment} userId={params.userId} petName={appointment.pet.name} setAppointments={setAppointments} />)}
                 </View>
             </ScrollView>
             <ClientNavbar navigation={props.navigation} {...params} />
@@ -94,15 +94,69 @@ const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRout
 }
 
 interface AppointmentCardParams {
+    key: int,
     userId: string,
     appointmentData: appointment,
-    petName: string
+    petName: string,
+    setAppointments: useState
 }
-const AppointmentCard = ({ userId, appointmentData, petName }: AppointmentCardParams) => {
+const AppointmentCard = ({ key, userId, appointmentData, petName, setAppointments }: AppointmentCardParams) => {
     const [showDetails, setShowDetails] = useState(false)
     const cancelAppointment = async () => {
         await axios.delete(BASE_URL + "/appointment/delete/" + appointmentData.aid)
-        console.log(`Appointment for ${petName} has been cancelled.`)
+        console.log(`Appointment for ${petName} has been canceled.`)
+        getAppointments(setAppointments)
+    }
+
+    const getAppointments = async (setAppointments) => {
+        try {
+            const ownerUrl = BASE_URL + "/owner/userId/" + userId;
+            console.log("url: " + ownerUrl);
+            const ownerResponse = await fetch(ownerUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            let owner = await ownerResponse.json()
+            const ownerId = owner.id;
+
+            const petUrl = BASE_URL + "/owner/pets/" + ownerId;
+            console.log("url: " + petUrl);
+            const petResponse = await fetch(petUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            let tempPetList = await petResponse.json()
+            let petIdList: string[] = []
+            let allAppointments: any[] = [];
+
+            for (let i = 0; i < tempPetList.length; i++) {
+                petIdList.push(tempPetList[i].id)
+            }
+
+            await Promise.all(petIdList.map(async (petId) => {
+                const url = BASE_URL + "/appointment/all/" + petId;
+                console.log("url: " + url);
+                const app = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+
+                const appointments = await app.json();
+                allAppointments.push(...appointments);
+            }));
+
+            setAppointments(allAppointments);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     }
 
     return (

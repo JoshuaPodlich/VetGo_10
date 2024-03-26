@@ -189,7 +189,7 @@ const AvailableAppointmentCard = ({ key, appointmentData, petName, vetId, setApp
 
     const cancelAppointment = async () => {
         console.log(key)
-        await axios.delete(BASE_URL + "/appointment/delete/" + appointmentData.aid)
+        await axios.put(BASE_URL + "/appointment/cancel/" + appointmentData.aid)
         console.log(`Appointment for ${petName} has been cancelled.`)
         getAppointments(setAppointments);
     }

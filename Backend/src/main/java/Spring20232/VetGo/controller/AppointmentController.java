@@ -200,6 +200,7 @@ public class AppointmentController {
         appointmentRepository.save(appointment);
         vet.addAppointments(appointment);
         vetRepository.save(vet);
+        appointmentService.vetHasAccepted(appointment);
         String supportLink = "filler@gmail.com";
         String messageClient = "Hello " + appointment.getPet().getOwner().getUser().getFirstName() + ",\n\n" +
                 "Dr. " + vet.getUser().getLastName() + " has accepted your appointment as detailed below\n" +
@@ -329,5 +330,17 @@ public class AppointmentController {
     public ResponseEntity<String> deleteAllAppointment() {
         appointmentRepository.deleteAll();
         return ResponseEntity.status(HttpStatus.OK).body("Deleted all appointments");
+    }
+
+    @PutMapping(value = "/cancel/{aid}")
+    public ResponseEntity<String> cancelAppointment(@PathVariable("aid") Long aid) {
+        Appointment appointment = appointmentRepository.findById(aid).orElse(null);
+
+        if (appointment == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find appointment in database");
+
+        appointmentService.vetHasCanceled(appointment);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Successfully canceled appointment");
     }
 }

@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.Map;
+import java.util.concurrent.*;
 
 import static Spring20232.VetGo.model.Appointment.AppointmentStatus.ACCEPTED;
 
@@ -21,6 +21,8 @@ public class AppointmentService {
 
     // Sets the timer deadline for the vet to accept the appointment, in minutes
     private final Long TIMERDEADLINE = 10L;
+    private Map<Long, ScheduledFuture<?>> taskFutures = new ConcurrentHashMap<>();
+    private Map<Long, ArrayList<Vet>> remainingVetsList = new HashMap<>();
 
     @Autowired
     VetRepository vetRepository;
@@ -28,7 +30,7 @@ public class AppointmentService {
     AppointmentRepository appointmentRepository;
     public Long broadcast(Appointment appointment) {
 
-        List<Vet> vets = new ArrayList<>(vetRepository.findAll());
+        ArrayList<Vet> vets = new ArrayList<>(vetRepository.findAll());
 
         Vet chosenVet = chooseBestVet(vets, appointment);
 
@@ -37,13 +39,14 @@ public class AppointmentService {
         appointment.setVet(chosenVet);
         appointmentRepository.save(appointment);
 
-    scheduler.schedule(() -> checkVetResponse(appointment, vets), TIMERDEADLINE, TimeUnit.MINUTES);
-
+        ScheduledFuture<?> taskFuture = scheduler.schedule(() -> checkVetResponse(appointment, vets), TIMERDEADLINE, TimeUnit.MINUTES);
+        taskFutures.put(appointment.getAid(), taskFuture);
+        remainingVetsList.put(appointment.getAid(), vets);
 
         return appointment.getAid();
     }
 
-    private Vet chooseBestVet(List<Vet> vets, Appointment appointment) {
+    private Vet chooseBestVet(ArrayList<Vet> vets, Appointment appointment) {
         Vet vet = new Vet();
         double distance = 99999;
 
@@ -57,10 +60,13 @@ public class AppointmentService {
         return vet;
     }
 
-    private void checkVetResponse(Appointment appointment, List<Vet> remainingVets) {
+    private void checkVetResponse(Appointment appointment, ArrayList<Vet> remainingVets) {
+        taskFutures.remove(appointment.getAid());
+        remainingVetsList.remove(appointment.getAid());
+
         System.out.println("10 Minutes has passed, checking for acceptance");
         // Check if the chosen vet has accepted the appointment
-        if (vetHasAccepted(appointment)) {
+        if (vetHasAcceptedCheck(appointment)) {
             System.out.println("Vet has accepted!");
             // Vet has accepted, return
             return;
@@ -69,7 +75,7 @@ public class AppointmentService {
         System.out.println("Vet has not accepted");
 
         // Remove the current vet from the list of remaining vets
-        remainingVets.remove(appointment.getVet());
+        remainingVets.removeIf(elem -> appointment.getVet().getId().equals(elem.getId()));
 
         // If there are remaining vets, repeat the process with the next best vet
         if (!remainingVets.isEmpty()) {
@@ -82,7 +88,9 @@ public class AppointmentService {
             appointmentRepository.save(appointment);
 
             // Schedule a task to check vet response after 10 minutes
-            scheduler.schedule(() -> checkVetResponse(appointment, remainingVets), TIMERDEADLINE, TimeUnit.MINUTES);
+            ScheduledFuture<?> taskFuture = scheduler.schedule(() -> checkVetResponse(appointment, remainingVets), TIMERDEADLINE, TimeUnit.MINUTES);
+            taskFutures.put(appointment.getAid(), taskFuture);
+            remainingVetsList.put(appointment.getAid(), remainingVets);
         } else {
             // No more vets left, throw an error
             System.out.println("No vets left to accept.");
@@ -94,7 +102,23 @@ public class AppointmentService {
         return appointmentRepository.findByAid(aid);
     }
 
-    private boolean vetHasAccepted(Appointment appointment) {
+    private boolean vetHasAcceptedCheck(Appointment appointment) {
         return findAppointmentByAid(appointment.getAid()).getStatus() == ACCEPTED;
     }
+
+    public void vetHasAccepted(Appointment appointment) {
+        if (taskFutures.get(appointment.getAid()) != null && vetHasAcceptedCheck(appointment)) {
+            System.out.println("Vet has accepted!");
+            taskFutures.get(appointment.getAid()).cancel(true);
+        }
+    }
+
+    public void vetHasCanceled(Appointment appointment) {
+        if (taskFutures.get(appointment.getAid()) != null && !vetHasAcceptedCheck(appointment)) {
+            System.out.println("Vet has Canceled!");
+            taskFutures.get(appointment.getAid()).cancel(true);
+            checkVetResponse(appointment, remainingVetsList.get(appointment.getAid()));
+        }
+    }
+
 }
