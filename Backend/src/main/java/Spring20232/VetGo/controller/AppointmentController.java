@@ -3,6 +3,7 @@ package Spring20232.VetGo.controller;
 import Spring20232.VetGo.model.*;
 import Spring20232.VetGo.repository.*;
 import Spring20232.VetGo.service.EmailService;
+import Spring20232.VetGo.service.AppointmentService;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,8 @@ public class AppointmentController {
     AdditionalPetInformationRepository additionalPetInformationRepository;
     @Autowired
     EmailService emailService;
+    @Autowired
+    AppointmentService appointmentService;
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<Appointment>> getAllAppointment() {
@@ -47,7 +50,19 @@ public class AppointmentController {
         List<Appointment> apList = new ArrayList<>();
         for (Appointment app:appointmentRepository.findAll()) {
             Appointment aa = app;
-            if(app.getStatus()==COMPLETED &&app.getPet().getId().equals(pid)) // need to get only completed appointment in future
+            if(app.getPet().getId().equals(pid))
+            {
+                apList.add(app);
+            }
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(apList);
+    }
+
+    @GetMapping(value = "/all/vet/{vid}")
+    public ResponseEntity<List<Appointment>> getAllAppointmentByVet(@PathVariable Long vid) {
+        List<Appointment> apList = new ArrayList<>();
+        for (Appointment app:appointmentRepository.findAll()) {
+            if(app.getVet().getId().equals(vid))
             {
                 apList.add(app);
             }
@@ -153,11 +168,12 @@ public class AppointmentController {
         String str = objectNode.get("month").asText() + "-" + objectNode.get("day").asText() + "-" + objectNode.get("year").asText();
         LocalDate date = LocalDate.parse(str, formatter);
 
-        Appointment appointment = new Appointment(null, date, null, pet, longitude, latitude, description, null, WAITING,null);
+        Appointment appointment = new Appointment(null, date, null, pet, longitude, latitude, description, null, WAITING, null);
 
         pet.addAppointmentList(appointment);
         appointmentRepository.save(appointment);
         petRepository.save(pet);
+        appointmentService.broadcast(appointment);
 
         return ResponseEntity.status(HttpStatus.OK).body(appointment);
     }
@@ -184,6 +200,7 @@ public class AppointmentController {
         appointmentRepository.save(appointment);
         vet.addAppointments(appointment);
         vetRepository.save(vet);
+        appointmentService.vetHasAccepted(appointment);
         String supportLink = "filler@gmail.com";
         String messageClient = "Hello " + appointment.getPet().getOwner().getUser().getFirstName() + ",\n\n" +
                 "Dr. " + vet.getUser().getLastName() + " has accepted your appointment as detailed below\n" +
@@ -313,5 +330,17 @@ public class AppointmentController {
     public ResponseEntity<String> deleteAllAppointment() {
         appointmentRepository.deleteAll();
         return ResponseEntity.status(HttpStatus.OK).body("Deleted all appointments");
+    }
+
+    @PutMapping(value = "/cancel/{aid}")
+    public ResponseEntity<String> cancelAppointment(@PathVariable("aid") Long aid) {
+        Appointment appointment = appointmentRepository.findById(aid).orElse(null);
+
+        if (appointment == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find appointment in database");
+
+        appointmentService.vetHasCanceled(appointment);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Successfully canceled appointment");
     }
 }

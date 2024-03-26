@@ -4,6 +4,7 @@ import Spring20232.VetGo.model.Owner;
 import Spring20232.VetGo.model.User;
 import Spring20232.VetGo.model.Vet;
 import Spring20232.VetGo.repository.OwnerRepository;
+import Spring20232.VetGo.repository.UserRepository;
 import Spring20232.VetGo.repository.VetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,11 @@ public class VetController {
         return ResponseEntity.status(HttpStatus.OK).body(vetRepository.findById(vid).orElse(null));
     }
 
+    //    @PreAuthorize("hasRole(@roles.ROLE_VET)")
+    @GetMapping(value = "/id/user/{uid}")
+    public ResponseEntity<Vet> getVetByUserId(@PathVariable Long uid) {
+        return ResponseEntity.status(HttpStatus.OK).body(vetRepository.findByUserId(uid));
+    }
 
     //    @PreAuthorize("hasRole(@roles.ROLE_VET)")
     @PutMapping(value = "/update/{vid}")
@@ -98,6 +104,4 @@ public class VetController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(vet.getUser());
     }
-
-
 }

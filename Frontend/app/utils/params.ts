@@ -12,6 +12,8 @@ import { HomeVetScreenParams } from '../screens/Home/HomeVetScreen'
 import { CreateAppointmentParams } from '../screens/CreateAppointment/CreateAppointmentScreen'
 import { CreatePetScreenParams } from '../screens/CreatePet/CreatePetScreen'
 import { MyAppointmentsScreenParams } from '../screens/ViewAppointment/MyAppointmentsScreen'
+import { MyAppointmentsOwnerScreenParams } from '../screens/ViewAppointment/MyAppointmentsOwnerScreen'
+import { MyAppointmentsVetScreenParams } from '../screens/ViewAppointment/MyAppointmentsVetScreen'
 import { PaymentStripeScreenParams } from '../screens/PaymentStripe/PaymentStripeScreen'
 import { SettingsScreenParams } from '../screens/SettingsScreen/SettingsScreen'
 import { ViewNearbyVetsParams } from '../screens/ClientVetInteraction/ViewNearbyVetsScreen'
@@ -28,6 +30,8 @@ export type RootStackParamList = {
     CreateAppointment: CreateAppointmentParams
     ViewNearbyVets: ViewNearbyVetsParams
     MyAppointments: MyAppointmentsScreenParams
+    MyAppointmentsOwner: MyAppointmentsOwnerScreenParams
+    MyAppointmentsVet: MyAppointmentsVetScreenParams
     ViewAppointment: ViewAppointmentScreenParams
     Map: MapScreenParams
     Settings: SettingsScreenParams

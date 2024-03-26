@@ -39,6 +39,8 @@ import VetDuringAppointment1Screen from './app/screens/DuringAppointment/VetDuri
 import VetDuringAppointment2Screen from './app/screens/DuringAppointment/VetDuringAppointment2Screen'
 import VetAddChargesScreen from './app/screens/VetAddCharges/VetAddChargesScreen'
 import MyAppointmentsScreen from './app/screens/ViewAppointment/MyAppointmentsScreen'
+import MyAppointmentsOwnerScreen from './app/screens/ViewAppointment/MyAppointmentsOwnerScreen'
+import MyAppointmentsVetScreen from './app/screens/ViewAppointment/MyAppointmentsVetScreen'
 import ViewNearbyVetsScreen from './app/screens/ClientVetInteraction/ViewNearbyVetsScreen'
 import VetDuringAppointmentMedicalHistoryScreen from './app/screens/DuringAppointment/VetDuringAppointmentMedicalHistoryScreen'
 import AddtionalPetInfo from './app/screens/AdditionalPetInfo/AddtionalPetInfo'
@@ -72,6 +74,8 @@ export default function App() {
                                 options={{ title: "" }} />
                             <Stack.Screen name="MyAppointments" component={MyAppointmentsScreen as React.FC}
                                 options={{ title: "" }} />
+                            <Stack.Screen name="MyAppointmentsOwner" component={MyAppointmentsOwnerScreen as React.FC} options={{ title: "" }} />
+                            <Stack.Screen name="MyAppointmentsVet" component={MyAppointmentsVetScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="CalendarScreen" component={CalendarScreen} options={{ title: "" }} />
                             <Stack.Screen name="ViewAppointment" component={ViewAppointmentScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="ViewAppointmentClient" component={ViewAppointmentClientScreen as React.FC} options={{ title: "" }} />
