@@ -22,6 +22,7 @@ import ViewAppointmentScreen from "./app/screens/ViewAppointment/ViewAppointment
 import ViewAppointmentClientScreen from "./app/screens/ViewAppointment/ViewAppointmentClientScreen"
 import SettingsScreen from "./app/screens/SettingsScreen/SettingsScreen"
 import ChangePasswordScreen from "./app/screens/ChangePassword/ChangePasswordScreen"
+import UserInfoScreen from './app/screens/UserInfo/UserInfoScreen'
 
 import PaymentStripeScreen from "./app/screens/PaymentStripe/PaymentStripeScreen"
 import CreatePetScreen from "./app/screens/CreatePet/CreatePetScreen"
@@ -80,6 +81,7 @@ export default function App() {
                             <Stack.Screen name="Map" component={MapScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="Settings" component={SettingsScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="ChangePassword" component={ChangePasswordScreen as React.FC} options={{ title: "" }} />
+                            <Stack.Screen name="UserInfo" component={UserInfoScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="PaymentStripe" component={PaymentStripeScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="EditPet" component={EditPetScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="CreatePet" component={CreatePetScreen as React.FC} options={{ title: "" }} />
