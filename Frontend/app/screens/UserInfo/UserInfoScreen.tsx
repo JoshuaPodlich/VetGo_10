@@ -15,6 +15,7 @@ const userInfo = {
     userAddress: '123 Test St, City',
     firstName: 'John',
     lastName: 'Doe',
+    numberOfPets: 2,
 };
 
 function UserInfoScreen(props: any) {
@@ -28,6 +29,7 @@ function UserInfoScreen(props: any) {
                 <Text style={userStyles.userInfoText}>Address: {userInfo.userAddress}</Text>
                 <Text style={userStyles.userInfoText}>First Name: {userInfo.firstName}</Text>
                 <Text style={userStyles.userInfoText}>Last Name: {userInfo.lastName}</Text>
+                <Text style={userStyles.userInfoText}>Number of Pets: {userInfo.numberOfPets}</Text>
             </View>
             <TouchableOpacity style={{...styles.mainButton, marginTop: 50}} onPress={() => props.navigation.goBack()
 }>
