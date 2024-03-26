@@ -191,6 +191,142 @@ INSERT INTO screening_questions (question_text) VALUES ("Recently, has your dog 
 INSERT INTO screening_questions (question_text) VALUES ("Is your dog behaving strangely? (e.g., twitching, turning around in circles, or moving as if drunk)"); # ID: 180
 INSERT INTO screening_questions (question_text) VALUES ("Has your dog's abdomen (stomach area) become more swollen than usual?"); # ID: 181
 INSERT INTO screening_questions (question_text) VALUES ("Pick up the skin of the scruff of your dog's neck and then release it. Does it fall back into place?"); # ID: 182
+INSERT INTO screening_questions (question_text) VALUES ("If you are concerned your dog has eaten something poisonous, what has it recently eaten?"); # ID: 183
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responding to you normally?"); # ID: 184
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog behaving normally?"); # ID: 185
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog showing signs of pain?"); # ID: 186
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog breathing normally?"); # ID: 187
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog vomited since eating the baby oil?"); # ID: 188
+INSERT INTO screening_questions (question_text) VALUES ("Is there any blood in the vomit?"); # ID: 189
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have eaten anything else inappropriate or poisonous? (e.g., bleach, aspirin, or a toy)"); # ID: 190
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been drinking more than usual recently?"); # ID: 191
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog trying to vomit but nothing is coming up?"); # ID: 192
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog had diarrhoea since eating the baby oil?"); # ID: 193
+INSERT INTO screening_questions (question_text) VALUES ("Was there any blood in the diarrhoea?"); # ID: 194
+INSERT INTO screening_questions (question_text) VALUES ("What is the consistency of the diarrhoea like?"); # ID: 195
+INSERT INTO screening_questions (question_text) VALUES ("How much is your dog straining to pass the stool?"); # ID: 196
+INSERT INTO screening_questions (question_text) VALUES ("Is the dog's abdomen (stomach area) distended or sore?"); # ID: 197
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have eaten anything else inappropriate, such as a toy or bone?"); # ID: 198
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been drinking noticeably more than usual recently?"); # ID: 199
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog flat or in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 200
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responding to you normally?"); # ID: 201
+INSERT INTO screening_questions (question_text) VALUES ("Is there any bleeding coming from the wound?"); # ID: 202
+INSERT INTO screening_questions (question_text) VALUES ("How much blood is coming out?"); # ID: 203
+INSERT INTO screening_questions (question_text) VALUES ("Have any stitches become dislodged? In cases of dog castration, sometimes there are no stitches visible on the skin."); # ID: 204
+INSERT INTO screening_questions (question_text) VALUES ("Have the edges of the wound separated?"); # ID: 205
+INSERT INTO screening_questions (question_text) VALUES ("How long is it since the operation?"); # ID: 206
+INSERT INTO screening_questions (question_text) VALUES ("Is there any swelling under the wound?"); # ID: 207
+INSERT INTO screening_questions (question_text) VALUES ("How would you describe the swelling?"); # ID: 208
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog vomited or been off-color since the swelling appeared?"); # ID: 209
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog licking or chewing at the wound?"); # ID: 210
+INSERT INTO screening_questions (question_text) VALUES ("Is there another problem that you have not been asked about?"); # ID: 211
+INSERT INTO screening_questions (question_text) VALUES ("Select one of the areas listed that is smelly."); # ID: 212
+INSERT INTO screening_questions (question_text) VALUES ("Is the smell associated with flatulence?"); # ID: 213
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog also have diarrhoea?"); # ID: 214
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog straining or in pain?"); # ID: 215
+INSERT INTO screening_questions (question_text) VALUES ("Is the diarrhoea watery or bloody?"); # ID: 216
+INSERT INTO screening_questions (question_text) VALUES ("Is there anything sticking out from the anus or vagina?"); # ID: 217
+INSERT INTO screening_questions (question_text) VALUES ("Are there any lumps, swellings, or wounds close to the anus?"); # ID: 218
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responding to you normally?"); # ID: 219
+INSERT INTO screening_questions (question_text) VALUES ("Is the swelling or lump painful for the dog when you touch it?"); # ID: 220
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog eating and drinking normally?"); # ID: 221
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been rubbing its bottom along the ground (scooting) or trying to lick the anus?"); # ID: 222
+INSERT INTO screening_questions (question_text) VALUES ("Is the anus sore or bleeding?"); # ID: 223
+INSERT INTO screening_questions (question_text) VALUES ("How much bleeding is coming from the anus?"); # ID: 224
+INSERT INTO screening_questions (question_text) VALUES ("Is there any bleeding from the anus?"); # ID: 225
+INSERT INTO screening_questions (question_text) VALUES ("How much bleeding is there?"); # ID: 226
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and eating normally?"); # ID: 227
+INSERT INTO screening_questions (question_text) VALUES ("Is there any soiling of the anal area with faeces?"); # ID: 228
+INSERT INTO screening_questions (question_text) VALUES ("If your dog is female, is there any swelling or discharge from the vulva (vagina)?"); # ID: 229
+INSERT INTO screening_questions (question_text) VALUES ("Is your female dog bright, alert, and eating normally?"); # ID: 230
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog leaving damp patches where it has been lying down?"); # ID: 231
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright and alert with a normal appetite?"); # ID: 232
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog distressed, disorientated, or in pain?"); # ID: 233
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responsive?"); # ID: 234
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog shaking its head continuously or scratching its ears continuously?"); # ID: 235
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog developed a head tilt, or is it moving in circles?"); # ID: 236
+INSERT INTO screening_questions (question_text) VALUES ("Is there any swelling in the ear flap?"); # ID: 237
+INSERT INTO screening_questions (question_text) VALUES ("Is there any wet discharge or dry crusty matter inside the ear flap?"); # ID: 238
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responsive?"); # ID: 239
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog drinking more than usual?"); # ID: 240
+INSERT INTO screening_questions (question_text) VALUES ("Is the smell present all the time?"); # ID: 241
+INSERT INTO screening_questions (question_text) VALUES ("Is the smell very strong or offensive?"); # ID: 242
+INSERT INTO screening_questions (question_text) VALUES ("Try shampooing your dog with a shampoo recommended by your vet. Does the smell remain or quickly return?"); # ID: 243
+INSERT INTO screening_questions (question_text) VALUES ("Is the smell very strong or offensive?"); # ID: 244
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responsive?"); # ID: 245
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog seem to be in pain? Specifically, a dog in pain may seem depressed or grumpy, hunched up, or whining."); # ID: 246
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog pawing at the mouth or rubbing it on the floor?"); # ID: 247
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog drooling or bleeding from the mouth?"); # ID: 248
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog have any wounds or swellings anywhere on the face?"); # ID: 249
+INSERT INTO screening_questions (question_text) VALUES ("Is the smell present all the time?"); # ID: 250
+INSERT INTO screening_questions (question_text) VALUES ("Is the smell very strong or offensive?"); # ID: 251
+INSERT INTO screening_questions (question_text) VALUES ("Is the smell very strong or offensive?"); # ID: 252
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog had a dental check at a veterinary practice in the last 6 months?"); # ID: 253
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog, bright, alert, and responding normally to you?"); # ID: 254
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog seem to be in pain? Specifically, a dog in pain may be subdued, hunched up, grumpy, or may whine a lot."); # ID: 255
+INSERT INTO screening_questions (question_text) VALUES ("Are there any areas of skin with a sticky discharge?"); # ID: 256
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog distressed or scratching or biting at itself almost continuously?"); # ID: 257
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog scratching or biting at itself?"); # ID: 258
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog scratching or biting almost continuously?"); # ID: 259
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog causing damage to itself by scratching?"); # ID: 260
+INSERT INTO screening_questions (question_text) VALUES ("Are there any red areas, scabs, greasy areas, or scurf?"); # ID: 261
+INSERT INTO screening_questions (question_text) VALUES ("Are there areas of skin which are red or scurfy or have lost hair?"); # ID: 262
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog's appetite and thirst levels normal, without any increase or decrease?"); # ID: 263
+INSERT INTO screening_questions (question_text) VALUES ("Is the smell present all the times?"); # ID: 264
+INSERT INTO screening_questions (question_text) VALUES ("Is the smell very strong or offensive?"); # ID: 265
+INSERT INTO screening_questions (question_text) VALUES ("Is the smell very strong or offensive?"); # ID: 266
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog distressed or pawing at its nose a lot?"); # ID: 267
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog having difficulty breathing?"); # ID: 268
+INSERT INTO screening_questions (question_text) VALUES ("How often is your dog sneezing?"); # ID: 269
+INSERT INTO screening_questions (question_text) VALUES ("Is there any discharge from the nose?"); # ID: 270
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 271
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog alert, moving around, and responding to you normally?"); # ID: 272
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog straining to pass urine or stools?"); # ID: 273
+INSERT INTO screening_questions (question_text) VALUES ("How much is your dog straining?"); # ID: 274
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been treated with chemotherapy recently?"); # ID: 275
+INSERT INTO screening_questions (question_text) VALUES ("Is there any blood in the urine?"); # ID: 276
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been exposed to any poisons? (e.g., rat poison or mice/rats that have been poisoned)"); # ID: 277
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog eaten any inappropriate objects? (e.g., toys or bones)"); # ID: 278
+INSERT INTO screening_questions (question_text) VALUES ("How much is your dog straining?"); # ID: 279
+INSERT INTO screening_questions (question_text) VALUES ("Is there blood in the stool?"); # ID: 280
+INSERT INTO screening_questions (question_text) VALUES ("How much is your dog straining?"); # ID: 281
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been producing normal amounts of urine in the last 24 hours?"); # ID: 282
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog eaten any inappropriate objects? (e.g., toys or bones)"); # ID: 283
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been treated with chemotherapy recently?"); # ID: 284
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responding normally to you?"); # ID: 285
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog seem unwell or in pain?"); # ID: 286
+INSERT INTO screening_questions (question_text) VALUES ("Does your dog have ticks on its skin at the moment?"); # ID: 287
+INSERT INTO screening_questions (question_text) VALUES ("Are you confident to remove ticks yourself with a proper tick removal device?"); # ID: 288
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 289
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, and responding normally to you?"); # ID: 290
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog trying to vomit but nothing is coming up?"); # ID: 291
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog's abdomen (stomach area) swollen?"); # ID: 292
+INSERT INTO screening_questions (question_text) VALUES ("Is there any blood in the vomit?"); # ID: 293
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have eaten anything poisonous? (e.g., bleach, aspirin, or ibuprofen)"); # ID: 294
+INSERT INTO screening_questions (question_text) VALUES ("Could your dog have swallowed anything inappropriate? (e.g., a toy, ball, or bones)"); # ID: 295
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been drinking more than usual recently?"); # ID: 296
+INSERT INTO screening_questions (question_text) VALUES ("Pick up the skin at the scruff of your dog's neck and release. Does it fall back into place?"); # ID: 297
+INSERT INTO screening_questions (question_text) VALUES ("How many times has your dog been sick in the last 24 hours?"); # ID: 298
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 299
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog moving around and responding to you normally?"); # ID: 300
+INSERT INTO screening_questions (question_text) VALUES ("Pick up the skin of the scruff of your dog's neck. Does if fall quickly back into place?"); # ID: 301
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been eating normally?"); # ID: 302
+INSERT INTO screening_questions (question_text) VALUES ("Has your dog been drinking more than usual recently?"); # ID: 303
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog depressed, flat, or in pain? Specifically, dogs that are in pain may cry out or be hunched or more grumpy than usual."); # ID: 304
+INSERT INTO screening_questions (question_text) VALUES ("Is your dog bright, alert, moving around, and responding to you normally?"); # ID: 305
+INSERT INTO screening_questions (question_text) VALUES ("What sort of wound is it?"); # ID: 306
+INSERT INTO screening_questions (question_text) VALUES ("Is there an unpleasant odor or any discharge coming from the wound?"); # ID: 307
+INSERT INTO screening_questions (question_text) VALUES ("Has your puppy been crying persistently for longer than 20 minutes?"); # ID: 308
+INSERT INTO screening_questions (question_text) VALUES ("Has your puppy had convulsions or collapsed?"); # ID: 309
+INSERT INTO screening_questions (question_text) VALUES ("Is your puppy depressed or less active than usual?"); # ID: 310
+INSERT INTO screening_questions (question_text) VALUES ("Is your puppy feeding normally?"); # ID: 311
+INSERT INTO screening_questions (question_text) VALUES ("Does your puppy have a blue tinge around its mouth?"); # ID: 312
+INSERT INTO screening_questions (question_text) VALUES ("Have any of the litter mates died recently?"); # ID: 313
+INSERT INTO screening_questions (question_text) VALUES ("Is there an injury or wound?"); # ID: 314
+INSERT INTO screening_questions (question_text) VALUES ("Is your puppy bloated (compare with a healthy puppy)?"); # ID: 315
+INSERT INTO screening_questions (question_text) VALUES ("Is your puppy gaining weight as quickly as its litter mates?"); # ID: 316
+INSERT INTO screening_questions (question_text) VALUES ("Does your puppy have diarrhoea or vomiting?"); # ID: 317
+INSERT INTO screening_questions (question_text) VALUES ("Does your puppy have any other specific symptoms that we haven't asked about?"); # ID: 318
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -2971,6 +3107,1726 @@ If the skin at the scruff of the neck forms a 'tent' and does not quickly return
 In some conditions, severe dehydration can occur even when a dog is drinking a lot.",
 3);
 
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 238
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Contact your vet immediately - your dog will probably need urgent treatment even if they seem fine now.
+Remember, your vet will want to know some details about your dog (how old and heavy it is, does he/she have any underlying health issues, etc.), as well as full details of what and how much he/she has eaten.
+Keep your dog warm, quiet, and calm.
+Do not offer food unless your vet says it is okay.",
+"Aspirin is the active ingredient in some over-the-counter painkilling tablets and gels
+Aspirin damages the systems that maintain the stomach and gut lining, and kidney function.
+The onset of symptoms is usually in 8-12 hours; the first signs are normally vomiting and diarrhoea (possibly with blood). In the long run, there may be kidney failure or liver damage.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 239
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Contact your vet immediately - your dog will probably need urgent treatment even if they seem fine now.
+Remember, your vet will want to know some details about your dog (how old and heavy it is, does he/she have any underlying health issues, etc.), as well as full details of what and how much he/she has eaten.
+Keep your dog warm, quiet, and calm.
+Do not offer food unless your vet says it is okay.",
+"Azaleas, also known as Rhododendrons, are hardy evergreen shrubs, widely planted in gardens.
+All parts of the plant contain toxic substances, primarily grayanotoxins. These act on the sodium channels in cell membranes leading rapid-onset to toxic effects.
+Symptoms may arise in as little as 20 minutes, although 1-2 hours is more common. 
+Symptoms of poisoning typically include gastrointestinal signs (excessive salivation, vomiting and diarrhoea, abdominal tenderness), neuromuscular problems (trembling, wobbliness, lethargy, muscle weakness, collapse) and heart issues (slow, weak heartbeat). 
+Signs may persist for several days before recovery or, less commonly, death due to respiratory paralysis.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 240
+("Your vet may give you telephone advice or may ask to see you.
+Always call your vet before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+NULL,
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, abnormal behavior can be a sign of medical problems and should always be checked out by your vet.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 241
+("Your vet may give you telephone advice or may ask to see you.
+Always call your vet before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+NULL,
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, abnormal behavior can be a sign of medical problems and should always be checked out by your vet.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 242
+("Your vet may give you telephone advice or may ask to see you.
+Always call your vet before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Although baby oil is normally harmless, if your dog is in pain it may require urgent treatment.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.",
+3);
+
+#------------------------------------------------------------------------------------------------------------------------------------------ BELOW WRONG
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 243
+("Your vet may give you telephone advice or may ask to see you.
+Always call your vet before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+NULL,
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, abnormal behavior can be a sign of medical problems and should always be checked out by your vet.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 244
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, blood in the vomit can be a sign of serious illness.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 245
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Bleach and other caustic substances, however, can seriously injure the gut and may be life-threatening.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 246
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, drinking more than usual and vomiting can be a sign of serious illness.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 247
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, drinking more than usual and vomiting can be a sign of serious illness.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 248
+("If it is day time contact your vet now. If it is the evening, and there is no change in your pet's condition, it is probably safe to wait until the morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Although baby oil is normally harmless, since your dog has been sick it is worth getting him checked over by a vet.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 249
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.",
+"Your dog is likely to be fine, but keep a very close eye on your dog and call your vet if you are concerned or you see any other symptoms.",
+"The main component in baby oil is mineral oil, a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except it can have a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 250
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, bloody diarrhoea can be a sign of serious illness.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 251
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, watery diarrhoea can be a sign of serious illness, and may lead to serious dehydration.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 252
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+The straining may not be related to the baby oil - other possible causes include foreign bodies or colitis.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 253
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, a swollen abdomen can be a sign of serious illness.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 254
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are ill they may accidentally bite or scratch.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes.
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, eating inappropriate objects can be dangerous.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 255
+("If it is day time contact your vet now. If it is the evening, and there is no change in your pet's condition, it is probably safe to wait until the morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.
+Although baby oil is normally harmless, drinking more than usual can be a sign of serious illness.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 256
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Although baby oil is normally harmless, diarrhoea can be a sign of another illness.
+Make sure that your dog has access to fresh water.
+Electrolyte solution (available from your vet) can be used to keep your dog hydrated.
+Feed bland food (low in fat and fibre eg boiled white rice and white fish poached in water).
+Feed little and often.
+Restrict exercise.
+Keep your dog warm, quiet and calm.",
+"The main component in baby oil is mineral oil a tasteless, colourless liquid; usually with added perfumes
+Baby oil is usually non-toxic except a mild laxative effect.
+Poisoning is very rare, the only likely symptom is mild diarrhoea.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 257
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs, or move unnecessarily.",
+"Post operative pain should be well controlled; if it is not, contact your vet immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 258
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs or move unnecessarily.",
+"While dogs may be a bit sleepy after surgery, they should still be moving around and responsive. If not, contact your vet for advice immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 259
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs or move unnecessarily.
+If it is safe to do so apply some gentle pressure to the wound with a clean towel.",
+"Opening of the wound with bleeding may be due to complete failure of the stitches, or infection within the wound.
+The most common cause is dogs licking or chewing at their wounds, or other dogs in the household \"helping\" to try and clean the site. In either case, it needs immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 260
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs or move unnecessarily.
+If it is safe to do so apply some gentle pressure to the wound with a clean towel.",
+"Opening of the wound with bleeding may be due to complete failure of the stitches, or infection within the wound.
+The most common cause is dogs licking or chewing at their wounds, or other dogs in the household \"helping\" to try and clean the site. In either case, seek veterinary advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 261
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs or move unnecessarily.
+If possible wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"The wound needs to be held closed if it is to heal properly; if they have failed your dog needs urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 262
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs or move unnecessarily.
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"Stitches are necessary to hold the skin together while it heals; they are most important for the first 7 days.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 263
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"If the skin edges come apart (ie you can see reddish tissue) contact your vet for advice.
+Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound.
+If you can not stop your dog from licking or scratching at the wound contact your vet immediately.",
+"The stitches are needed to hold the wound together while it heals; after the first 7 days, they are less important but still need checking.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 264
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs or move unnecessarily.
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"Significant swelling is commonly due to inflammation, infection, or a seroma (i.e., fluid building up under the skin).",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 265
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to jump, go upstairs, or move unnecessarily.",
+"The presence of swelling and other symptoms suggests that there might be infection in the wound or other surgical complications; seek veterinary advice immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 266
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet, and calm.
+Use a t-shirt around the wound and socks on the feet to prevent your dog from licking or scratching at the wound.
+If you can not stop your dog from licking or scratching at the wound, contact your vet immediately.",
+"Although swelling may be due to infection of the wound, it can also be part of the healing process.
+Your vet will likely want to examine it, but if your dog is otherwise in good health, it's not considered an emergency.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 267
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"It is quite common for dogs to try to lick or chew at their surgical wound.
+It is vital to not let them do this.
+\"Buster\" or \"Elizabethan\" collars provided by your vet are an excellent way to prevent licking for most wound sites. Dogs may resent them to start off with but quickly grow used to them.
+Dogs can sleep and usually eat whilst wearing a buster collar.
+If you can't stop your dog from licking at its wound contact your vet.",
+"The bacteria and other bugs on your dogs tongue and feet can cause wound infections.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 268
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet, and calm.
+Do not allow your dog to jump, go upstairs, or move unnecessarily.",
+"There are a range of possible problems after surgery, so contact your vet for advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 269
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Keep a close eye on your dog; if there are any further problems, contact your vet.",
+"It is common for dogs to be a bit quieter than normal for a few days after surgery.
+They should be happy to move around the room normally and should be bright and responsive.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 270
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"A little flatulence is a normal by-product of digestion. Excessive flatulence may be difficult to live with, although it seldom worries dogs.
+The problem may well be dietary in origin, so it is worth trying a few simple changes first.
+Ask your vet to recommend a good quality, simple diet with very few components, which your dog will like. Feed this with no extras of any kind, and just water to drink. (For treats you can use a little of the mixer or kibble part of the chosen diet.) It may take several weeks to notice an improvement.
+If the flatulence has improved, either stick to this diet permanently, or try adding other foods in very gradually. Wait a few weeks in between each added foodstuff. If the flatulence returns, remove the new foodstuff from the diet.
+If the flatulence does not improve, you can repeat the whole process with a different, more bland diet, making the changeover gradually.
+Alternatively, ask for advice at your surgery about diets which are specially formulated to help with digestive problems.",
+NULL,
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 271
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Diarrhoea tends to be caused by dietary issues, gut infections, or other diseases of the bowel. However, straining or pain may also indicate colitis, or a foreign body in the rectum.
+Veterinary examination and treatment are likely to be required.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 272
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of diarrhoea can affect humans.",
+"Watery or bloody diarrhoea tend to be caused by more severe gut infections, or other diseases of the bowel.
+Dehydration can occur rapidly in these conditions, and may even be life-threatening in some cases.
+Veterinary examination and treatment are likely to be required.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 273
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Select the \"Diarrhoea\" symptom and answer the subsequent questions for further information.",
+NULL,
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 274
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not attempt to remove or replace the lump which is sticking out because it must be identified first before deciding how to treat it.
+Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet or nurse that it is ok to do so.
+Do not allow your dog to lick at or scratch the lump or swelling. If necessary, protect by holding a non-adhesive dressing over the anus until your dog is seen by the vet.",
+"A swelling coming out through the anus may be a prolapse of the wall of the bowel, which would require urgent treatment. The delicate lining of the bowel will be damaged if exposed to the air for any length of time.
+Other possible causes include a growth like a polyp or a tumour growing inside the rectum, or a foreign body which the dog is having difficulty passing.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 275
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not offer your dog anything else to eat or drink before going to the surgery unless advised that it is okay to do so.",
+"If your dog is not bright and alert, or is not eating, they need to be examined to find out why.
+Infected lumps could cause a smell and make your dog unwell or in pain, but the cause could be unrelated to the lumps.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 276
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Do not allow your dog to jump or run. Do not allow your dog to lick at or scratch the lump or swelling.",
+"A painful lump might be an infected anal gland, or an anal abscess.
+Other possibilities include infected growths around the anus, or an anal fistula.
+All of these conditions require veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 277
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+NULL,
+"The lumps should be examined if they are causing a smell to find out what treatment would be best.
+Possible causes include small skin tumours called adenomas, polyps, wounds, or full anal sacs (anal glands).",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 278
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+NULL,
+"The lumps should be examined if they are causing a smell to find out what treatment would be best.
+Possible causes include small skin tumours called adenomas, polyps, wounds, or full anal sacs (anal glands).",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 279
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+NULL,
+"The most likely cause of these signs is overfull or infected anal sacs (anal glands), although any irritation in this area can cause the same reaction. Your vet may want to make a rectal examination to see if this is the cause of the problem.
+Dogs have a pair of scent glands either side of the anus, which are used for territory marking. If the sac does not empty normally, it becomes overfull and unable to empty (impacted).
+Impacted anal sacs easily become infected, causing a painful abscess which may burst.
+The anal sacs may need regular emptying and infection may need antibiotic treatment. Occasionally dogs have these glands surgically removed if the problem occurs frequently.
+Anal gland problems may be reduced by feeding a fibre-rich diet (eg by adding bran) to keep the stool firm. This helps normal emptying of the sacs.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 280
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog calm, quiet and warm.",
+"Continuous bleeding from the rectum needs to be urgently investigated and treated.
+Possible causes include a polyp or growth inside the bowel, damage due to a sharp object being passed (eg a stick or bone) or severe inflammation of the bowel or a blood disorder.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 281
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog calm, quiet and warm.",
+"Occasional bleeding from the rectum needs to be investigated, especially when combined with an unpleasant smell.
+Possible causes include a polyp or growth inside the bowel, damage due to a sharp object being passed (eg a stick or bone), inflammation of the bowel or a burst anal gland abscess.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 282
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog calm, quiet and warm.",
+"Continuous bleeding needs to be urgently investigated and treated.
+Possible causes include a blood disorder, polyp or growth inside the bowel, damage due to a sharp object being passed (eg a stick or bone) or severe inflammation of the bowel.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 283
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog calm, quiet and warm.",
+"Occasional bleeding from the rectum needs to be investigated, especially when combined with an unpleasant smell.
+Possible causes include a polyp or growth inside the bowel, damage due to a sharp object being passed (e.g., a stick or bone), inflammation of the bowel, or a burst anal gland abscess.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 284
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog calm, quiet and warm.",
+"Occasional bleeding from the rectum needs to be investigated, especially when combined with an unpleasant smell and the dog being off-color.
+Possible causes include a polyp or growth inside the bowel, damage due to a sharp object being passed (e.g., a stick or bone), inflammation of the bowel, or a burst anal gland abscess.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 285
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Clean the area gently with dog shampoo, while wearing gloves, and rinse it well. Check the area after each defecation to see if there is further soiling.",
+"A healthy dog will not normally soil itself when defecating, so if the problem happens repeatedly then your dog should have an examination.
+The stool may be abnormally soft, or your dog may have difficulty adopting the right posture to defecate because of arthritis, back pain, etc.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 286
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Make sure your dog has free access to clean water unless your vet practice advises you to withdraw it.",
+"A discharge or swelling which is combined with an unpleasant smell needs to be investigated.
+Possible causes include a womb infection (pyometra) if your bitch is unspayed, or a urinary tract infection or growth.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 287
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not offer your female dog any food or drink before going to the surgery unless you have been advised to do so.",
+"Your female dog needs to be examined to find out the cause and treat the problem.
+If unspayed (entire), your female dog may be suffering from a womb infection (pyometra) which could need urgent treatment.
+Other possible causes include urinary tract infection, bladder stones, or kidney problems.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 288
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Try washing your dog gently with dog shampoo in case they have rolled in something unpleasant.
+If the smell persists, or returns quickly, ring your surgery for further advice.",
+"The most likely cause that there is dirt or something smelly rubbed into their fur around their back end; this is common in dogs who roll in, for example, fox faeces.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 289
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Make sure your dog has free access to plenty of clean water, unless your vet practice tells you to withdraw it.",
+"Possible causes include urinary incontinence or infection. Although more common in females, it can occur in males too.
+Your vet will want to investigate the cause before deciding on the best treatment.
+Please also follow the Interactive Symptom Guide for the symptom Urinary Problems for further advice.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 290
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not offer your dog any food or drink before going to the surgery unless you have been advised to do so.",
+"Your dog needs to be examined to find out the cause and treat the problem.
+If you have an unspayed female dog, it may be suffering from a womb infection (pyometra) which could need urgent treatment.
+Other possible causes include urinary tract infection, bladder stones or kidney problems.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 291
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and shaking its head.
+Put some socks on your dogs feet to stop any self damage.
+Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Possible causes include an ear infection or a foreign object such as a grass seed in the ear canal.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 292
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and shaking its head.
+Put some socks on your dogs feet to stop any self damage.
+Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Possible causes include an ear infection or a foreign object such as a grass seed stuck in the ear canal.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 293
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and shaking its head.
+Put some socks on your dogs feet to stop any self damage.
+Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Possible causes include an ear infection or a foreign object such as a grass seed stuck in the ear canal.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 294
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and shaking its head.
+Put some socks on your dogs feet to stop any self damage.
+Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
+Do not try to feed your dog unless your vet practice tells you it is ok to do so.",
+"Possible causes include an ear infection or a foreign object such as a grass seed stuck in the ear canal, reduced blood flow to an area of the brain or a tumor.
+If the deeper parts of the ear are involved, these problems can affect balance.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 295
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to distract your dog from scratching and shaking its head.
+Put some socks on your dogs feet to stop any self damage.
+Do not put any drops down your dog's ear without consulting your vet, if the ear drum is damaged they can cause serious problems.
+Stop feeding your dog for 8 hours prior to taking your dogs to the vet, it may be necessary to sedate or anaesthetise your dog, this is safer if your dog has been starved.",
+"Possible causes include a burst blood vessel within the ear flap causing a blood blister called a haematoma, which may be as large as the ear flap.
+Other causes include damage due to scratching, growths on the ear flap or various skin conditions.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 296
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Do not put any drops down your dogs ear without consulting your vet, if the eardrum is damaged they can cause serious problems.
+Stop feeding your dog 8 hours before going to the vet, it may be necessary to sedate or anaesthetise your dog. This is safer if your dog has been starved.",
+"The skin inside the ear flap should be pale pink in colour and free from wet or dry crusty discharges.
+A discharge combined with a smell may mean that the ear is infected. Your vet will want to treat the infection and any underlying problem which may have caused it.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 297
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Try to distract your dog from scratching or shaking its head.
+Put some socks on your dogs feet to stop any self damage.
+Do not put any drops down your dogs ear without consulting your vet, if the eardrum is damaged they can cause serious problems.",
+"Smelly ears should be investigated, because if left, the problem can become worse and require much more treatment.
+Possible causes include bacterial and yeast infections, and potentially underlying factors such as ear mites.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 298
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog calm and quiet.
+Do not offer your dog anything to eat or drink before going to the surgery unless you have been advised to do so.
+Try to give your vet as much information as you can about other possible symptoms such as appetite, thirst, changes in behaviour, duration of the smell, etc.",
+"Whatever the cause of the smell, if your dog is not bright, responding to you, and alert, this suggests an underlying health problem that should be investigated.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 299
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog calm and quiet.
+If appropriate, select the symptom Drinking More Than Usual and answer the subsequent questions.",
+"Many illnesses can cause dogs to drink more than usual. Some are serious, so the cause needs to be investigated.
+Most generalised smells are from dogs with a dirty or smelly coat. All dogs have a natural odour, and in some cases this may be strong enough for us to detect it; this is especially true of older dogs and entire males.
+However, the smell may also be the result of dental problems, diet, metabolic diseases (such as diabetes or kidney disease), skin issues, infection, urinary tract disease, or even certain drugs, and so if it does not resolve with cleaning, a check up with your vet is advisable.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 300
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+NULL,
+"An offensive smell which is present all the time should be investigated.
+Possible causes include teeth/gum problems, skin problems, ear problems, anal gland problems, urine infection or leakage, womb infection in female dogs.
+The cause will need to be identified before the most suitable treatment can be given.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 301
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Check the most obvious causes of smell: teeth, gums, skin, discharges from anywhere.
+Your vet will want to do a thorough examination of ears, mouth, skin and the back end to establish the cause of the smell.",
+"Most generalised smells are from dogs with a dirty or smelly coat. All dogs have a natural odour, and in some cases this may be strong enough for us to detect it; this is especially true of older dogs and entire males.
+However, the smell may also be the result of dental problems, diet, metabolic diseases (such as diabetes or kidney disease), skin issues, infection, urinary tract disease, or even certain drugs, and so if it does not resolve with cleaning, a check up with your vet is advisable.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 302
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Regular gentle brushing will help keep your dog's skin and coat healthy.
+If your dog has long hair or a thick coat, regular visits to the dog groomer may prevent your dog from smelling excessively.
+Dogs should be bathed regularly but not too frequently, every 3 weeks to 3 months is about right.",
+"Most generalized smells are from dogs with a dirty or smelly coat. All dogs have a natural odor, and in some cases this may be strong enough for us to detect it; this is especially true of older dogs and entire males.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 303
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Check the most obvious causes of smell: teeth, gums, skin, discharges from anywhere. If any abnormalities of these are found, ask your veterinary surgery for advice.
+If nothing abnormal is visible to you, and your dog is otherwise well, try shampooing your dog and washing the bedding. If the smell returns, ask your surgery for advice.",
+"Most generalised smells are from dogs with a dirty or smelly coat. All dogs have a natural odour, and in some cases this may be strong enough for us to detect it; this is especially true of older dogs and entire males.
+However, the smell may also be the result of dental problems, diet, metabolic diseases (such as diabetes or kidney disease), skin issues, infection, urinary tract disease, or even certain drugs, and so if it does not resolve with cleaning, a check up with your vet is advisable.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 304
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"A mild, intermittent smell may not need any treatment. Check all the most common causes: teeth, gums, skin, ears, discharges from anywhere. If any abnormalities are found, ask your veterinary surgery for advice.
+If nothing appears to be abnormal and your dog is otherwise well, try shampooing your dog and washing the bedding. Watch when they go out to see if they are rolling in anything outside, or eating anything they shouldn't.
+If the smell persists, contact your veterinary surgeon.",
+"Most generalized smells are from dogs with a dirty or smelly coat. All dogs have a natural odour, and in some cases this may be strong enough for us to detect it; this is especially true of older dogs and entire males.
+However, the smell may also be the result of dental problems, diet, metabolic diseases (e.g., diabetes or kidney disease), skin issues, infection, urinary tract disease, or even certain drugs, and so if it does not resolve with cleaning, a check up with your vet is advisable.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 305
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not offer your dog anything to eat or drink unless you have been advised by your surgery to do so.",
+"It is possible that your dog is in pain from dental disease; this would also explain the smell.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 306
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not offer your dog anything to eat or drink unless you have been advised by your surgery that it is safe to do so.",
+"Your dog will need to have the cause of the pain investigated and treatment given.
+Possible causes include tooth or gum problems, infection, a growth or a foreign object lodged in the mouth.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 307
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not offer your dog anything to eat or drink unless you have been advised by your surgery that it is safe to do so.",
+"This is a sign of pain or irritation which needs to be investigated and treated.
+Possible causes include tooth or gum problems, infection, a growth or a foreign object lodged in the mouth.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 308
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not offer your dog anything to eat or drink unless you have been advised by your surgery that it is safe to do so.",
+"Drooling or bleeding from the mouth combined with a smell from the mouth needs to be investigated and treated.
+Possible causes include an injury, tooth or gum problems, infection, a growth or a foreign object lodged in the mouth.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 309
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not offer your dog anything to eat or drink unless you have been advised by your surgery that it is safe to do so.",
+"A wound or swelling which is also associated with a bad smell may be infected. This would be painful and require treatment.
+Possible causes include injuries, bites, tooth or gum problems, infection, a growth or a foreign object lodged in the mouth.
+Abscesses caused by bad teeth may appear anywhere on the upper or lower jaw or below the eyes.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 310
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to keep your dog warm, quiet and calm.
+Do not give your dog anything to eat or drink unless you have been advised by your surgery that it is safe to do so.",
+"An offensive smell from the mouth which is present all the time needs to be investigated.
+Possible causes include tooth or gum problems, infection, a growth or a foreign object lodged in the mouth.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 311
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+NULL,
+"Your dog should have a check up to find the reason for the smell from the mouth.
+Possible causes include tooth or gum problems, infection, a growth or a foreign object lodged in the mouth.
+Be sure to ask your vet about routine dental care and diet, to try to prevent future problems.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 312
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+NULL,
+"Your dog should have a check up to find the reason for the smell from the mouth.
+Possible causes include tooth or gum problems, infection, a growth or a foreign object lodged in the mouth.
+Be sure to ask your vet about routine dental care and diet, to try to prevent future problems.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 313
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Check that you are feeding a suitable diet to your dog. Lots of sweet treats are likely to cause tooth problems as well as other health problems.
+Ask your vet or vet nurse about routine preventative dental care, such as tooth brushing, which can reduce or slow down the formation of tartar on teeth.
+Check your dog's mouth regularly so that you can spot any changes at an early stage.
+If the smell persists or gets worse, ring your surgery for further advice.",
+NULL,
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 314
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+NULL,
+"Your dog should have a check up to find the reason for the smell from the mouth.
+Possible causes include tooth or gum problems, infection, a growth or a foreign object lodged in the mouth.
+Be sure to ask your vet about routine dental care and diet, to try to prevent future problems.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 315
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not offer your dog anything to eat or drink unless advised by your surgery that it is safe to do so.",
+"Dullness and depression can be signs of serious illness and should be investigated by your vet.
+This may or may not be associated with the smell. All dogs have a natural odour, and in some cases this may be strong enough for us to detect it; this is especially true of older dogs and entire males.
+However, smell from the skin or coat may be related to dirt (e.g. faeces or urine) or skin disease, especially yeast infections.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 316
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not offer your dog anything to eat or drink unless advised by your surgery that it is safe to do so.",
+"The cause of your dog's pain needs to be found and treated to make your dog comfortable.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 317
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to discourage your dog from scratching; the use of an Elizabethan collar or socks on their feet may help.",
+"It is possible your dog is suffering from 'wet excema' which can be painful and distressing for the dog.
+Your vet will be able to ease the itching and pain and prevent further damage and spread.
+Even small areas of skin where there is pus on the surface need to be treated as these can spread rapidly to become large infected areas.
+As well as bacterial infection, other possible causes include parasites such as fleas or mites, allergic skin disease or fungal infection.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 318
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to discourage your dog from scratching; the use of an Elizabethan collar may help, as can putting socks on their feet.",
+"Even small areas of skin where there is pus on the surface need to be treated as these can spread rapidly to become large infected areas.
+As well as bacterial infection, other possible causes include parasites such as fleas or mites, allergic skin disease or fungal infection.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 319
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and biting at itself.
+Put some socks on your dogs feet or put a t-shirt on your dog to stop any self damage whilst you contact your vet practice.",
+"Skin diseases, such as fleas, mites and infections (especially yeast infections), can cause your dog's skin to smell more or differently.
+Sore or itchy skin can be very distressing. Your vet will be able to prescribe medications to ease the itching and prevent further damage.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 320
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to distract your dog from scratching and biting at itself.
+Put some socks on your dogs feet or put a t-shirt on your dog to stop any self damage whilst you contact your vet practice.",
+"Skin diseases, such as fleas, mites and infections (especially yeast infections), can cause your dog's skin to smell more or differently.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 321
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Try to distract your dog from scratching and biting at itself.
+Put some socks on your dogs feet or put a t-shirt on your dog to stop any self damage whilst you contact your vet practice.",
+"The cause of the skin problem needs to be found to stop it from getting worse.
+Possible causes include parasites, such as fleas or mites, bacterial or fungal infection, or allergic skin disease.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 322
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Try to distract your dog from scratching and biting at itself.
+Put some socks on your dogs feet or put a t-shirt on your dog to stop any self damage whilst you contact your vet practice.",
+"The cause of the skin problem needs to be found to stop it from getting worse.
+Possible causes include parasites, such as fleas or mites, bacterial or fungal infection, or allergic skin disease.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 323
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+NULL,
+"The cause of the skin problem needs to be found to stop it from getting worse.
+Possible causes include parasites, such as fleas or mites, bacterial or fungal infection, or allergic skin disease.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 324
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+NULL,
+"Several illnesses can affect appetite and thirst and also cause skin changes, so look into this combination of signs.
+Try to give your vet as much information as possible about the length of time any changes have been present.
+If appropriate, select the symptom Not Eating or Drinking More Than Usual and answer the subsequent questions.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 325
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+NULL,
+"Healthy skin should not smell strongly all the time, so your dog should be examined to find the reason.
+Possible causes include parasites, such as fleas or mites, bacterial or fungal infection, or allergic skin disease.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 326
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+NULL,
+"A smell which is present all the times is unlikely to be just due to rolling in something unpleasant, so your dog should have a check-up.
+Possible causes include parasites, such as fleas or mites, bacterial or fungal infection, or allergic skin disease.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 327
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+NULL,
+"If your dog goes outside unaccompanied, check that they are not rolling in something unpleasant, such as fox dung, cow dung, or anything fishy washed up on the beach.
+If you cannot locate the source of the smell, your dog should have a check-up.
+Possible other causes include parasites such as fleas or mites, bacterial or fungal infection or allergic skin disease.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 328
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Try shampooing your dog to see if that is enough to remove the smell.
+Use a dog shampoo and rinse off well.
+Do not shampoo too frequently or you will cause drying of the coat because of loss of natural oils.
+If the smell persists, or if it returns quickly, then your dog should have a check-up.",
+"Smell from the skin or coat may be related to dirt (e.g., faeces or urine).
+All dogs have a natural odour, and in some cases this may be strong enough for us to detect it; this is especially true of older dogs and entire males.
+However, or skin disease, especially yeast infections, can also cause your dog's skin to smell more or differently.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 329
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not allow your dog to scratch at its nose.
+Keep your dog warm calm and quiet.",
+"Sneezing and pawing at the nose are usually signs of severe nasal irritation, often caused by problems such as a foreign body (e.g., a grass seed) up the nose, an infection, or a growth in the nose.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 330
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not allow your dog to scratch at its nose.
+Keep your dog warm calm and quiet.",
+"Sneezing suggests some irritation of the nasal chambers.
+Difficulty breathing, however, is an emergency that requires urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 331
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to prevent your dog from scratching at its nose.
+Put old socks on your dog's feet to prevent any damage to the nose.
+Keep your dog warm, calm and quiet.",
+"Constant sneezing suggests severe irritation of the nasal passages; this may be due to a foreign body (e.g., grass seed), infection, or a growth.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 332
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Restrict exercise to lead walks to the toilet only.
+Keep your dog warm and calm.
+If your dog is scratching at its nose, try to put socks on its feet to prevent any damage.",
+"Sneezing and nasal discharge suggest severe irritation of the nasal passages; this may be due to a foreign body (e.g., grass seed), infection, or a growth.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 333
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Restrict exercise to lead walks to the toilet only.
+Keep your dog warm and calm.
+If your dog is scratching at its nose, try to put socks on its feet to prevent any damage.",
+"Sneezing suggests irritation of the nasal passages; this may be due to a foreign body (e.g., grass seed), infection, or a growth.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 334
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Dogs may strain to pass urine or faeces, or to pass puppies when whelping (i.e., giving birth).
+Straining to urinate is an emergency that may suggest a blocked bladder - seek immediate veterinary attention.
+Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum.
+Straining to whelp without success or progress is an emergency requiring immediate veterinary attention if puppy and mother are to be saved.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 335
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only",
+"Dogs may strain to pass urine or faeces, or to pass puppies when whelping (i.e., giving birth).
+Straining to urinate is an emergency that may suggest a blocked bladder - seek immediate veterinary attention.
+Straining to defecate is often due to constipation.
+Straining to whelp without success or progress is an emergency requiring immediate veterinary attention if puppy and mother are to be saved.
+In any case, if your dog is not responding normally, contact your vet immediately.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 336
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only",
+"Constant straining to urinate is an emergency that may suggest a blocked bladder; seek immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 337
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only",
+"Chemotherapy makes urinary tract infections and abnormal bleeding more likely.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 338
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only
+Collect a urine sample for your vet if possible.",
+"Straining to urinate with red or pink urine may suggest a serious urinary tract infection.
+Inability to urinate is an emergency that may suggest a blocked bladder; seek immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 339
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet and calm.
+Try to collect a urine sample, it will help your vet to work out what is wrong with your dog.
+Encourage your dog to take extra fluids, you can try mixing a little water in to your dogs food.",
+"Occasionally straining to urinate may suggest a urinary tract infection.
+If they are unable to pass urine, however, this is an emergency that may suggest a blocked bladder; seek immediate veterinary attention.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 340
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Try to collect a urine sample, it will help your vet to work out what is wrong with your dog.
+Try to take the packaging of the poison, if known, to the vet to help them determine the best treatment option.",
+"Many rat poisons can cause abnormal bleeding; this may be the first sign of a severe poisoning.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 341
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Try to collect a urine sample, it will help your vet to work out what is wrong with your dog.
+Try to take the packaging of the poison, if known, to the vet to help them determine the best treatment option.",
+"Many rat poisons can cause abnormal bleeding; this may be the first sign of a severe poisoning.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 342
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum, especially if it is prone to eating inappropriate objects.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 343
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Constant straining to defecate is often due to constipation, but it could also be caused by colitis or a foreign body in the rectum.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 344
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum.
+Blood in the stools suggests some damage to the gut wall, or the presence of a growth or polyp.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 345
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet and calm.",
+"Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 346
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Dogs may strain constantly to pass urine or faeces, or to pass puppies when whelping (i.e., giving birth).
+Straining to urinate is an emergency that may suggest a blocked bladder; seek immediate veterinary attention.
+Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum.
+Straining to whelp without success or progress is an emergency requiring immediate veterinary attention if puppy and mother are to be saved.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 347
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Straining to urinate is an emergency that may suggest a blocked bladder; seek immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 348
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Straining to urinate, without passage of normal amount of urine, is an emergency that may suggest a blocked bladder; seek immediate veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 349
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Straining to urinate is an emergency that may suggest a urinary infection or a blocked bladder; seek immediate veterinary attention.
+Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum, especially if they are prone to eat inappropriate objects.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 350
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise to lead walks to toilet only.",
+"Straining to urinate is an emergency that may suggest a urinary infection or a blocked bladder; seek immediate veterinary attention.
+Straining to defecate is often due to constipation, but could also be caused by colitis; gut problems are more common after chemotherapy.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 351
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet and calm.
+Try to collect a urine sample, as it will help your vet to work out what is wrong with your dog.",
+"Straining to urinate is an emergency that may suggest a blocked bladder, so seek immediate veterinary attention if they seem unable to produce urine; alternatively, it may suggest a urinary infection.
+Straining to defecate is often due to constipation, but could also be caused by colitis, or a foreign body in the rectum.
+Straining to whelp (i.e., giving birth) without success or progress is an emergency requiring immediate veterinary attention if a puppy and a mother are to be saved.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 352
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.",
+"A dog which is dull or unresponsive needs to see a vet urgently to diagnose and treat the cause.
+Ticks can cause serious illnesses, such as Lyme disease, but the presence of ticks can be coincidental to other illnesses.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 353
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.",
+"A dog which is unwell or in pain needs to see a vet to have the cause diagnosed and treated.
+Ticks can cause serious illnesses, such as Lyme disease, but the presence of ticks can be coincidental to other illnesses.
+The main signs of Lyme disease are lameness, loss of appetite, depression, fever, and sometimes breathing problems.
+Other diseases which may be occasionally transmitted by ticks include babesiosis and ehrlichiosis.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 354
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Prevention is much better than removal, so ask at your vet for advice on which product will best suit your dog. These are usually spot-on medications applied to the skin.
+If your dog travels abroad, it is important to have a tick prevention programm in place before travel.
+Avoid walking in areas of long grass or woodlands in the summer months.
+If your dog does pick up a tick, visit your vet so he or she can remove the tick and advise on preventing ticks in the future.
+Do not try to pull a tick out without the proper removal device because you could end up leaving small parts behind, which could cause irritation and infection.",
+"Ticks are small gray/brown parasites with rounded bodies. They are only a few millimeters in size before they attach to the dog and take a meal of blood. They then become engorged and swollen and drop off after a few days.
+Ticks can cause pain and irritation, and they can transmit serious illnesses to the dog or other hosts, including humans.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 355
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"If you are certain that they are ticks (not warts or similar) then it is safe to remove them with a suitable device. If uncertain, make an appointment with your vet or vet nurse.
+Do not try to pull a tick out without the proper removal device as leaving parts behind can cause irritation and infection.
+Prevention is much better than removal, so ask at your veterinary surgery for advice on which product will best suit your dog. These are usually spot-on medications applied to the skin.
+If your dog travels abroad, it is important to have a good tick prevention programme in place before travel. Ask your veterinary surgery for advice.
+Avoid walking your dog in areas of long grass or woodland in the summer months.",
+"Ticks are small gray/brown parasites with rounded bodies. They are only a few millimeters in size before they attach to the dog and take a meal of blood. They then become engorged and swollen and drop off after a few days.
+Ticks can cause pain and irritation, and they can transmit serious illnesses to the dog or other hosts, including humans.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 356
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Do not try to pull a tick out without the proper removal device as leaving small parts behind can cause irritation and infection.
+Prevention is much better than removal, so ask at your veterinary surgery for advice on which product will best suit your dog. These are usually spot-on medications applied to the skin.
+If your dog travels abroad, it is important to have a tick prevention programm in place before travel.
+Avoid walking in areas of long grass or woodlands in the summer months.",
+"Ticks are small gray/brown parasites with rounded bodies. They are only a few millimeters in size before they attach to the dog and take a meal of blood. They then become engorged and swollen and drop off after a few days.
+It is important to have the tick removed because they can cause pain and irritation and can transmit serious illnesses. If you're interested, your vet can demonstrate how to properly remove ticks at home using the appropriate tick removal tool.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 357
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g., diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+As your dog is displaying signs of pain, your vet will probably want to examine them carefully, and possibly run further tests to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 358
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g., diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+As your dog is displaying signs of pain, your vet will probably want to examine them carefully, and possibly run further tests to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 359
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Attempts to vomit without production, or bringing up just some white froth, are commonly signs of a torsion (i.e., gastric dilation and volvulus). This is a potentially life-threatening emergency that requires urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 360
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Bloating may be a sign of a torsion (i.e., gastric dilation and volvulus); this is a potentially life-threatening emergency that requires urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 361
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g. diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+Blood in the vomit may be due to irritation from the vomiting, or there may be a stomach bleed.
+Your vet will probably want to examine them carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 362
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Try to work out what your dog might have been exposed to so that you can tell the vet.",
+"Many poisons cause vomiting, and some are caustic, burning the intestinal tract.
+Dogs with poisoning always need veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 363
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g., diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+As your dog is displaying other symptoms, your vet will probably want to examine them carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 364
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g., diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+As your dog is displaying other symptoms, your vet will probably want to examine them carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 365
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.
+Try to keep your dog warm, quiet and calm.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g., diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+As your dog is displaying other symptoms, your vet will probably want to examine them carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 366
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not try to feed your dog until you have checked with your vet practice that it is ok to do so.
+Take great care to wash your hands thoroughly after handling your dog, some causes of vomiting can affect humans.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+Other possible causes include intestinal blockages, a high worm burden, poisoning, the side effects of certain drugs, stomach ulcers, infections, liver or kidney disease, some metabolic diseases (e.g., diabetes or Addison’s disease), motion sickness, pancreatic disease, and many more.
+Prolonged or severe vomiting may lead to serious dehydration and both electrolyte and acid imbalances in the body, which may in themselves become dangerous if not treated.
+As your dog is vomiting profusely, your vet will probably want to examine them carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 367
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Occasionally, vomiting may indicate a serious issue, so it's important to monitor your dog closely. 
+Initially, withhold water for only two hours. To maintain hydration, you can offer small amounts of an electrolyte solution recommended by your vet. 
+If your dog is unable to retain the solution, seek veterinary advice immediately. 
+After 12 hours, introduce a bland diet low in fat and fiber, such as boiled white rice and fish, feeding small portions frequently. 
+Limit physical activity, and ensure your dog stays warm, quiet, and comfortable. 
+Practice good hygiene by washing your hands thoroughly after handling your dog, as some causes of vomiting can be transmissible to humans. 
+Once your dog has recovered, verify with your vet that its worming treatments are up to date.",
+"Vomiting may be caused by a wide range of conditions, although in dogs it is most commonly due to “dietary indiscretion” (i.e., eating something inappropriate and usually rotten).
+If your dog cannot even keep water down, or develops any other symptoms, contact your vet for advice.",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 368
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.",
+"Weight loss in dogs may be due to a wide range of conditions, including inadequate nutrition, inability to eat (e.g., dental disease), regurgitation (e.g., megaoesophagus), chronic vomiting, metabolic disease (e.g., kidney or liver problems, or diabetes), gut disease (e.g., parasites, pancreatic insufficiency or inflammatory bowel disease), growths or tumours, or any serious systemic disease (e.g., heart disease).
+Your vet will probably want to examine your dog carefully, and possibly run further tests, to determine the exact cause, especially as they are in pain; this may or may not be causing the weight loss but does suggest a serious health issue.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 369
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.",
+"Weight loss in dogs may be due to a wide range of conditions, including inadequate nutrition, inability to eat (e.g., dental disease), regurgitation (e.g., megaoesophagus), chronic vomiting, metabolic disease (e.g., kidney or liver problems, or diabetes), gut disease (e.g., parasites, pancreatic insufficiency or inflammatory bowel disease), growths or tumours, or any serious systemic disease (e.g., heart disease).
+Your vet will probably want to examine your dog carefully, and possibly run further tests, to determine the exact cause, especially as they are in pain; this may or may not be causing the weight loss but does suggest a serious health issue.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 370
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Keep your dog warm, quiet and calm.",
+"Weight loss in dogs may be due to a wide range of conditions, including inadequate nutrition, inability to eat (e.g., dental disease), regurgitation (e.g., megaoesophagus), chronic vomiting, metabolic disease (e.g., kidney or liver problems, or diabetes), gut disease (e.g., parasites, pancreatic insufficiency or inflammatory bowel disease), growths or tumours, or any serious systemic disease (e.g., heart disease).
+The \"skin pinch test\" above suggests that it may also be seriously dehydrated.
+Your vet will probably want to examine your dog carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 371
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise; lead walks to the toilet only.
+Before you go to the vets make a note of the amount and type of food that you are feeding your dog.",
+"Weight loss in dogs may be due to a wide range of conditions, including inadequate nutrition, inability to eat (e.g., dental disease), regurgitation (e.g., megaoesophagus), chronic vomiting, metabolic disease (e.g., kidney or liver problems, or diabetes), gut disease (e.g., parasites, pancreatic insufficiency or inflammatory bowel disease), growths or tumours, or any serious systemic disease (e.g., heart disease).
+Your vet will probably want to examine your dog carefully, and possibly run further tests, to determine the exact cause.",
+1);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 372
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Keep your dog warm, quiet and calm.",
+"Weight loss in dogs may be due to a wide range of conditions, including inadequate nutrition, inability to eat (e.g., dental disease), regurgitation (e.g., megaoesophagus), chronic vomiting, metabolic disease (e.g., kidney or liver problems, or diabetes), gut disease (e.g., parasites, pancreatic insufficiency or inflammatory bowel disease), growths or tumours, or any serious systemic disease (e.g., heart disease).
+Increased thirst suggests a systemic problem, and needs veterinary attention.
+Your vet will probably want to examine your dog carefully, and possibly run further tests, to determine the exact cause.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 373
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Keep your dog warm, quiet and calm.
+Restrict exercise; lead walks to the toilet only.
+Before you go to the vets make a note of the amount and type of food that you are feeding your dog.",
+"Weight loss in dogs may be due to a wide range of conditions, including inadequate nutrition, inability to eat (e.g., dental disease), regurgitation (e.g., megaoesophagus), chronic vomiting, metabolic disease (e.g., kidney or liver problems, or diabetes), gut disease (e.g., parasites, pancreatic insufficiency or inflammatory bowel disease), growths or tumours, or any serious systemic disease (e.g., heart disease).
+Your vet will probably want to examine your dog carefully, and possibly run further tests, to determine the exact cause.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 374
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"Wounds may be more severe than they look, as well as damage to the skin; there may be muscle, nerve, bone or even internal injuries, as well as the risks from blood loss and infection.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 375
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"Wounds may be more severe than they look, as well as damage to the skin; there may be muscle, nerve, bone or even internal injuries, as well as the risks from blood loss and infection.
+If your dog is not moving freely or responding normally, the injury may be more severe than it appears, so seek urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 376
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Do not put yourself in danger; make sure that you do not come into contact with hot surface or caustic substances.
+Remember that animals in pain may bite or scratch without meaning to.
+Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound.
+If the burn seems open, or there are chemicals on it, wash the area with clean water.
+If possible wrap a non-adhesive dressing around the affected area on the way to the surgery, where cling film is ideal, to keep it clean and prevent bacterial invasion.",
+"Burns can result in severe tissue damage, pain, and fluid loss (that may lead to shock and even death). They are also highly susceptible to infection, and therefore require emergency veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 377
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"Wounds may be more severe than they look, as well as damage to the skin; there may be muscle, nerve, bone or even internal injuries, as well as the risks from blood loss and infection.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 378
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"Wounds may be more severe than they look, as well as damage to the skin; there may be muscle, nerve, bone or even internal injuries, as well as the risks from blood loss and infection.
+Puncture wounds are particularly dangerous because it is very difficult to know how deep they are or what structures might be damaged. They are also very prone to establish deep infections and abscesses.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 379
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Try to keep your dog warm, quiet and calm.
+Do not allow your dog to lick or scratch at the wound
+If possible, wrap a clean towel or sheet around the affected area on the way to the surgery.",
+"While grazes are rarely dangerous in themselves, your dog may have developed an infection that will require treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 380
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"If the graze is small and mild, home treatment may be adequate. If you are in any doubt, contact your vet for advice.
+If the wound becomes swollen, smelly, or sore for the dog, contact your vet immediately.
+If you can't stop your dog from licking or scratching at the wound, contact your vet for advice.
+Prepare some boiled water, allow to cool. Stir in a teaspoon of salt.
+Use clean cotton wool to gently drip the salty water over the wound. If there is any embedded dirt, contact your vet.",
+"While grazes are rarely dangerous, if reasonably small, it is important to monitor for signs of infection or other complications (e.g., worsening pain or swelling, or any discharge).",
+0);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 381
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Persistent crying suggests pain or distress, the cause of which needs to be determined by your vet.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 382
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Convulsions or collapse may mean a fever, a serious infection, or a brain or spinal problem. In any case, your puppy requires urgent veterinary assessment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 383
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Dropping activity levels are often the first sign of a significant health problem in a young puppy.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 384
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Young puppies are much more fragile than adults, so it's always worth getting them checked out.
+Reluctance to feed is a potential emergency, so definitely seek veterinary advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 385
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Bluish gums suggest difficulty getting enough oxygen into the blood; this is an emergency requiring urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 386
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Young puppies are much more delicate than older dogs.
+If other members of the litter have recently died, there could be an infectious or hereditary disease problem that will need urgent treatment.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 387
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Wounds are much more serious in smaller puppies, so always seek veterinary advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 388
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Young puppies are much more delicate than older dogs, so if you have any concerns, it’s always worth contacting your vet for advice.
+Bloating may be a sign of gut or rectal disorders.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 389
+("If it is day time contact your vet now. If it is the evening, and there is no change in your dog's condition, it is probably safe to wait until morning.
+Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for each symptom. Go to the vet in the shortest time recommended.
+If any of the symptoms are not listed contact your vet.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Young puppies are much more fragile than adults, so it's always worth getting them checked out.
+Failure to thrive is always a concern, so definitely seek veterinary attention.",
+2);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 390
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Diarrhoea and vomiting may be a sign of Parvovirus, which is often fatal in young puppies.
+Whatever the cause, young puppies often cannot survive dehydration from even moderate vomiting or diarrhoea, so seek urgent veterinary attention.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 391
+("Your vet may give you telephone advice or may ask to see you.
+Always telephone the vets before going to the practice. The vet may need to give you special instructions or an appointment time.
+Take care. When dogs are injured or ill they may accidentally bite or scratch.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Young puppies are much more delicate than older dogs, so if you have any concerns, it’s always worth contacting your vet for advice.",
+3);
+
+INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 392
+("Situations can change. Keep a close eye on your dog. If there is any deterioration or new symptoms appear, contact your vet immediately.
+If your dog has any other symptoms follow the series of questions for those symptoms. Go to the vet in the shortest recommended time.
+If any of the symptoms are not listed contact your vet.
+If your dog is not better in 24 hours contact your vet.",
+"Situations can change quickly with young animals. Keep a close eye on your puppy if you are worried at all contact your vet immediately.
+Ask your vet if he or she wants you to bring the rest of the litter and mother or just the affected puppy.",
+"Young puppies are much more delicate than older dogs, so if you have any concerns, its always worth contacting your vet for advice.",
+1);
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO screening_options (question_id, is_terminating, option_text, result_id, next_question_id) VALUES
@@ -2993,16 +4849,16 @@ INSERT INTO screening_options (question_id, is_terminating, option_text, result_
  (1, FALSE, "Nail problems", NULL, 155),
  (1, FALSE, "Not eating", NULL, 167),
  (1, FALSE, "Off-color", NULL, 173),
- (1, FALSE, "Poison exposure", NULL, NULL),
- (1, FALSE, "Problems after surgery", NULL, NULL),
- (1, FALSE, "Smelly", NULL, NULL),
- (1, FALSE, "Sneezing", NULL, NULL),
- (1, FALSE, "Straining", NULL, NULL),
- (1, FALSE, "Ticks", NULL, NULL),
- (1, FALSE, "Vomitting", NULL, NULL),
- (1, FALSE, "Weight loss", NULL, NULL),
- (1, FALSE, "Wound", NULL, NULL),
- (1, FALSE, "Young puppies", NULL, NULL);
+ (1, FALSE, "Poison exposure", NULL, 183),
+ (1, FALSE, "Problems after surgery", NULL, 200),
+ (1, FALSE, "Smelly", NULL, 212),
+ (1, FALSE, "Sneezing", NULL, 267),
+ (1, FALSE, "Straining", NULL, 271),
+ (1, FALSE, "Ticks", NULL, 285),
+ (1, FALSE, "Vomitting", NULL, 289),
+ (1, FALSE, "Weight loss", NULL, 299),
+ (1, FALSE, "Wound", NULL, 304),
+ (1, FALSE, "Young puppies", NULL, 308);
 
  INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (2, FALSE, "Wound", NULL, 3),
@@ -3764,3 +5620,610 @@ INSERT INTO screening_options ( question_id, is_terminating, option_text, result
 INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
 (182, TRUE, "Yes", 236, NULL),
 (182, TRUE, "No", 237, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(183, TRUE, "Aspirin", 238, NULL),
+(183, TRUE, "Azalea", 239, NULL),
+(183, FALSE, "Baby oil", NULL, 184);
+-- (183, FALSE, "Baby wipes", NULL, NULL),
+-- (183, FALSE, "Blu-Tak or similar adhesives", NULL, NULL),
+-- (183, FALSE, "Blue cheese", NULL, NULL),
+-- (183, FALSE, "Blue-green alage", NULL, NULL),
+-- (183, FALSE, "Cannabis", NULL, NULL),
+-- (183, FALSE, "Chalk", NULL, NULL),
+-- (183, FALSE, "Chocolate", NULL, NULL),
+-- (183, FALSE, "Coal (real or artificial)", NULL, NULL),
+-- (183, FALSE, "Conkers", NULL, NULL),
+-- (183, FALSE, "Crayons", NULL, NULL),
+-- (183, FALSE, "Daffodil (Narcissus)", NULL, NULL),
+-- (183, FALSE, "Diclofenac", NULL, NULL),
+-- (183, FALSE, "Emollient cream (e.g., E45)", NULL, NULL),
+-- (183, FALSE, "Folic acid", NULL, NULL),
+-- (183, FALSE, "Fuchsias", NULL, NULL),
+-- (183, FALSE, "Grapes (currants, raisins, and sultanas)", NULL, NULL),
+-- (183, FALSE, "Graphite pencils", NULL, NULL),
+-- (183, FALSE, "Holly (Ilex species)", NULL, NULL),
+-- (183, FALSE, "Honeysuckle (Lonicera species)", NULL, NULL),
+-- (183, FALSE, "Hormone Replacement Therapy (HRT) tablets or creams", NULL, NULL),
+-- (183, FALSE, "Ibuprofen-based painkillers", NULL, NULL),
+-- (183, FALSE, "Icepacks (methylcellulose)", NULL, NULL),
+-- (183, FALSE, "Inch Plant/Spiderwort (Tradescantia)", NULL, NULL),
+-- (183, FALSE, "Iron tablets/supplements", NULL, NULL),
+-- (183, FALSE, "Leeks or chives", NULL, NULL),
+-- (183, FALSE, "Lipstick", NULL, NULL),
+-- (183, FALSE, "Macadamia nuts", NULL, NULL),
+-- (183, FALSE, "Matches", NULL, NULL),
+-- (183, FALSE, "Mistletoe (Viscum album)", NULL, NULL),
+-- (183, FALSE, "Nappies", NULL, NULL),
+-- (183, FALSE, "Nappy rash cream", NULL, NULL),
+-- (183, FALSE, "Onions or garlic", NULL, NULL),
+-- (183, FALSE, "Oral contraceptives", NULL, NULL),
+-- (183, FALSE, "Paper", NULL, NULL),
+-- (183, FALSE, "Paracetamol-based painkillers", NULL, NULL),
+-- (183, FALSE, "Pencils or pencil lead", NULL, NULL),
+-- (183, FALSE, "Plant foot", NULL, NULL),
+-- (183, FALSE, "Polystyrene", NULL, NULL),
+-- (183, FALSE, "Rhododendron", NULL, NULL),
+-- (183, FALSE, "Rodenticides/rat bait", NULL, NULL),
+-- (183, FALSE, "Rotting food", NULL, NULL),
+-- (183, FALSE, "Rowan (Sobus aucuparia)", NULL, NULL),
+-- (183, FALSE, "Rubbers or erasers", NULL, NULL),
+-- (183, FALSE, "Salt", NULL, NULL),
+-- (183, FALSE, "Silica gel", NULL, NULL),
+-- (183, FALSE, "Slug bait (Ferric phosphate)", NULL, NULL),
+-- (183, FALSE, "Slug bait (Metaldehyde)", NULL, NULL),
+-- (183, FALSE, "Slug bait (Methiocarb)", NULL, NULL),
+-- (183, FALSE, "Snake bite", NULL, NULL),
+-- (183, FALSE, "Toad venom", NULL, NULL),
+-- (183, FALSE, "Wandering dude (Tradescantia)", NULL, NULL),
+-- (183, FALSE, "Wax candles", NULL, NULL),
+-- (183, FALSE, "Xylitol in gum or peanut butter", NULL, NULL),
+-- (183, FALSE, "Zinc oxide creams (e.g., Sudocrem)", NULL, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(184, FALSE, "Yes", NULL, 185),
+(184, TRUE, "No", 240, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(185, FALSE, "Yes", NULL, 186),
+(185, TRUE, "No", 241, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(186, TRUE, "Yes", 242, NULL),
+(186, FALSE, "No", NULL, 187);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(187, FALSE, "Yes", NULL, 188),
+(187, TRUE, "No", 243, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(188, FALSE, "Yes", NULL, 189),
+(188, FALSE, "No", NULL, 193);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(189, TRUE, "Yes", 244, NULL),
+(189, FALSE, "No", NULL, 190);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(190, TRUE, "Yes", 245, NULL),
+(190, FALSE, "No", NULL, 191);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(191, TRUE, "Yes", 246, NULL),
+(191, FALSE, "No", NULL, 192);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(192, TRUE, "Yes", 247, NULL),
+(192, TRUE, "No", 248, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(193, FALSE, "Yes", NULL, 194),
+(193, TRUE, "No", 249, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(194, TRUE, "Yes", 250, NULL),
+(194, FALSE, "No", NULL, 195);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(195, FALSE, "Cow pat", NULL, 196),
+(195, TRUE, "Watery", 251, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(196, TRUE, "Constantly or most of the time", 252, NULL),
+(196, FALSE, "Normal or slightly more than usual", NULL, 197);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(197, TRUE, "Yes", 253, NULL),
+(197, FALSE, "No", NULL, 198);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(198, TRUE, "Yes", 254, NULL),
+(198, FALSE, "No", NULL, 199);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(199, TRUE, "Yes", 255, NULL),
+(199, TRUE, "No", 256, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(200, TRUE, "Yes", 257, NULL),
+(200, FALSE, "No", NULL, 201);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(201, FALSE, "Yes", NULL, 202),
+(201, TRUE, "No", 258, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(202, FALSE, "Yes", NULL, 203),
+(202, FALSE, "No", NULL, 204);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(203, TRUE, "Blood is dripping or trickling out", 259, NULL),
+(203, TRUE, "One or two drops only", 260, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(204, FALSE, "Yes", NULL, 205),
+(204, FALSE, "No", NULL, 207);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(205, TRUE, "Yes", 261, NULL),
+(205, FALSE, "No", NULL, 206);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(206, TRUE, "Less than 7 days", 262, NULL),
+(206, TRUE, "More than 7 days", 263, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(207, FALSE, "Yes", NULL, 208),
+(207, FALSE, "No", NULL, 210);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(208, TRUE, "Large", 264, NULL),
+(208, FALSE, "Small", NULL, 209);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(209, TRUE, "Yes", 265, NULL),
+(209, TRUE, "No", 266, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(210, TRUE, "Large", 267, NULL),
+(210, FALSE, "Small", NULL, 211);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(211, TRUE, "Yes", 268, NULL),
+(211, TRUE, "No", 269, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(212, FALSE, "Under the tail", NULL, 213),
+(212, FALSE, "Ears", NULL, 233),
+(212, FALSE, "General smell", NULL, 239),
+(212, FALSE, "Mouth", NULL, 245),
+(212, FALSE, "Skin", NULL, 254);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(213, FALSE, "Yes", NULL, 214),
+(213, FALSE, "No", NULL, 217);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(214, FALSE, "Yes", NULL, 215),
+(214, TRUE, "No", 270, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(215, TRUE, "Yes", 271, NULL),
+(215, FALSE, "No", NULL, 216);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(216, TRUE, "Yes", 272, NULL),
+(216, TRUE, "No", 273, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(217, TRUE, "Yes", 274, NULL),
+(217, FALSE, "No", NULL, 218);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(218, FALSE, "Yes", NULL, 219),
+(218, FALSE, "No", NULL, 222);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(219, FALSE, "Yes", NULL, 220),
+(219, TRUE, "No", 275, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(220, TRUE, "Yes", 276, NULL),
+(220, FALSE, "No", NULL, 221);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(221, TRUE, "Yes", 277, NULL),
+(221, TRUE, "No", 278, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(222, FALSE, "Yes", NULL, 223),
+(222, FALSE, "No", NULL, 225);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(223, FALSE, "Yes", NULL, 224),
+(223, TRUE, "No", 279, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(224, TRUE, "A continuous flow of blood", 280, NULL),
+(224, TRUE, "None or slight oozing", 281, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(225, FALSE, "Yes", NULL, 226),
+(225, FALSE, "No", NULL, 228);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(226, TRUE, "A continuous flow of blood", 282, NULL),
+(226, FALSE, "An occasional drop of blood", NULL, 227);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(227, TRUE, "Yes", 283, NULL),
+(227, TRUE, "No", 284, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(228, TRUE, "Yes", 285, NULL),
+(228, FALSE, "No", NULL, 229);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(229, FALSE, "Yes, swelling or discharge present", NULL, 230),
+(229, FALSE, "No swelling or discharge, or the dog is male", NULL, 231);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(230, TRUE, "Yes", 286, NULL),
+(230, TRUE, "No", 287, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(231, FALSE, "Yes", NULL, 232),
+(231, TRUE, "No", 288, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(232, TRUE, "Yes", 289, NULL),
+(232, TRUE, "No", 290, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(233, TRUE, "Yes", 291, NULL),
+(233, FALSE, "No", NULL, 234);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(234, FALSE, "Yes", NULL, 235),
+(234, TRUE, "No", 292, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(235, TRUE, "Yes", 293, NULL),
+(235, FALSE, "No", NULL, 236);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(236, TRUE, "Yes", 294, NULL),
+(236, FALSE, "No", NULL, 237);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(237, TRUE, "Yes", 295, NULL),
+(237, FALSE, "No", NULL, 238);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(238, TRUE, "Yes", 296, NULL),
+(238, TRUE, "No", 297, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(239, FALSE, "Yes", NULL, 240),
+(239, TRUE, "No", 298, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(240, TRUE, "Yes", 299, NULL),
+(240, FALSE, "No", NULL, 241);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(241, FALSE, "Yes", NULL, 242),
+(241, FALSE, "No, intermittently", NULL, 244);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(242, TRUE, "Yes", 300, NULL),
+(242, FALSE, "No, mild smell", NULL, 243);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(243, TRUE, "Smell remains or returns quickly", 301, NULL),
+(243, TRUE, "Smell has gone", 302, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(244, TRUE, "Yes", 303, NULL),
+(244, TRUE, "No, mild smell", 304, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(245, FALSE, "Yes", NULL, 246),
+(245, TRUE, "No", 305, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(246, TRUE, "Yes", 306, NULL),
+(246, FALSE, "No", NULL, 247);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(247, TRUE, "Yes", 307, NULL),
+(247, FALSE, "No", NULL, 248);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(248, TRUE, "Yes", 308, NULL),
+(248, FALSE, "No", NULL, 249);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(249, TRUE, "Yes", 309, NULL),
+(249, FALSE, "No", NULL, 250);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(250, FALSE, "Yes", NULL, 251),
+(250, FALSE, "No, intermittently", NULL, 252);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(251, TRUE, "Yes", 310, NULL),
+(251, TRUE, "No, mild smell", 311, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(252, TRUE, "Yes", 312, NULL),
+(252, FALSE, "No, mild smell", NULL, 253);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(253, TRUE, "Yes", 313, NULL),
+(253, TRUE, "No", 314, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(254, FALSE, "Yes", NULL, 255),
+(254, TRUE, "No", 315, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(255, TRUE, "Yes", 316, NULL),
+(255, FALSE, "No", NULL, 256);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(256, FALSE, "Yes", NULL, 257),
+(256, FALSE, "No", NULL, 258);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(257, TRUE, "Yes", 317, NULL),
+(257, TRUE, "No", 318, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(258, FALSE, "Yes", NULL, 259),
+(258, FALSE, "No", NULL, 262);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(259, TRUE, "Yes", 319, NULL),
+(259, FALSE, "No", NULL, 260);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(260, TRUE, "Yes", 320, NULL),
+(260, FALSE, "No", NULL, 261);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(261, TRUE, "Yes", 321, NULL),
+(261, TRUE, "No", 322, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(262, TRUE, "Yes", 323, NULL),
+(262, FALSE, "No", NULL, 263);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(263, FALSE, "Yes, both normal", NULL, 264),
+(263, TRUE, "No", 324, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(264, FALSE, "Yes", NULL, 265),
+(264, FALSE, "No, intermittently", NULL, 266);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(265, TRUE, "Yes", 325, NULL),
+(265, TRUE, "No, mild smell", 326, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(266, TRUE, "Yes", 327, NULL),
+(266, TRUE, "No, mild smell", 328, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(267, TRUE, "Yes", 329, NULL),
+(267, FALSE, "No", NULL, 268);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(268, TRUE, "Yes", 330, NULL),
+(268, FALSE, "No", NULL, 269);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(269, TRUE, "Constantly or most of the time", 331, NULL),
+(269, FALSE, "Occasionally", NULL, 270);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(270, TRUE, "Yes", 332, NULL),
+(270, TRUE, "No", 333, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(271, TRUE, "Yes", 334, NULL),
+(271, FALSE, "No", NULL, 272);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(272, FALSE, "Yes", NULL, 273),
+(272, TRUE, "No", 335, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(273, FALSE, "Urine", NULL, 274),
+(273, FALSE, "Stools", NULL, 278),
+(273, FALSE, "Not sure or nothing coming out", NULL, 281);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(274, TRUE, "Constantly or most of the time", 336, NULL),
+(274, FALSE, "Occasionally", NULL, 275);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(275, TRUE, "Yes", 337, NULL),
+(275, FALSE, "No", NULL, 276);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(276, FALSE, "Yes, urine is very pale pink", NULL, 277),
+(276, TRUE, "Yes, urine is red or pink", 338, NULL),
+(276, TRUE, "No", 339, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(277, TRUE, "Yes", 340, NULL),
+(277, TRUE, "No", 341, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(278, TRUE, "Yes", 342, NULL),
+(278, FALSE, "No", NULL, 279);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(279, TRUE, "Constantly or most of the time", 343, NULL),
+(279, FALSE, "Occasionally", NULL, 280);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(280, TRUE, "Yes", 344, NULL),
+(280, TRUE, "No", 345, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(281, TRUE, "Constantly or most of the time", 346, NULL),
+(281, FALSE, "Occasionally", NULL, 282);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(282, FALSE, "Yes", NULL, 283),
+(282, TRUE, "Not sure", 347, NULL),
+(282, TRUE, "No", 348, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(283, TRUE, "Yes", 349, NULL),
+(283, FALSE, "No", NULL, 284);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(284, TRUE, "Yes", 350, NULL),
+(284, TRUE, "No", 351, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(285, FALSE, "Yes", NULL, 286),
+(285, TRUE, "No", 352, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(286, TRUE, "Yes", 353, NULL),
+(286, FALSE, "No", NULL, 287);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(287, FALSE, "Yes or maybe (not sure what they look like)", NULL, 288),
+(287, TRUE, "No, but would like to prevent it", 354, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(288, TRUE, "Yes", 355, NULL),
+(288, TRUE, "No", 356, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(289, TRUE, "Yes", 357, NULL),
+(289, FALSE, "No", NULL, 290);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(290, FALSE, "Yes", NULL, 291),
+(290, TRUE, "No", 358, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(291, TRUE, "Yes", 359, NULL),
+(291, FALSE, "No", NULL, 292);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(292, TRUE, "Yes", 360, NULL),
+(292, FALSE, "No", NULL, 293);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(293, TRUE, "Yes", 361, NULL),
+(293, FALSE, "No", NULL, 294);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(294, TRUE, "Yes", 362, NULL),
+(294, FALSE, "No", NULL, 295);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(295, TRUE, "Yes", 363, NULL),
+(295, FALSE, "No", NULL, 296);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(296, TRUE, "Yes", 364, NULL),
+(296, FALSE, "No", NULL, 297);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(297, FALSE, "Yes", NULL, 298),
+(297, TRUE, "No", 365, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(298, TRUE, "More than five", 366, NULL),
+(298, TRUE, "Less than five", 367, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(299, TRUE, "Yes", 368, NULL),
+(299, FALSE, "No", NULL, 300);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(300, FALSE, "Yes", NULL, 301),
+(300, TRUE, "No", 369, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(301, FALSE, "Yes", NULL, 302),
+(301, TRUE, "No", 370, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(302, TRUE, "Yes", 371, NULL),
+(302, FALSE, "No", NULL, 303);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(303, TRUE, "Yes", 372, NULL),
+(303, TRUE, "No", 373, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(304, TRUE, "Yes", 374, NULL),
+(304, FALSE, "No", NULL, 305);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(305, FALSE, "Yes", NULL, 306),
+(305, TRUE, "No", 375, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(306, TRUE, "Burn (heat or chemical)", 376, NULL),
+(306, FALSE, "Graze (less than skin depth)", NULL, 307),
+(306, TRUE, "Laceration (skin depth or deeper)", 377, NULL),
+(306, TRUE, "Puncture wound (unknown depth)", 378, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(307, TRUE, "Yes", 379, NULL),
+(307, TRUE, "No", 380, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(308, TRUE, "Yes", 381, NULL),
+(308, FALSE, "No", NULL, 309);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(309, TRUE, "Yes", 382, NULL),
+(309, FALSE, "No", NULL, 310);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(310, TRUE, "Yes", 383, NULL),
+(310, FALSE, "No", NULL, 311);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(311, FALSE, "Yes", NULL, 312),
+(311, TRUE, "No", 384, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(312, TRUE, "Yes", 385, NULL),
+(312, FALSE, "No", NULL, 313);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(313, TRUE, "Yes", 386, NULL),
+(313, FALSE, "No", NULL, 314);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(314, TRUE, "Yes", 387, NULL),
+(314, FALSE, "No", NULL, 315);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(315, TRUE, "Yes", 388, NULL),
+(315, FALSE, "No", NULL, 316);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(316, FALSE, "Yes", NULL, 317),
+(316, TRUE, "No", 389, NULL);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(317, TRUE, "Yes", 390, NULL),
+(317, FALSE, "No", NULL, 318);
+
+INSERT INTO screening_options ( question_id, is_terminating, option_text, result_id, next_question_id) VALUES
+(318, TRUE, "Yes", 391, NULL),
+(318, TRUE, "No", 392, NULL);
