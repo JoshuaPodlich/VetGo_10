@@ -7,6 +7,7 @@ import { colors } from "../shared/Colors"
 import { BASE_URL } from "../shared/Constants"
 import { LocationInterface } from "../shared/Interfaces"
 import { HomeScreenParams } from "../Home/HomeScreen"
+import { ScreeningQuestionsParams } from "../ScreeningQuestions/ScreeningQuestionsScreen"
 
 export interface CreateAppointmentParams {
     userId: string,
@@ -53,6 +54,14 @@ const CreateAppointmentScreen = (props: any) => {
             })
     }
 
+    const handleNext = () => {
+        let screeningQuestionsParams: ScreeningQuestionsParams = {
+            ...params,
+            petId: params.petId
+        }
+        props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
+    }
+
     const handleSubmit = async () => {
         if (!description.length) {
             setError('Description is required!')
@@ -80,10 +89,10 @@ const CreateAppointmentScreen = (props: any) => {
 
     return (<SafeAreaView style={styles.createAppointmentBackground}>
         <ScrollView>
-            <Text style={styles.header}>Schedule Appointment {petName}</Text>
-            <Text>Reason for appointment</Text>
+            <Text style={{...styles.header, paddingLeft: 30}}>Schedule Appointment {petName}</Text>
+            <Text style={{paddingLeft: 50}}>Reason for appointment</Text>
             <Textfield placeholder='Give a quick summary of details' value={description} onChangeText={setDescription} />
-            <Text style={styles.header}>Select Date</Text>
+            <Text style={{...styles.appointmentHeader, paddingTop: 50}}>Select Date</Text>
 
             <Button
                     onPress={() => setDateNow()} 
@@ -94,27 +103,32 @@ const CreateAppointmentScreen = (props: any) => {
 
             
 
-            
+            <View style={{width: 250
+                       }}>
             {showCalendar && ( // Only render the calendar if showCalendar is true
-                    <View>
-                        <Calendar min={new Date()} date={date} onSelect={d => setDate(d)} />
+                    <View style={{paddingBottom:50}}>
+                        <Calendar min={new Date()} date={date} onSelect={d => setDate(d)} style={{width: 250, height: 300, paddingBottom:50}}/>
                     </View>
                 )}
+
 
                 <Button
                     onPress={() => setShowCalendar(!showCalendar)} 
                     style={{ ...styles.mainButton}}>
                     {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
                 </Button>
+                </View>
                 
             <View>
             </View>
         </ScrollView>
         <Text>{error}</Text>
-        <Button style={{ ...styles.submitButton }}
-            onPress={handleSubmit}>
-            <Text>Submit</Text>
+        <View style={{paddingBottom: 50}}>
+        <Button style={{ ...styles.submitButton, }}
+            onPress={handleNext}>
+            <Text>Next</Text>
         </Button>
+        </View>
 
     </SafeAreaView>)
 }

@@ -86,6 +86,13 @@ export const styles: any = StyleSheet.create({
         justifyContent: "center",
         width: "100%",
     },
+    appointmentHeader: {
+        fontSize: 18,
+        display: 'flex',
+        flex: 1,
+        alignContent: "center", //only takes effect when wrapping occur
+        alignItems: "center",
+    },
 
 
     mainButton: {
