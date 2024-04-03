@@ -98,10 +98,10 @@ function SignUpScreen(props: any) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, password: "Password must match the specified format!" }))
             isValid = false;
         }
-        if (!form.confirmPassword.match(form.password) || !form.password) {
-            setErrors((prevState: SignUpForm) => ({ ...prevState, confirmPassword: "Password does not match" }))
-            isValid = false
-        }
+        // if (!form.confirmPassword.match(form.password) || !form.password) {
+        //     setErrors((prevState: SignUpForm) => ({ ...prevState, confirmPassword: "Password does not match" }))
+        //     isValid = false
+        // }
 
         if (isVet && !form.vetLicense) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, vetLicense: "Vet License is required!" }))

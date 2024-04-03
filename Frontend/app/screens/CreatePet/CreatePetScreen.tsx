@@ -31,6 +31,10 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
 
     const params: CreatePetScreenParams = props.route.params as CreatePetScreenParams
     const titles = ['DOG', 'CAT', 'BIRD', 'REPTILE', 'FISH', 'RODENT', 'OTHER']
+    const sizes = ['SMALL', 'MEDIUM', 'LARGE']
+    const energyLevels = ['LOW', 'MEDIUM', 'HIGH']
+    const furTypes = ['SHORT', 'MEDIUM', 'LONG', 'HAIRLESS']
+
     const [petForm, setPetForm] = useState<CreatePetForm>({ 
         name: "", 
         age: 0, 
@@ -58,6 +62,9 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
     const isSubmittingRef = useRef<boolean>(false)
 
     const [selectedIndex, setSelectedIndex] = useState<IndexPath>(new IndexPath(0))
+    const [selectedSizeIndex, setSelectedSizeIndex] = useState<IndexPath>(new IndexPath(0));
+    const [selectedEnergyIndex, setSelectedEnergyIndex] = useState<IndexPath>(new IndexPath(0));
+    const [selectedFurIndex, setSelectedFurIndex] = useState<IndexPath>(new IndexPath(0));
 
     useEffect(() => {
     }, [])
@@ -139,14 +146,16 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
             body: JSON.stringify(body)
         })
 
+        const status = response.status
         console.log(response.status)
+
         //console.log(response.statusText)
 
-        const responseBody = await response.json(); // Parse the response body into JSON
-        console.log('Response:', response);
-        console.log('Response Body:', responseBody);
+        // const responseBody = await response.json(); // Parse the response body into JSON
+        // console.log('Response:', response.text());
+        // console.log('Response Body:', responseBody);
 
-        if (response.status === 200) {
+        if (status == 200) {
             // Pet creation successful
             props.navigation.navigate("Home", { ...params } as HomeScreenParams);
         }
@@ -155,34 +164,6 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
             Alert.alert("Error", "Failed to create pet. Please try again later.");
         }
 
-        // let res = await fetch(url, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         "name": petForm.name,
-        //         "age": petForm.age,
-        //         "weight": petForm.weight,
-        //         "height": petForm.height,
-        //         "breed": petForm.breed,
-        //         "petSize": petForm.petSize,
-        //         "energyLevel": petForm.energyLevel,
-        //         "furType": petForm.furType,
-        //         "male": petForm.sex
-        //     }),
-        // });
-        // console.log(res)
-
-    
-        // if (res.ok) {
-        //     // Pet creation successful
-        //     props.navigation.navigate("Home", { ...params } as HomeScreenParams);
-        // } else {
-        //     // Handle errors
-        //     Alert.alert("Error", "Failed to create pet. Please try again later.");
-        // }
     }
     
 
@@ -202,6 +183,37 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
         setPetForm((prevState: CreatePetForm) => ({ ...prevState, type: titles[index.row] }))
         setSelectedIndex(index)
     }
+
+    
+const updateSize = (index: IndexPath) => {
+    setSelectedSizeIndex(index);
+    const sizeValue = sizes[index.row];
+    setPetForm(prevState => ({ ...prevState, petSize: sizeValue }));
+};
+
+const updateEnergyLevel = (index: IndexPath) => {
+    setSelectedEnergyIndex(index);
+    const energyValue = energyLevels[index.row];
+    setPetForm(prevState => ({ ...prevState, energyLevel: energyValue }));
+};
+
+const updateFurType = (index: IndexPath) => {
+    setSelectedFurIndex(index);
+    const furValue = furTypes[index.row];
+    setPetForm(prevState => ({ ...prevState, furType: furValue }));
+};
+
+const displaySize = (index: IndexPath) => {
+    return sizes[index.row];
+};
+
+const displayEnergy = (index: IndexPath) => {
+    return energyLevels[index.row];
+};
+
+const displayFur = (index: IndexPath) => {
+    return furTypes[index.row];
+};
 
     return (
         <SafeAreaView style={styles.background}>
@@ -282,7 +294,54 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
                     />
                     <Text style={styles.errorText}>{errors.height}</Text>
 
-                    <Text style={{paddingTop: 10}}> Size </Text>
+
+
+            <View style={{ marginBottom: 20 }}>
+                                <Text> Size </Text>
+                <Select
+                    selectedIndex={selectedSizeIndex}
+                    onSelect={index => index instanceof IndexPath ? updateSize(index) : null}
+                    value={displaySize(selectedSizeIndex)}
+                    style={{ width: "100%" }}
+                >
+                    <SelectItem title='Small' />
+                    <SelectItem title='Medium' />
+                    <SelectItem title='Large' />
+                </Select>
+            </View>
+
+            <View style={{ marginBottom: 20 }}>
+                <Text> Energy Level </Text>
+                <Select
+                    selectedIndex={selectedEnergyIndex}
+                    onSelect={index => index instanceof IndexPath ? updateEnergyLevel(index) : null}
+                    value={displayEnergy(selectedEnergyIndex)}
+                    style={{ width: "100%" }}
+                >
+                    <SelectItem title='Low' />
+                    <SelectItem title='Medium' />
+                    <SelectItem title='High' />
+                </Select>
+            </View>
+
+            <View style={{ marginBottom: 20 }}>
+                <Text> Fur Type </Text>
+                <Select
+                    selectedIndex={selectedFurIndex}
+                    onSelect={index => index instanceof IndexPath ? updateFurType(index) : null}
+                    value={displayFur(selectedFurIndex)}
+                    style={{ width: "100%" }}
+                >
+                    <SelectItem title='Short' />
+                    <SelectItem title='Medium' />
+                    <SelectItem title='Long' />
+                    <SelectItem title='Hairless' />
+                </Select>
+            </View>
+
+
+
+                    {/* <Text style={{paddingTop: 10}}> Size </Text>
                     <Textfield
                         value={petForm.petSize}
                         placeholder="Pet Size"
@@ -312,7 +371,13 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
                         onChangeText={(newValue: string) => {
                             setPetForm((prevState: CreatePetForm) => ({ ...prevState, furType: newValue }))
                         }}
-                    />
+                    /> */}
+
+
+
+
+
+
                     <View style={{ marginLeft: 5, paddingTop: 20 }}>
                         <Text style={{ marginBottom: 10, marginTop: -20 }}>Sex</Text>
                         <Layout
