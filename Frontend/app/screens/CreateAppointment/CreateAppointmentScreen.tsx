@@ -23,6 +23,10 @@ const CreateAppointmentScreen = (props: any) => {
     const [error, setError] = useState('')
     const [petName, setPetName] = useState<string>("")
 
+    const [showCalendar, setShowCalendar] = useState(false)
+
+    
+
 
     useEffect(() => {
         fetchAndHydratePetData()
@@ -32,6 +36,10 @@ const CreateAppointmentScreen = (props: any) => {
         let url = BASE_URL + "/pet/get/" + params.petId
         let petData = await (await fetch(url)).json()
         setPetName(petData.name)
+    }
+
+    const setDateNow = () => {
+        setDate(new Date())
     }
 
     const postAppointment = async (url: string, options: any) => {
@@ -72,13 +80,33 @@ const CreateAppointmentScreen = (props: any) => {
 
     return (<SafeAreaView style={styles.createAppointmentBackground}>
         <ScrollView>
-            <Text style={styles.header}>Schedule Appointment for {petName}</Text>
+            <Text style={styles.header}>Schedule Appointment {petName}</Text>
             <Text>Reason for appointment</Text>
-            <Textfield placeholder='Please be as descriptive as possible.' value={description} onChangeText={setDescription} />
+            <Textfield placeholder='Give a quick summary of details' value={description} onChangeText={setDescription} />
             <Text style={styles.header}>Select Date</Text>
-            <View>
-                <Calendar min={new Date()} date={date} onSelect={d => setDate(d)} />
-            </View>
+
+            <Button
+                    onPress={() => setDateNow()} 
+                    style={{ ...styles.mainButton}}>
+                    Set to ASAP
+                </Button>
+
+
+            
+
+            
+            {showCalendar && ( // Only render the calendar if showCalendar is true
+                    <View>
+                        <Calendar min={new Date()} date={date} onSelect={d => setDate(d)} />
+                    </View>
+                )}
+
+                <Button
+                    onPress={() => setShowCalendar(!showCalendar)} 
+                    style={{ ...styles.mainButton}}>
+                    {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
+                </Button>
+                
             <View>
             </View>
         </ScrollView>
