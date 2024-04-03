@@ -220,9 +220,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                     <Button onPress={() => fetchPets()} style={homeStyles.refreshButton}>
                         <Text>Refresh List</Text>
                     </Button>
-                    <Button onPress={() => createAppointments(1)} style={homeStyles.refreshButton}>
-                        <Text>Create appointmet</Text>
-                    </Button>
+                   
                     
                 </View>
 
