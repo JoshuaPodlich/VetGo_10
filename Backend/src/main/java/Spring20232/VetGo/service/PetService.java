@@ -69,8 +69,22 @@ public class PetService implements PetServiceInterface {
     }
 
     @Transactional
-    public String uploadPetImage(long pid, MultipartFile image) throws IOException {
+    public void uploadPetImage(long pid, MultipartFile image) throws IOException {
         String uploadDir = "pet-images/";
+        Pet pet = petRepository.findById(pid).orElse(null);
+        if (pet == null) throw new NotFoundException("Unable to find pet in database.");
+
+        // Check if pet already has an image; delete it if it does.
+        String existingImageUrl = pet.getImageURL();
+        if (existingImageUrl != null && !existingImageUrl.isEmpty()) {
+            Path existingImagePath = Paths.get(existingImageUrl);
+            try {
+                Files.deleteIfExists(existingImagePath);
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to delete existing image file.", e);
+            }
+        }
+
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(image.getOriginalFilename()));
         Path uploadPath = Paths.get(uploadDir);
 
@@ -82,16 +96,13 @@ public class PetService implements PetServiceInterface {
             Path filePath = uploadPath.resolve(fileName);
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
 
-            Pet pet = petRepository.findById(pid).orElse(null);
-            if (pet == null) throw new NotFoundException("Unable to find pet in database.");
             pet.setImageURL(uploadDir + fileName);
-            petRepository.save(pet);
 
-            return "redirect:/pets/view/" + pid;
         } catch (IOException e) {
             throw new RuntimeException("Failed to upload image file.", e);
         }
     }
+
 
     @Override
     public List<byte[]> getPetRecords(Long pid) {

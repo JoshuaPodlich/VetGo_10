@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-    // To make these images accessible via HTTP, WebMcvConfigurer serves files from that directory as static resources.
+    // To make these images accessible via HTTP, WebMvcConfigurer serves files from that directory as static resources.
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         Path uploadDir = Paths.get("pet-images");

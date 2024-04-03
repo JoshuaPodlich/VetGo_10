@@ -114,7 +114,8 @@ public class PetController {
     @PostMapping(path = "/upload/{pid}/upload-image")
     public ResponseEntity<String> uploadImage(@PathVariable("pid") Long pid, @RequestParam("image") MultipartFile image) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(petService.uploadPetImage(pid, image));
+            petService.uploadPetImage(pid, image);
+            return ResponseEntity.status(HttpStatus.OK).body("Image successfully saved.");
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
