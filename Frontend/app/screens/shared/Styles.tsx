@@ -21,6 +21,13 @@ export const styles: any = StyleSheet.create({
         backgroundColor: colors.background_Grey,
     },
 
+    createAppointmentBackground: {
+        flex: 1,
+        alignContent: "center", //only takes effect when wrapping occur
+        alignItems: "center",
+        backgroundColor: colors.background_Grey,
+    },
+
     underdevTitle: {
         alignItems: "center",
         flexDirection: "row",

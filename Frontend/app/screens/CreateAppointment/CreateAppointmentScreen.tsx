@@ -70,7 +70,7 @@ const CreateAppointmentScreen = (props: any) => {
         await postAppointment(url, options)
     }
 
-    return (<SafeAreaView style={styles.background}>
+    return (<SafeAreaView style={styles.createAppointmentBackground}>
         <ScrollView>
             <Text style={styles.header}>Schedule Appointment for {petName}</Text>
             <Text>Reason for appointment</Text>
