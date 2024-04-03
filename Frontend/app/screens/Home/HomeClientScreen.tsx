@@ -114,6 +114,15 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
         props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
     }
 
+    function createAppointments(index: number) {
+        let createAppointmentParams: CreateAppointmentParams = {
+            ...params,
+            petId: pets[index].pid
+        }
+        props.navigation.navigate("CreateAppointment", createAppointmentParams)
+
+    }
+
     function viewAppointment(index: number) {
         let viewAppointmentParams: ViewAppointmentScreenParams = {
             ...params,
@@ -209,6 +218,9 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                     </Button>
                     <Button onPress={() => fetchPets()} style={homeStyles.refreshButton}>
                         <Text>Refresh List</Text>
+                    </Button>
+                    <Button onPress={() => createAppointments(1)} style={homeStyles.refreshButton}>
+                        <Text>Create appointmet</Text>
                     </Button>
                     
                 </View>
