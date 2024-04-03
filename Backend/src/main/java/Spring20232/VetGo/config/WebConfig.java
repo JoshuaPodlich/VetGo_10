@@ -9,18 +9,12 @@ import java.nio.file.Paths;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-
+    // To make these images accessible via HTTP, WebMcvConfigurer serves files from that directory as static resources.
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        exposeDirectory("pet-images", registry);
-    }
-
-    private void exposeDirectory(String dirName, ResourceHandlerRegistry registry) {
-        Path uploadDir = Paths.get(dirName);
+        Path uploadDir = Paths.get("pet-images");
         String uploadPath = uploadDir.toFile().getAbsolutePath();
 
-        if (dirName.startsWith("../")) dirName = dirName.replace("../", "");
-
-        registry.addResourceHandler("/images/**").addResourceLocations("file:/" + uploadPath + "/");
+        registry.addResourceHandler("/pet-images/**").addResourceLocations("file:" + uploadPath + "/");
     }
 }

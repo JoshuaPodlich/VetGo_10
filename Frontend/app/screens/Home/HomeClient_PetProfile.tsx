@@ -12,13 +12,11 @@ import axios from 'axios'
 
 
 
-export const HomeClient_PetProfile = (props: { petData: any, editPet: any, createAppointment: any, viewAppointment: any, payAppointment: any }) => {
+export const HomeClient_PetProfile = (props: { petData: any, editPet: any, createAppointment: any, viewAppointment: any, payAppointment: any, triggerImageUpdate: any }) => {
 
     //region States
     const { pet, appointment } = props.petData
-    const { id, name, petType, petBreed, fileLink, age, weight, height, male } = pet            
-
-    const [imageEncoding, setImageEncoding] = useState<String>(pet.petImage ?? '')
+    const { id, name, petType, petBreed, fileLink, age, weight, height, male, imageURL } = pet
 
     useEffect(() => {
         (async () => {
@@ -62,6 +60,13 @@ export const HomeClient_PetProfile = (props: { petData: any, editPet: any, creat
                 },
                 data: formData,
             });
+
+            // Fetch updated pet information
+            const response = await axios.get(`${BASE_URL}/pet/get/${id}`);
+            const updatedPetInfo = response.data;
+
+            // Call the callback with the updated pet information
+            props.triggerImageUpdate(updatedPetInfo);// Immediately updates the image of the pet in the list of pet profiles.
         }
         catch (err) {
             console.log(`#### ${err}`);
@@ -73,15 +78,15 @@ export const HomeClient_PetProfile = (props: { petData: any, editPet: any, creat
         <View key={"pet_profile_" + id} style={[homeStyles.petInfo, {}]}>
             <View style={{ width: "60%" }}>
                 <Pressable style={{ display: "flex", flexDirection: "row", alignItems: 'center', marginLeft: 10}} onPress={() => props.editPet()}>
-                    <Pressable onPress={() => pickImage()}>
-                        {imageEncoding ?
-                            <Image source={{ uri: `data:image/png;base64,${imageEncoding}` }} style={homeStyles.tempPic} />
-                            :
-                            <View style={homeStyles.tempPic}>
-                                <FontAwesome5 name='images' size={24} />
-                            </View>
-                        }
-                    </Pressable>
+                <Pressable onPress={() => pickImage()}>
+                    {pet.imageURL ?
+                        <Image source={{ uri: `${BASE_URL}/${imageURL}` }} style={homeStyles.tempPic} />
+                        :
+                        <View style={homeStyles.tempPic}>
+                            <FontAwesome5 name='images' size={24} />
+                        </View>
+                    }
+                </Pressable>
                     <View style={{ flexShrink: 1 }}>
                         <View style={{}}>
                             <Text style={{ ...styles.boldText }}> {name}</Text>

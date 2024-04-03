@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useId, useState } from 'react'
 import { SafeAreaView, ScrollView, StyleSheet, View, TextInput, Pressable, Alert } from "react-native"
 import { Button, Card, Text, TopNavigation } from '@ui-kitten/components'
 import { Dimensions } from 'react-native'
@@ -54,7 +54,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
 
     const fetchPets = async () => {
         setLoading(true)
-        const res = await fetch(BASE_URL + "/pet/get/all")
+        const res = await fetch(BASE_URL + `/pet/get/all/user/${params.userId}`)
         const tempPetList: pet[] = await res.json()
         setPets(tempPetList)
         const tempPetsData: { pet: any, appointment: any }[] = []
@@ -69,12 +69,29 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
 
         setPetsData(tempPetsData)
         setLoading(false)
-
-
-
-
-
     }
+
+    const fetchPet = async (petId: string) => {
+        try {
+            const response = await fetch(`${BASE_URL}/pet/get/${petId}`);
+            if (!response.ok) {
+                throw new Error('Problem fetching pet data');
+            }
+            const updatedPet = await response.json();
+    
+            setPetsData((currentPetsData) => {
+                return currentPetsData.map((petData) => {
+                    if (petData.pet.id === updatedPet.id) {
+                        return { ...petData, pet: updatedPet };
+                    }
+                    return petData;
+                });
+            });
+        } catch (error) {
+            console.error('Error fetching pet data:', error);
+        }
+    };
+    
 
 
     // const fetchPets = async () => {
@@ -194,6 +211,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                                 createAppointment={() => createAppointment(index)}
                                 viewAppointment={() => viewAppointment(index)}
                                 payAppointment={() => payAppointment(index)}
+                                triggerImageUpdate={() => fetchPet(petData.pet.id)}
                             />
                         )
                         )
