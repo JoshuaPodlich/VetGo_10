@@ -165,13 +165,14 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     }
 
     function editPet(index: number) {
-        let editPetParams: EditPetScreenParams = {
-            userId: params.userId,
-            userIsVet: params.userIsVet,
-            location: params.location,
-            petId: pets[index].pid,
-        }
-        props.navigation.navigate("EditPet", editPetParams)
+        console.log("Edit Pet")
+        // let editPetParams: EditPetScreenParams = {
+        //     userId: params.userId,
+        //     userIsVet: params.userIsVet,
+        //     location: params.location,
+        //     petId: pets[index].pid,
+        // }
+        // props.navigation.navigate("EditPet", editPetParams)
     }
 
     return (
