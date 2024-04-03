@@ -200,7 +200,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                                 key={index}
                                 petData={petData}
                                 editPet={() => editPet(index)}
-                                createAppointment={() => createAppointment(index)}
+                                createAppointment={() => createAppointments(index)}
                                 viewAppointment={() => viewAppointment(index)}
                                 payAppointment={() => payAppointment(index)}
                             />
