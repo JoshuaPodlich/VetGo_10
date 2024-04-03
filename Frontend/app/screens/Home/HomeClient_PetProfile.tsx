@@ -16,8 +16,7 @@ export const HomeClient_PetProfile = (props: { petData: any, editPet: any, creat
 
     //region States
     const { pet, appointment } = props.petData
-    const { pid, name, petType, petBreed, fileLink, age, weight, height, male } =
-        pet
+    const { id, name, petType, petBreed, fileLink, age, weight, height, male } = pet            
 
     const [imageEncoding, setImageEncoding] = useState<String>(pet.petImage ?? '')
 
@@ -38,31 +37,40 @@ export const HomeClient_PetProfile = (props: { petData: any, editPet: any, creat
             quality: 1,
         })
 
-        console.log(`### result: ${JSON.stringify(result)}`)
 
-        const base64String: String = await FileSystem.readAsStringAsync(result.assets[0].uri, { encoding: 'base64' })
-        setImageEncoding(base64String)
-        console.log(`### base64String: ${base64String}`)
+        console.log(`### result: ${JSON.stringify(result)}`);
+
+        if (result.canceled) {
+            console.log('Image picking was canceled.');
+            return;
+        }
+    
+        let localUri = result.assets[0].uri;
+        let filename = localUri.split('/').pop();
+        let match = /\.(\w+)$/.exec(filename);
+        let type = match ? `image/${match[1]}` : `image`;
+    
+        let formData = new FormData();
+        formData.append('image', { uri: localUri, name: filename, type });
+    
         try {
             await axios({
-                method: 'put',
-                url: `${BASE_URL}/pet/upload/image/${pid}`,
+                method: 'post',
+                url: `${BASE_URL}/pet/upload/${id}/upload-image`,
                 headers: {
-                    'Content-Type': 'text/plain',
-                    'connection': 'keep-alive'
+                    'Content-Type': 'multipart/form-data',
                 },
-                data: base64String
-            })
-
+                data: formData,
+            });
         }
         catch (err) {
-            console.log(`#### ${err}`)
+            console.log(`#### ${err}`);
         }
 
     }
 
     return (
-        <View key={"pet_profile_" + pid} style={[homeStyles.petInfo, {}]}>
+        <View key={"pet_profile_" + id} style={[homeStyles.petInfo, {}]}>
             <View style={{ width: "60%" }}>
                 <Pressable style={{ display: "flex", flexDirection: "row", alignItems: 'center', marginLeft: 10}} onPress={() => props.editPet()}>
                     <Pressable onPress={() => pickImage()}>

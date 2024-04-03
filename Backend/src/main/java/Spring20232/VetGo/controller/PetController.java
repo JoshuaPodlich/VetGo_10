@@ -111,14 +111,14 @@ public class PetController {
     }
 
     // To upload Image
-    @PutMapping(path = "/upload/image/{petId}")
-    public ResponseEntity<String> uploadImage(@RequestBody String petImage,@PathVariable("petId") Long pid) {
-        Pet pet = petRepository.findById(pid).orElse(null);
-        if (pet == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find pet in database");
-        pet.setPetImage(petImage);
-        petRepository.save(pet);
-        return ResponseEntity.status(HttpStatus.OK).body("Successfully able to upload the file");
+    @PostMapping(path = "/upload/{pid}/upload-image")
+    public ResponseEntity<String> uploadImage(@PathVariable("pid") Long pid, @RequestParam("image") MultipartFile image) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(petService.uploadPetImage(pid, image));
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PostMapping(value = "/add/dog/{uid}")
