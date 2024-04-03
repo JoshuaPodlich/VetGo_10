@@ -83,16 +83,14 @@ export const HomeClient_PetProfile = (props: { petData: any, editPet: any, creat
                 </Pressable>
             </View>
 
-            <View style={{ width: "40%", marginRight: 200 }}>
+            <View style={{ width: 100, marginRight: 200, 
+        }}>
                 {
                     appointment === "NO_APT" &&
                     <Button style={homeStyles.createAppointment} onPress={() => props.createAppointment()}>
-                        <Pressable>
-                            <Text>
-                                <FontAwesome5 name='calendar-alt' size={14} color={colors.white} />
-                                <Text style={{ color: 'white', fontSize: 14 }}> No Appt</Text>
-                            </Text>
-                        </Pressable>
+                      
+                                <Text style={{ color: 'white', fontSize: 14 }}> + Appt</Text>
+                        
                     </Button>
                 }
                 {
