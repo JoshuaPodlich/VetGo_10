@@ -24,8 +24,9 @@ public class Pet extends BaseEntity {
 
     @ElementCollection
     private List<String> fileLink = new ArrayList<String>();
-    @Column(columnDefinition = "TEXT")
-    private String petImage;
+
+    @Column(length = 255)
+    private String imageURL;
     private boolean isMale;
     private int age;
     private int weight;
@@ -56,9 +57,13 @@ public class Pet extends BaseEntity {
         return name;
     }
 
-    public String getPetImage() {return petImage;}
+    public String getImageURL() {
+        return imageURL;
+    }
 
-    public void setPetImage(String petImage) {this.petImage = petImage;}
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
 
     public void setName(String name) {
         this.name = name;

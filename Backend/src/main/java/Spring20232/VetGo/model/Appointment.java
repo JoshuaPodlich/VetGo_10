@@ -53,6 +53,10 @@ public class Appointment {
         return additionalPetInformation;
     }
 
+    // Each appointment can only be associated with one screening session.
+    @ManyToOne
+    @JoinColumn(name = "screening_session_id")
+    private ScreeningSession screeningSession;
 
     public Appointment() {
     }

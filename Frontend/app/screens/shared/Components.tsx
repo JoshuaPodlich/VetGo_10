@@ -6,25 +6,13 @@ import { Text, View, Image } from "react-native"
 import emailjs from "@emailjs/browser"
 
 export const Logo = () => {
-    const demo = async () => {
-        let url = BASE_URL + "user/demo";
-        await fetch(url, {method: 'GET'})
-            .then(res => console.error("Demo Data ADDED"))
-            .catch(err => {
-                console.log(err);
-                console.error("Error creating demo data");
-            })
-    }
     return (
-        <View style={styles.underdevTitle}>
+        <View>
             {/* <Text style={{ fontSize: 30, fontWeight: "bold" }}>
                 VetGo
             </Text>
             <Text numberOfLines={1}>--UNDER DEVELOPMENT--</Text> */}
-            <Image
-                    source={require('../ScreenImages/VetGoLogo.png')}
-                    style={styles.logoImage}
-                />
+            <Image source={require('../ScreenImages/transparent_vetgo.png')} style={styles.logoImage} />
         </View>
     )
 }

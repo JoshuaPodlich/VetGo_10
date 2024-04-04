@@ -12,14 +12,11 @@ import axios from 'axios'
 
 
 
-export const HomeClient_PetProfile = (props: { petData: any, editPet: any, createAppointment: any, viewAppointment: any, payAppointment: any }) => {
+export const HomeClient_PetProfile = (props: { petData: any, editPet: any, createAppointment: any, viewAppointment: any, payAppointment: any, triggerPetUpdate: any }) => {
 
     //region States
     const { pet, appointment } = props.petData
-    const { pid, name, petType, petBreed, fileLink, age, weight, height, male } =
-        pet
-
-    const [imageEncoding, setImageEncoding] = useState<String>(pet.petImage ?? '')
+    const { id, name, petType, petBreed, fileLink, age, weight, height, male, imageURL } = pet
 
     useEffect(() => {
         (async () => {
@@ -38,42 +35,54 @@ export const HomeClient_PetProfile = (props: { petData: any, editPet: any, creat
             quality: 1,
         })
 
-        console.log(`### result: ${JSON.stringify(result)}`)
 
-        const base64String: String = await FileSystem.readAsStringAsync(result.assets[0].uri, { encoding: 'base64' })
-        setImageEncoding(base64String)
-        console.log(`### base64String: ${base64String}`)
+        console.log(`### result: ${JSON.stringify(result)}`);
+
+        if (result.canceled) {
+            console.log('Image picking was canceled.');
+            return;
+        }
+    
+        let localUri = result.assets[0].uri;
+        let filename = localUri.split('/').pop();
+        let match = /\.(\w+)$/.exec(filename);
+        let type = match ? `image/${match[1]}` : `image`;
+    
+        let formData = new FormData();
+        formData.append('image', { uri: localUri, name: filename, type });
+    
         try {
             await axios({
-                method: 'put',
-                url: `${BASE_URL}/pet/upload/image/${pid}`,
+                method: 'post',
+                url: `${BASE_URL}/pet/upload/${id}/image`,
                 headers: {
-                    'Content-Type': 'text/plain',
-                    'connection': 'keep-alive'
+                    'Content-Type': 'multipart/form-data',
                 },
-                data: base64String
-            })
+                data: formData,
+            });
 
+            // Immediately updates the image of the pet in the list of pet profiles.
+            props.triggerPetUpdate();
         }
         catch (err) {
-            console.log(`#### ${err}`)
+            console.log(`#### ${err}`);
         }
 
     }
 
     return (
-        <View key={"pet_profile_" + pid} style={[homeStyles.petInfo, {}]}>
+        <View key={"pet_profile_" + id} style={[homeStyles.petInfo, {}]}>
             <View style={{ width: "60%" }}>
                 <Pressable style={{ display: "flex", flexDirection: "row", alignItems: 'center', marginLeft: 10}} onPress={() => props.editPet()}>
-                    <Pressable onPress={() => pickImage()}>
-                        {imageEncoding ?
-                            <Image source={{ uri: `data:image/png;base64,${imageEncoding}` }} style={homeStyles.tempPic} />
-                            :
-                            <View style={homeStyles.tempPic}>
-                                <FontAwesome5 name='images' size={24} />
-                            </View>
-                        }
-                    </Pressable>
+                <Pressable onPress={() => pickImage()}>
+                    {pet.imageURL ?
+                        <Image source={{ uri: `${BASE_URL}/${imageURL}` }} style={homeStyles.tempPic} />
+                        :
+                        <View style={homeStyles.tempPic}>
+                            <FontAwesome5 name='images' size={24} />
+                        </View>
+                    }
+                </Pressable>
                     <View style={{ flexShrink: 1 }}>
                         <View style={{}}>
                             <Text style={{ ...styles.boldText }}> {name}</Text>

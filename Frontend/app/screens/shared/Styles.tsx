@@ -262,20 +262,20 @@ export const styles: any = StyleSheet.create({
     },
 
     logoImage: {
-        width: 400,
-        height: 400,
-        resizeMode: 'contain',
+        width: 420,
+        height: 300,
     },
 
 
     signUpDropDown: {
 
-        width: 230,
-        margin: 5,
-        padding: 15,
+        padding: 6,
         borderRadius: 10,
-        backgroundColor: colors.primary_Blue,
-        //text color and font color and font size
+        width: "100%",
+        color: colors.background_Grey,
+        borderColor: colors.primary_Blue,
+        backgroundColor: colors.white,
+        borderWidth: 1,
         fontSize: 18,
         fontWeight: "bold",
         fontColor: colors.black,
@@ -295,18 +295,15 @@ export const styles: any = StyleSheet.create({
         fontColor: colors.black,
     },
 
-    signUpTextBox: {
-
-        //margin: 5,
-        padding: 5,
+    signUpLoginTextBox: {
+        padding: 2,
+        paddingTop: 2,
         borderRadius: 10,
         width: "100%",
         borderColor: colors.primary_Blue,
         fontSize: 18,
         fontWeight: "bold",
         fontColor: colors.black,
-
-
         // backgroundColor: colors.primary_Blue,
     },
 

@@ -6,16 +6,19 @@ import Spring20232.VetGo.repository.OwnerRepository;
 import Spring20232.VetGo.repository.PetRepository;
 import Spring20232.VetGo.repository.UserRepository;
 import com.amazonaws.services.alexaforbusiness.model.NotFoundException;
-import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 @Service
@@ -61,6 +64,42 @@ public class PetService implements PetServiceInterface {
         }
 
     }
+
+    @Transactional
+    public void uploadPetImage(long pid, MultipartFile image) throws IOException {
+        String uploadDir = "pet-images/";
+        Pet pet = petRepository.findById(pid).orElse(null);
+        if (pet == null) throw new NotFoundException("Unable to find pet in database.");
+
+        // Check if pet already has an image; delete it if it does.
+        String existingImageUrl = pet.getImageURL();
+        if (existingImageUrl != null && !existingImageUrl.isEmpty()) {
+            Path existingImagePath = Paths.get(existingImageUrl);
+            try {
+                Files.deleteIfExists(existingImagePath);
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to delete existing image file.", e);
+            }
+        }
+
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(image.getOriginalFilename()));
+        Path uploadPath = Paths.get(uploadDir);
+
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+
+        try (InputStream inputStream = image.getInputStream()) {
+            Path filePath = uploadPath.resolve(fileName);
+            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+
+            pet.setImageURL(uploadDir + fileName);
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to upload image file.", e);
+        }
+    }
+
     @Override
     public List<byte[]> getPetRecords(Long pid) {
         Pet pet = getPetProfileOrElseThrow(pid);

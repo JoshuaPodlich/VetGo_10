@@ -1,3 +1,4 @@
+import { Logo } from "../shared/Components"
 import React, { useEffect, useState, useRef } from 'react'
 
 import {
@@ -88,7 +89,7 @@ function SignUpScreen(props: any) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, email: "Email is required!" }))
             isValid = false
         } else if (reg.test(form.email) === false) {
-            setErrors((prevState: SignUpForm) => ({ ...prevState, email: "Invalid Email Format!" }))
+            setErrors((prevState: SignUpForm) => ({ ...prevState, email: "Invalid email format!" }))
             isValid = false
         }
         if (!form.password) {
@@ -104,15 +105,15 @@ function SignUpScreen(props: any) {
         // }
 
         if (isVet && !form.vetLicense) {
-            setErrors((prevState: SignUpForm) => ({ ...prevState, vetLicense: "Vet License is required!" }))
+            setErrors((prevState: SignUpForm) => ({ ...prevState, vetLicense: "Vet license is required!" }))
             isValid = false
         }
         if (!form.firstname) {
-            setErrors((prevState: SignUpForm) => ({ ...prevState, firstname: "First Name is required!" }))
+            setErrors((prevState: SignUpForm) => ({ ...prevState, firstname: "First name is required!" }))
             isValid = false
         }
         if (!form.lastname) {
-            setErrors((prevState: SignUpForm) => ({ ...prevState, lastname: "Last Name is required!" }))
+            setErrors((prevState: SignUpForm) => ({ ...prevState, lastname: "Last name is required!" }))
             isValid = false
         }
         if (!form.telephone) {
@@ -120,7 +121,7 @@ function SignUpScreen(props: any) {
             isValid = false
         }
         else if (form.telephone.length < 10) {
-            setErrors((prevState: SignUpForm) => ({ ...prevState, telephone: "Invalid Telephone Number!" }))
+            setErrors((prevState: SignUpForm) => ({ ...prevState, telephone: "Invalid telephone number!" }))
             isValid = false
         }
         if (!form.role) {
@@ -132,10 +133,12 @@ function SignUpScreen(props: any) {
     }
 
     const handleRoleChange = (selectedRole: any) => {
-        setForm({ ...form, role: selectedRole.value });
-        console.log(selectedRole)
-        console.log(form.role)
-      };
+        setForm(prevForm => {
+            const updatedForm = { ...prevForm, role: selectedRole.value };
+            console.log("Updated role: " + updatedForm.role);
+            return updatedForm;
+        });
+    };
 
     async function submitSignUpForm() {
         isSubmittingRef.current = true
@@ -190,18 +193,18 @@ function SignUpScreen(props: any) {
 
     return (
         <SafeAreaView style={styles.loginBackground}>
-            <View style={{ width: "80%", marginTop: "10%", flex: 1 }}>
-                <ScrollView>
+            
+            <ScrollView>
+                <Logo/>
+                <View style={{ width: "85%", marginTop: "5%", flex: 1, alignSelf: "center" }}>
                     <View id={"signUpGroup"} style={signUpStyles.signUpLoginGroup}>
-                        <Text style={{ fontSize: 30, fontWeight: "bold", paddingBottom: 5 }}>
+                        <Text style={{ fontSize: 30, fontWeight: "bold", paddingBottom: 5}}>
                             Sign Up
                         </Text>
 
-                        
-
                         <Input
                             clearButtonMode={"always"} size={"large"}
-                            value={form.email} style={styles.signUpTextBox}
+                            value={form.email} style={styles.signUpLoginTextBox}
                             placeholder={"Email"}
                             onChangeText={(newEmail) => {
                                 setForm((prevForm: SignUpForm) => ({ ...prevForm, email: newEmail }))
@@ -211,7 +214,7 @@ function SignUpScreen(props: any) {
 
                         <Input
                             clearButtonMode={"always"} size={"large"}
-                            value={form.password} style={styles.signUpTextBox}
+                            value={form.password} style={styles.signUpLoginTextBox}
                             placeholder={"Password"} secureTextEntry={true}
                             onChangeText={(newPassword) => {
                                 setForm((prevForm: SignUpForm) => ({ ...prevForm, password: newPassword }))
@@ -221,7 +224,7 @@ function SignUpScreen(props: any) {
 
                         <Input
                             clearButtonMode={"always"} size={"large"}
-                            value={form.confirmPassword} style={styles.signUpTextBox}
+                            value={form.confirmPassword} style={styles.signUpLoginTextBox}
                             placeholder={"Confirm Password"} secureTextEntry={true}
                             onChangeText={(newConfirmPassword) => {
                                 setForm((prevForm: SignUpForm) => ({ ...prevForm, confirmPassword: newConfirmPassword }))
@@ -231,7 +234,7 @@ function SignUpScreen(props: any) {
 
 
                             <Input clearButtonMode={"always"} size={"large"}
-                                value={form.firstname} style={styles.signUpTextBox}
+                                value={form.firstname} style={styles.signUpLoginTextBox}
                                 placeholder={"First Name"}
                                 onChangeText={(newFirstName) => {
                                     setForm((prevForm: SignUpForm) => ({ ...prevForm, firstname: newFirstName }))
@@ -240,7 +243,7 @@ function SignUpScreen(props: any) {
                             <Text style={styles.errorText}>{errors.firstname}</Text>
 
                             <Input clearButtonMode={"always"} size={"large"}
-                                value={form.lastname} style={styles.signUpTextBox}
+                                value={form.lastname} style={styles.signUpLoginTextBox}
                                 placeholder={"Last Name"}
                                 onChangeText={(newLastName) => {
                                     setForm((prevForm: SignUpForm) => ({ ...prevForm, lastname: newLastName }))
@@ -249,7 +252,7 @@ function SignUpScreen(props: any) {
                             <Text style={styles.errorText}>{errors.lastname}</Text>
 
                             <Input clearButtonMode={"always"} size={"large"}
-                                value={form.telephone} style={styles.signUpTextBox}
+                                value={form.telephone} style={styles.signUpLoginTextBox}
                                 placeholder={"Telephone"}
                                 onChangeText={(newTelephone) => {
                                     setForm((prevForm: SignUpForm) => ({ ...prevForm, telephone: newTelephone }))
@@ -258,14 +261,14 @@ function SignUpScreen(props: any) {
                             <Text style={styles.errorText}>{errors.telephone}</Text>
                             
                             <Dropdown
-                            data={roles}
-                            value={form.role}
-                            onChange={handleRoleChange} // Call handleRoleChange when a role is selected
-                            style={[
-                                styles.signUpDropDown,
-                                { width: "97%", padding: 5, borderRadius: 10, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 1, color: colors.background_Grey }
-                            ]}
-                            placeholder='Select Role' labelField={'label'} valueField={'label'}    />
+                                data={roles}
+                                value={form.role}
+                                onChange={handleRoleChange} // Call handleRoleChange when a role is selected
+                                style={styles.signUpDropDown}
+                                placeholder='Select Role' 
+                                labelField={'label'} 
+                                valueField={'value'}    
+                            />
                             
                             <Text style={styles.errorText}>{errors.role}</Text>
                     </View>
@@ -282,8 +285,8 @@ function SignUpScreen(props: any) {
                             <Text style={styles.buttonText}> EMERGENCY </Text>
                         </TouchableHighlight>
                     </View>
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         </SafeAreaView>
     )
 }
