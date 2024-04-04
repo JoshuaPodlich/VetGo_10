@@ -114,6 +114,15 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
         props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
     }
 
+    function createAppointments(index: number) {
+        let createAppointmentParams: CreateAppointmentParams = {
+            ...params,
+            petId: pets[index].pid
+        }
+        props.navigation.navigate("CreateAppointment", createAppointmentParams)
+
+    }
+
     function viewAppointment(index: number) {
         let viewAppointmentParams: ViewAppointmentScreenParams = {
             ...params,
@@ -156,13 +165,14 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     }
 
     function editPet(index: number) {
-        let editPetParams: EditPetScreenParams = {
-            userId: params.userId,
-            userIsVet: params.userIsVet,
-            location: params.location,
-            petId: pets[index].pid,
-        }
-        props.navigation.navigate("EditPet", editPetParams)
+        console.log("Edit Pet")
+        // let editPetParams: EditPetScreenParams = {
+        //     userId: params.userId,
+        //     userIsVet: params.userIsVet,
+        //     location: params.location,
+        //     petId: pets[index].pid,
+        // }
+        // props.navigation.navigate("EditPet", editPetParams)
     }
 
     return (
@@ -191,7 +201,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                                 key={index}
                                 petData={petData}
                                 editPet={() => editPet(index)}
-                                createAppointment={() => createAppointment(index)}
+                                createAppointment={() => createAppointments(index)}
                                 viewAppointment={() => viewAppointment(index)}
                                 payAppointment={() => payAppointment(index)}
                             />
@@ -210,6 +220,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                     <Button onPress={() => fetchPets()} style={homeStyles.refreshButton}>
                         <Text>Refresh List</Text>
                     </Button>
+                   
                     
                 </View>
 

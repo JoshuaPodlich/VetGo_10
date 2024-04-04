@@ -7,6 +7,7 @@ import { colors } from "../shared/Colors"
 import { BASE_URL } from "../shared/Constants"
 import { LocationInterface } from "../shared/Interfaces"
 import { HomeScreenParams } from "../Home/HomeScreen"
+import { ScreeningQuestionsParams } from "../ScreeningQuestions/ScreeningQuestionsScreen"
 
 export interface CreateAppointmentParams {
     userId: string,
@@ -23,6 +24,10 @@ const CreateAppointmentScreen = (props: any) => {
     const [error, setError] = useState('')
     const [petName, setPetName] = useState<string>("")
 
+    const [showCalendar, setShowCalendar] = useState(false)
+
+    
+
 
     useEffect(() => {
         fetchAndHydratePetData()
@@ -34,6 +39,10 @@ const CreateAppointmentScreen = (props: any) => {
         setPetName(petData.name)
     }
 
+    const setDateNow = () => {
+        setDate(new Date())
+    }
+
     const postAppointment = async (url: string, options: any) => {
         await fetch(url, options)
             .then(response => response.json())
@@ -43,6 +52,14 @@ const CreateAppointmentScreen = (props: any) => {
 
                 props.navigation.navigate('Home', { ...params } as HomeScreenParams)
             })
+    }
+
+    const handleNext = () => {
+        let screeningQuestionsParams: ScreeningQuestionsParams = {
+            ...params,
+            petId: params.petId
+        }
+        props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
     }
 
     const handleSubmit = async () => {
@@ -70,23 +87,48 @@ const CreateAppointmentScreen = (props: any) => {
         await postAppointment(url, options)
     }
 
-    return (<SafeAreaView style={styles.background}>
+    return (<SafeAreaView style={styles.createAppointmentBackground}>
         <ScrollView>
-            <Text style={styles.header}>Schedule Appointment for {petName}</Text>
-            <Text>Reason for appointment</Text>
-            <Textfield placeholder='Please be as descriptive as possible.' value={description} onChangeText={setDescription} />
-            <Text style={styles.header}>Select Date</Text>
-            <View>
-                <Calendar min={new Date()} date={date} onSelect={d => setDate(d)} />
-            </View>
+            <Text style={{...styles.header, paddingLeft: 30}}>Schedule Appointment {petName}</Text>
+            <Text style={{paddingLeft: 50}}>Reason for appointment</Text>
+            <Textfield placeholder='Give a quick summary of details' value={description} onChangeText={setDescription} />
+            <Text style={{...styles.appointmentHeader, paddingTop: 50}}>Select Date</Text>
+
+            <Button
+                    onPress={() => setDateNow()} 
+                    style={{ ...styles.mainButton}}>
+                    Set to ASAP
+                </Button>
+
+
+            
+
+            <View style={{width: 250
+                       }}>
+            {showCalendar && ( // Only render the calendar if showCalendar is true
+                    <View style={{paddingBottom:50}}>
+                        <Calendar min={new Date()} date={date} onSelect={d => setDate(d)} style={{width: 250, height: 300, paddingBottom:50}}/>
+                    </View>
+                )}
+
+
+                <Button
+                    onPress={() => setShowCalendar(!showCalendar)} 
+                    style={{ ...styles.mainButton}}>
+                    {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
+                </Button>
+                </View>
+                
             <View>
             </View>
         </ScrollView>
         <Text>{error}</Text>
-        <Button style={{ ...styles.submitButton }}
-            onPress={handleSubmit}>
-            <Text>Submit</Text>
+        <View style={{paddingBottom: 50}}>
+        <Button style={{ ...styles.submitButton, }}
+            onPress={handleNext}>
+            <Text>Next</Text>
         </Button>
+        </View>
 
     </SafeAreaView>)
 }
