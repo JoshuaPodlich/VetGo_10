@@ -27,6 +27,7 @@ import UserInfoScreen from './app/screens/UserInfo/UserInfoScreen'
 import PaymentStripeScreen from "./app/screens/PaymentStripe/PaymentStripeScreen"
 import CreatePetScreen from "./app/screens/CreatePet/CreatePetScreen"
 import EditPetScreen from "./app/screens/EditPet/EditPetScreen"
+import ViewPet from "./app/screens/ViewPet/ViewPet"
 import LocationScreen from "./app/screens/Location/LocationScreen"
 
 import CreateReviewScreen from "./app/screens/CreateReview/CreateReviewScreen"
@@ -88,6 +89,7 @@ export default function App() {
                             <Stack.Screen name="UserInfo" component={UserInfoScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="PaymentStripe" component={PaymentStripeScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="EditPet" component={EditPetScreen as React.FC} options={{ title: "" }} />
+                            <Stack.Screen name="ViewPet" component={ViewPet as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="CreatePet" component={CreatePetScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="CreateReview" component={CreateReviewScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="CreateReviewClient" component={CreateReviewClientScreen as React.FC} options={{ title: "" }} />
