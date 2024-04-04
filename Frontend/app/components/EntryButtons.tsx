@@ -31,7 +31,7 @@ function EntryButtons(props: any) {
                 <Text style={styles.buttonText}> SIGNUP </Text>
             </TouchableHighlight>
 
-            <TouchableHighlight style={{...styles.secondaryButton, marginTop: 100}}
+            <TouchableHighlight style={{...styles.secondaryButton, marginTop: 30}}
                 underlayColor={colors.action_Orange}
                 onPress={() => props.navigation.navigate("Emergency")}>
                 <Text style={styles.buttonText}> EMERGENCY </Text>

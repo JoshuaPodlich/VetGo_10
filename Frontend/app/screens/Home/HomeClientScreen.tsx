@@ -211,7 +211,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                                 createAppointment={() => createAppointment(index)}
                                 viewAppointment={() => viewAppointment(index)}
                                 payAppointment={() => payAppointment(index)}
-                                triggerImageUpdate={() => fetchPet(petData.pet.id)}
+                                triggerPetUpdate={() => fetchPet(petData.pet.id)}
                             />
                         )
                         )

@@ -176,18 +176,17 @@ props.navigation.navigate("Location", params);
     //TODO forgot password has not been tested 
     return (
         <SafeAreaView style={styles.loginBackground}>
-            <Logo />
-
-            <View style={{ width: "80%", flex: 1 }}>
-                <ScrollView>
+            <ScrollView>
+                <Logo/>
+                <View style={{ width: "80%", marginTop: "5%", flex: 1, alignSelf: "center"}}>
                     <View style={styles.signUpLoginGroup}>
-                        <Text style={{ fontSize: 30, fontWeight: "bold", marginTop: 30 }}>
+                        <Text style={{ fontSize: 30, fontWeight: "bold", paddingBottom: 5 }}>
                             Login
                         </Text>
 
 
                         <Input
-                            value={email} size={"large"} style={styles.fieldText}
+                            value={email} size={"large"} style={styles.signUpLoginTextBox}
                             placeholder={"Email"}
                             onChangeText={(email) => {
                                 setEmail(email)
@@ -195,27 +194,24 @@ props.navigation.navigate("Location", params);
                         />
                         <Text style={styles.errorText}>{emailError}</Text>
                         <Input
-                            value={password} size={"large"} style={styles.fieldText}
+                            value={password} size={"large"} style={styles.signUpLoginTextBox}
                             placeholder={"Password"}
                             secureTextEntry={true}
                             onChangeText={(password) => {
                                 setPassword(password)
                             }}
                         />
-                        <Text style={styles.errorText}>{passwordError}</Text>
-
+                        {passwordError && <Text style={styles.errorText}>{passwordError}</Text>}
                         
 
                         <TouchableOpacity style={styles.forgotPasswordButton} onPress={() => props.navigation.navigate("ForgotPassword")}>
-                            <Text style={{ color: colors.action_Orange }}>Forgot Password?</Text>
+                            <Text style={{ color: colors.action_Orange, paddingBottom: 5, paddingTop: 5 }}>Forgot Password?</Text>
                         </TouchableOpacity>
                         
                     </View>
-
-                    <EntryButtons direction={null} navigation={props.navigation} cmd={handleSubmit} />
-                </ScrollView>
-            </View>
-
+                </View>
+                <EntryButtons direction={null} navigation={props.navigation} cmd={handleSubmit} />
+            </ScrollView>
         </SafeAreaView>
     )
 }

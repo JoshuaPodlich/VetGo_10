@@ -6,11 +6,8 @@ import Spring20232.VetGo.repository.OwnerRepository;
 import Spring20232.VetGo.repository.PetRepository;
 import Spring20232.VetGo.repository.UserRepository;
 import com.amazonaws.services.alexaforbusiness.model.NotFoundException;
-import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -102,7 +99,6 @@ public class PetService implements PetServiceInterface {
             throw new RuntimeException("Failed to upload image file.", e);
         }
     }
-
 
     @Override
     public List<byte[]> getPetRecords(Long pid) {

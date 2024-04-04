@@ -5,13 +5,17 @@ import Spring20232.VetGo.repository.OwnerRepository;
 import Spring20232.VetGo.repository.PetRepository;
 import Spring20232.VetGo.service.PetService;
 import com.amazonaws.services.mq.model.NotFoundException;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -111,8 +115,8 @@ public class PetController {
     }
 
     // To upload Image
-    @PostMapping(path = "/upload/{pid}/upload-image")
-    public ResponseEntity<String> uploadImage(@PathVariable("pid") Long pid, @RequestParam("image") MultipartFile image) {
+    @PostMapping(path = "/upload/{pid}/image")
+    public ResponseEntity<?> uploadImage(@PathVariable("pid") Long pid, @RequestParam("image") MultipartFile image) {
         try {
             petService.uploadPetImage(pid, image);
             return ResponseEntity.status(HttpStatus.OK).body("Image successfully saved.");

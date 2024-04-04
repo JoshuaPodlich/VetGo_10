@@ -12,7 +12,7 @@ import axios from 'axios'
 
 
 
-export const HomeClient_PetProfile = (props: { petData: any, editPet: any, createAppointment: any, viewAppointment: any, payAppointment: any, triggerImageUpdate: any }) => {
+export const HomeClient_PetProfile = (props: { petData: any, editPet: any, createAppointment: any, viewAppointment: any, payAppointment: any, triggerPetUpdate: any }) => {
 
     //region States
     const { pet, appointment } = props.petData
@@ -54,19 +54,15 @@ export const HomeClient_PetProfile = (props: { petData: any, editPet: any, creat
         try {
             await axios({
                 method: 'post',
-                url: `${BASE_URL}/pet/upload/${id}/upload-image`,
+                url: `${BASE_URL}/pet/upload/${id}/image`,
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
                 data: formData,
             });
 
-            // Fetch updated pet information
-            const response = await axios.get(`${BASE_URL}/pet/get/${id}`);
-            const updatedPetInfo = response.data;
-
-            // Call the callback with the updated pet information
-            props.triggerImageUpdate(updatedPetInfo);// Immediately updates the image of the pet in the list of pet profiles.
+            // Immediately updates the image of the pet in the list of pet profiles.
+            props.triggerPetUpdate();
         }
         catch (err) {
             console.log(`#### ${err}`);
