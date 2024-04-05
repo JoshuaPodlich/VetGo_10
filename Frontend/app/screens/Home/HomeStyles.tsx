@@ -87,6 +87,15 @@ export const homeStyles: any = StyleSheet.create({
         alignItems: "center",
     },
 
+    tempPicLarge: {
+        backgroundColor: colors.grey,
+        height: 120,
+        width: 120,
+        borderRadius: 100,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+
     addButton: {
         margin: 5,
         padding: 15,
