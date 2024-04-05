@@ -315,7 +315,26 @@ export const styles: any = StyleSheet.create({
         fontSize: 18,
         fontWeight: "bold",
         fontColor: colors.black,
+        paddingLeft: 20,
+        paddingRight: 20,
 
+    },
+
+    createPetDropDown: {
+        padding: 2,
+        paddingTop: 2,
+        borderRadius: 10,
+        borderWidth: 1,
+        width: 370,
+        borderColor: colors.primary_Blue,
+        fontSize: 18,
+        fontWeight: "bold",
+        fontColor: colors.black,
+        backgroundColor: colors.white,
+        paddingLeft: 20,
+        paddingRight: 20,
+        marginLeft: 20,
+        marginBottom: 20,
     },
 
     createPetTextfield: {

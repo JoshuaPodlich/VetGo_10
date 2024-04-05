@@ -11,6 +11,7 @@ import { Buffer } from 'buffer'
 import { LocationInterface } from '../shared/Interfaces'
 import { HomeScreenParams } from '../Home/HomeScreen'
 import ClientNavbar from '../../components/ClientNavbar'
+import { Dropdown } from 'react-native-element-dropdown'
 
 
 export interface CreatePetScreenParams {
@@ -18,6 +19,36 @@ export interface CreatePetScreenParams {
     userIsVet: boolean,
     location: LocationInterface,
 }
+const sizeList = [
+    {label: 'Small', value: 'SMALL'},
+    {label: 'Medium', value: 'MEDIUM'},
+    {label: 'Large', value: 'LARGE'}
+]
+
+const energyList = [
+    {label: 'Low', value: 'LOW'},
+    {label: 'Medium', value: 'MEDIUM'},
+    {label: 'High', value: 'HIGH'}
+]
+
+const furList = [
+    {label: 'Short', value: 'SHORT'},
+    {label: 'Medium', value: 'MEDIUM'},
+    {label: 'Long', value: 'LONG'},
+    {label: 'Hairless', value: 'HAIRLESS'}
+]
+
+const titlesList = [
+    {label: 'Dog', value: 'DOG'},
+    {label: 'Cat', value: 'CAT'},
+    {label: 'Bird', value: 'BIRD'},
+    {label: 'Reptile', value: 'REPTILE'},
+    {label: 'Fish', value: 'FISH'},
+    {label: 'Rodent', value: 'RODENT'},
+    {label: 'Other', value: 'OTHER'}
+]
+
+
 interface CreatePetForm {
     name: string, age: number, weight: number, height: number, type: string, sex: boolean, breed: string,
     petSize: string, energyLevel: string, furType: string // New values
@@ -34,6 +65,28 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
     const sizes = ['SMALL', 'MEDIUM', 'LARGE']
     const energyLevels = ['LOW', 'MEDIUM', 'HIGH']
     const furTypes = ['SHORT', 'MEDIUM', 'LONG', 'HAIRLESS']
+
+
+   
+
+    const handleSizeChange = (selectedSize: any) => {
+        setPetForm(prevState => ({ ...prevState, petSize: selectedSize.value }));
+    }
+
+    const handleEnergyChange = (newValue: any) => {
+        setPetForm((prevState: CreatePetForm) => ({ ...prevState, energyLevel: newValue.value }))
+    }
+
+    const handleFurChange = (selectedFur: any) => {
+        setPetForm(prevState => ({ ...prevState, furType: selectedFur.value }));
+    }
+
+    const handleTypeChange = (selectedTitle: any) => {
+        setPetForm(prevState => ({ ...prevState, type: selectedTitle.value }));
+    }
+
+    
+
 
     const [petForm, setPetForm] = useState<CreatePetForm>({ 
         name: "", 
@@ -217,10 +270,10 @@ const displayFur = (index: IndexPath) => {
 
     return (
         <SafeAreaView style={styles.background}>
-            
-            <View style={styles.loginBackground}>
             <ScrollView>
-            <Text style={{ fontSize: 30, fontWeight: "bold", paddingBottom: 5, paddingTop: 10, paddingLeft: 50}}>
+            <View style={styles.loginBackground}>
+            
+            <Text style={{ fontSize: 30, fontWeight: "bold", paddingBottom: 10, paddingTop: 10}}>
                             Create Pet
                         </Text>
                 <View>
@@ -240,6 +293,7 @@ const displayFur = (index: IndexPath) => {
                             //                             setName(name)
                         }}
                     /> */}
+                    <Text style={{marginLeft: 20}}> Name </Text>
                     <Input 
                         clearButtonMode={"always"} size={"large"}
                         value={petForm.name}
@@ -249,7 +303,7 @@ const displayFur = (index: IndexPath) => {
                             setPetForm((prevState: CreatePetForm) => ({ ...prevState, name: newName }))
                         }}
                     />
-                    <Text style={styles.errorText}>{errors.name}</Text>
+                    {/* <Text style={styles.errorText}>{errors.name}</Text>
                     <View style={{ marginBottom: 20 }}>
                         <Text> Animal Type </Text>
                         <Select
@@ -266,7 +320,20 @@ const displayFur = (index: IndexPath) => {
                             <SelectItem title='Rodent (Hamster, Guinea Pig, etc.)' />
                             <SelectItem title='Other' />
                         </Select>
-                    </View>
+                    </View> */}
+
+                    <Text style={{paddingTop: 20, marginLeft:20}}> Animal Type </Text>
+
+                    <Dropdown
+                        data={titlesList}
+                        value={petForm.type}
+                        style={styles.createPetDropDown}
+                        onChange={handleTypeChange}
+                        placeholder="Select Pet Type" labelField={'value'} valueField={'value'}
+                        ></Dropdown>
+
+
+
                     {/* <Text> Breed </Text> */}
                     {/* <Textfield
                         value={petForm.breed!}
@@ -277,6 +344,7 @@ const displayFur = (index: IndexPath) => {
                         }}
                     /> */}
 
+                    <Text style={{marginLeft: 20}}> Breed </Text>
                     <Input 
                         clearButtonMode={"always"} size={"large"}
                         value={petForm.breed}
@@ -299,7 +367,7 @@ const displayFur = (index: IndexPath) => {
                         }}
                     /> */}
 
-                <Text> Age (years) </Text>
+                <Text style={{marginLeft: 20}}> Age (years) </Text>
                 <Input 
                     clearButtonMode={"always"}
                     size={"large"}
@@ -327,7 +395,7 @@ const displayFur = (index: IndexPath) => {
                             //                             setWeight(Number(weight))
                         }}
                     /> */}
-                    <Text> Approximate Weight (lb) </Text>
+                    <Text style={{marginLeft: 20}}> Approximate Weight (lb) </Text>
                     <Input 
                         clearButtonMode={"always"}
                         size={"large"}
@@ -355,7 +423,7 @@ const displayFur = (index: IndexPath) => {
                             //                             setHeight(Number(height))
                         }}
                     /> */}
-                    <Text> Approximate Height (in) </Text>
+                    <Text style={{marginLeft: 20}}> Approximate Height (in) </Text>
                     <Input 
                         clearButtonMode={"always"}
                         size={"large"}
@@ -376,7 +444,7 @@ const displayFur = (index: IndexPath) => {
 
 
 
-            <View style={{ marginBottom: 20 }}>
+            {/* <View style={{ marginBottom: 20 }}>
                                 <Text> Size </Text>
                 <Select
                     selectedIndex={selectedSizeIndex}
@@ -388,9 +456,38 @@ const displayFur = (index: IndexPath) => {
                     <SelectItem title='Medium' />
                     <SelectItem title='Large' />
                 </Select>
-            </View>
+            </View> */}
+            <Text style={{paddingTop: 10, marginLeft:20}}> Size </Text>
+            <Dropdown 
+                            data={sizeList}
+                            value={petForm.petSize}
+                            style={styles.createPetDropDown}
+                            onChange={handleSizeChange}
+                            placeholder="Select Size" labelField={'value'} valueField={'value'}            >
+            </Dropdown>
 
-            <View style={{ marginBottom: 20 }}>
+
+            <Text style={{paddingTop: 10, marginLeft:20}}> Energy Level </Text>
+            <Dropdown 
+                            data={energyList}
+                            value={petForm.energyLevel}
+                            style={styles.createPetDropDown}
+                            onChange={handleEnergyChange}
+                            placeholder="Select Energy Level" labelField={'value'} valueField={'value'}            >
+            </Dropdown>
+
+            <Text style={{paddingTop: 10, marginLeft:20}}> Fur Type </Text>
+            <Dropdown 
+                            data={furList}
+                            value={petForm.furType}
+                            style={styles.createPetDropDown}
+                            onChange={handleFurChange}
+                            placeholder="Select Fur Type" labelField={'value'} valueField={'value'}            >
+            </Dropdown>
+
+
+
+            {/* <View style={{ marginBottom: 20 }}>
                 <Text> Energy Level </Text>
                 <Select
                     selectedIndex={selectedEnergyIndex}
@@ -417,7 +514,7 @@ const displayFur = (index: IndexPath) => {
                     <SelectItem title='Long' />
                     <SelectItem title='Hairless' />
                 </Select>
-            </View>
+            </View> */}
 
 
 
@@ -458,7 +555,7 @@ const displayFur = (index: IndexPath) => {
 
 
 
-                    <View style={{ marginLeft: 5, paddingTop: 20 }}>
+                    <View style={{ marginLeft: 20, paddingTop: 20 }}>
                         <Text style={{ marginBottom: 10, marginTop: -20 }}>Sex</Text>
                         <Layout
                             style={{
@@ -499,8 +596,9 @@ const displayFur = (index: IndexPath) => {
                         <Text> Save Changes </Text>
                     </Button>
                 </View>
-                </ScrollView>
+                
             </View>
+            </ScrollView>
             <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
     )
