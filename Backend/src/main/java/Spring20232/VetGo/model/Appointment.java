@@ -61,7 +61,7 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(Long aid, LocalDate time, Vet vet, Pet pet, Double longitude, Double latitude, String description, Transaction transaction, AppointmentStatus status, AdditionalPetInformation petInformation) {
+    public Appointment(Long aid, LocalDate time, Vet vet, Pet pet, Double longitude, Double latitude, String description, Transaction transaction, AppointmentStatus status, AdditionalPetInformation petInformation, ScreeningSession screeningSession) {
         this.aid = aid;
         this.time = time;
         this.vet = vet;
@@ -72,6 +72,7 @@ public class Appointment {
         this.transaction = transaction;
         this.status = status;
         this.additionalPetInformation = petInformation;
+        this.screeningSession = screeningSession;
     }
 
     public Long getAid() {
@@ -132,6 +133,14 @@ public class Appointment {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ScreeningSession getScreeningSession() {
+        return screeningSession;
+    }
+
+    public void setScreeningSession(ScreeningSession screeningSession) {
+        this.screeningSession = screeningSession;
     }
 
     public Transaction getTransaction() {

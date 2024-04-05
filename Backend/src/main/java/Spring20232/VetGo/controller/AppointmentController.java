@@ -107,7 +107,7 @@ public class AppointmentController {
         }
         else
         {
-            Appointment app = new Appointment(new Random().nextLong(),null,null,null,1212.00,1212.00,"",null,COMPLETED,api);
+            Appointment app = new Appointment(new Random().nextLong(),null,null,null,1212.00,1212.00,"",null,COMPLETED,api,null);
             appointmentRepository.save(ap);
         }
             return ResponseEntity.status(HttpStatus.OK).body(ap);
@@ -168,7 +168,7 @@ public class AppointmentController {
         String str = objectNode.get("month").asText() + "-" + objectNode.get("day").asText() + "-" + objectNode.get("year").asText();
         LocalDate date = LocalDate.parse(str, formatter);
 
-        Appointment appointment = new Appointment(null, date, null, pet, longitude, latitude, description, null, WAITING, null);
+        Appointment appointment = new Appointment(null, date, null, pet, longitude, latitude, description, null, WAITING, null, null);
 
         pet.addAppointmentList(appointment);
         appointmentRepository.save(appointment);

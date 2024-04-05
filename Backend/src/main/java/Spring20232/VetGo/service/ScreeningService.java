@@ -10,11 +10,14 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ScreeningService {
@@ -31,6 +34,8 @@ public class ScreeningService {
     private PetRepository petRepository;
     @Autowired
     private ScreeningSessionRepository screeningSessionRepository;
+    @Autowired
+    private ScreeningResultRepository screeningResultRepository;
     @Autowired
     private ScreeningSessionAnsweredOptionRepository screeningSessionAnsweredOptionRepository;
     @Autowired
@@ -223,6 +228,16 @@ public class ScreeningService {
         }
 
         return sessionsArrayNode;
+    }
+
+    public ScreeningResult getSessionResult(Long screenSessionId) {
+        Optional<ScreeningSession> sessionOptional = screeningSessionRepository.findById(screenSessionId);
+
+        if (sessionOptional.isEmpty())
+            throw new NotFoundException("Screening session not found in database");
+
+        ScreeningSession session = sessionOptional.get();
+        return session.getResult();
     }
 }
 

@@ -127,6 +127,14 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, setAppointmen
         getAppointments(setAppointments)
     }
 
+    const getScreeningResults = async () => {
+        try {
+            setShowDetails(appointmentData.screeningSession)
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
     const getAppointments = async (setAppointments) => {
             try {
                 const appointmentsUrl = BASE_URL + "/appointment/all/vet/" + vetId;
@@ -145,10 +153,16 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, setAppointmen
                 console.log('Appointments Response body:', appointmentsResponseBody);
 
                 setAppointments(appointmentsResponseBody);
+                getScreeningResults();
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
+
+    useEffect(() => {
+        console.log("useEffect")
+        getScreeningResults()
+    }, [])
 
     return (
         <Card style={{
@@ -166,7 +180,7 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, setAppointmen
             <Text style={{
                 marginVertical: 8,
                 display: showDetails ? 'flex' : 'none'
-            }}>Reason for visit: {appointmentData.description ?? ""}</Text>
+            }}>Reason for Visit: {showDetails.result.problem ?? ""}</Text>
             <Layout style={{
                 flexDirection: 'row',
                 justifyContent: 'flex-end',
