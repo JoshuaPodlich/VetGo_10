@@ -341,6 +341,19 @@ export const styles: any = StyleSheet.create({
         marginBottom: 5,
         marginLeft: 10,
     },
+    petInfoLabel: {
+        fontSize: 16,
+        marginBottom: 5,
+        marginLeft: 10,
+        fontWeight: "bold",
+    },
+    petInfoLine: {
+        flexDirection: 'row',
+        borderBottomColor: colors.grey,
+        borderBottomWidth: 1,
+        padding: 10,
+
+    },
     returnButton: {
         backgroundColor: 'blue',
         paddingVertical: 10,

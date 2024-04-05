@@ -39,21 +39,9 @@ let petmale: boolean = false
 function ViewPet (props: { route: ViewPetScreenRouteProp, navigation: ViewPetScreenNavigationProp}) {
     const params: ViewPetScreenParams = props.route.params  as ViewPetScreenParams
     console.log("ViewPetScreenParams" + JSON.stringify(params))
-
- 
-
-
-    
-
-
-
-
-
     useEffect(() => {
         fetchPet(params.petId)
-    }, [])
-
-        
+    }, [])   
     const fetchPet = async (petId: string) => {
         try {
             const response = await fetch(`${BASE_URL}/pet/get/${petId}`);
@@ -85,26 +73,11 @@ function ViewPet (props: { route: ViewPetScreenRouteProp, navigation: ViewPetScr
                 petmale = true
             } else {
                 petmale = false
-            }
-
-
-
-            
+            }       
         } catch (error) {
             console.error(error);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
     return (
         <View >
             
@@ -124,18 +97,50 @@ function ViewPet (props: { route: ViewPetScreenRouteProp, navigation: ViewPetScr
 
             
             <View style = {styles.viewPetInfoContainer}>
-                <Text style = {styles.petInfoText}>pet name: {petname}</Text>
-                <Text style = {styles.petInfoText}>pet age: {petage}</Text>
-                <Text style = {styles.petInfoText}>pet weight: {petweight}</Text>
-                <Text style = {styles.petInfoText}>pet height: {petheight}</Text>
-                <Text style = {styles.petInfoText}>pet breed: {petbreed}</Text>
-                <Text style = {styles.petInfoText}>pet size: {PetSize}</Text>
-                <Text style = {styles.petInfoText}>pet energy level: {petenergyLevel}</Text>
-                <Text style = {styles.petInfoText}>pet fur type: {petfurType}</Text>
+            <Text style={styles.petInfoLine}>
+        <Text style={styles.petInfoLabel}>pet name: </Text>
+        <Text style={styles.petInfoText}>{petname}</Text>
+    </Text>
+    
+    <Text style={styles.petInfoLine}>
+        <Text style={styles.petInfoLabel}>pet age: </Text>
+        <Text style={styles.petInfoText}>{petage}</Text>
+    </Text>
+    
+    <Text style={styles.petInfoLine}>
+        <Text style={styles.petInfoLabel}>pet weight: </Text>
+        <Text style={styles.petInfoText}>{petweight}</Text>
+    </Text>
+    
+    <Text style={styles.petInfoLine}>
+        <Text style={styles.petInfoLabel}>pet height: </Text>
+        <Text style={styles.petInfoText}>{petheight}</Text>
+    </Text>
+    
+    <Text style={styles.petInfoLine}>
+        <Text style={styles.petInfoLabel}>pet breed: </Text>
+        <Text style={styles.petInfoText}>{petbreed}</Text>
+    </Text>
+    
+    <Text style={styles.petInfoLine}>
+        <Text style={styles.petInfoLabel}>pet size: </Text>
+        <Text style={styles.petInfoText}>{PetSize}</Text>
+    </Text>
+    
+    <Text style={styles.petInfoLine}>
+        <Text style={styles.petInfoLabel}>pet energy level: </Text>
+        <Text style={styles.petInfoText}>{petenergyLevel}</Text>
+    </Text>
+    
+    <Text style={styles.petInfoLine}>
+        <Text style={styles.petInfoLabel}>pet fur type: </Text>
+        <Text style={styles.petInfoText}>{petfurType}</Text>
+    </Text>
+                
             </View>
             
 
-            <TouchableOpacity style={{...styles.mainButton, marginTop: 100}} onPress={() => props.navigation.goBack()
+            <TouchableOpacity style={{...styles.mainButton, marginTop: 5}} onPress={() => props.navigation.goBack()
 }>
                 <Text style={styles.returnButtonText}>Return</Text>
             </TouchableOpacity>
