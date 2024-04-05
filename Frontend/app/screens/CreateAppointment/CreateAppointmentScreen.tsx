@@ -62,6 +62,45 @@ const CreateAppointmentScreen = (props: any) => {
         props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
     }
 
+    const hardcodedCreateAppointment = async () => {
+        // /appointment/create/{oid}/{pid}/{description}
+
+        const fakeOid = '1'
+        const fakePid = '1'
+        const fakeDescription = 'random symptoms description'
+
+//         Body: 
+// {
+//     "latitude": 100,
+//     "longitude": 100,
+//     "radius": 10,
+//     "month": "01",
+//     "day": "01",
+//     "year": "01"
+// }
+
+        let body = {latitude: 100, longitude: 100, radius: 10, month: "01", day: "01", year: "01"}
+
+
+
+        let url = BASE_URL + '/appointment/create/' + 1 + '/' + 1 + '/' + "test"
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+
+        console.log(response.status)
+        //console.log(response.statusText)
+
+        const responseBody = await response.json(); // Parse the response body into JSON
+        console.log('Response:', response);
+        console.log('Response Body:', responseBody);
+
+    }
+
     const handleSubmit = async () => {
         if (!description.length) {
             setError('Description is required!')
@@ -124,6 +163,10 @@ const CreateAppointmentScreen = (props: any) => {
         </ScrollView>
         <Text>{error}</Text>
         <View style={{paddingBottom: 50}}>
+        <Button style={{ ...styles.submitButton, }}
+            onPress={hardcodedCreateAppointment}>
+            <Text>Submit</Text>
+        </Button>
         <Button style={{ ...styles.submitButton, }}
             onPress={handleNext}>
             <Text>Next</Text>
