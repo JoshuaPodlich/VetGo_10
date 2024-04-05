@@ -265,6 +265,12 @@ export const styles: any = StyleSheet.create({
         width: 420,
         height: 300,
     },
+    logoImageSmall: {
+        width: 300,
+        height: 220,
+        
+    },
+
 
 
     signUpDropDown: {
@@ -316,6 +322,51 @@ export const styles: any = StyleSheet.create({
         height: 50,
         width: "100%",
     },
+
+    viewPetContainer: {
+        
+        alignItems: 'center',
+        paddingHorizontal: 20,
+        
+    },
+    viewPetInfoContainer:{
+
+        width: 300,
+        borderRadius: 5,
+        borderWidth: 2,
+        fontSize: 20,
+    },
+    petInfoText: {
+        fontSize: 16,
+        marginBottom: 5,
+        marginLeft: 10,
+    },
+    petInfoLabel: {
+        fontSize: 16,
+        marginBottom: 5,
+        marginLeft: 10,
+        fontWeight: "bold",
+    },
+    petInfoLine: {
+        flexDirection: 'row',
+        borderBottomColor: colors.grey,
+        borderBottomWidth: 1,
+        padding: 10,
+
+    },
+    returnButton: {
+        backgroundColor: 'blue',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        color: colors.white,
+    },
+    returnButtonText: {
+        color: colors.white,
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+        
 
 
 })

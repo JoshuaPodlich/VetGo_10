@@ -73,7 +73,7 @@ export const HomeClient_PetProfile = (props: { petData: any, editPet: any, creat
     return (
         <View key={"pet_profile_" + id} style={[homeStyles.petInfo, {}]}>
             <View style={{ width: "60%" }}>
-                <Pressable style={{ display: "flex", flexDirection: "row", alignItems: 'center', marginLeft: 10}} onPress={() => props.editPet()}>
+                <Pressable style={{ display: "flex", flexDirection: "row", alignItems: 'center', marginLeft: 10}} onPress={() => props.editPet(id)}>
                 <Pressable onPress={() => pickImage()}>
                     {pet.imageURL ?
                         <Image source={{ uri: `${BASE_URL}/${imageURL}` }} style={homeStyles.tempPic} />
@@ -85,7 +85,7 @@ export const HomeClient_PetProfile = (props: { petData: any, editPet: any, creat
                 </Pressable>
                     <View style={{ flexShrink: 1 }}>
                         <View style={{}}>
-                            <Text style={{ ...styles.boldText }}> {name}</Text>
+                            <Text style={{ ...styles.boldText }}> {name} {id}</Text>
                             <Text style={{ color: `${colors.darkGrey}` }}> {petBreed}</Text>
                         </View>
                     </View>

@@ -10,6 +10,7 @@ import { HomeClient_PetProfile } from "./HomeClient_PetProfile"
 import TopNavbar from '../../components/TopNavbar'
 import { LocationInterface } from '../shared/Interfaces'
 import { EditPetScreenParams } from '../EditPet/EditPetScreen'
+import { ViewPetScreenParams } from '../ViewPet/ViewPet'
 import { CreatePetScreenParams } from '../CreatePet/CreatePetScreen'
 import { CreateAppointmentParams } from '../CreateAppointment/CreateAppointmentScreen'
 import { ViewAppointmentScreenParams } from '../ViewAppointment/ViewAppointmentScreen'
@@ -135,7 +136,9 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
         let createAppointmentParams: CreateAppointmentParams = {
             ...params,
             petId: pets[index].pid
+            
         }
+        console.log(createAppointmentParams)
         props.navigation.navigate("CreateAppointment", createAppointmentParams)
 
     }
@@ -182,14 +185,16 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     }
 
     function editPet(index: number) {
-        console.log("Edit Pet")
-        // let editPetParams: EditPetScreenParams = {
-        //     userId: params.userId,
-        //     userIsVet: params.userIsVet,
-        //     location: params.location,
-        //     petId: pets[index].pid,
-        // }
-        // props.navigation.navigate("EditPet", editPetParams)
+        console.log("View Pet")
+        let viewPetParams: ViewPetScreenParams = {
+            userId: params.userId,
+            userIsVet: params.userIsVet,
+            location: params.location,
+            petId: index.toString(),
+            
+        }
+        console.log(viewPetParams)
+        props.navigation.navigate("ViewPet", viewPetParams)
     }
 
     return (
@@ -217,7 +222,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                             <HomeClient_PetProfile
                                 key={index}
                                 petData={petData}
-                                editPet={() => editPet(index)}
+                                editPet={(id: any) => editPet(id)}
                                 createAppointment={() => createAppointments(index)}
                                 viewAppointment={() => viewAppointment(index)}
                                 payAppointment={() => payAppointment(index)}
