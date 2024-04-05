@@ -1392,7 +1392,7 @@ Be cautious, as dogs that are sick or hurt could unintentionally bite or scratch
 "It is very important to make sure that your dog has free access to water until you leave for the vets.
 Keep your dog warm and quiet.",
 "Drinking more than usual can be a sign of life threatening medical problems including kidney failure, pyometra (infected uterus) or diabetes.
-If your dog is also in pain it suggests a serious health problem, you need to telephone your vet immediately.",
+If your dog is also in pain it suggests a serious health problem, You need to call your vet immediately.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 86
@@ -1401,7 +1401,7 @@ Always call the veterinary office prior to arriving. The veterinarian might need
 Be cautious, as dogs that are sick or hurt could unintentionally bite or scratch.",
 "It is very important to make sure that your dog has free access to water until you leave for the vets.
 Keep your dog warm and quiet.",
-"Drinking more than usual can be a sign of life threatening medical problems including kidney failure, pyometra (infected uterus) or diabetes. You need to telephone your vet immediately.",
+"Drinking more than usual can be a sign of life threatening medical problems including kidney failure, pyometra (infected uterus) or diabetes. You need to call your vet immediately.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 87
@@ -1422,7 +1422,7 @@ Always call the veterinary office prior to arriving. The veterinarian might need
 Be cautious, as dogs that are sick or hurt could unintentionally bite or scratch.",
 "It is very important to make sure that your dog has free access to water until you leave for the vets.
 Keep your dog warm and quiet.",
-"Drinking more than usual can be a sign of life threatening medical problems including kidney failure, pyometra (infected uterus) or diabetes. You need to telephone your vet immediately.",
+"Drinking more than usual can be a sign of life threatening medical problems including kidney failure, pyometra (infected uterus) or diabetes. You need to call your vet immediately.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 89
@@ -1453,7 +1453,7 @@ Always call the veterinary office prior to arriving. The veterinarian might need
 Be cautious, as dogs that are sick or hurt could unintentionally bite or scratch.",
 "It is very important to make sure that your dog has free access to water until you leave for the vets.
 Keep your dog warm and quiet.",
-"Drinking more than usual can be a sign of life threatening medical problems including kidney failure, pyometra (infected uterus) or diabetes. You need to telephone your vet immediately.",
+"Drinking more than usual can be a sign of life threatening medical problems including kidney failure, pyometra (infected uterus) or diabetes. You need to call your vet immediately.",
 3);
 
 INSERT INTO screening_results (do_next, first_aid_advice, problem, result_priority) VALUES # ID: 92
