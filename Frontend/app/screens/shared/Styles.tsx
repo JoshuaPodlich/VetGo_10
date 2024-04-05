@@ -306,6 +306,17 @@ export const styles: any = StyleSheet.create({
         fontColor: colors.black,
         // backgroundColor: colors.primary_Blue,
     },
+    createPetBox:{
+        padding: 2,
+        paddingTop: 2,
+        borderRadius: 10,
+        width: "100%",
+        borderColor: colors.primary_Blue,
+        fontSize: 18,
+        fontWeight: "bold",
+        fontColor: colors.black,
+
+    },
 
     createPetTextfield: {
         backgroundColor: colors.white,

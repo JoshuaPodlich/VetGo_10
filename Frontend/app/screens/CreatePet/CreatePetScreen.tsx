@@ -37,7 +37,7 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
 
     const [petForm, setPetForm] = useState<CreatePetForm>({ 
         name: "", 
-        age: 0, 
+        age: 0,
         weight: 0, 
         height: 0, 
         type: titles[0], 
@@ -218,18 +218,35 @@ const displayFur = (index: IndexPath) => {
     return (
         <SafeAreaView style={styles.background}>
             
-            <View style={styles.createPet}>
+            <View style={styles.loginBackground}>
             <ScrollView>
-                <Text style={styles.header}> Create Pet </Text>
+            <Text style={{ fontSize: 30, fontWeight: "bold", paddingBottom: 5, paddingTop: 10, paddingLeft: 50}}>
+                            Create Pet
+                        </Text>
                 <View>
 
-                    <Text> Name </Text>
-                    <Textfield
+                    {/* <Text> Name </Text>
+                    <Textfield 
+                    style={{ 
+                        backgroundColor: 'lightblue !important', 
+                        color: 'black !important',
+                        borderRadius: '5px !important',
+                        // Add more styles as needed
+                    }}
                         value={petForm.name!}
                         placeholder={petForm.name!}
                         onChangeText={(newName: string) => {
                             setPetForm((prevState: CreatePetForm) => ({ ...prevState, name: newName }))
                             //                             setName(name)
+                        }}
+                    /> */}
+                    <Input 
+                        clearButtonMode={"always"} size={"large"}
+                        value={petForm.name}
+                        style={styles.createPetBox}
+                        placeholder="Pet Name"
+                        onChangeText={(newName: string) => {
+                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, name: newName }))
                         }}
                     />
                     <Text style={styles.errorText}>{errors.name}</Text>
@@ -250,18 +267,29 @@ const displayFur = (index: IndexPath) => {
                             <SelectItem title='Other' />
                         </Select>
                     </View>
-                    <Text> Breed </Text>
-                    <Textfield
+                    {/* <Text> Breed </Text> */}
+                    {/* <Textfield
                         value={petForm.breed!}
                         placeholder={petForm.breed!}
                         onChangeText={(newBreed: string) => {
                             setPetForm((prevState: CreatePetForm) => ({ ...prevState, breed: newBreed }))
                             //                             setBreed(breed)
                         }}
+                    /> */}
+
+                    <Input 
+                        clearButtonMode={"always"} size={"large"}
+                        value={petForm.breed}
+                        style={styles.createPetBox}
+                        placeholder="Breed"
+                        onChangeText={(newBreed: string) => {
+                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, breed: newBreed }))
+                        }}
                     />
+
                     <Text style={styles.errorText}>{errors.type}</Text>
 
-                    <Text> Age (years) </Text>
+                    {/* <Text> Age (years) </Text>
                     <Textfield
                         value={petForm.age.toString()}
                         placeholder={petForm.age.toString()}
@@ -269,9 +297,27 @@ const displayFur = (index: IndexPath) => {
                             setPetForm((prevState: CreatePetForm) => ({ ...prevState, age: newAge }))
                             //                             setAge(Number(age))
                         }}
-                    />
-                    <Text style={styles.errorText}>{errors.age}</Text>
+                    /> */}
 
+                <Text> Age (years) </Text>
+                <Input 
+                    clearButtonMode={"always"}
+                    size={"large"}
+                    value={petForm.age.toString()}
+                    style={styles.createPetBox}
+                    placeholder="Age (years)"
+                    onChangeText={(newAge: string) => {
+                        // Parse the input string as a number
+                        const parsedAge = parseInt(newAge, 10);
+                        // Check if the parsed value is a valid number
+                        if (!isNaN(parsedAge)) {
+                            // Update the state only if the input is a valid number
+                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, age: parsedAge }));
+                        }
+                    }}
+                />
+                    <Text style={styles.errorText}>{errors.age}</Text>
+{/* 
                     <Text> Approximate Weight (lb) </Text>
                     <Textfield
                         value={petForm.weight.toString()}
@@ -280,16 +326,50 @@ const displayFur = (index: IndexPath) => {
                             setPetForm((prevState: CreatePetForm) => ({ ...prevState, weight: newWeight }))
                             //                             setWeight(Number(weight))
                         }}
+                    /> */}
+                    <Text> Approximate Weight (lb) </Text>
+                    <Input 
+                        clearButtonMode={"always"}
+                        size={"large"}
+                        value={petForm.weight.toString()}
+                        style={styles.createPetBox}
+                        placeholder="Weight (lb)"
+                        onChangeText={(newWeight: string) => {
+                            // Parse the input string as a number
+                            const parsedWeight = parseFloat(newWeight);
+                            // Check if the parsed value is a valid number
+                            if (!isNaN(parsedWeight)) {
+                                // Update the state only if the input is a valid number
+                                setPetForm((prevState: CreatePetForm) => ({ ...prevState, weight: parsedWeight }));
+                            }
+                        }}
                     />
                     <Text style={styles.errorText}>{errors.weight}</Text>
 
-                    <Text> Approximate Height (in) </Text>
+                    {/* <Text> Approximate Height (in) </Text>
                     <Textfield
                         value={petForm.height.toString()}
                         placeholder={petForm.height.toString()}
                         onChangeText={(newHeight: number) => {
                             setPetForm((prevState: CreatePetForm) => ({ ...prevState, height: newHeight }))
                             //                             setHeight(Number(height))
+                        }}
+                    /> */}
+                    <Text> Approximate Height (in) </Text>
+                    <Input 
+                        clearButtonMode={"always"}
+                        size={"large"}
+                        value={petForm.height.toString()}
+                        style={styles.createPetBox}
+                        placeholder="Height (in)"
+                        onChangeText={(newHeight: string) => {
+                            // Parse the input string as a number
+                            const parsedHeight = parseFloat(newHeight);
+                            // Check if the parsed value is a valid number
+                            if (!isNaN(parsedHeight)) {
+                                // Update the state only if the input is a valid number
+                                setPetForm((prevState: CreatePetForm) => ({ ...prevState, height: parsedHeight }));
+                            }
                         }}
                     />
                     <Text style={styles.errorText}>{errors.height}</Text>
