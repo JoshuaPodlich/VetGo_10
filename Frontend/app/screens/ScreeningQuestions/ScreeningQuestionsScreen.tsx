@@ -40,6 +40,8 @@ const ScreeningQuestionsScreen = (props: any) => {
     const [terminate, setTerminate] = useState<any>({ isTerminating: false, showTopText: true })
     const [result, setResult] = useState<any>({ resultPriority: "", doNext: "", firstAidAdvice: "", problem: "" })
     const [error, setError] = useState<any>({ errorText: "" })
+    const [questionList, setQuestionList] = useState<any>([])
+    const [updateReady, setUpdateReady] = useState<any>({ ready: false})
 
 
     const optionChange = (selectedOption: any) => {
@@ -57,11 +59,41 @@ const ScreeningQuestionsScreen = (props: any) => {
     }
 
 
+    const updateQuestionList = async () => {
+        let urlList = BASE_URL + "/screening/session/" + sessionId + "/view"
+        console.log(urlList);
+
+        try{
+        const responseList = await fetch(urlList);
+            const responseBodyList = await responseList.json();
+
+            console.log(responseBodyList);
+            
+            setQuestionList(responseBodyList.answeredDetails);
+        } catch (error: any) {
+    
+            console.error('Error:', error.message);
+        }
+    }
 
 
     useEffect(() => {
         //fetchRoot()
-    }, [])
+        if (questionList.length > 0) {
+            // Now you can safely access questionList and perform actions
+            questionList.forEach((detail: { questionText: any; options: any[] }) => {
+                // Log the question text
+                console.log('Question:', detail.questionText);
+                
+                // Iterate over each option in the "options" array
+                detail.options.forEach((option: { optionText: any }) => {
+                    // Log the option text
+                    console.log('Option:', option.optionText);
+                });
+            });
+        }
+    }, [questionList])
+
 
     const fetchRoot = async () => {
         //setLoading(true)
@@ -89,13 +121,13 @@ const ScreeningQuestionsScreen = (props: any) => {
             setTerminate({ isTerminating: data.options.some((option: { isTerminating: any }) => option.isTerminating), showTopText: true})
             setAnswer({ selectedOptionId: "" });
 
+            //setUpdateReady("Now");
+            //updateQuestionList();
+
         } catch (error: any) {
         
             console.error('Error:', error.message);
         }
-
-
-
 
 
     }
@@ -108,7 +140,9 @@ const ScreeningQuestionsScreen = (props: any) => {
         else
         {
             setError({errorText: ""})
+            setUpdateReady({Ready: true});
             let url = BASE_URL + "/screening/session/" + sessionId + "/process-option/" + answer.selectedOptionId
+            
 
             console.log("Url: " + url) 
             try{
@@ -119,6 +153,9 @@ const ScreeningQuestionsScreen = (props: any) => {
                 const responseBody = await response.json();
                 //console.log(responseBody);
                 //console.log(terminate.isTerminating)
+
+                updateQuestionList();
+
                 if(terminate.isTerminating)
                 {
                     setResult({resultPriority: responseBody.resultPriority, doNext: responseBody.doNext, firstAidAdvice: responseBody.firstAidAdvice, problem: responseBody.problem})
@@ -140,6 +177,7 @@ const ScreeningQuestionsScreen = (props: any) => {
                 console.error('Error:', error.message);
             }
         }
+
     }
 
 
@@ -147,35 +185,65 @@ const ScreeningQuestionsScreen = (props: any) => {
     return (
         <SafeAreaView style={styles.loginBackground}>
             {!terminate.showTopText ? null : (
-                    
-            <View style={{ width: "100%", marginTop: "10%", flex: 1, alignItems: "center" }}>
                 
-                <Text style={{ color: 'black', fontWeight: "bold", fontSize: 26, textAlign: 'center', paddingBottom: 15 }}> {question.questionText}</Text>
+            <ScrollView contentContainerStyle={{ flexGrow: 1}}>
+                <View style={{ width: "100%", marginTop: "10%", flex: 1, alignItems: "center" }}>
+                    {updateReady.Ready ? null : (
+                        <View style={{ width: "100%", marginTop: "10%", flex: 1, alignItems: "center" }}>
+                            <Text style={{ color: 'black', fontWeight: "bold", fontSize: 26, textAlign: 'center', paddingBottom: 15 }}> {question.questionText}</Text>
 
-                <Dropdown
-                            data={options.map((option: any) => ({ label: option.optionText, value: option.optionId }))}
-                            value={answer.selectedOptionId}
-                            onChange={optionChange}
-                            style={[
-                                styles.ScreeningDropDown,
-                                { width: "97%", padding: 5, borderRadius: 10, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 1, color: colors.background_Grey }
-                            ]}
-                            placeholder='Select Answer' labelField={"label"} valueField={"value"}    />
+                            <Dropdown
+                                data={options.map((option: any) => ({ label: option.optionText, value: option.optionId }))}
+                                value={answer.selectedOptionId}
+                                onChange={optionChange}
+                                style={[
+                                    styles.ScreeningDropDown,
+                                    { width: "97%", padding: 5, borderRadius: 10, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 1, color: colors.background_Grey }
+                                ]}
+                                placeholder='Select Answer' labelField={"label"} valueField={"value"}    />
 
-                <Text style={styles.errorText}>{error.errorText}</Text> 
+                    <Text style={styles.errorText}>{error.errorText}</Text> 
 
-                <TouchableHighlight style={{ ...styles.mainButton, paddingTop: 15 }}
-                        underlayColor={colors.black_underlay} onPress={processOption}>
-                        <Text style={styles.buttonText}> Submit </Text>
-                </TouchableHighlight>
+                    <TouchableHighlight style={{ ...styles.mainButton, paddingTop: 15 }}
+                            underlayColor={colors.black_underlay} onPress={processOption}>
+                            <Text style={styles.buttonText}> Submit </Text>
+                    </TouchableHighlight>
+                        </View>
 
-
-                <TouchableHighlight style={{ ...styles.mainButton, marginTop: "auto", alignContent: "center" }}
-                        underlayColor={colors.black_underlay} onPress={fetchRoot}>
-                        <Text style={{...styles.buttonText, textAlign: "center"}}> {question.startButtonText} </Text>
-                </TouchableHighlight>
+                    )}
                 
-                </View>
+                    {questionList && questionList.map((question: any, index: any) => (
+                    <View style={{ width: "100%", marginTop: "10%", flex: 1, alignItems: "center" }} key={index}>
+                    <Text style={{ color: 'black', fontWeight: "bold", fontSize: 26, textAlign: 'center', paddingBottom: 15 }}> {question.questionText}</Text>
+
+                    <Dropdown
+                                data={question.options.map((option: any) => ({ label: option.optionText, value: option.optionId }))}
+                                value={answer.selectedOptionId}
+                                onChange={optionChange}
+                                style={[
+                                    styles.ScreeningDropDown,
+                                    { width: "97%", padding: 5, borderRadius: 10, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 1, color: colors.background_Grey }
+                                ]}
+                                placeholder={answer.selectedOptionId ? options.find((opt: any) => opt.optionId === answer.selectedOptionId)?.optionText : 'Select Answer'}
+                                labelField={"label"} valueField={"value"}    />
+
+                    <Text style={styles.errorText}>{error.errorText}</Text> 
+
+                    <TouchableHighlight style={{ ...styles.mainButton, paddingTop: 15 }}
+                            underlayColor={colors.black_underlay} onPress={processOption}>
+                            <Text style={styles.buttonText}> Submit </Text>
+                    </TouchableHighlight>
+                    </View>
+                    ))}
+
+
+                    <TouchableHighlight style={{ ...styles.mainButton, marginTop: "auto", alignContent: "center" }}
+                            underlayColor={colors.black_underlay} onPress={fetchRoot}>
+                            <Text style={{...styles.buttonText, textAlign: "center"}}> {question.startButtonText} </Text>
+                    </TouchableHighlight>
+                
+                    </View>
+                </ScrollView>
             
                 )}
 
