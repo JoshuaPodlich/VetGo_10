@@ -20,42 +20,62 @@ export interface ScreeningQuestionsParams {
 
 export interface Screening {
     selectedOptionId: string
+    selectedOptionText: string
 }
 
 
 const ScreeningQuestionsScreen = (props: any) => {
 
-    //region States
     const params: ScreeningQuestionsParams = props.route.params as ScreeningQuestionsParams
 
-    const [loading, setLoading] = useState(true)
 
-    //const isSubmittingRef = useRef<boolean>(false)
-
-    //endregion
     const [sessionId, setSession] = useState<any>()
     const [question, setQuestion] = useState<any>({ questionText: "Start screening questions using the buttom at the bottom of the page", startButtonText: "Start Screening Questions" })
-    const [answer, setAnswer] = useState<Screening>({ selectedOptionId: "", })
+    const [answer, setAnswer] = useState<Screening>({ selectedOptionId: "", selectedOptionText: ""})
     const [options, setOptions] = useState<any[]>([])
     const [terminate, setTerminate] = useState<any>({ isTerminating: false, showTopText: true })
     const [result, setResult] = useState<any>({ resultPriority: "", doNext: "", firstAidAdvice: "", problem: "" })
     const [error, setError] = useState<any>({ errorText: "" })
     const [questionList, setQuestionList] = useState<any>([])
     const [updateReady, setUpdateReady] = useState<any>({ ready: false})
+    const [processing, setProcessing] = useState<any>();
+    const [selectedOptions, setSelectedOptions] = useState<{ [key: string]: Screening }>({});
+    const [showDropdown, setShowDropdown] = useState<any>({ showDrop: false})
+
+    const urgencyLevel = "After answering the screening questions, you will be shown a result that contains an urgency level, those urgency levels mean the following: \n \n " +
+    "Selfcare: You do not need to visit your vet unless your pet's symptoms get worse \n" +
+    "Middle: You should make an appointment with your vet within the next 24 hours \n" +
+    "High: You should make an appointment with your vet within the next 12 hours \n" +
+    "Urgent: You should contact your vet or visit a pet hospital as soon as possible";
+    
 
 
-    const optionChange = (selectedOption: any) => {
-        setAnswer({ selectedOptionId: selectedOption.value });
-        //console.log(selectedOption)
+    const optionChange = (selectedOption: any, questionId: string) => {
+        setAnswer({ selectedOptionId: selectedOption.value, selectedOptionText: selectedOption.label });
+        setSelectedOptions(prevState => ({...prevState,[questionId]: { selectedOptionId: selectedOption.value, selectedOptionText: selectedOption.label }
+        }));
+
         const Terminating = options.find(option => option.optionId === selectedOption.value)?.isTerminating || false;
         setTerminate({ isTerminating: Terminating, showTopText: terminate.showTopText });
         
         //console.log(answer.selectedOptionId)
-        console.log(terminate.showTopText)
+        //console.log(terminate.showTopText)
+        if(processing == 1)
+        setProcessing(0);
+        else
+        setProcessing(1);
+        //processOption();
       };
+
+      useEffect(() => {
+        // Call processOption after all the dependent state variables have updated
+        console.log("Process Option")
+        processOption();
+    }, [processing]);
 
     const backToQuestion = () => {
         setTerminate({ showTopText: true})
+        updateQuestionList();
     }
 
 
@@ -77,6 +97,7 @@ const ScreeningQuestionsScreen = (props: any) => {
     }
 
 
+    /*
     useEffect(() => {
         //fetchRoot()
         if (questionList.length > 0) {
@@ -93,13 +114,12 @@ const ScreeningQuestionsScreen = (props: any) => {
             });
         }
     }, [questionList])
+    */
 
 
     const fetchRoot = async () => {
-        //setLoading(true)
-
-        //setForm(1);
-
+        //console.log(params.petId);
+        setShowDropdown({ showDrop: true});
         let url = BASE_URL + "/screening/start-session/user/" + params.userId + "/pet/1"// + params.petId  //--hardcoded petId for now
 
         console.log('Creating new screening questions session...');
@@ -119,9 +139,10 @@ const ScreeningQuestionsScreen = (props: any) => {
             setOptions(data.options)
             setQuestion({ questionText: data.questionText, startButtonText: "Restart Screening Questions"})
             setTerminate({ isTerminating: data.options.some((option: { isTerminating: any }) => option.isTerminating), showTopText: true})
-            setAnswer({ selectedOptionId: "" });
+            //setAnswer({ selectedOptionId: "", selectedOptionText: answer.selectedOptionText });
+            setSelectedOptions({});
 
-            //setUpdateReady("Now");
+            setUpdateReady({Ready: false});
             //updateQuestionList();
 
         } catch (error: any) {
@@ -155,8 +176,8 @@ const ScreeningQuestionsScreen = (props: any) => {
                 //console.log(terminate.isTerminating)
 
                 updateQuestionList();
-
-                if(terminate.isTerminating)
+                console.log("terminate: " + terminate.isTerminating)
+                if(terminate.isTerminating || responseBody.options == null)
                 {
                     setResult({resultPriority: responseBody.resultPriority, doNext: responseBody.doNext, firstAidAdvice: responseBody.firstAidAdvice, problem: responseBody.problem})
                     setTerminate({ showTopText: false})
@@ -170,7 +191,7 @@ const ScreeningQuestionsScreen = (props: any) => {
                 setOptions(responseBody.options)
                 setQuestion({ questionText: responseBody.questionText, startButtonText: "Restart Screening Questions"})
                 setTerminate({ isTerminating: responseBody.options.some((option: { isTerminating: any }) => option.isTerminating), showTopText: true})
-                setAnswer({ selectedOptionId: "" })
+                //setAnswer({ selectedOptionId: "", selectedOptionText: answer.selectedOptionText })
                 }
             } catch (error: any) {
         
@@ -192,49 +213,64 @@ const ScreeningQuestionsScreen = (props: any) => {
                         <View style={{ width: "100%", marginTop: "10%", flex: 1, alignItems: "center" }}>
                             <Text style={{ color: 'black', fontWeight: "bold", fontSize: 26, textAlign: 'center', paddingBottom: 15 }}> {question.questionText}</Text>
 
+                            {!showDropdown.showDrop && (
+                                <Text style={{ color: 'black', fontWeight: "bold", fontSize: 22, textAlign: 'center', paddingBottom: 15 }}> {urgencyLevel} </Text>
+                            )}
+                            
+                            { showDropdown.showDrop && (
                             <Dropdown
                                 data={options.map((option: any) => ({ label: option.optionText, value: option.optionId }))}
-                                value={answer.selectedOptionId}
-                                onChange={optionChange}
+                                value={selectedOptions['first']?.selectedOptionId || ""}
+                                onChange={(option: any) => optionChange(option, 'first')}
                                 style={[
                                     styles.ScreeningDropDown,
-                                    { width: "97%", padding: 5, borderRadius: 10, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 1, color: colors.background_Grey }
+                                    { width: "97%", padding: 5, borderRadius: 20, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 2, color: colors.background_Grey }
                                 ]}
                                 placeholder='Select Answer' labelField={"label"} valueField={"value"}    />
 
-                    <Text style={styles.errorText}>{error.errorText}</Text> 
-
-                    <TouchableHighlight style={{ ...styles.mainButton, paddingTop: 15 }}
-                            underlayColor={colors.black_underlay} onPress={processOption}>
-                            <Text style={styles.buttonText}> Submit </Text>
-                    </TouchableHighlight>
+                                )}
                         </View>
 
                     )}
-                
-                    {questionList && questionList.map((question: any, index: any) => (
-                    <View style={{ width: "100%", marginTop: "10%", flex: 1, alignItems: "center" }} key={index}>
-                    <Text style={{ color: 'black', fontWeight: "bold", fontSize: 26, textAlign: 'center', paddingBottom: 15 }}> {question.questionText}</Text>
 
-                    <Dropdown
-                                data={question.options.map((option: any) => ({ label: option.optionText, value: option.optionId }))}
-                                value={answer.selectedOptionId}
-                                onChange={optionChange}
-                                style={[
-                                    styles.ScreeningDropDown,
-                                    { width: "97%", padding: 5, borderRadius: 10, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 1, color: colors.background_Grey }
-                                ]}
-                                placeholder={answer.selectedOptionId ? options.find((opt: any) => opt.optionId === answer.selectedOptionId)?.optionText : 'Select Answer'}
-                                labelField={"label"} valueField={"value"}    />
+                    
+                    
+                    {updateReady.Ready && questionList && questionList.map((question: any, index: any) => (
+                        <View style={{ width: "100%", marginTop: "10%", flex: 1, alignItems: "center" }} key={index}>
+                        <Text style={{ color: 'black', fontWeight: "bold", fontSize: 26, textAlign: 'center', paddingBottom: 5 }}> {question.questionText}</Text>
 
-                    <Text style={styles.errorText}>{error.errorText}</Text> 
+        
+                    {question.options.length === 2 ? (
+                        <View style={{ flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
+                            {question.options.map((option: any) => (
+                                <TouchableHighlight
+                                    key={option.optionId}
+                                    style={{ ...styles.mainButton, backgroundColor: selectedOptions[question.questionId]?.selectedOptionText === option.optionText ? 'black' : colors.primary_Blue, marginTop: "auto", alignContent: "center", width: '35%' }}
+                            onPress={() => optionChange({ value: option.optionId, label: option.optionText }, question.questionId)}
+                                >
+                                    <Text style={{ color: colors.white, textAlign: 'center' }}>{option.optionText}</Text>
+                                 </TouchableHighlight>
+                        ))}
+                        </View>
+                        ) : (
+                        <Dropdown
+                            data={question.options.map((option: any) => ({ label: option.optionText, value: option.optionId }))}
+                            value={selectedOptions['first']?.selectedOptionId || ""}
+                            onChange={(option: any) => optionChange(option, question.questionId)}
+                            style={[
+                                styles.ScreeningDropDown,
+                                { width: "97%", padding: 25, borderRadius: 20, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 2, color: colors.background_Grey }
+                            ]}
+                            placeholder={selectedOptions[question.questionId]?.selectedOptionText || "Select Answer"}
+                            labelField={"label"} valueField={"value"}    
+                            />
+                            )}
 
-                    <TouchableHighlight style={{ ...styles.mainButton, paddingTop: 15 }}
-                            underlayColor={colors.black_underlay} onPress={processOption}>
-                            <Text style={styles.buttonText}> Submit </Text>
-                    </TouchableHighlight>
-                    </View>
-                    ))}
+                        </View>
+                        ))}
+
+                    
+                    
 
 
                     <TouchableHighlight style={{ ...styles.mainButton, marginTop: "auto", alignContent: "center" }}
