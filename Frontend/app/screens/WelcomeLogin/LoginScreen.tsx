@@ -75,18 +75,18 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
     //TODO: change the navigation
     //TODO: change the error message
     async function submitLogin() {
-                 let body = {"email": email, "password": password};
+        let body = { "email": email, "password": password };
 
-    
+
         try {
             console.log('Submitting login request...');
-            
-         let url = BASE_URL + "/user/login";
-    console.log('URL:', url);
-    
+
+            let url = BASE_URL + "/user/login";
+            console.log('URL:', url);
+
             //const body = { emailJson, passwordJson };
             console.log('Request body:', body);
-    
+
 
             const response = await fetch(url, {
                 method: 'POST',
@@ -95,73 +95,75 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
                 },
                 body: JSON.stringify(body)
             });
-    
-          
-console.log('Response status:', response.status);
-console.log('Response status text:', response.statusText);
 
-const responseBody = await response.json(); // Parse the response body into JSON
-console.log('Response Body:', responseBody);
-console.log('LOGIN SUCCESSFUL LETS GO'); 
+            console.log('Response status:', response.status);
+            console.log('Response status text:', response.statusText);
+
+            const responseBody = await response.json(); // Parse the response body into JSON
+            console.log('Response Body:', responseBody);
+            console.log('LOGIN SUCCESSFUL LETS GO');
             let lat = 0;
-            let long =0;
-if (lat === undefined) {
-     lat = 0;
-}
-if (long === undefined) {
-     long = 0;
-}
+            let long = 0;
+            let userIsVet = false;
 
-let params = {
-    userId: responseBody.id,
-    userIsVet: false,
-    latitude: lat, // Add the missing latitude property
-    longitude: long
-};
-console.log('params:', params);
-props.navigation.navigate("Location", params);
+            if (lat === undefined) {
+                lat = 0;
+            }
+            if (long === undefined) {
+                long = 0;
+            }
 
+            if (responseBody.role === "owner") {
+                userIsVet = false;
+            } else if (responseBody.role === "vet") {
+                userIsVet = true;
+            }
 
+            let params = {
+                userId: responseBody.id,
+                userIsVet: userIsVet,
+                latitude: 50, // Add the missing latitude property
+                longitude: 50
+            };
+            console.log('params:', params);
+            props.navigation.navigate("Location", params);
 
-
-            
-            
         } catch (error: any) {
             console.error('Login error:', error.message);
             // Handle login error, e.g., display an error message to the user
         }
 
     }
-    
+
 
     // async function submitLogin() {
     //     isSubmittingRef.current = true;
-    
+
     //     let body = {"email": email, "password": password};
     //     let url = BASE_URL + "/user/login";
     //     console.log("submitLogin: url: ", url);
     //     console.log("submitLogin: body: ", body);
 
     //     try {
-    //         let response = await fetch(url, { 
-    //             method: 'POST', 
+    //         let response = await fetch(url, {
+    //             method: 'POST',
     //             body: JSON.stringify(body),
     //             headers: {
     //                 'Content-Type': 'application/json'
     //             }
     //         });
     //         console.log("submitLogin: response: ", response);
-    
+
     //         if (!response.ok) {
     //             throw new Error('Invalid login credentials');
     //         }
-    
+
     //         let responseJson = await response.json();
     //         let params = {
     //             userId: responseJson.id,
     //             userIsVet: responseJson.vetLicense ? true : false
     //         };
-    
+
     //         props.navigation.navigate("Location", params);
     //         isSubmittingRef.current = false;
     //     } catch (error) {
@@ -170,15 +172,15 @@ props.navigation.navigate("Location", params);
     //         isSubmittingRef.current = false;
     //     }
     // }
-    
+
 
     //TODO: Add forgot password
-    //TODO forgot password has not been tested 
+    //TODO forgot password has not been tested
     return (
         <SafeAreaView style={styles.loginBackground}>
             <ScrollView>
-                <Logo/>
-                <View style={{ width: "80%", marginTop: "5%", flex: 1, alignSelf: "center"}}>
+                <Logo />
+                <View style={{ width: "80%", marginTop: "5%", flex: 1, alignSelf: "center" }}>
                     <View style={styles.signUpLoginGroup}>
                         <Text style={{ fontSize: 30, fontWeight: "bold", paddingBottom: 5 }}>
                             Login
@@ -202,12 +204,12 @@ props.navigation.navigate("Location", params);
                             }}
                         />
                         {passwordError && <Text style={styles.errorText}>{passwordError}</Text>}
-                        
+
 
                         <TouchableOpacity style={styles.forgotPasswordButton} onPress={() => props.navigation.navigate("ForgotPassword")}>
                             <Text style={{ color: colors.action_Orange, paddingBottom: 5, paddingTop: 5 }}>Forgot Password?</Text>
                         </TouchableOpacity>
-                        
+
                     </View>
                 </View>
                 <EntryButtons direction={null} navigation={props.navigation} cmd={handleSubmit} />

@@ -130,4 +130,14 @@ public class ScreeningController {
         }
     }
 
+    @GetMapping("/session/get/{screensessionId}")
+    public ResponseEntity<?> getSessionResultFromSession(@PathVariable Long screenSessionId) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(screeningService.getSessionResult(screenSessionId));
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 }

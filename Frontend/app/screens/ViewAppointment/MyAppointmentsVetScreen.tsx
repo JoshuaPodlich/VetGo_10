@@ -127,6 +127,14 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, setAppointmen
         getAppointments(setAppointments)
     }
 
+    const getScreeningResults = async () => {
+        try {
+            setShowDetails(appointmentData.screeningSession)
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
     const getAppointments = async (setAppointments) => {
             try {
                 const appointmentsUrl = BASE_URL + "/appointment/all/vet/" + vetId;
@@ -145,10 +153,16 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, setAppointmen
                 console.log('Appointments Response body:', appointmentsResponseBody);
 
                 setAppointments(appointmentsResponseBody);
+                getScreeningResults();
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
+
+    useEffect(() => {
+        console.log("useEffectScreeningSResults")
+        getScreeningResults()
+    }, [])
 
     return (
         <Card style={{
@@ -165,8 +179,24 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, setAppointmen
             }}>Status: {appointmentData.status ?? ""}</Text>
             <Text style={{
                 marginVertical: 8,
-                display: showDetails ? 'flex' : 'none'
-            }}>Reason for visit: {appointmentData.description ?? ""}</Text>
+                display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
+            }}>Pet's Problem: {appointmentData.screeningSession ? appointmentData.screeningSession.result.problem : ""}</Text>
+            <Text style={{
+                marginVertical: 8,
+                display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
+            }}>Priority: {appointmentData.screeningSession ? appointmentData.screeningSession.result.resultPriority : ""}</Text>
+            <Text style={{
+                marginVertical: 8,
+                display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
+            }}>First Aid Advice: {appointmentData.screeningSession ? appointmentData.screeningSession.result.firstAidAdvice : ""}</Text>
+            <Text style={{
+                marginVertical: 8,
+                display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
+            }}>Latitude: {appointmentData.screeningSession ? appointmentData.latitude : ""}</Text>
+            <Text style={{
+                marginVertical: 8,
+                display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
+            }}>Longitude: {appointmentData.screeningSession ? appointmentData.longitude : ""}</Text>
             <Layout style={{
                 flexDirection: 'row',
                 justifyContent: 'flex-end',
@@ -177,7 +207,7 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, setAppointmen
                 }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
                 <Button style={{
                     marginHorizontal: 4,
-                }} size='small' onPress={() => setShowDetails(s => !s)}><Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
+                }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
 
             </Layout>
         </Card >
@@ -223,6 +253,14 @@ const AvailableAppointmentCard = ({ key, appointmentData, petName, vetId, setApp
         }
     };
 
+     const getScreeningResults = async () => {
+            try {
+                setShowDetails(appointmentData.screeningSession)
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
     return (
         <Card style={{
             margin: 10,
@@ -245,6 +283,29 @@ const AvailableAppointmentCard = ({ key, appointmentData, petName, vetId, setApp
                 justifyContent: 'flex-end',
                 marginTop: 16,
             }}>
+            <Text style={{
+                marginVertical: 8,
+                display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
+            }}>Pet's Problem: {appointmentData.screeningSession ? appointmentData.screeningSession.result.problem : ""}</Text>
+            <Text style={{
+                marginVertical: 8,
+                display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
+            }}>Priority: {appointmentData.screeningSession ? appointmentData.screeningSession.result.resultPriority : ""}</Text>
+            <Text style={{
+                marginVertical: 8,
+                display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
+            }}>First Aid Advice: {appointmentData.screeningSession ? appointmentData.screeningSession.result.firstAidAdvice : ""}</Text>
+            <Text style={{
+                marginVertical: 8,
+                display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
+            }}>Latitude: {appointmentData.screeningSession ? appointmentData.latitude : ""}</Text>
+            <Text style={{
+                marginVertical: 8,
+                display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
+            }}>Longitude: {appointmentData.screeningSession ? appointmentData.longitude : ""}</Text>
+                <Button style={{
+                    marginHorizontal: 4,
+                }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
                 <Button style={{
                     marginHorizontal: 4,
                 }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
