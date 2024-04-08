@@ -38,6 +38,8 @@ public class UserService implements UserServiceInterface {
     @Autowired
     private TagRepository tagRepository;
 
+    @Autowired RoleRepository roleRepository;
+
     @Autowired
     private PasswordResetTokenRepository passwordResetTokenRepository;
 
@@ -142,15 +144,18 @@ public class UserService implements UserServiceInterface {
         User newUser = user;
 
         if (Objects.equals(userInfo.get("role").asText(), "owner")) {
-            user.setRoles(new Role("OWNER"));
+            Role newRole = new Role("OWNER");
+            user.setRoles(newRole);
             newUser = userRepository.save(user);
 
             Owner owner = new Owner();
             owner.setUser(user);
 
+            roleRepository.save(newRole);
             ownerRepository.save(owner);
         } else if (Objects.equals(userInfo.get("role").asText(), "vet")) {
-            user.setRoles(new Role("VET"));
+            Role newRole = new Role("VET");
+            user.setRoles(newRole);
             newUser = userRepository.save(user);
 
             Vet vet = new Vet();
@@ -160,10 +165,13 @@ public class UserService implements UserServiceInterface {
             vet.setStatus(false);
             vet.setUser(user);
 
+            roleRepository.save(newRole);
             vetRepository.save(vet);
         } else if (Objects.equals(userInfo.get("role").asText(), "vet-owner")) {
-            user.setRoles(new Role("OWNER"));
-            user.setRoles(new Role("VET"));
+            Role newRole1 = new Role("OWNER");
+            Role newRole2 = new Role("VET");
+            user.setRoles(newRole1);
+            user.setRoles(newRole2);
             newUser = userRepository.save(user);
 
             Owner owner = new Owner();
@@ -175,6 +183,8 @@ public class UserService implements UserServiceInterface {
             vet.setStatus(false);
             vet.setUser(user);
 
+            roleRepository.save(newRole1);
+            roleRepository.save(newRole2);
             ownerRepository.save(owner);
             vetRepository.save(vet);
         }
