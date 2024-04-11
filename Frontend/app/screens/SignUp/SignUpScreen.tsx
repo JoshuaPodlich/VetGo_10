@@ -124,10 +124,7 @@ function SignUpScreen(props: any) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, telephone: "Invalid telephone number!" }))
             isValid = false
         }
-        if (!form.role) {
-            setErrors((prevState: SignUpForm) => ({ ...prevState, role: "Role is required!" }))
-            isValid = false
-        }
+
 
         return isValid
     }
@@ -143,7 +140,7 @@ function SignUpScreen(props: any) {
     async function submitSignUpForm() {
         isSubmittingRef.current = true
 
-        let body = {"email": form.email, "password": form.password, "firstName": form.firstname,  "lastName": form.lastname, "telephone": form.telephone, "role": form.role}
+        let body = {"email": form.email, "password": form.password, "firstName": form.firstname,  "lastName": form.lastname, "telephone": form.telephone, "role": "owner"}
 
         try{
         //let url = BASE_URL + "/api/user/register/" + (isVet ? "vet/" : "owner/") + form.username + "/" + form.email + "/" + form.password
@@ -192,7 +189,7 @@ function SignUpScreen(props: any) {
     async function vetSignUp(): Promise<void> {
         isSubmittingRef.current = true
 
-        let body = {"email": form.email, "password": form.password, "firstName": form.firstname,  "lastName": form.lastname, "telephone": form.telephone, "role": form.role}
+        let body = {"email": form.email, "password": form.password, "firstName": form.firstname,  "lastName": form.lastname, "telephone": form.telephone, "role": "owner"}
 
         try{
         let url = BASE_URL + "/user/register"
@@ -312,17 +309,7 @@ function SignUpScreen(props: any) {
 
                             
 
-                            <Dropdown
-                                data={roles}
-                                value={form.role}
-                                onChange={handleRoleChange} // Call handleRoleChange when a role is selected
-                                style={styles.signUpDropDown}
-                                placeholder='Select Role' 
-                                labelField={'label'} 
-                                valueField={'value'}    
-                            />
                             
-                            <Text style={styles.errorText}>{errors.role}</Text>
                     </View>
 
                     <View id={"buttonGroup"} style={styles.signUpButtonGroup}>
