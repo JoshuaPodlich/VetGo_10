@@ -189,6 +189,11 @@ function SignUpScreen(props: any) {
 }
 
 
+    function vetSignUp(): void {
+        
+
+    }
+
     //#endregion
 
     return (
@@ -260,6 +265,10 @@ function SignUpScreen(props: any) {
                             />
                             <Text style={styles.errorText}>{errors.telephone}</Text>
                             
+
+
+                            
+
                             <Dropdown
                                 data={roles}
                                 value={form.role}
@@ -283,6 +292,12 @@ function SignUpScreen(props: any) {
                             underlayColor={colors.brightRed_underlayColor}
                             onPress={() => props.navigation.navigate("Map")}>
                             <Text style={styles.buttonText}> EMERGENCY </Text>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight style={{ ...styles.secondaryButton, marginTop: 20}}
+                            underlayColor={colors.brightRed_underlayColor}
+                            onPress={() => vetSignUp()}>
+                            <Text style={styles.buttonText}> Vet Signup  </Text>
                         </TouchableHighlight>
                     </View>
                 </View>
