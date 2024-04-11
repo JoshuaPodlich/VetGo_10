@@ -7,6 +7,7 @@ import { LocationInterface } from '../shared/Interfaces'
 import { VetAddChargesScreenParams } from '../VetAddCharges/VetAddChargesScreen'
 import { ChangePasswordScreenParams } from '../ChangePassword/ChangePasswordScreen'
 import {UserInfoScreenParams} from '../UserInfo/UserInfoScreen'
+import { vetRegisterInfo } from '../VetLogin/VetLoginScreen'
 
 
 export interface SettingsScreenParams {
@@ -19,6 +20,16 @@ function SettingsScreen(props: any) {
 
     function logout() {
         props.navigation.navigate("Welcome")
+    }
+
+    function vetLoginNavigate() {
+        let vetRegisterInfo: vetRegisterInfo = {
+            userId: params.userId,
+        }
+        console.log(vetRegisterInfo)
+        props.navigation.navigate("VetLogin", vetRegisterInfo)
+
+        
     }
 
     return (
@@ -52,6 +63,12 @@ function SettingsScreen(props: any) {
                     onPress={() => props.navigation.navigate("UserInfo", { ...params } as UserInfoScreenParams)}
                     >
                     <Text style={styles.buttonText}> User Info </Text>
+                </TouchableHighlight>
+
+                <TouchableHighlight style={{ ...styles.secondaryButton }}
+                    underlayColor={colors.black_underlay}
+                    onPress={() => vetLoginNavigate()}>                
+                    <Text style={styles.buttonText}> Vet Login </Text>
                 </TouchableHighlight>
 
                 <TouchableHighlight style={{ ...styles.secondaryButton }}
