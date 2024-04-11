@@ -9,10 +9,14 @@ function VetRegisterScreen({ navigation }: { navigation: any }) {
   const [vetLicense, setVetLicense] = useState('');
   const [vetCompany, setVetCompany] = useState('');
   const [vetPassword, setVetPassword] = useState('');
+  const [vetConfirmPassword, setVetConfirmPassword] = useState('');
+  const [vetImg, setVetImg] = useState('');
+
+
   let error_message = "";
 
   const handleRegister = () => {
-    if(vetID === "" || vetName === "" || vetEmail === "" || vetInsurance === "" || vetLicense === "" || vetCompany === "" || vetPassword === ""){
+    if(vetID === "" || vetName === "" || vetEmail === "" || vetInsurance === "" || vetLicense === "" || vetCompany === "" || vetPassword === "" || vetConfirmPassword === "" || vetImg === ""){
     error_message = "Please fill all the fields";
       return
     }

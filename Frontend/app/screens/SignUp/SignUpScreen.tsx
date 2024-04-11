@@ -189,8 +189,51 @@ function SignUpScreen(props: any) {
 }
 
 
-    function vetSignUp(): void {
+    async function vetSignUp(): Promise<void> {
+        isSubmittingRef.current = true
+
+        let body = {"email": form.email, "password": form.password, "firstName": form.firstname,  "lastName": form.lastname, "telephone": form.telephone, "role": form.role}
+
+        try{
+        let url = BASE_URL + "/user/register"
+
         
+        console.log(body)
+        console.log(url)
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+
+        console.log(response.status)
+
+        const responseBody = await response.json(); 
+        console.log('Response:', response);
+        console.log('Response Body:', responseBody);
+        isSubmittingRef.current = false
+        
+        if(response.status === 200){
+                props.navigation.navigate("VetLogin", {email: form.email})
+        }
+        else if(response.status === 400){
+            const error = await response.text()
+            console.log('Error:', error)
+            Alert.alert("Error", error)
+        }
+    } catch (error: any) {
+        
+        console.error('Error:', error.message);
+    }
+
+
+
+
+
+
+
 
     }
 
