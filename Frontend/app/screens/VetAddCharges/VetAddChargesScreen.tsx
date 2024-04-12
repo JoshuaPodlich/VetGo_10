@@ -28,13 +28,12 @@ interface VetAddChargesForm {
 function VetAddChargesScreen(props: any) {
 
   const priceData = [
-    ['Appointment', '8.00'],
-    ['vaccine No.233', '30.00'],
-    ['Sterilization', '99.00'],
-    ['Euthanasia', '1145.14'],
-    ['Birth help', '107.21'],
-    ['Dental checkup', '11.22'],
-    ['Sex reassignment surgery', '999.99'],
+    ['Appointment', '50.00'],
+    ['Vaccination', '30.00'],
+    ['Sterilization', '100.00'],
+    ['Euthanasia', '400.00'],
+    ['Birth Help', '300.00'],
+    ['Dental Checkup', '75.00'],
   ]
   let htmlPriceData: any = []
   addItemOptions(priceData)
@@ -162,7 +161,6 @@ function VetAddChargesScreen(props: any) {
     let res = await fetch(url, requestOptions)
       .then((response) => response.json())
       .then(responseJson => {
-        console.error("Payment set up successfully, \nDirecting to Review")
         console.log(responseJson)
 
 
@@ -174,7 +172,7 @@ function VetAddChargesScreen(props: any) {
           revieweeLastName: petOwnerLastName,
           revieweeAverageRating: petOwnerAverageRating
         }
-        props.navigation.replace("CreateReview", createReviewParams)
+        props.navigation.replace("MyAppointmentsVet", MyAppointmentsVetScreenParams)
       })
       .catch((error) => {
         console.error("Invalid payment setting")
