@@ -29,6 +29,40 @@ export interface LocationScreenParams {
     longitude: number
 }
 
+const updateOwnerLocation = async (uid: any, location: LocationInterface): Promise<string> => {
+    try {
+        const response = await axios.put(`${BASE_URL}/user/update/location/owner/${uid}`, location, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        return response.data;
+    } catch (error: any) {
+        if (error.response && error.response.data && error.response.data.message) {
+            throw new Error(error.response.data.message);
+        } else {
+            throw new Error("Failed to update the owner's location due to an unexpected error.");
+        }
+    }
+}
+
+const updateVetLocation = async (uid: any, location: LocationInterface): Promise<string> => {
+    try {
+        const response = await axios.put(`${BASE_URL}/user/update/location/vet/${uid}`, location, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        return response.data;
+    } catch (error: any) {
+        if (error.response && error.response.data && error.response.data.message) {
+            throw new Error(error.response.data.message);
+        } else {
+            throw new Error("Failed to update the vet's location due to an unexpected error.");
+        }
+    }
+}
+
 
 function LocationScreen(props: { route: { params: LocationScreenParams }, navigation: any }) {
     const { params } = props.route;
@@ -41,8 +75,8 @@ function LocationScreen(props: { route: { params: LocationScreenParams }, naviga
     console.log("LocationScreen -> params", params)
     let locationMissing = "";
     let locationFound = true;
-    destinationCoords.latitude = 42.032974;
-    destinationCoords.longitude = -93.581543;
+    // destinationCoords.latitude = 42.032974;
+    // destinationCoords.longitude = -93.581543;
     // useEffect(() => {
     //     if (params.latitude === undefined || params.longitude === undefined) {
     //         console.warn("No location saved for the user. Location is required to be sent; it may be null.")
@@ -67,8 +101,22 @@ function LocationScreen(props: { route: { params: LocationScreenParams }, naviga
 
     const handleSubmit = () => {
         if (destinationCoords.latitude === 0 && destinationCoords.longitude === 0) {
-            setError({ location: "Location is required" })
+            setError({ location: "Location is required." })
             return
+        }
+
+        let location: LocationInterface = { latitude: destinationCoords.latitude, 
+                                            longitude: destinationCoords.longitude };
+
+        if (params.userIsVet) {
+            updateVetLocation(params.userId, location)
+            .then(message => console.log(message))
+            .catch(err => console.error(err));
+        }
+        else {                                    
+            updateOwnerLocation(params.userId, location)
+            .then(message => console.log(message))
+            .catch(err => console.error(err));
         }
 
         const homeScreenParams: HomeScreenParams = {

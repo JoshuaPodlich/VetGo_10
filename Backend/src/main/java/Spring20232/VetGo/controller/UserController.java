@@ -122,33 +122,29 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted user");
     }
 
-    @PutMapping(value = "/update/location/owner/{oid}")
+    @PutMapping(value = "/update/location/owner/{uid}")
     public ResponseEntity<?> updateOwnerLocation(@RequestBody LocationCoordinates location,
-                                            @PathVariable("oid") Long oid) {
-
-        Owner owner = ownerRepository.findById(oid).orElse(null);
-        if (owner == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find owner in database");
-
-        owner.setLatitude(location.getLatitude());
-        owner.setLongitude(location.getLongitude());
-        ownerRepository.save(owner);
-        return ResponseEntity.status(HttpStatus.OK).body(userRepository.findById(oid));
+                                                 @PathVariable("uid") Long uid) {
+        try {
+            userService.updateOwnersLocations(uid, location);
+            return ResponseEntity.status(HttpStatus.OK).body("Owner's location has been updated.");
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
 
-    @PutMapping(value = "/update/location/vet/{vid}")
+    @PutMapping(value = "/update/location/vet/{uid}")
     public ResponseEntity<?> updateVetLocation(@RequestBody LocationCoordinates location,
-                                               @PathVariable("vid") Long vid) {
-
-        Vet vet = vetRepository.findById(vid).orElse(null);
-        if (vet == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find owner in database.");
-
-        vet.setLatitude(location.getLatitude());
-        vet.setLongitude(location.getLongitude());
-        vetRepository.save(vet);
-        return ResponseEntity.status(HttpStatus.OK).body(userRepository.findById(vid));
+                                               @PathVariable("uid") Long uid) {
+        try {
+            userService.updateVetsLocations(uid, location);
+            return ResponseEntity.status(HttpStatus.OK).body("Vet's location has been updated.");
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PostMapping(value = "/forgot-password/{uid}")

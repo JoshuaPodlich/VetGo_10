@@ -220,10 +220,20 @@ public class UserService implements UserServiceInterface {
         }
         else if (user.isUserOwner()) {
             userNode.put("role", "owner");
+            Owner owner = ownerRepository.findByUser(user);
+            if (owner == null)
+                throw new NotFoundException("Unable to find owner in database");
+            userNode.put("latitude", owner.getLatitude());
+            userNode.put("longitude", owner.getLongitude());
             return userNode;
         }
         else if (user.isUserVet()) {
             userNode.put("role", "vet");
+            Vet vet = vetRepository.findByUser(user);
+            if (vet == null)
+                throw new NotFoundException("Unable to find owner in database");
+            userNode.put("latitude", vet.getLatitude());
+            userNode.put("longitude", vet.getLongitude());
             return userNode;
         }
         else {
@@ -372,5 +382,24 @@ public class UserService implements UserServiceInterface {
         }
     }
 
+    public void updateOwnersLocations(Long uid, LocationCoordinates loc) {
+        Owner owner = ownerRepository.findByUserId(uid);
+        if (owner == null)
+            throw new NotFoundException("Unable to find owner in database");
+
+        owner.setLatitude(loc.getLatitude());
+        owner.setLongitude(loc.getLongitude());
+        ownerRepository.save(owner);
+    }
+
+    public void updateVetsLocations(Long uid, LocationCoordinates loc) {
+        Vet vet = vetRepository.findByUserId(uid);
+        if (vet == null)
+            throw new NotFoundException("Unable to find vet in database");
+
+        vet.setLatitude(loc.getLatitude());
+        vet.setLongitude(loc.getLongitude());
+        vetRepository.save(vet);
+    }
 
 }
