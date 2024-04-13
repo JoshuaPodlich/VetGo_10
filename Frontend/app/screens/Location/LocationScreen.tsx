@@ -1,25 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import {
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View,
-    Pressable,
-    Alert,
-    TouchableHighlight,
-    TextInput
-} from "react-native"
+import { SafeAreaView, View, Text, StyleSheet } from 'react-native';
 import { Input, Button } from "@ui-kitten/components"
-import * as Location from 'expo-location'
 import { GoogleAutoComplete } from "../shared/Components"
-// import { useStateContext } from '../../utils/stateContext'
-import { UserDetailsParams, UserDetails_Location, UserDetails_User } from '../../utils/params'
-import { LocationScreenNavigationProp, LocationScreenRouteProp } from '../../utils/props'
 import { locationStyles } from "./LocationStyles"
 import { LocationInterface } from '../shared/Interfaces'
 import { HomeScreenParams } from '../Home/HomeScreen'
 import { BASE_URL } from '../shared/Constants'
+import {colors} from "../shared/Colors"
 import axios from 'axios'
 
 export interface LocationScreenParams {
@@ -64,91 +51,59 @@ const updateVetLocation = async (uid: any, location: LocationInterface): Promise
 }
 
 
-function LocationScreen(props: { route: { params: LocationScreenParams }, navigation: any }) {
+function LocationScreen(props: any) {
     const { params } = props.route;
-    const [errors, setError] = useState<any>({})
-    const [destinationCoords, setDestinationCoords] = useState<LocationInterface>({
-        latitude: params.latitude || 0,
-        longitude: params.longitude || 0,
-    })
-    console.log("LocationScreen -> destinationCoords", destinationCoords)
-    console.log("LocationScreen -> params", params)
-    let locationMissing = "";
-    let locationFound = true;
-    // destinationCoords.latitude = 42.032974;
-    // destinationCoords.longitude = -93.581543;
-    // useEffect(() => {
-    //     if (params.latitude === undefined || params.longitude === undefined) {
-    //         console.warn("No location saved for the user. Location is required to be sent; it may be null.")
-    //     }
-    // }, [])
+    const [location, setLocation] = useState({
+      latitude: params.latitude || 0,
+      longitude: params.longitude || 0,
+      address: '',
+    });
+    const [error, setError] = useState('');
 
-
-
-    const fetchDestinationCoords = (latitude: number, longitude: number) => {
-        setDestinationCoords({ latitude, longitude })
-    }
-    if (destinationCoords.latitude === undefined || destinationCoords.longitude === undefined) {
-        console.log("No location saved for the user. Location is required to be sent; it may be null.")
-        locationMissing = "Location not found. Please enter a location to continue."
-        locationFound = false;
-    }
-    else {
-        console.log("Location found for the user.")
-        locationMissing = ""
-        locationFound = true;
-    }
-
-    const handleSubmit = () => {
-        if (destinationCoords.latitude === 0 && destinationCoords.longitude === 0) {
-            setError({ location: "Location is required." })
-            return
+    useEffect(() => {
+        if (location.address) { // Ensure address is not empty
+            handleSubmit();
         }
-
-        let location: LocationInterface = { latitude: destinationCoords.latitude, 
-                                            longitude: destinationCoords.longitude };
-
+    }, [location]);
+  
+    const fetchAddress = (lat: number, lng: number, address: string) => {
+      setLocation({ latitude: lat, longitude: lng, address });
+    };
+  
+    const handleSubmit = async () => {
+      if (!location.address) {
+        setError('Location is required.');
+        return;
+      }
+      console.log(location);
+      try {
         if (params.userIsVet) {
-            updateVetLocation(params.userId, location)
-            .then(message => console.log(message))
-            .catch(err => console.error(err));
+          await updateVetLocation(params.userId, location);
+        } else {
+          await updateOwnerLocation(params.userId, location);
         }
-        else {                                    
-            updateOwnerLocation(params.userId, location)
-            .then(message => console.log(message))
-            .catch(err => console.error(err));
-        }
-
-        const homeScreenParams: HomeScreenParams = {
-            userId: params.userId,
-            userIsVet: params.userIsVet,
-            location: destinationCoords
-        }
-
-        props.navigation.navigate("Home", homeScreenParams)
-    }
+        props.navigation.navigate("Home", {
+          userId: params.userId,
+          userIsVet: params.userIsVet,
+          location: location,
+        });
+      } catch (err) {
+        console.error(err);
+        setError('Error updating location. Please try again.');
+      }
+    };
 
     return (
-        <SafeAreaView style={locationStyles.background}>
-            <View style={locationStyles.container}>
-                <Text style={locationStyles.titleText}>Location</Text>
-                <View style={{ minWidth: "100%", height: 300 }}>
-                    <Text style={locationStyles.titleText}>If you would like to change location, enter here</Text>
-                    <GoogleAutoComplete
-                        placeholderText="Enter Destination Location"
-                        fetchAddress={fetchDestinationCoords}
-                    />
-                    <Text style={locationStyles.errorText}>{errors.location}</Text>
-                </View>
-                {/* if locationMissing is true display error message in red */}
-                <Text style={locationStyles.errorText}>{locationMissing}</Text>
-                
-                <Button style={locationFound ? locationStyles.submitButton : locationStyles.submitButtonDisabled} onPress={handleSubmit} disabled={!locationFound}>
-                    <Text style={locationFound ? locationStyles.submitButtonText : locationStyles.submitButtonTextDisabled}>Submit</Text>
-                </Button>
-            </View>
+        <SafeAreaView style={{ flex: 1, padding: 20}}> 
+          <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10, marginTop: 5, textAlign: 'center' }}>
+            Set Appointment Address
+          </Text>
+          <GoogleAutoComplete 
+            placeholderText="Enter appointment address" 
+            fetchAddress={fetchAddress} 
+          />
         </SafeAreaView>
-    )
+    );
 }
 
 export default LocationScreen

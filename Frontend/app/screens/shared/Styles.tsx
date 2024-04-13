@@ -162,16 +162,16 @@ export const styles: any = StyleSheet.create({
     GAC_Container: {
         flex: 1,
     },
-    GAC_ContainerStyle: {
-        backgroundColor: colors.white,
-        borderColor: colors.grey,
-        borderRadius: 3,
-        borderWidth: 1,
-        fontSize: 20,
-        fontWeight: "normal",
-        height: 50,
-        width: "100%",
-    },
+    // GAC_ContainerStyle: {
+    //     backgroundColor: colors.white,
+    //     borderColor: colors.grey,
+    //     borderRadius: 3,
+    //     borderWidth: 1,
+    //     fontSize: 20,
+    //     fontWeight: "normal",
+    //     height: 50,
+    //     width: "100%",
+    // },
     //endregion
 
 
@@ -395,8 +395,61 @@ export const styles: any = StyleSheet.create({
         color: colors.white,
         fontSize: 18,
         fontWeight: 'bold',
-    },
-        
-
-
+    },        
 })
+
+export const autoCompleteStyles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    textInput: {
+      height: 38,
+      color: colors.black,
+      fontSize: 16,
+      flex: 1,
+      backgroundColor: '#C8C8C8',
+      borderRadius: 4,
+      paddingHorizontal: 10,
+    },
+    listView: {
+        backgroundColor: colors.background,
+        marginTop: 0,
+        marginLeft: 0,
+        marginRight: 0,
+        elevation: 0,
+        shadowOpacity: 0,
+    },
+    separator: {
+      height: 1,
+      backgroundColor: '#ddd',
+    },
+    row: {
+      backgroundColor: colors.background,
+      flexDirection: 'row',
+      alignItems: 'center',
+      height: 45,
+    },
+    icon: {
+      width: 30,
+      height: 30,
+      marginRight: 5,
+    },
+    placeName: {
+      fontSize: 16,
+      fontWeight: '700'
+    },
+    placeAddress: {
+      fontSize: 12,
+      color: '#707070',
+    },
+    clearButton: {
+        position: 'absolute',
+        right: 10,
+        top: '50%',
+        marginTop: -10, // Half of the icon size to center it
+    },
+  });
+
+
+  
+  

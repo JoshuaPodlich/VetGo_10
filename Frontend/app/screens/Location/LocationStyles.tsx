@@ -1,80 +1,49 @@
 import {StyleSheet} from "react-native"
 import {colors} from "../shared/Colors"
 
-export const locationStyles: any = StyleSheet.create({
+export const locationStyles = StyleSheet.create({
     background: {
-        backgroundColor: "#fefafd",
         flex: 1,
-        justifyContent: "flex-start", //main axis - currently col
-        alignItems: "center", // secondary axis
-        alignContent: "center", //only takes effect when wrapping occur
-    },
-    descriptionBox: {
-        fontSize: 20,
-        fontWeight: "normal",
-        width: "100%",
-        height: 50,
-        borderWidth: 1,
-        borderRadius: 3,
-        backgroundColor: "#ffffff",
+        backgroundColor: colors.background, // Light grey or white
     },
     container: {
         flex: 1,
-        width: "80%",
-        justifyContent: "flex-start",
-        alignItems: "center",
-
-        marginVertical: 15,
-    },
-    create: {
-        backgroundColor: "#68FD53",
-        borderColor: "#68FD53",
-
-        width: 230,
-        borderRadius: 10,
-        justifyContent: "center",
-        alignItems: "center",
-
-        margin: 5,
-        padding: 15,
-    },
-    errorText: {
-        color: "red",
-        fontSize: 16,
-        paddingTop: 2,
-        paddingBottom: 4,
-        flexShrink: 1
+        padding: 20,
+        justifyContent: 'space-around',
+        alignItems: 'center',
     },
     titleText: {
-        fontSize: 20,
-        fontWeight: "bold",
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        color: colors.primary,
+        textAlign: 'center',
     },
-
+    errorText: {
+        color: colors.error,
+        fontSize: 14,
+        marginTop: 5,
+        textAlign: 'center',
+    },
     submitButton: {
-        alignItems: "center",
-        borderRadius: 10,
-        justifyContent: "center",
-        margin: 5,
-        padding: 15,
-        width: 230,
-        backgroundColor: colors.action_Green,
+        backgroundColor: colors.primary,
+        padding: 10,
+        borderRadius: 5,
+        width: '100%',
     },
-
     submitButtonDisabled: {
-        alignItems: "center",
-        borderRadius: 10,
-        justifyContent: "center",
-        margin: 5,
-        padding: 15,
-        width: 230,
-        backgroundColor: colors.grey,
+        backgroundColor: colors.disabled,
+        padding: 10,
+        borderRadius: 5,
+        width: '100%',
     },
-
     submitButtonText: {
-        color: "white",
+        color: colors.white,
+        fontSize: 16,
     },
     submitButtonTextDisabled: {
-        color: "black", // Adjust the opacity of the text color for disabled state
+        color: colors.lightGrey,
+        fontSize: 16,
     },
+});
 
-})
