@@ -19,23 +19,31 @@ export const LocationDisplay: React.FC<LocationDisplayProps> = ({ userId, userIs
     const [locationName, setLocationName] = useState<String>("")
 
     useEffect(() => {
-        getLocationString(location.latitude, location.longitude).then((locationString) =>
-            setLocationName(locationString))
-    }, [])
+        getLocationString(location.latitude, location.longitude).then(setLocationName);
+    }, [location.latitude, location.longitude]);
 
-    return <View>
-        <View style={{ display: 'flex' }}>
-            <Text style={{ fontSize: 15, fontWeight: 'bold', width: "100%" }}>{locationName}</Text>
-            <Text style={{ fontSize: 12, textDecorationLine: 'underline' }} onPress={() => navigation.navigate('Location', { userId: userId, userIsVet: userIsVet, location: location } as LocationScreenParams)}>Tap to change</Text>
+    return (
+        <View>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', width: "90%", flexShrink: 1 }}>{locationName}</Text>
+            <Text style={{ fontSize: 12, textDecorationLine: 'underline' }} onPress={() => navigation.navigate('Location', { userId, userIsVet, location })}>
+                Tap to change
+            </Text>
         </View>
-
-    </View>
+    );
 }
 
-export const getLocationString = async (latitude: number, longitude: number) => {
-    const res = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=true&key=${GOOGLE_MAPS_APIKEY}`)
-    const locationString = res.data.plus_code.compound_code
-    const splitLocationString = locationString.split(" ")
-    return splitLocationString.slice(1, splitLocationString.length).join(" ")
+export const getLocationString = async (latitude: number, longitude: number): Promise<string> => {
+    try {
+        const response = await axios.get(
+            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_MAPS_APIKEY}`
+        );
+        if (response.data && response.data.results.length > 0) {
+            return response.data.results[0].formatted_address;
+        } else {
+            throw new Error('No results found');
+        }
+    } catch (error) {
+        console.error("Error fetching location string:", error);
+        return "Location unavailable";
+    }
 }

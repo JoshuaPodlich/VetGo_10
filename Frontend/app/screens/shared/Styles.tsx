@@ -395,6 +395,16 @@ export const styles: any = StyleSheet.create({
         color: colors.white,
         fontSize: 18,
         fontWeight: 'bold',
+    },
+    loadingOverlay: {
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(255,255,255,0.8)',
+        alignItems: 'center',
+        justifyContent: 'center'
     },        
 })
 
@@ -446,7 +456,7 @@ export const autoCompleteStyles = StyleSheet.create({
         position: 'absolute',
         right: 10,
         top: '50%',
-        marginTop: -10, // Half of the icon size to center it
+        marginTop: -10,
     },
   });
 

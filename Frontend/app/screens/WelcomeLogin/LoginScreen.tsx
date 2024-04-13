@@ -113,18 +113,20 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
             if (long === undefined) {
                 long = 0;
             }
-
-            if (responseBody.role === "owner") {
-                userIsVet = false;
-            } else if (responseBody.role === "vet") {
+            
+            if (responseBody.role === "vet") {
                 userIsVet = true;
+            }
+
+            const location: LocationInterface = {
+                latitude: lat,
+                longitude: long
             }
 
             let params = {
                 userId: responseBody.id,
                 userIsVet: userIsVet,
-                latitude: lat,
-                longitude: long
+                location: location
             };
             console.log('params:', params);
 
@@ -133,24 +135,12 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
                 props.navigation.navigate("Location", params);
             }
             // Otherwise, the user may proceed to the home screen.
-            else {
-                const userLocation: LocationInterface = {
-                    longitude: long,
-                    latitude: lat
-                };
-
-                const homeScreenParams: HomeScreenParams = {
-                    userId: params.userId,
-                    userIsVet: params.userIsVet,
-                    location: userLocation
-                }
-        
-                props.navigation.navigate("Home", homeScreenParams)
+            else {        
+                props.navigation.navigate("Home", params)
             }
 
         } catch (error: any) {
             console.error('Login error:', error.message);
-            // Handle login error, e.g., display an error message to the user
         }
 
     }

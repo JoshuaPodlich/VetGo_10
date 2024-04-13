@@ -23,6 +23,7 @@ import { SettingsScreenParams } from '../SettingsScreen/SettingsScreen'
 import { colors } from '../shared/Colors'
 import axios from 'axios'
 import { ScreeningQuestionsParams } from '../ScreeningQuestions/ScreeningQuestionsScreen'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export interface HomeClientScreenParams {
     userId: string,
@@ -201,7 +202,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
         <SafeAreaView style={{ flex: 1 }} >
             <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: 'auto', justifyContent: 'space-between' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 200, marginLeft: 20, marginVertical: 20 }}>
-                    <FontAwesome5 name='location-arrow' color={colors.blue} size={24} style={{ marginRight: 10 }} />
+                    <MaterialIcons name="location-pin" size={40} color={colors.black} />
                     <LocationDisplay location={params.location} navigation={props.navigation} userId={params.userId} userIsVet={params.userIsVet} />
                 </View>
             </View>

@@ -57,7 +57,7 @@ export const GoogleAutoComplete = (props: GoogleAutoCompleteProps) => {
 
     const renderRow = (data: any) => (
         <View style={autoCompleteStyles.row}>
-        <MaterialIcons name="place" size={20} color={colors.black} style={autoCompleteStyles.icon} />
+        <MaterialIcons name="place" size={25} color={colors.black} style={autoCompleteStyles.icon} />
           <View>
             <Text style={autoCompleteStyles.placeName}>{data.structured_formatting.main_text}</Text>
             <Text style={autoCompleteStyles.placeAddress}>{data.structured_formatting.secondary_text}</Text>
