@@ -106,7 +106,7 @@ function LocationScreen(props: any) {
     }
 
     const handleInfoPress = () => {
-        Alert.alert("Information", "Set your preffered location from which you plan on travelling to a pet owner's residence, such as your office.");
+        Alert.alert("Information", "Set your preferred location from which you plan on traveling to a pet owner's residence, such as your office.");
     };
     
   
