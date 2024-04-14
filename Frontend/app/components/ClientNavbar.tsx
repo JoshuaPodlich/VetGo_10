@@ -77,48 +77,28 @@ const ClientNavbar: React.FC<ClientNavbarParams> = ({ userId, userIsVet, locatio
 
     return (
 <BottomNavigation
-    style={stylesbottom.bottomNavigation}
     selectedIndex={selectedIndex}
     onSelect={handleTabSelect}
 >
     <BottomNavigationTab
         title='Pets'
-        icon={<FontAwesome5 name='dog' color={selectedIndex === 0 ? colors.blue : colors.darkGrey} size={24} />}
-        style={[stylesbottom.bottomNavigationTab, selectedIndex === 0 && stylesbottom.selectedTab]}
+        icon={() => <FontAwesome5 name='dog' color={selectedIndex === 0 ? colors.blue : colors.darkGrey} size={24} />}
     />
     <BottomNavigationTab
         title='Appointments'
-        icon={<FontAwesome5 name='calendar-alt' color={selectedIndex === 1 ? colors.blue : colors.darkGrey} size={24} />}
-        style={[stylesbottom.bottomNavigationTab, selectedIndex === 1 && stylesbottom.selectedTab]}
+        icon={() => <FontAwesome5 name='calendar-alt' color={selectedIndex === 1 ? colors.blue : colors.darkGrey} size={24} />}
     />
     <BottomNavigationTab
         title='Veterinarians'
-        icon={<FontAwesome5 name='user-md' color={selectedIndex === 2 ? colors.blue : colors.darkGrey} size={24} />}
-        style={[stylesbottom.bottomNavigationTab, selectedIndex === 2 && stylesbottom.selectedTab]}
+        icon={() => <FontAwesome5 name='user-md' color={selectedIndex === 2 ? colors.blue : colors.darkGrey} size={24} />}
     />
     <BottomNavigationTab
         title='Settings'
-        icon={<FontAwesome5 name='cog' color={selectedIndex === 3 ? colors.blue : colors.darkGrey} size={24} />}
-        style={[stylesbottom.bottomNavigationTab, selectedIndex === 3 && stylesbottom.selectedTab]}
+        icon={() => <FontAwesome5 name='cog' color={selectedIndex === 3 ? colors.blue : colors.darkGrey} size={24} />}
     />
 </BottomNavigation>
 
     )
 }
-
-const stylesbottom = StyleSheet.create({
-
-    bottomNavigation: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        backgroundColor: 'white', // Adjust as needed
-    },
-    bottomNavigationTab: {
-        // Add general styles for each tab as needed
-    },
-    selectedTab: {
-        // Add specific styles for selected tab
-    },
-})
 
 export default ClientNavbar

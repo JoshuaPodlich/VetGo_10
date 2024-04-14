@@ -64,7 +64,9 @@ export default function App() {
                 <IconRegistry icons={EvaIconsPack} />
                 <ApplicationProvider {...eva} theme={eva.light}>
                     <NavigationContainer>
-                        <Stack.Navigator>
+                        <Stack.Navigator
+                            screenOptions={{animation: 'none'}}
+                        >
                             <Stack.Screen name="Welcome" component={WelcomeScreen as React.FC} options={{ headerShown: false }} />
                             <Stack.Screen name="Login" component={LoginScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="SignUp" component={SignUpScreen as React.FC} options={{ title: "" }} />
