@@ -122,13 +122,13 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     function createAppointment(index: number) {
         let createAppointmentParams: CreateAppointmentParams = {
             ...params,
-            petId: pets[index].pid
+            petId: pets[index].id
         }
         //props.navigation.navigate("CreateAppointment", createAppointmentParams)
 
         let screeningQuestionsParams: ScreeningQuestionsParams = {
             ...params,
-            petId: pets[index].pid
+            petId: pets[index].id
         }
         props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
     }
@@ -136,7 +136,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     function createAppointments(index: number) {
         let createAppointmentParams: CreateAppointmentParams = {
             ...params,
-            petId: pets[index].pid
+            petId: pets[index].id
             
         }
         console.log(createAppointmentParams)

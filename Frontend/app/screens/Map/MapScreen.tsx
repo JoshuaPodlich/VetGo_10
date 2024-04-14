@@ -1,14 +1,13 @@
-//install npm i react-native-maps-directions
-//install npm i react-native-geolocation-service
-
 import React, { useEffect, useRef, useState } from 'react'
 import { View, SafeAreaView, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native'
 import MapView, { Marker, AnimatedRegion, PROVIDER_GOOGLE } from 'react-native-maps'
 import MapViewDirections from 'react-native-maps-directions'
 import { GOOGLE_MAPS_APIKEY } from "../shared/Constants"
-import { mapStyles } from './MapStyles'
 import { LocationInterface } from '../shared/Interfaces'
 import { MapScreenNavigationProp, MapScreenRouteProp } from '../../utils/props'
+import { mapStyles, darkMapStyle } from "../shared/Styles"
+import axios from 'axios';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 export interface MapScreenParams {
     userId: string,
@@ -16,6 +15,14 @@ export interface MapScreenParams {
     location: LocationInterface,
     destinationLocation: LocationInterface
 }
+
+const originIcon1 = <MaterialIcon name="my-location" size={40} color="#4caf50" />;
+const destinationIcon1 = <MaterialIcon name="location-pin" size={40} color="#d32f2f" />;
+const travelIcon = <MaterialIcon name="directions-car" size={24} color="#FFFFFF" />;
+
+const originIcon2 = <MaterialIcon name="my-location" size={25} color="#FFFFFF" />;
+const destinationIcon2 = <MaterialIcon name="location-pin" size={25} color="#FFFFFF" />;
+
 function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavigationProp }) {
     const params: MapScreenParams = props.route.params as MapScreenParams
 
@@ -26,13 +33,20 @@ function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavi
 
     const mapRef = useRef<any>()
 
+    const modOrigin = {
+        latitude: params.location.latitude,
+        longitude: params.location.longitude
+    };
+
     //change origin and destination to look up from backend
     const [state, setState] = useState({
-        origin: params.location,
+        origin: modOrigin,
         destination: params.destinationLocation,
         time: 0,
         distance: 0,
     })
+    const [originAddress, setOriginAddress] = useState('');
+    const [destinationAddress, setDestinationAddress] = useState('');
 
 
     const { origin, destination, time, distance } = state
@@ -41,12 +55,27 @@ function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavi
         setState(state => ({ ...state, distance: d, time: t }))
     }
 
+    const fetchGoogleLocation = async (latitude: number, longitude: number) => {
+        try {
+            const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_MAPS_APIKEY}`);
+            if (response.data.status === 'OK') {
+                return response.data.results[0].formatted_address;
+            } else {
+                throw new Error('Failed to get location.');
+            }
+        } catch (error) {
+            console.error('Error fetching location from Google:', error);
+            return "Location unavailable";
+        }
+    };
+
+    useEffect(() => {
+        fetchGoogleLocation(origin.latitude, origin.longitude).then(setOriginAddress);
+        fetchGoogleLocation(destination.latitude, destination.longitude).then(setDestinationAddress);
+    }, [origin, destination]);
+
     return (
         <View style={{ flex: 1 }}>
-            {distance !== 0 && time !== 0 && (<View style={{ alignItems: 'center', marginVertical: 16 }}>
-                <Text> Time left: {time.toFixed(1)} min</Text>
-                <Text> Distance left: {distance.toFixed(2)} mile</Text>
-            </View>)}
             <View style={{ flex: 1 }}>
                 <MapView
                     // ref={mapRef}
@@ -56,31 +85,59 @@ function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavi
                         latitudeDelta: LATITUDE_DELTA,
                         longitudeDelta: LONGITUDE_DELTA
                     }}
+                    customMapStyle={darkMapStyle}
                 >
-                    <Marker
-                        coordinate={origin}
-                    />
-                    <Marker
-                        coordinate={destination}
-                    />
+                <Marker
+                    coordinate={origin}
+                >
+                    {originIcon1}
+                </Marker>
+
+                <Marker
+                    coordinate={destination}
+                >
+                    {destinationIcon1}
+                </Marker>
+
                     <MapViewDirections
                         origin={origin}
                         destination={destination}
                         apikey={GOOGLE_MAPS_APIKEY}
-                        strokeWidth={5}
-                        strokeColor="green"
+                        strokeWidth={8}
+                        strokeColor="#ffffff"
                         optimizeWaypoints={true}
                         onReady={result => {
-                            console.log(`Distance: ${result.distance} km`)
-                            console.log(`Distance: ${result.duration} min`)
                             fetchTime(result.distance * 0.621371, result.duration)
-                            // mapRef.current.fitToCoordinates(result.coordinates, {
-                            //     edgePadding: {}
-                            // })
+                        }}
+                        onError={(errorMessage) => {
+                            console.log('GMAPS directions error: ' + errorMessage);
                         }}
                     />
                 </MapView>
             </View>
+            
+            {(originAddress && destinationAddress) && (
+                <View style={mapStyles.locationHeader}>
+                    <View style={mapStyles.locationContainer}>
+                        {originIcon2}
+                        <Text style={mapStyles.locationText}>{originAddress}</Text>
+                    </View>
+                    <View style={mapStyles.locationContainer}>
+                        {destinationIcon2}
+                        <Text style={mapStyles.locationText}>{destinationAddress}</Text>
+                    </View>
+                </View>
+            )}
+
+            {distance !== 0 && time !== 0 && destinationAddress && (
+                <View style={mapStyles.footer}>
+                    <Text style={mapStyles.footerText}>{time.toFixed(1)} min</Text>
+                    <View style={mapStyles.iconStyle}>
+                        {travelIcon}
+                    </View>
+                    <Text style={mapStyles.footerText}>{distance.toFixed(2)} mi</Text>
+                </View>
+            )}
         </View>
     )
 };

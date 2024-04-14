@@ -10,6 +10,7 @@ import { colors } from '../shared/Colors'
 import { LocationInterface } from '../shared/Interfaces'
 import { appointment } from '@prisma/client'
 import { useEffect, useState } from 'react'
+import { MapScreenParams } from '../Map/MapScreen'
 
 export interface MyAppointmentsVetScreenParams {
     userId: string,
@@ -86,13 +87,13 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
             <Text style={{ marginRight: 'auto', marginLeft: 20, fontSize: 28, fontWeight: 'bold', }}>My Appointments</Text>
             <ScrollView>
                 <View>
-                    {acceptedAppointments.map(appointment => <MyAppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} vetId={appointment.vet.id} setAppointments={setAppointments} />)}
+                    {acceptedAppointments.map(appointment => <MyAppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} vetId={appointment.vet.id} params={params} navigation={props.navigation} setAppointments={setAppointments} />)}
                 </View>
             </ScrollView>
             <Text style={{ marginRight: 'auto', marginLeft: 20, fontSize: 28, fontWeight: 'bold', }}>Available Appointments</Text>
             <ScrollView>
                 <View>
-                    {waitingAppointments.map(appointment => <AvailableAppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} vetId={appointment.vet.id} setAppointments={setAppointments} />)}
+                    {waitingAppointments.map(appointment => <AvailableAppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} vetId={appointment.vet.id} params={params} navigation={props.navigation} setAppointments={setAppointments} />)}
                 </View>
             </ScrollView>
             <ClientNavbar navigation={props.navigation} {...params} />
@@ -105,19 +106,23 @@ interface MyAppointmentCardParams {
     key: int,
     appointmentData: appointment,
     petName: string,
-    vetId: int,
+    vetId: string,
+    params: any,
+    navigation: MyAppointmentsVetScreenNavigationProp,
     setAppointments: useState
 }
 interface AvailableAppointmentCardParams {
     key: int,
     appointmentData: appointment,
     petName: string,
-    vetId: int,
+    vetId: string,
+    params: any,
+    navigation: MyAppointmentsVetScreenNavigationProp,
     setAppointments: useState
 }
 
 
-const MyAppointmentCard = ({ key, appointmentData, petName, vetId, setAppointments }: MyAppointmentCardParams) => {
+const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navigation, setAppointments }: MyAppointmentCardParams) => {
     const [showDetails, setShowDetails] = useState(false)
 
     const cancelAppointment = async () => {
@@ -133,6 +138,19 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, setAppointmen
         } catch (error) {
             console.error('Error fetching data:', error);
         }
+    }
+
+    const navigateToVetMap = async () => {
+        let mapLocation: MapScreenParams = {
+            userId: params.userId,
+            userIsVet: params.userIsVet,
+            location: params.location,
+            destinationLocation: { 
+                latitude: Number(appointmentData.latitude),
+                longitude: Number(appointmentData.longitude),
+            }
+        }
+        navigation.navigate("Map", mapLocation)
     }
 
     const getAppointments = async (setAppointments) => {
@@ -205,6 +223,12 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, setAppointmen
                 <Button style={{
                     marginHorizontal: 4,
                 }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
+                <Button
+                    style={{ marginHorizontal: 4,}} size='small'
+                    onPress={navigateToVetMap}
+                >
+                    Navigate to Map
+                </Button>
                 <Button style={{
                     marginHorizontal: 4,
                 }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
@@ -214,7 +238,7 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, setAppointmen
     )
 }
 
-const AvailableAppointmentCard = ({ key, appointmentData, petName, vetId, setAppointments }: AvailableAppointmentCardParams) => {
+const AvailableAppointmentCard = ({ key, appointmentData, petName, vetId, params, navigation, setAppointments }: AvailableAppointmentCardParams) => {
     const [showDetails, setShowDetails] = useState(false)
 
     const cancelAppointment = async () => {
@@ -228,6 +252,19 @@ const AvailableAppointmentCard = ({ key, appointmentData, petName, vetId, setApp
         await axios.put(BASE_URL + "/appointment/accept/" + appointmentData.aid + "/" + vetId)
         console.log(`Appointment for ${petName} has been accepted.`)
         getAppointments(setAppointments);
+    }
+
+    const navigateToVetMap = async () => {
+        let mapLocation: MapScreenParams = {
+            userId: params.userId,
+            userIsVet: params.userIsVet,
+            location: params.location,
+            destinationLocation: { 
+                latitude: Number(appointmentData.latitude),
+                longitude: Number(appointmentData.longitude),
+            }
+        }
+        navigation.navigate("Map", mapLocation)
     }
 
     const getAppointments = async (setAppointments) => {
@@ -309,6 +346,12 @@ const AvailableAppointmentCard = ({ key, appointmentData, petName, vetId, setApp
                 <Button style={{
                     marginHorizontal: 4,
                 }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
+                <Button
+                    style={{ marginHorizontal: 4,}} size='small'
+                    onPress={navigateToVetMap}
+                >
+                    Navigate to Map
+                </Button>
                 <Button style={{
                     marginHorizontal: 4,
                 }} size='small' onPress={acceptAppointment}>Accept</Button>
