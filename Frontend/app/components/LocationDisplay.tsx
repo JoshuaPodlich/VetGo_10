@@ -24,8 +24,8 @@ export const LocationDisplay: React.FC<LocationDisplayProps> = ({ userId, userIs
 
     return (
         <View>
-            <Text style={{ fontSize: 15, fontWeight: 'bold', width: "90%", flexShrink: 1 }}>{locationName}</Text>
-            <Text style={{ fontSize: 12, textDecorationLine: 'underline' }} onPress={() => navigation.navigate('Location', { userId, userIsVet, location })}>
+            <Text style={{ fontSize: 16, fontWeight: 'bold', flexShrink: 1 }}>{locationName}</Text>
+            <Text style={{ fontSize: 13, textDecorationLine: 'underline' }} onPress={() => navigation.navigate('Location', { userId, userIsVet, location })}>
                 Tap to change
             </Text>
         </View>
@@ -38,12 +38,14 @@ export const getLocationString = async (latitude: number, longitude: number): Pr
             `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_MAPS_APIKEY}`
         );
         if (response.data && response.data.results.length > 0) {
-            return response.data.results[0].formatted_address;
+            let address = response.data.results[0].formatted_address;
+            address = address.substring(0, address.lastIndexOf(","));
+            return address;
         } else {
             throw new Error('No results found');
         }
     } catch (error) {
-        console.error("Error fetching location string:", error);
+        console.log("Error fetching location string:", error);
         return "Location unavailable";
     }
 }

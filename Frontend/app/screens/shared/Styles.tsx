@@ -466,8 +466,8 @@ export const mapStyles = StyleSheet.create({
         top: 0,
         left: 0,
         right: 0,
-        padding: 20,
-        backgroundColor: '#28282B',
+        padding: 10,
+        backgroundColor: '#000000',
         alignItems: 'flex-start',
         flexShrink: 1
     },
@@ -475,7 +475,8 @@ export const mapStyles = StyleSheet.create({
         color: 'white',
         fontSize: 16,
         fontWeight: 'bold',
-        marginLeft: 6
+        paddingHorizontal: 8,
+        paddingVertical: 4,
     },
     locationContainer: {
         flexDirection: 'row',
@@ -485,7 +486,7 @@ export const mapStyles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#28282B',
+        backgroundColor: '#000000',
         padding: 10,
     },
     footerText: {
@@ -497,6 +498,17 @@ export const mapStyles = StyleSheet.create({
     iconStyle: {
         paddingHorizontal: 8,
     },
+    buttonContainer: {
+        position: 'absolute',
+        right: 10,
+        bottom: 50,
+    },
+    button: {
+        backgroundColor: '#000000',
+        padding: 10,
+        borderRadius: 20,
+        marginBottom: 12,
+    }
 });
 
 export const darkMapStyle = [

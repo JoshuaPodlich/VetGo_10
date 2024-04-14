@@ -87,6 +87,7 @@ export const GoogleAutoComplete = (props: GoogleAutoCompleteProps) => {
                 row: autoCompleteStyles.row,
                 poweredContainer: { display: 'none' },
             }}
+            textInputProps={{selectionColor: '#000000'}}
             renderRow={renderRow}
             query={{
                 key: GOOGLE_MAPS_APIKEY,

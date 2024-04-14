@@ -28,36 +28,42 @@ interface VetInternalModel {
 }
 
 const ViewNearbyVetsScreen = (props: { route: ViewNearbyVetsScreenRouteProp, navigation: ViewNearbyVetsScreenNavigationProp }) => {
-    const params: ViewNearbyVetsParams = props.route.params!
+    const params: ViewNearbyVetsParams = props.route.params
     const [vets, setVets] = useState<VetInternalModel[]>([])
 
     const getAllVets = async () => {
-        const allVets: any[] = (await axios.get(BASE_URL + "/vet/all")).data
-        const allVetsInternal: VetInternalModel[] = []
-        for (let i = 0; i < allVets.length; i++) {
-            const vet = allVets[i]
-            let vetInternalModel: VetInternalModel = {
-                id: vet.aid,
-                latitude: vet.userAccount.latitude,
-                longitude: vet.userAccount.longitude,
-                firstName: vet.firstName,
-                email: vet.userAccount.email,
-                telephone: vet.telephone
+        try {
+            const allVets: any[] = (await axios.get(BASE_URL + "/vet/all")).data
+            const allVetsInternal: VetInternalModel[] = []
+            for (let i = 0; i < allVets.length; i++) {
+                const vet = allVets[i]
+                let vetInternalModel: VetInternalModel = {
+                    id: vet.id,
+                    latitude: vet.latitude,
+                    longitude: vet.longitude,
+                    firstName: vet.user.firstName,
+                    email: vet.user.email,
+                    telephone: vet.user.telephone
+                };
+                allVetsInternal.push(vetInternalModel)
             }
-            allVetsInternal.push(vetInternalModel)
-        }
 
-        // sort all vets by euclidian distance from current location
-        allVetsInternal.sort((a, b) => {
-            return Math.sqrt(Math.pow(a.latitude - params.location.latitude, 2) + Math.pow(a.longitude - params.location.longitude, 2)) -
-                Math.sqrt(Math.pow(b.latitude - params.location.latitude, 2) + Math.pow(b.longitude - params.location.longitude, 2))
-        })
-        setVets(allVetsInternal)
+            // sort all vets by euclidian distance from current location
+            allVetsInternal.sort((a, b) => {
+                return Math.sqrt(Math.pow(a.latitude - params.location.latitude, 2) + Math.pow(a.longitude - params.location.longitude, 2)) -
+                    Math.sqrt(Math.pow(b.latitude - params.location.latitude, 2) + Math.pow(b.longitude - params.location.longitude, 2))
+            })
+            setVets(allVetsInternal)
+        } catch (error) {
+            console.error("Failed to fetch vets:", error);
+        }
     }
 
     useEffect(() => {
-        getAllVets()
-    }, [])
+        if (params && params.location) {
+            getAllVets();
+        }
+    }, [params]);
 
     return (
         <SafeAreaView style={styles.background}>
@@ -87,10 +93,7 @@ const VetCard: React.FC<VetCardProps> = ({ vet }) => {
         getLocationString(vet.latitude ?? 0, vet.longitude ?? 0).then((locationString) => setLocationString(locationString))
     }, [])
 
-    console.log(vet)
-
     const callVet = () => {
-        console.log(vet)
         Linking.openURL(`tel:${vet.telephone}`)
             .then((supported) => {
                 if (!supported) {

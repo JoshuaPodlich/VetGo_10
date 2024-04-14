@@ -12,6 +12,7 @@ import { SettingsScreenParams } from '../screens/SettingsScreen/SettingsScreen'
 import { colors } from '../screens/shared/Colors'
 import { ViewNearbyVetsParams } from '../screens/ClientVetInteraction/ViewNearbyVetsScreen'
 import { StyleSheet } from 'react-native'
+import _ from 'lodash';
 
 export interface ClientNavbarParams {
     userId: string,
@@ -46,50 +47,33 @@ const ClientNavbar: React.FC<ClientNavbarParams> = ({ userId, userIsVet, locatio
         }
     }, [navigation]);
 
-    const handleTabSelect = (index: number) => {
-        setSelectedIndex(index)
+    // TODO: Missing appointmentid
+    let myAppointmentsParams: MyAppointmentsScreenParams = {
+        userId: userId,
+        userIsVet: userIsVet,
+        location: location,
+    }
 
-        // Use a switch statement or if-else to trigger different functions
+    const handleTabSelect = _.debounce((index) => {
+        console.log(`Navigating to index: ${index}`);
+        setSelectedIndex(index);
+        const params = { userId, userIsVet, location };
+    
         switch (index) {
             case 0:
-                // TODO
-                let homeScreenParams: HomeScreenParams = {
-                    userId: userId,
-                    userIsVet: userIsVet,
-                    location: location,
-                }
-                navigation.navigate("Home", homeScreenParams)
-                break
+                navigation.navigate("HomeClient", params);
+                break;
             case 1:
-                // TODO
-                let myAppointmentsParams: MyAppointmentsScreenParams = {
-                    userId: userId,
-                    userIsVet: userIsVet,
-                    location: location,
-                }
-
-                navigation.navigate("MyAppointments", myAppointmentsParams)
-                break
+                navigation.navigate("MyAppointments", myAppointmentsParams);
+                break;
             case 2:
-                let viewNearbyVetsParams: ViewNearbyVetsParams = {
-                    userId: userId,
-                    userIsVet: userIsVet,
-                    location: location,
-                }
-                navigation.navigate("ViewNearbyVets", viewNearbyVetsParams)
-                break
+                navigation.navigate("ViewNearbyVets", params);
+                break;
             case 3:
-                let settingParams: SettingsScreenParams = {
-                    userId: userId,
-                    userIsVet: userIsVet,
-                    location: location,
-                }
-                navigation.navigate("Settings", settingParams)
-                break
-            default:
-                break
+                navigation.navigate("Settings", params);
+                break;
         }
-    }
+    }, 400, { leading: true, trailing: false })
 
     return (
 <BottomNavigation
@@ -104,7 +88,6 @@ const ClientNavbar: React.FC<ClientNavbarParams> = ({ userId, userIsVet, locatio
     />
     <BottomNavigationTab
         title='Appointments'
-        selected={selectedIndex === 1}
         icon={<FontAwesome5 name='calendar-alt' color={selectedIndex === 1 ? colors.blue : colors.darkGrey} size={24} />}
         style={[stylesbottom.bottomNavigationTab, selectedIndex === 1 && stylesbottom.selectedTab]}
     />

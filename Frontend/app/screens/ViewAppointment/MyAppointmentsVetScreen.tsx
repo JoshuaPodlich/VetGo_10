@@ -1,16 +1,15 @@
-import { SafeAreaView, ScrollView, View } from "react-native"
+import { SafeAreaView, ScrollView, View, TouchableOpacity } from "react-native"
 import ClientNavbar, { ClientNavbarParams } from "../../components/ClientNavbar"
 import { MyAppointmentsVetScreenNavigationProp, MyAppointmentsScreenVetRouteProp } from '../../utils/props'
 import axios from 'axios'
 import { BASE_URL } from '../shared/Constants'
-import { UserDetailsParams } from '../../utils/params'
 import { Button, Card, Layout, Text } from '@ui-kitten/components'
 import { styles } from '../shared/Styles'
-import { colors } from '../shared/Colors'
 import { LocationInterface } from '../shared/Interfaces'
 import { appointment } from '@prisma/client'
 import { useEffect, useState } from 'react'
 import { MapScreenParams } from '../Map/MapScreen'
+import Entypo from 'react-native-vector-icons/Entypo';
 
 export interface MyAppointmentsVetScreenParams {
     userId: string,
@@ -223,12 +222,19 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navig
                 <Button style={{
                     marginHorizontal: 4,
                 }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
-                <Button
-                    style={{ marginHorizontal: 4,}} size='small'
-                    onPress={navigateToVetMap}
-                >
-                    Navigate to Map
-                </Button>
+                <View style={{justifyContent: 'center', alignItems: 'center', marginHorizontal: 4,}}>
+                    <TouchableOpacity 
+                        onPress={navigateToVetMap}
+                        style={{
+                            backgroundColor: '#000000',
+                            paddingHorizontal: 10,
+                            paddingVertical: 6,
+                            borderRadius: 4,
+                        }}
+                    >
+                        <Entypo name="location" size={24} color="#FFFFFF" />
+                    </TouchableOpacity>
+                </View>
                 <Button style={{
                     marginHorizontal: 4,
                 }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
@@ -260,8 +266,8 @@ const AvailableAppointmentCard = ({ key, appointmentData, petName, vetId, params
             userIsVet: params.userIsVet,
             location: params.location,
             destinationLocation: { 
-                latitude: Number(appointmentData.latitude),
-                longitude: Number(appointmentData.longitude),
+                latitude: appointmentData.latitude,
+                longitude: appointmentData.longitude,
             }
         }
         navigation.navigate("Map", mapLocation)
@@ -346,12 +352,19 @@ const AvailableAppointmentCard = ({ key, appointmentData, petName, vetId, params
                 <Button style={{
                     marginHorizontal: 4,
                 }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
-                <Button
-                    style={{ marginHorizontal: 4,}} size='small'
-                    onPress={navigateToVetMap}
-                >
-                    Navigate to Map
-                </Button>
+                <View style={{justifyContent: 'center', alignItems: 'center', marginHorizontal: 4,}}>
+                    <TouchableOpacity 
+                        onPress={navigateToVetMap}
+                        style={{
+                            backgroundColor: '#000000',
+                            paddingHorizontal: 10,
+                            paddingVertical: 6,
+                            borderRadius: 4,
+                        }}
+                    >
+                        <Entypo name="location" size={24} color="#FFFFFF" />
+                    </TouchableOpacity>
+                </View>
                 <Button style={{
                     marginHorizontal: 4,
                 }} size='small' onPress={acceptAppointment}>Accept</Button>

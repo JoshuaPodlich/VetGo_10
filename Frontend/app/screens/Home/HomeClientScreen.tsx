@@ -201,7 +201,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     return (
         <SafeAreaView style={{ flex: 1 }} >
             <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: 'auto', justifyContent: 'space-between' }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 200, marginLeft: 20, marginVertical: 20 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 15, marginVertical: 20 }}>
                     <MaterialIcons name="location-pin" size={40} color={colors.black} />
                     <LocationDisplay location={params.location} navigation={props.navigation} userId={params.userId} userIsVet={params.userIsVet} />
                 </View>

@@ -31,14 +31,13 @@ function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavi
     const LATITUDE_DELTA = 0.0922
     const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO
 
-    const mapRef = useRef<any>()
+    const mapRef = useRef<any>(null)
 
     const modOrigin = {
         latitude: params.location.latitude,
         longitude: params.location.longitude
     };
 
-    //change origin and destination to look up from backend
     const [state, setState] = useState({
         origin: modOrigin,
         destination: params.destinationLocation,
@@ -59,7 +58,9 @@ function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavi
         try {
             const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_MAPS_APIKEY}`);
             if (response.data.status === 'OK') {
-                return response.data.results[0].formatted_address;
+                let address = response.data.results[0].formatted_address;
+                address = address.substring(0, address.lastIndexOf(","));
+                return address;
             } else {
                 throw new Error('Failed to get location.');
             }
@@ -67,6 +68,22 @@ function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavi
             console.error('Error fetching location from Google:', error);
             return "Location unavailable";
         }
+    };
+
+    const adjustMapView = () => {
+        mapRef.current?.fitToCoordinates([origin, destination], {
+            edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+            animated: true,
+        });
+    };
+
+    const focusOnLocation = (location: any) => {
+        mapRef.current?.animateToRegion({
+            latitude: location.latitude,
+            longitude: location.longitude,
+            latitudeDelta: 0.01,
+            longitudeDelta: 0.01,
+        }, 1000);
     };
 
     useEffect(() => {
@@ -78,7 +95,7 @@ function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavi
         <View style={{ flex: 1 }}>
             <View style={{ flex: 1 }}>
                 <MapView
-                    // ref={mapRef}
+                    ref={mapRef}
                     style={StyleSheet.absoluteFill}
                     initialRegion={{
                         ...origin,
@@ -86,18 +103,21 @@ function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavi
                         longitudeDelta: LONGITUDE_DELTA
                     }}
                     customMapStyle={darkMapStyle}
+                    onMapReady={adjustMapView}
                 >
-                <Marker
-                    coordinate={origin}
-                >
-                    {originIcon1}
-                </Marker>
+                    <Marker
+                        coordinate={origin}
+                        anchor={{ x: 0.5, y: 0.5 }}
+                    >
+                        {originIcon1}
+                    </Marker>
 
-                <Marker
-                    coordinate={destination}
-                >
-                    {destinationIcon1}
-                </Marker>
+                    <Marker
+                        coordinate={destination}
+                        anchor={{ x: 0.5, y: 1 }}
+                    >
+                        {destinationIcon1}
+                    </Marker>
 
                     <MapViewDirections
                         origin={origin}
@@ -138,6 +158,18 @@ function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavi
                     <Text style={mapStyles.footerText}>{distance.toFixed(2)} mi</Text>
                 </View>
             )}
+
+            <View style={mapStyles.buttonContainer}>
+                <TouchableOpacity style={mapStyles.button} onPress={() => focusOnLocation(origin)}>
+                    <MaterialIcon name="my-location" size={30} color="#FFFFFF" />
+                </TouchableOpacity>
+                <TouchableOpacity style={mapStyles.button} onPress={() => focusOnLocation(destination)}>
+                    <MaterialIcon name="location-pin" size={30} color="#FFFFFF" />
+                </TouchableOpacity>
+                <TouchableOpacity style={mapStyles.button} onPress={adjustMapView}>
+                    <MaterialIcon name="zoom-out-map" size={30} color="#FFFFFF" />
+                </TouchableOpacity>
+            </View>
         </View>
     )
 };

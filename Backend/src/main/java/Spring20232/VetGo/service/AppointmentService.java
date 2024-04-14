@@ -47,12 +47,18 @@ public class AppointmentService {
     }
 
     private Vet chooseBestVet(ArrayList<Vet> vets, Appointment appointment) {
-        Vet vet = new Vet();
-        double distance = 99999;
+        Vet vet = null;
+        double minDistance = Double.MAX_VALUE;
 
-        for (Vet elem: vets) {
-            if (Math.sqrt(Math.pow((elem.getLatitude() - appointment.getLatitude()), 2) + Math.pow((elem.getLongitude() - appointment.getLongitude()), 2)) < distance) {
-                distance = Math.sqrt(Math.pow(elem.getLatitude(), 2) + Math.pow(elem.getLongitude(), 2));
+        for (Vet elem : vets) {
+            // Skip vets with latitude and longitude both set to 0.
+            if (elem.getLatitude() == 0 && elem.getLongitude() == 0) {
+                continue;
+            }
+            double currentDistance = Math.sqrt(Math.pow((elem.getLatitude() - appointment.getLatitude()), 2)
+                    + Math.pow((elem.getLongitude() - appointment.getLongitude()), 2));
+            if (currentDistance < minDistance) {
+                minDistance = currentDistance;
                 vet = elem;
             }
         }
