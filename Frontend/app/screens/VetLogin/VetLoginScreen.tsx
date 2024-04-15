@@ -13,32 +13,45 @@ import { HomeScreenParams } from '../Home/HomeScreen'
 import ClientNavbar from '../../components/ClientNavbar'
 import { signUpStyles } from '../SignUp/SignUpStyles'
 import { Logo } from '../shared/Components'
+import { VetLoginNavigationProp, VetLoginScreenNavigationProp } from '../../utils/props'
+import { RouteProp } from '@react-navigation/native';
+import { ViewPetScreenParams } from '../ViewPet/ViewPet'
+
+
+
 
 
 export interface vetRegisterInfo {
   userId: string,
+  userIsVet: boolean,
 }
 
-function VetRegisterScreen({ navigation }: { navigation: any }) {
+function VetRegisterScreen(props: { route: VetLoginNavigationProp, navigation: VetLoginScreenNavigationProp }) {
 
-  const params = navigation.state.params as vetRegisterInfo;
-
-  
+  const params: vetRegisterInfo = props.route.params as vetRegisterInfo
 
   const [vetInsurance, setVetInsurance] = useState('');
   const [vetLicense, setVetLicense] = useState('');
   const [vetCompany, setVetCompany] = useState(''); //organization
   const [vetImg, setVetImg] = useState(''); 
 
+  useEffect(() => {
+    getUserInfo();
+  }, [])
+
 
   const getUserInfo = async () => {
     let userId = params.userId;
+    console.log("userIdTEST: " + userId)
+    let isUserVet = params.userIsVet;
     return userId;
   }
 
   const handleSubmit = async () => {
    
 }
+
+
 
 
 
@@ -55,6 +68,7 @@ function VetRegisterScreen({ navigation }: { navigation: any }) {
                         </Text>
 
                         
+                      {/* if isUserVet is true add return button */}
 
                     <View id={"buttonGroup"} style={styles.signUpButtonGroup}>
                         <TouchableHighlight style={{ ...styles.mainButton }}

@@ -100,9 +100,9 @@ export default function App() {
                             <Stack.Screen name="VetDuringAppointment1" component={VetDuringAppointment1Screen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="VetDuringAppointment2" component={VetDuringAppointment2Screen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="Account" component={AccountScreen as React.FC} options={{ title: "" }} />
+                            <Stack.Screen name="VetLogin" component={VetLoginScreen as React.FC} options={{ title: "" }} />
                             <Stack.Screen name="Emergency" component={EmergencyScreen} options={{ title: "Emergency" }} />
                             <Stack.Screen name="forgotPassword" component={ForgotPaswordScreen} options={{ title: "forgotPassword" }} />
-                            <Stack.Screen name="VetLogin" component={VetLoginScreen} options={{ title: "VetLogin" }} />
                             <Stack.Screen name="ScreeningQuestions" component={ScreeningQuestionsScreen as React.FC} options={{title: ""}} />
                         </Stack.Navigator>
                     </NavigationContainer>

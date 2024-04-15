@@ -25,6 +25,7 @@ function SettingsScreen(props: any) {
     function vetLoginNavigate() {
         let vetRegisterInfo: vetRegisterInfo = {
             userId: params.userId,
+            userIsVet: params.userIsVet
         }
         console.log(vetRegisterInfo)
         props.navigation.navigate("VetLogin", vetRegisterInfo)

@@ -47,6 +47,7 @@ export type RootStackParamList = {
     PaymentSetting: undefined
     VetScreening1: undefined
     VetScreening2: undefined
+    VetLogin: vetRegisterInfo
     Account: undefined
     ForgotPassword: undefined
     ScreeningQuestions: ScreeningQuestionsParams
