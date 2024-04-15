@@ -30,14 +30,16 @@ interface SignUpForm {
   vetLicense: string,
   vetCompany: string,
   vetImg: string,
+  statePermit: string,
+
 }
 
 function VetRegisterScreen(props: { route: VetLoginNavigationProp, navigation: VetLoginScreenNavigationProp }) {
 
   const params: vetRegisterInfo = props.route.params as vetRegisterInfo
-  const [form, setForm] = useState<SignUpForm>({ vetInsurance: "", vetLicense: "", vetCompany: "", vetImg: ""})
+  const [form, setForm] = useState<SignUpForm>({ vetInsurance: "", vetLicense: "", vetCompany: "", vetImg: "", statePermit: ""})
 
-  const [errors, setErrors] = useState<SignUpForm>({ vetInsurance: "", vetLicense: "", vetCompany: "", vetImg: ""})
+  const [errors, setErrors] = useState<SignUpForm>({ vetInsurance: "", vetLicense: "", vetCompany: "", vetImg: "", statePermit: ""})
 
 
   const [vetInsurance, setVetInsurance] = useState('');
@@ -59,13 +61,53 @@ function VetRegisterScreen(props: { route: VetLoginNavigationProp, navigation: V
 
   const handleSubmit = async () => {
     if (validateForm()) {
+      let userId = params.userId;
+      let isUserVet = true;
+      let vetInsurance = form.vetInsurance;
+      let vetLicense = form.vetLicense;
+      let vetCompany = form.vetCompany;
+      let vetImg = form.vetImg;
+      let statePermit = form.statePermit;
+      console.log("userId: " + userId)
+      console.log("isUserVet: " + isUserVet)
+      console.log("vetInsurance: " + vetInsurance)
+      console.log("vetLicense: " + vetLicense)
+      console.log("vetCompany: " + vetCompany)
+      console.log("vetImg: " + vetImg)
+      console.log("statePermit: " + statePermit)
+
+      try {
+        const response = await fetch(`${BASE_URL}/vet/register`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userId: userId,
+            vetInsurance: vetInsurance,
+            vetLicense: vetLicense,
+            vetCompany: vetCompany,
+            vetImg: vetImg,
+            statePermit: statePermit
+          }),
+        });
+        if (!response.ok) {
+          throw new Error('Problem registering vet');
+        }
+        const data = await response.json();
+        console.log(data);
+        props.navigation.navigate("VetHome", { userId: userId, userIsVet: isUserVet } as HomeScreenParams)
+      } catch (error) {
+        console.log(error)
+        Alert.alert("Error", "Problem registering vet")
+      }
     }
    
 }
 
 function validateForm() {
   let valid = true;
-  let newErrors = { vetInsurance: "", vetLicense: "", vetCompany: "", vetImg: "" }
+  let newErrors = { vetInsurance: "", vetLicense: "", vetCompany: "", vetImg: "", statePermit: ""}
   if (form.vetInsurance.length < 1) {
       newErrors.vetInsurance = "Veterinary Insurance is required"
       valid = false;
@@ -81,6 +123,10 @@ function validateForm() {
   if (form.vetImg.length < 1) {
       newErrors.vetImg = "Veterinary Image is required"
       valid = false;
+  }
+  if(form.statePermit.length < 1) {
+    newErrors.statePermit = "State Permit is required"
+    valid = false;
   }
   setErrors(newErrors)
 
@@ -146,7 +192,15 @@ function validateForm() {
                         />
                         <Text style={styles.errorText}>{errors.vetImg}</Text>
 
-
+                            <Input 
+                            clearButtonMode={"always"} size={"large"}
+                            value={form.statePermit} style={styles.signUpLoginTextBox}
+                            placeholder={"State Permit"}
+                            onChangeText={(newStatePermit) => {
+                                setForm((prevForm: SignUpForm) => ({ ...prevForm, statePermit: newStatePermit }))
+                            }}
+                        />
+                        <Text style={styles.errorText}>{errors.statePermit}</Text>
 
 
                         
