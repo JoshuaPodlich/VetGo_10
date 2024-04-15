@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 
 
 @Service
-public class UserService implements UserServiceInterface {
+public class UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -52,13 +52,6 @@ public class UserService implements UserServiceInterface {
     @Autowired
     private EmailService emailService;
 
-    @Override
-    @Transactional
-    public void saveUser(User user) {
-        // Pointless method for now, but kept for its potential use later.
-        userRepository.save(user);
-    }
-
     @Transactional
     public Boolean setPassword(Long uid, String newPassword) {
         User user = userRepository.findById(uid).orElse(null);
@@ -80,6 +73,42 @@ public class UserService implements UserServiceInterface {
         user = userRepository.findById(uid).orElse(null);
         System.out.println("After password 3: " + (user.getPassword()));
         return true;
+    }
+
+    public ObjectNode getUserInfo(Long uid) {
+        User user = userRepository.findById(uid).orElse(null);
+        Owner owner;
+        Vet vet;
+
+        if (user == null)
+            throw new NotFoundException("Unable to find user in database.");
+
+        ObjectNode userNode = objectMapper.createObjectNode();
+        userNode.put("email", user.getEmail());
+        userNode.put("firstName", user.getFirstName());
+        userNode.put("lastName", user.getLastName());
+        userNode.put("address", "...");
+        userNode.put("telephone", user.getTelephone());
+
+        if (user.isUserOwner()) {
+            owner = ownerRepository.findByUser(user);
+            if (owner == null)
+                throw new NotFoundException("Unable to find owner in database.");
+
+            userNode.put("role", "Pet Owner");
+            userNode.put("numPets", owner.getPetList().size());
+        }
+        else if (user.isUserVet()) {
+            vet = vetRepository.findByUser(user);
+            if (vet == null)
+                throw new NotFoundException("Unable to find vet in database.");
+
+            userNode.put("role", "Veterinarian");
+            userNode.put("numReviews", vet.getNumReviews());
+            userNode.put("vetLicense", vet.getVetLicense() != null ? vet.getVetLicense() : "");
+        }
+
+        return userNode;
     }
 
     private String encryptString(String str) {

@@ -7,6 +7,7 @@ import { LocationInterface } from '../shared/Interfaces'
 import { VetAddChargesScreenParams } from '../VetAddCharges/VetAddChargesScreen'
 import { ChangePasswordScreenParams } from '../ChangePassword/ChangePasswordScreen'
 import {UserInfoScreenParams} from '../UserInfo/UserInfoScreen'
+import { ChangeAddressScreenParams } from '../Location/AddressLocation'
 
 
 export interface SettingsScreenParams {
@@ -47,11 +48,18 @@ function SettingsScreen(props: any) {
                     <Text style={styles.buttonText}> Change Password </Text>
                 </TouchableHighlight>
 
-                <TouchableHighlight style={{ ...styles.mainButton, marginBottom: 100}}
+                <TouchableHighlight style={{ ...styles.mainButton}}
                     underlayColor={colors.brightRed_underlayColor}
                     onPress={() => props.navigation.navigate("UserInfo", { ...params } as UserInfoScreenParams)}
                     >
                     <Text style={styles.buttonText}> User Info </Text>
+                </TouchableHighlight>
+
+                <TouchableHighlight style={{ ...styles.mainButton, marginBottom: 100}}
+                    underlayColor={colors.brightRed_underlayColor}
+                    onPress={() => props.navigation.navigate("ChangeAddress", { ...params } as ChangeAddressScreenParams)}
+                    >
+                    <Text style={styles.buttonText}> Change Address </Text>
                 </TouchableHighlight>
 
                 <TouchableHighlight style={{ ...styles.secondaryButton }}

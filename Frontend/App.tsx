@@ -51,6 +51,7 @@ import ForgotPaswordScreen from './app/screens/ForgotPassword/ForgotPasswordScre
 import VetLoginScreen from './app/screens/VetLogin/VetLoginScreen'
 
 import ScreeningQuestionsScreen from './app/screens/ScreeningQuestions/ScreeningQuestionsScreen'
+import ChangeAddressScreen from './app/screens/Location/AddressLocation'
 const Stack = createNativeStackNavigator()
 
 export default function App() {
@@ -106,6 +107,7 @@ export default function App() {
                             <Stack.Screen name="forgotPassword" component={ForgotPaswordScreen} options={{ title: "forgotPassword" }} />
                             <Stack.Screen name="VetLogin" component={VetLoginScreen} options={{ title: "VetLogin" }} />
                             <Stack.Screen name="ScreeningQuestions" component={ScreeningQuestionsScreen as React.FC} options={{title: ""}} />
+                            <Stack.Screen name="ChangeAddress" component={ChangeAddressScreen as React.FC} options={{title: ""}} />
                         </Stack.Navigator>
                     </NavigationContainer>
                 </ApplicationProvider>

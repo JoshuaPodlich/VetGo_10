@@ -422,12 +422,12 @@ export const autoCompleteStyles = StyleSheet.create({
       paddingHorizontal: 10,
     },
     listView: {
-        backgroundColor: colors.background,
-        marginTop: 0,
-        marginLeft: 0,
-        marginRight: 0,
-        elevation: 0,
-        shadowOpacity: 0,
+      backgroundColor: colors.background,
+      marginTop: 0,
+      marginLeft: 0,
+      marginRight: 0,
+      elevation: 0,
+      shadowOpacity: 0,
     },
     separator: {
       height: 1,

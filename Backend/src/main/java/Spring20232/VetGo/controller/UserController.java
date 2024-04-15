@@ -47,6 +47,16 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findById(uid).orElse(null));
     }
 
+    @GetMapping(value = "/info/{uid}")
+    public ResponseEntity<?> getUserInfo(@PathVariable Long uid) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(userService.getUserInfo(uid));
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
     @GetMapping(value = "/email/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findByEmail(email));
