@@ -25,10 +25,20 @@ export interface vetRegisterInfo {
   userId: string,
   userIsVet: boolean,
 }
+interface SignUpForm {
+  vetInsurance: string,
+  vetLicense: string,
+  vetCompany: string,
+  vetImg: string,
+}
 
 function VetRegisterScreen(props: { route: VetLoginNavigationProp, navigation: VetLoginScreenNavigationProp }) {
 
   const params: vetRegisterInfo = props.route.params as vetRegisterInfo
+  const [form, setForm] = useState<SignUpForm>({ vetInsurance: "", vetLicense: "", vetCompany: "", vetImg: ""})
+
+  const [errors, setErrors] = useState<SignUpForm>({ vetInsurance: "", vetLicense: "", vetCompany: "", vetImg: ""})
+
 
   const [vetInsurance, setVetInsurance] = useState('');
   const [vetLicense, setVetLicense] = useState('');
@@ -48,8 +58,37 @@ function VetRegisterScreen(props: { route: VetLoginNavigationProp, navigation: V
   }
 
   const handleSubmit = async () => {
+    if (validateForm()) {
+    }
    
 }
+
+function validateForm() {
+  let valid = true;
+  let newErrors = { vetInsurance: "", vetLicense: "", vetCompany: "", vetImg: "" }
+  if (form.vetInsurance.length < 1) {
+      newErrors.vetInsurance = "Veterinary Insurance is required"
+      valid = false;
+  }
+  if (form.vetLicense.length < 1) {
+      newErrors.vetLicense = "Veterinary License is required"
+      valid = false;
+  }
+  if (form.vetCompany.length < 1) {
+      newErrors.vetCompany = "Veterinary Company is required"
+      valid = false;
+  }
+  if (form.vetImg.length < 1) {
+      newErrors.vetImg = "Veterinary Image is required"
+      valid = false;
+  }
+  setErrors(newErrors)
+
+  return valid;
+
+}
+
+
 
 
 
@@ -66,6 +105,49 @@ function VetRegisterScreen(props: { route: VetLoginNavigationProp, navigation: V
                         <Text style={{ fontSize: 30, fontWeight: "bold", paddingBottom: 5}}>
                             Vet Signup/Apply 
                         </Text>
+
+                        <Input
+                            clearButtonMode={"always"} size={"large"}
+                            value={form.vetLicense} style={styles.signUpLoginTextBox}
+                            placeholder={"Veterinary License"}
+                            onChangeText={(newVetLicense) => {
+                                setForm((prevForm: SignUpForm) => ({ ...prevForm, vetLicense: newVetLicense }))
+                            }}
+                        />
+                        <Text style={styles.errorText}>{errors.vetLicense}</Text>
+
+                        <Input
+                            clearButtonMode={"always"} size={"large"}
+                            value={form.vetInsurance} style={styles.signUpLoginTextBox}
+                            placeholder={"Veterinary Insurance"}
+                            onChangeText={(newVetInsurance) => {
+                                setForm((prevForm: SignUpForm) => ({ ...prevForm, vetInsurance: newVetInsurance }))
+                            }}
+                        />
+                        <Text style={styles.errorText}>{errors.vetInsurance}</Text>
+
+                        <Input
+                            clearButtonMode={"always"} size={"large"}
+                            value={form.vetCompany} style={styles.signUpLoginTextBox}
+                            placeholder={"Veterinary Company"}
+                            onChangeText={(newVetCompany) => {
+                                setForm((prevForm: SignUpForm) => ({ ...prevForm, vetCompany: newVetCompany }))
+                            }}
+                        />
+                        <Text style={styles.errorText}>{errors.vetCompany}</Text>
+
+                        <Input
+                            clearButtonMode={"always"} size={"large"}
+                            value={form.vetImg} style={styles.signUpLoginTextBox}
+                            placeholder={"Veterinary Image"}
+                            onChangeText={(newVetImg) => {
+                                setForm((prevForm: SignUpForm) => ({ ...prevForm, vetImg: newVetImg }))
+                            }}
+                        />
+                        <Text style={styles.errorText}>{errors.vetImg}</Text>
+
+
+
 
                         
                       {/* if isUserVet is true add return button */}
