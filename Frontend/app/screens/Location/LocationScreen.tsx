@@ -9,6 +9,7 @@ import axios from 'axios'
 import * as Location from 'expo-location';
 import { GOOGLE_MAPS_APIKEY } from '../shared/Constants'
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useNotification } from '../shared/NotificationContext'
 
 export interface LocationScreenParams {
     userId: string,
@@ -52,6 +53,7 @@ const updateVetLocation = async (uid: any, location: LocationInterface): Promise
 
 function LocationScreen(props: any) {
     const { params } = props.route;
+    const { setNotification } = useNotification();
     const [isLoading, setIsLoading] = useState(false);
     const [location, setLocation] = useState({
       latitude: params.latitude || 0,
@@ -76,8 +78,8 @@ function LocationScreen(props: any) {
 
     useEffect(() => {
         const fetchUserHomeAddress = async () => {
-            setIsLoading(true);
             try {
+                setIsLoading(true);
                 const addressResponse = await axios.get(`${BASE_URL}/user/address-coords/${params.userId}`);
                 const homeCoords = addressResponse.data;
                 if (homeCoords.latitude && homeCoords.longitude) {
@@ -153,8 +155,8 @@ function LocationScreen(props: any) {
             return;
         }
 
-        setIsLoading(true);
         try {
+            setIsLoading(true);
             if (params.userIsVet) {
                 await updateVetLocation(params.userId, locationInfo);
             } else {
@@ -164,9 +166,9 @@ function LocationScreen(props: any) {
             props.navigation.navigate("Home", {
                 userId: params.userId,
                 userIsVet: params.userIsVet,
-                location: locationInfo,
-                addressUpdated: true
+                location: locationInfo
             });
+            setNotification({ header: 'Location Update', message: 'Your location has been successfully updated.', type: 'success' });
         } catch (error) {
             console.error('Error updating location:', error);
         } finally {

@@ -727,10 +727,85 @@ export const darkMapStyle = [
     }
   ]
 
-  interface ToastProps {
-    text1?: string;
-    text2?: string;
-    props?: any;
+export const addressStyles = StyleSheet.create({
+  container: {
+      padding: 20,
+  },
+  headerRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 20,
+  },
+  title: {
+      fontSize: 22,
+      fontWeight: 'bold',
+  },
+  inputEmpty: {
+      borderBottomWidth: 1,
+      borderBottomColor: '#000000',
+      padding: 10,
+  },
+  inputFilled: {
+      borderWidth: 1,
+      borderColor: '#000000',
+      padding: 10,
+  },
+  listView: {
+      backgroundColor: colors.background,
+      marginTop: 44,
+      marginLeft: 0,
+      marginRight: 0,
+      elevation: 0,
+      shadowOpacity: 0,
+      position: 'absolute',
+      zIndex: 1
+  },
+  inlineFields: {
+      flexDirection: 'row',
+  },
+  halfInput: {
+      flex: 1,
+      padding: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: '#000000',
+      marginTop: 20,
+      fontSize: 16
+  },
+  leftInput: {
+      marginRight: 5,
+  },
+  rightInput: {
+      marginLeft: 5,
+  },
+  fullInput: {
+      borderBottomWidth: 1,
+      borderBottomColor: '#000000',
+      padding: 10,
+      marginTop: 40,
+      fontSize: 16
+  },
+  button: {
+      backgroundColor: '#FFF',
+      borderColor: '#000',
+      borderWidth: 1,
+      borderRadius: 5,
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      marginTop: 40,
+      width: '40%',
+      alignItems: 'center'
+  },
+  buttonText: {
+      color: '#000',
+      fontSize: 16,
+      fontWeight: 'bold',
+  },
+});
+
+interface ToastProps {
+  text1?: string;
+  text2?: string;
+  props?: any;
 }
 
 export const toastConfig = {
@@ -752,7 +827,7 @@ export const toastConfig = {
           borderColor: '#000',
           flexDirection: 'row',
           alignItems: 'center',
-          paddingHorizontal: 10
+          paddingHorizontal: 10,
       }}>
           <View>
               <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{text1}</Text>
@@ -760,6 +835,32 @@ export const toastConfig = {
           </View>
       </View>
   ),
+  error: ({ text1, text2, props }: ToastProps) => (
+    <View style={{
+        height: 60,
+        width: '90%',
+        backgroundColor: colors.brightRed,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#000',
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 10,
+    }}>
+        <View>
+            <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{text1}</Text>
+            <Text>{text2}</Text>
+        </View>
+    </View>
+),
 };
   
   

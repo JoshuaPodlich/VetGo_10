@@ -21,16 +21,15 @@ import { appointment, pet } from '@prisma/client'
 import { PaymentStripeScreenParams } from '../PaymentStripe/PaymentStripeScreen'
 import { SettingsScreenParams } from '../SettingsScreen/SettingsScreen'
 import { colors } from '../shared/Colors'
-import axios from 'axios'
 import { ScreeningQuestionsParams } from '../ScreeningQuestions/ScreeningQuestionsScreen'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Toast from 'react-native-toast-message';
+import { useNotification } from '../shared/NotificationContext'
 
 export interface HomeClientScreenParams {
     userId: string,
     userIsVet: boolean,
     location: LocationInterface,
-    addressUpdated: boolean
 }
 
 
@@ -57,22 +56,19 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
         fetchPets()
     }, [])
 
+    const { notification, setNotification } = useNotification();
     useEffect(() => {
-        if (params?.addressUpdated) {
+        if (notification.message) {
             Toast.show({
-                type: 'success',
-                text1: 'Location Update',
-                text2: 'Your location has been successfully updated.',
+                type: notification.type,
+                text1: notification.header,
+                text2: notification.message,
                 position: 'bottom',
                 visibilityTime: 4000,
-                text1Style: {fontSize: 16},
-                text2Style: {fontSize: 12},
-                
             });
-            console.log(params.addressUpdated);
-          props.navigation.setParams({ addressUpdated: undefined });
+            setNotification({ header: '', message: '', type: '' });
         }
-      }, [params.addressUpdated]);
+    }, [notification]);
 
 
     const fetchPets = async () => {

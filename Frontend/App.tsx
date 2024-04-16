@@ -49,6 +49,7 @@ import AddtionalPetInfo from './app/screens/AdditionalPetInfo/AddtionalPetInfo'
 import EmergencyScreen from './app/screens/Emergency/EmergencyScreen'
 import ForgotPaswordScreen from './app/screens/ForgotPassword/ForgotPasswordScreen'
 import VetLoginScreen from './app/screens/VetLogin/VetLoginScreen'
+import { NotificationProvider } from './app/screens/shared/NotificationContext'
 
 import ScreeningQuestionsScreen from './app/screens/ScreeningQuestions/ScreeningQuestionsScreen'
 import ChangeAddressScreen from './app/screens/Location/AddressLocation'
@@ -64,52 +65,54 @@ export default function App() {
             >
                 <IconRegistry icons={EvaIconsPack} />
                 <ApplicationProvider {...eva} theme={eva.light}>
-                    <NavigationContainer>
-                        <Stack.Navigator
-                            screenOptions={{animation: 'none'}}
-                        >
-                            <Stack.Screen name="Welcome" component={WelcomeScreen as React.FC} options={{ headerShown: false }} />
-                            <Stack.Screen name="Login" component={LoginScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="SignUp" component={SignUpScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="Location" component={LocationScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="Home" component={HomeScreen as React.FC} options={{ title: "", headerShown: false }} />
-                            <Stack.Screen name="HomeClient" component={HomeClientScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="HomeVet" component={HomeVetScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="CreateAppointment" component={CreateAppointmentScreen as React.FC}
-                                options={{ title: "" }} />
-                            <Stack.Screen name="MyAppointments" component={MyAppointmentsScreen as React.FC}
-                                options={{ title: "" }} />
-                            <Stack.Screen name="MyAppointmentsOwner" component={MyAppointmentsOwnerScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="MyAppointmentsVet" component={MyAppointmentsVetScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="CalendarScreen" component={CalendarScreen} options={{ title: "" }} />
-                            <Stack.Screen name="ViewAppointment" component={ViewAppointmentScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="ViewAppointmentClient" component={ViewAppointmentClientScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="ViewAppointmentVet" component={ViewAppointmentVetScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="ViewNearbyVets" component={ViewNearbyVetsScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="Map" component={MapScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="Settings" component={SettingsScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="ChangePassword" component={ChangePasswordScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="UserInfo" component={UserInfoScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="PaymentStripe" component={PaymentStripeScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="EditPet" component={EditPetScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="ViewPet" component={ViewPet as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="CreatePet" component={CreatePetScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="CreateReview" component={CreateReviewScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="CreateReviewClient" component={CreateReviewClientScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="CreateReviewVet" component={CreateReviewVetScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="VetAddCharges" component={VetAddChargesScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="AdditionalPetInfo" component={AddtionalPetInfo as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="VetDuringAppointmentMedicalHistory" component={VetDuringAppointmentMedicalHistoryScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="VetDuringAppointment1" component={VetDuringAppointment1Screen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="VetDuringAppointment2" component={VetDuringAppointment2Screen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="Account" component={AccountScreen as React.FC} options={{ title: "" }} />
-                            <Stack.Screen name="Emergency" component={EmergencyScreen} options={{ title: "Emergency" }} />
-                            <Stack.Screen name="forgotPassword" component={ForgotPaswordScreen} options={{ title: "forgotPassword" }} />
-                            <Stack.Screen name="VetLogin" component={VetLoginScreen} options={{ title: "VetLogin" }} />
-                            <Stack.Screen name="ScreeningQuestions" component={ScreeningQuestionsScreen as React.FC} options={{title: ""}} />
-                            <Stack.Screen name="ChangeAddress" component={ChangeAddressScreen as React.FC} options={{title: ""}} />
-                        </Stack.Navigator>
-                    </NavigationContainer>
+                    <NotificationProvider>
+                        <NavigationContainer>
+                            <Stack.Navigator
+                                screenOptions={{animation: 'none'}}
+                            >
+                                <Stack.Screen name="Welcome" component={WelcomeScreen as React.FC} options={{ headerShown: false }} />
+                                <Stack.Screen name="Login" component={LoginScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="SignUp" component={SignUpScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="Location" component={LocationScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="Home" component={HomeScreen as React.FC} options={{ title: "", headerShown: false }} />
+                                <Stack.Screen name="HomeClient" component={HomeClientScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="HomeVet" component={HomeVetScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="CreateAppointment" component={CreateAppointmentScreen as React.FC}
+                                    options={{ title: "" }} />
+                                <Stack.Screen name="MyAppointments" component={MyAppointmentsScreen as React.FC}
+                                    options={{ title: "" }} />
+                                <Stack.Screen name="MyAppointmentsOwner" component={MyAppointmentsOwnerScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="MyAppointmentsVet" component={MyAppointmentsVetScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="CalendarScreen" component={CalendarScreen} options={{ title: "" }} />
+                                <Stack.Screen name="ViewAppointment" component={ViewAppointmentScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="ViewAppointmentClient" component={ViewAppointmentClientScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="ViewAppointmentVet" component={ViewAppointmentVetScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="ViewNearbyVets" component={ViewNearbyVetsScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="Map" component={MapScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="Settings" component={SettingsScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="ChangePassword" component={ChangePasswordScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="UserInfo" component={UserInfoScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="PaymentStripe" component={PaymentStripeScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="EditPet" component={EditPetScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="ViewPet" component={ViewPet as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="CreatePet" component={CreatePetScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="CreateReview" component={CreateReviewScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="CreateReviewClient" component={CreateReviewClientScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="CreateReviewVet" component={CreateReviewVetScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="VetAddCharges" component={VetAddChargesScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="AdditionalPetInfo" component={AddtionalPetInfo as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="VetDuringAppointmentMedicalHistory" component={VetDuringAppointmentMedicalHistoryScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="VetDuringAppointment1" component={VetDuringAppointment1Screen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="VetDuringAppointment2" component={VetDuringAppointment2Screen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="Account" component={AccountScreen as React.FC} options={{ title: "" }} />
+                                <Stack.Screen name="Emergency" component={EmergencyScreen} options={{ title: "Emergency" }} />
+                                <Stack.Screen name="forgotPassword" component={ForgotPaswordScreen} options={{ title: "forgotPassword" }} />
+                                <Stack.Screen name="VetLogin" component={VetLoginScreen} options={{ title: "VetLogin" }} />
+                                <Stack.Screen name="ScreeningQuestions" component={ScreeningQuestionsScreen as React.FC} options={{title: ""}} />
+                                <Stack.Screen name="ChangeAddress" component={ChangeAddressScreen as React.FC} options={{title: ""}} />
+                            </Stack.Navigator>
+                        </NavigationContainer>
+                    </NotificationProvider>    
                 </ApplicationProvider>
             </StripeProvider>
         </>

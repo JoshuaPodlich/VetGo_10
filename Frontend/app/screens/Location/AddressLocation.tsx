@@ -1,12 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { GooglePlacesAutocomplete, GooglePlaceDetail } from 'react-native-google-places-autocomplete';
 import { View, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, Text } from 'react-native';
 import { ChangeAddressScreenNavigationProp, ChangeAddressScreenRouteProp } from '../../utils/props'
 import { GOOGLE_MAPS_APIKEY, BASE_URL } from '../shared/Constants'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors} from "../shared/Colors"
-import { autoCompleteStyles } from "../shared/Styles"
+import { autoCompleteStyles, toastConfig, addressStyles } from "../shared/Styles"
 import axios from 'axios';
+import { useNotification } from '../shared/NotificationContext'
+import Toast from 'react-native-toast-message';
 
 export interface ChangeAddressScreenParams {
     userId: string,
@@ -15,6 +17,7 @@ export interface ChangeAddressScreenParams {
 
 function ChangeAddressScreen(props: { route: ChangeAddressScreenRouteProp, navigation: ChangeAddressScreenNavigationProp }) {
     const params: ChangeAddressScreenParams = props.route.params
+    const { notification, setNotification } = useNotification();
     const autocompleteRef = useRef<any>();
     const [addressInput, setAddressInput] = useState('');
     const [locality, setLocality] = useState('');
@@ -24,6 +27,18 @@ function ChangeAddressScreen(props: { route: ChangeAddressScreenRouteProp, navig
     const [country, setCountry] = useState('');
     const [longitude, setLongitude] = useState(0);
     const [latitude, setLatitude] = useState(0);
+    useEffect(() => {
+        if (notification.message) {
+            Toast.show({
+                type: notification.type,
+                text1: notification.header,
+                text2: notification.message,
+                position: 'bottom',
+                visibilityTime: 4000,
+            });
+            setNotification({ header: '', message: '', type: '' });
+        }
+    }, [notification]);
 
     interface AddressComponents {
         street_number?: string;
@@ -64,6 +79,11 @@ function ChangeAddressScreen(props: { route: ChangeAddressScreenRouteProp, navig
     };
 
     const handleSave = async () => {
+        if (!addressInput || addressInput == '') {
+            setNotification({ header: 'Address Update', message: 'Your address field must not be empty.', type: 'error' });
+            return;
+        }
+
         const addressPayload = {
             userId: params.userId,
             street: addressInput,
@@ -86,18 +106,18 @@ function ChangeAddressScreen(props: { route: ChangeAddressScreenRouteProp, navig
         } catch (error) {
             console.error('There was an error saving the address: ', error);
         }
-
+        
         props.navigation.goBack();
+        setNotification({ header: 'Address Update', message: 'Your address has been successfully updated.', type: 'success' });
     };
     
-    // Somewhere in your code
     const SHORT_NAME_ADDRESS_COMPONENT_TYPES = new Set(['street_number', 'route', 'locality', 'administrative_area_level_1', 'postal_code', 'country']);
 
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.headerRow}>
+        <SafeAreaView style={addressStyles.container}>
+            <View style={addressStyles.headerRow}>
                 <MaterialIcons name="edit-location" size={32}/>
-                <Text style={styles.title}>Address Selection</Text>
+                <Text style={addressStyles.title}>Address Selection</Text>
             </View>
             
             <GooglePlacesAutocomplete
@@ -111,9 +131,9 @@ function ChangeAddressScreen(props: { route: ChangeAddressScreenRouteProp, navig
                     types: 'address',
                 }}
                 styles={{
-                    textInput: addressInput ? styles.inputFilled : styles.inputEmpty,
+                    textInput: addressInput ? addressStyles.inputFilled : addressStyles.inputEmpty,
                     container: autoCompleteStyles.container,
-                    listView: styles.listView,
+                    listView: addressStyles.listView,
                     separator: autoCompleteStyles.separator,
                     row: autoCompleteStyles.row,
                     poweredContainer: { display: 'none' },
@@ -121,28 +141,28 @@ function ChangeAddressScreen(props: { route: ChangeAddressScreenRouteProp, navig
             />
             <View style={{paddingTop: 50}}>
                 <TextInput
-                    style={styles.fullInput}
+                    style={addressStyles.fullInput}
                     value={aptSuite}
                     onChangeText={setAptSuite}
                     placeholder="Apt, Suite, etc. (optional)"
                 />
 
                 <TextInput
-                    style={styles.fullInput}
+                    style={addressStyles.fullInput}
                     value={locality}
                     onChangeText={setLocality}
                     placeholder="City"
                 />
 
-                <View style={styles.inlineFields}>
+                <View style={addressStyles.inlineFields}>
                     <TextInput
-                        style={[styles.halfInput, styles.leftInput]}
+                        style={[addressStyles.halfInput, addressStyles.leftInput]}
                         value={adminArea}
                         onChangeText={setAdminArea}
                         placeholder="State/Province"
                     />
                     <TextInput
-                        style={[styles.halfInput, styles.rightInput]}
+                        style={[addressStyles.halfInput, addressStyles.rightInput]}
                         value={postalCode}
                         onChangeText={setPostalCode}
                         placeholder="Zip/Postal Code"
@@ -150,7 +170,7 @@ function ChangeAddressScreen(props: { route: ChangeAddressScreenRouteProp, navig
                 </View>
 
                 <TextInput
-                    style={styles.fullInput}
+                    style={addressStyles.fullInput}
                     value={country}
                     onChangeText={setCountry}
                     placeholder="Country"
@@ -159,88 +179,16 @@ function ChangeAddressScreen(props: { route: ChangeAddressScreenRouteProp, navig
             <View style={{alignItems:'center'}}>
                 <TouchableOpacity
                         onPress={handleSave}
-                        style={styles.button}
+                        style={addressStyles.button}
                     >
-                        <Text style={styles.buttonText}>Save</Text>
+                        <Text style={addressStyles.buttonText}>Save</Text>
                 </TouchableOpacity>
+            </View>
+            <View style={{zIndex: 1000, marginTop: 220}}>
+                <Toast config={toastConfig}/>
             </View>
         </SafeAreaView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 20,
-    },
-    headerRow: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 20,
-    },
-    title: {
-        fontSize: 22,
-        fontWeight: 'bold',
-    },
-    inputEmpty: {
-        borderBottomWidth: 1,
-        borderBottomColor: '#000000',
-        padding: 10,
-    },
-    inputFilled: {
-        borderWidth: 1,
-        borderColor: '#000000',
-        padding: 10,
-    },
-    listView: {
-        backgroundColor: colors.background,
-        marginTop: 44,
-        marginLeft: 0,
-        marginRight: 0,
-        elevation: 0,
-        shadowOpacity: 0,
-        position: 'absolute',
-        zIndex: 1
-    },
-    inlineFields: {
-        flexDirection: 'row',
-    },
-    halfInput: {
-        flex: 1,
-        padding: 10,
-        borderBottomWidth: 1,
-        borderBottomColor: '#000000',
-        marginTop: 20,
-        fontSize: 16
-    },
-    leftInput: {
-        marginRight: 5,
-    },
-    rightInput: {
-        marginLeft: 5,
-    },
-    fullInput: {
-        borderBottomWidth: 1,
-        borderBottomColor: '#000000',
-        padding: 10,
-        marginTop: 40,
-        fontSize: 16
-    },
-    button: {
-        backgroundColor: '#FFF',
-        borderColor: '#000',
-        borderWidth: 1,
-        borderRadius: 5,
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        marginTop: 40,
-        width: '40%',
-        alignItems: 'center'
-    },
-    buttonText: {
-        color: '#000',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-});
 
 export default ChangeAddressScreen;
