@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { styles } from '../shared/Styles';
 import { colors } from '../shared/Colors';
+import { BASE_URL } from '../shared/Constants';
 
 export interface UserInfoScreenParams {
     userId: string,
@@ -10,26 +11,57 @@ export interface UserInfoScreenParams {
 
 // Hardcoded user info for demonstration
 const userInfo = {
-    userName: 'testUser123',
-    userId: '123456789',
-    userAddress: '123 Test St, City',
-    firstName: 'John',
-    lastName: 'Doe',
-    numberOfPets: 2,
+    email: 'not added',
+    userAddress: 'not added',
+    firstName: 'not added',
+    lastName: 'not added',
+    telephone: 'not added',
 };
 
 function UserInfoScreen(props: any) {
+
+    console.log("UserInfoScreen: ", props.route.params.userId);
+
+    useEffect(() => {
+        getUserInfo(props.route.params.userId)
+    }, [])   
+    // Get user info from the params
+    const getUserInfo = async (userId: any) => {
+        try {
+            const response = await fetch(`${BASE_URL}/user/id/${userId}`);
+
+            if (!response.ok) {
+                throw new Error('Problem fetching user data');
+            }
+
+            const data = await response.json();
+            console.log("User data: " + JSON.stringify(data))
+
+            const { id, email, address, firstName, lastName, telephone } = data;
+
+            userInfo.email = email;
+            userInfo.userAddress = address;
+            userInfo.firstName = firstName;
+            userInfo.lastName = lastName;
+            userInfo.telephone = telephone;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    
+    }
+
+
     return (
         <View style={userStyles.container}>
             <Text style={{ fontSize: 30, fontWeight: "bold", marginTop: 30, color: colors.action_Orange, paddingBottom: 20}}  >
                             User Info</Text>
             <View style={userStyles.userInfoContainer}>
-                <Text style={userStyles.userInfoText}>Username: {userInfo.userName}</Text>
-                <Text style={userStyles.userInfoText}>User ID: {userInfo.userId}</Text>
-                <Text style={userStyles.userInfoText}>Address: {userInfo.userAddress}</Text>
-                <Text style={userStyles.userInfoText}>First Name: {userInfo.firstName}</Text>
+            <Text style={userStyles.userInfoText}>First Name: {userInfo.firstName}</Text>
                 <Text style={userStyles.userInfoText}>Last Name: {userInfo.lastName}</Text>
-                <Text style={userStyles.userInfoText}>Number of Pets: {userInfo.numberOfPets}</Text>
+                <Text style={userStyles.userInfoText}>Phone Number: {userInfo.telephone}</Text>
+                <Text style={userStyles.userInfoText}>Address: {userInfo.userAddress}</Text>
+                <Text style={userStyles.userInfoText}>Email: {userInfo.email}</Text>
             </View>
             <TouchableOpacity style={{...styles.mainButton, marginTop: 50}} onPress={() => props.navigation.goBack()
 }>
