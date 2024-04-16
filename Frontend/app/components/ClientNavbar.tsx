@@ -55,7 +55,6 @@ const ClientNavbar: React.FC<ClientNavbarParams> = ({ userId, userIsVet, locatio
     }
 
     const handleTabSelect = _.debounce((index) => {
-        console.log(`Navigating to index: ${index}`);
         setSelectedIndex(index);
         const params = { userId, userIsVet, location };
     

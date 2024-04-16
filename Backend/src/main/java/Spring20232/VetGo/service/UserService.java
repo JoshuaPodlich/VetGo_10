@@ -38,7 +38,11 @@ public class UserService {
     @Autowired
     private TagRepository tagRepository;
 
-    @Autowired RoleRepository roleRepository;
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private AddressRepository addressRepository;
 
     @Autowired
     private PasswordResetTokenRepository passwordResetTokenRepository;
@@ -75,6 +79,46 @@ public class UserService {
         return true;
     }
 
+    private String buildUserAddress(Address address) {
+        StringBuilder addressBuilder = new StringBuilder();
+
+        if (address.getStreet() != null && !address.getStreet().isEmpty()) {
+            addressBuilder.append(address.getStreet());
+        }
+        if (address.getAptSuite() != null && !address.getAptSuite().isEmpty()) {
+            if (!addressBuilder.isEmpty()) {
+                addressBuilder.append(", ");
+            }
+            addressBuilder.append(address.getAptSuite());
+        }
+        if (address.getCity() != null && !address.getCity().isEmpty()) {
+            if (!addressBuilder.isEmpty()) {
+                addressBuilder.append(", ");
+            }
+            addressBuilder.append(address.getCity());
+        }
+        if (address.getState() != null && !address.getState().isEmpty()) {
+            if (!addressBuilder.isEmpty()) {
+                addressBuilder.append(", ");
+            }
+            addressBuilder.append(address.getState());
+        }
+        if (address.getZip() != null && !address.getZip().isEmpty()) {
+            if (!addressBuilder.isEmpty()) {
+                addressBuilder.append(" ");
+            }
+            addressBuilder.append(address.getZip());
+        }
+        if (address.getCountry() != null && !address.getCountry().isEmpty()) {
+            if (!addressBuilder.isEmpty()) {
+                addressBuilder.append(", ");
+            }
+            addressBuilder.append(address.getCountry());
+        }
+
+        return addressBuilder.toString();
+    }
+
     public ObjectNode getUserInfo(Long uid) {
         User user = userRepository.findById(uid).orElse(null);
         Owner owner;
@@ -87,7 +131,15 @@ public class UserService {
         userNode.put("email", user.getEmail());
         userNode.put("firstName", user.getFirstName());
         userNode.put("lastName", user.getLastName());
-        userNode.put("address", "...");
+
+        Address address = user.getAddress();
+        if (address != null && (address.getLatitude() != null || address.getLongitude() != null)) {
+            userNode.put("address", buildUserAddress(address));
+        }
+        else {
+            userNode.put("address", "N/A");
+        }
+
         userNode.put("telephone", user.getTelephone());
 
         if (user.isUserOwner()) {
@@ -105,7 +157,7 @@ public class UserService {
 
             userNode.put("role", "Veterinarian");
             userNode.put("numReviews", vet.getNumReviews());
-            userNode.put("vetLicense", vet.getVetLicense() != null ? vet.getVetLicense() : "");
+            userNode.put("vetLicense", vet.getVetLicense() != null ? vet.getVetLicense() : "N/A");
         }
 
         return userNode;
@@ -169,6 +221,9 @@ public class UserService {
         user.setFirstName(userInfo.get("firstName").asText());
         user.setLastName(userInfo.get("lastName").asText());
         user.setTelephone(userInfo.get("telephone").asText());
+        Address address = new Address();
+        user.setAddress(address);
+        addressRepository.save(address);
 
         User newUser = user;
 
@@ -431,4 +486,42 @@ public class UserService {
         vetRepository.save(vet);
     }
 
+    @Transactional
+    public void updateAddress(Long uid, Address addressBody) {
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null)
+            throw new NotFoundException("Unable to find user in database.");
+
+        Address address = user.getAddress();
+        if (address == null)
+           address = new Address();
+
+        address.setStreet(addressBody.getStreet());
+        address.setAptSuite(addressBody.getAptSuite());
+        address.setCity(addressBody.getCity());
+        address.setState(addressBody.getState());
+        address.setZip(addressBody.getZip());
+        address.setCountry(addressBody.getCountry());
+        address.setLongitude(addressBody.getLongitude());
+        address.setLatitude(addressBody.getLatitude());
+
+        addressRepository.save(address);
+    }
+
+    public ObjectNode getAddressCoordinates(Long uid) {
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null)
+            throw new NotFoundException("Unable to find user in database.");
+
+        Address address = user.getAddress();
+        if (address == null) {
+            throw new NotFoundException("User's address does not exist (e.g., has not been set).");
+        }
+
+        ObjectNode locationNode = objectMapper.createObjectNode();
+        locationNode.put("latitude", address.getLatitude());
+        locationNode.put("longitude", address.getLongitude());
+
+        return locationNode;
+    }
 }

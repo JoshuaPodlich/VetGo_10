@@ -33,6 +33,10 @@ export const LocationDisplay: React.FC<LocationDisplayProps> = ({ userId, userIs
 }
 
 export const getLocationString = async (latitude: number, longitude: number): Promise<string> => {
+    if (longitude == null || latitude == null || (longitude == 0 && latitude == 0)) {
+        return "No Location Provided"
+    }
+
     try {
         const response = await axios.get(
             `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_MAPS_APIKEY}`
@@ -46,6 +50,6 @@ export const getLocationString = async (latitude: number, longitude: number): Pr
         }
     } catch (error) {
         console.log("Error fetching location string:", error);
-        return "Location unavailable";
+        return "Location Unavailable";
     }
 }

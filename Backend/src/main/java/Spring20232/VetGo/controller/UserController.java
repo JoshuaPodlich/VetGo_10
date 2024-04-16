@@ -197,5 +197,24 @@ public class UserController {
         }
     }
 
+    @PutMapping(value = "/update-address/{uid}")
+    public ResponseEntity<?> updateAddress(@PathVariable("uid") Long uid,
+                                           @RequestBody Address addressBody) {
+        try {
+            userService.updateAddress(uid, addressBody);
+            return ResponseEntity.status(HttpStatus.OK).body("Address has been successfully changed.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 
+    @GetMapping("/address-coords/{uid}")
+    public ResponseEntity<?> getAddressCoords(@PathVariable("uid") Long uid) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(userService.getAddressCoordinates(uid));
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 }

@@ -3,7 +3,7 @@ import { SafeAreaView, ScrollView, StyleSheet, View, TextInput, Pressable, Alert
 import { Button, Card, Text, TopNavigation } from '@ui-kitten/components'
 import { Dimensions } from 'react-native'
 import { BASE_URL } from "../shared/Constants"
-import { styles } from "../shared/Styles"
+import { styles, toastConfig } from "../shared/Styles"
 import { homeStyles } from "./HomeStyles"
 import { FontAwesome5 } from '@expo/vector-icons'
 import { HomeClient_PetProfile } from "./HomeClient_PetProfile"
@@ -24,12 +24,16 @@ import { colors } from '../shared/Colors'
 import axios from 'axios'
 import { ScreeningQuestionsParams } from '../ScreeningQuestions/ScreeningQuestionsScreen'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Toast from 'react-native-toast-message';
 
 export interface HomeClientScreenParams {
     userId: string,
     userIsVet: boolean,
-    location: LocationInterface
+    location: LocationInterface,
+    addressUpdated: boolean
 }
+
+
 function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation: ClientHomeScreenNavigationProp }) {
 
     //region States
@@ -52,6 +56,23 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     useEffect(() => {
         fetchPets()
     }, [])
+
+    useEffect(() => {
+        if (params?.addressUpdated) {
+            Toast.show({
+                type: 'success',
+                text1: 'Location Update',
+                text2: 'Your location has been successfully updated.',
+                position: 'bottom',
+                visibilityTime: 4000,
+                text1Style: {fontSize: 16},
+                text2Style: {fontSize: 12},
+                
+            });
+            console.log(params.addressUpdated);
+          props.navigation.setParams({ addressUpdated: undefined });
+        }
+      }, [params.addressUpdated]);
 
 
     const fetchPets = async () => {
@@ -244,18 +265,18 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                     <Button onPress={() => fetchPets()} style={homeStyles.refreshButton}>
                         <Text>Refresh List</Text>
                     </Button>
-                   
+                
                     
                 </View>
 
                 
 
             </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />
-
+            <ClientNavbar navigation={props.navigation} {...params} />          
+            <View style={{zIndex: 1000}}>
+                <Toast config={toastConfig}/>
+            </View>
         </SafeAreaView>
-        
-        
     )
 
 }

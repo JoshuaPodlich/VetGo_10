@@ -1,5 +1,6 @@
-import {StyleSheet} from "react-native"
+import {StyleSheet, View, Text,} from "react-native"
 import {colors} from "./Colors"
+import React from 'react';
 
 export const styles: any = StyleSheet.create({
     background: {
@@ -726,6 +727,39 @@ export const darkMapStyle = [
     }
   ]
 
+  interface ToastProps {
+    text1?: string;
+    text2?: string;
+    props?: any;
+}
 
+export const toastConfig = {
+  success: ({ text1, text2, props }: ToastProps) => (
+      <View style={{
+          height: 60,
+          width: '90%',
+          backgroundColor: colors.lightBlue,
+          shadowColor: "#000",
+          shadowOffset: {
+              width: 0,
+              height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          elevation: 5,
+          borderRadius: 10,
+          borderWidth: 1,
+          borderColor: '#000',
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingHorizontal: 10
+      }}>
+          <View>
+              <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{text1}</Text>
+              <Text>{text2}</Text>
+          </View>
+      </View>
+  ),
+};
   
   

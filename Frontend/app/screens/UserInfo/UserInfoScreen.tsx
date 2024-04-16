@@ -27,8 +27,6 @@ const getUserInfo = async (userId: string) => {
     try {
         const response = await axios.get(`${BASE_URL}/user/info/${userId}`);
         
-        console.log('User Info:', response.data);
-        
         return response.data;
     } catch (error: any) {
         console.error("Error fetching user info:", error.response ? error.response.data : error.message);
@@ -53,7 +51,6 @@ function UserInfoScreen(props: { route: UserInfoScreenRouteProp, navigation: Use
         getUserInfo(params.userId)
             .then(data => setUserInfo(data))
             .catch(error => {
-                // Handle or display error information
                 console.error("Failed to load user info", error);
             });
     }, [params.userId]);
@@ -99,6 +96,7 @@ const userStyles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        padding: 20
     },
     title: {
         fontSize: 30,
@@ -111,6 +109,7 @@ const userStyles = StyleSheet.create({
     userInfoText: {
         fontSize: 18,
         marginBottom: 5,
+        flexShrink: 1
     },
     returnButton: {
         backgroundColor: 'blue',

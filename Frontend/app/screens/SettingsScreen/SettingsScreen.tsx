@@ -13,7 +13,7 @@ import { ChangeAddressScreenParams } from '../Location/AddressLocation'
 export interface SettingsScreenParams {
     userId: string,
     userIsVet: boolean,
-    location: LocationInterface
+    location: LocationInterface,
 }
 function SettingsScreen(props: any) {
     const params = props.route.params as SettingsScreenParams
