@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { SafeAreaView, ScrollView, StyleSheet, Text, View, TextInput, Pressable, Alert, TouchableHighlight } from "react-native"
+import { SafeAreaView, ScrollView, StyleSheet, Text, View, TextInput, Pressable, Alert, TouchableHighlight, Image } from "react-native"
 import { BASE_URL } from "../shared/Constants"
 import { styles } from "../shared/Styles"
 import { colors } from "../shared/Colors"
@@ -87,7 +87,6 @@ function VetRegisterScreen(props: { route: VetLoginNavigationProp, navigation: V
             vetInsurance: vetInsurance,
             vetLicense: vetLicense,
             vetCompany: vetCompany,
-            vetImg: vetImg,
             statePermit: statePermit
           }),
         });
@@ -96,10 +95,11 @@ function VetRegisterScreen(props: { route: VetLoginNavigationProp, navigation: V
         }
         const data = await response.json();
         console.log(data);
-        props.navigation.navigate("VetHome", { userId: userId, userIsVet: isUserVet } as HomeScreenParams)
+        // props.navigation.navigate("VetHome", { userId: userId, userIsVet: isUserVet } as HomeScreenParams)
+        Alert.alert("Success", "You have successfully registered as a vet. Please wait while we verify your information.")
       } catch (error) {
         console.log(error)
-        Alert.alert("Error", "Problem registering vet")
+        Alert.alert("Error", "Problem registering as a vet. Please try again.")
       }
     }
    
@@ -143,10 +143,9 @@ function validateForm() {
 
   return (
 <SafeAreaView style={styles.loginBackground}>
-            
             <ScrollView>
-                <Logo/>
-                <View style={{ width: "85%", marginTop: "5%", flex: 1, alignSelf: "center" }}>
+                        <Image source={require('../ScreenImages/transparent_vetgo.png')} style={{...styles.logoImageSmall}} />
+                                 <View style={{ width: "85%", marginTop: "5%", flex: 1, alignSelf: "center" }}>
                     <View id={"signUpGroup"} style={signUpStyles.signUpLoginGroup}>
                         <Text style={{ fontSize: 30, fontWeight: "bold", paddingBottom: 5}}>
                             Vet Signup/Apply 
@@ -213,8 +212,8 @@ function validateForm() {
                         </TouchableHighlight>
                     </View>
                 </View>
-                </View>
-            </ScrollView>
+                </View>                
+            </ScrollView>            
         </SafeAreaView>
   );
 }
