@@ -94,13 +94,12 @@ const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRout
 }
 
 interface AppointmentCardParams {
-    key: int,
     userId: string,
     appointmentData: appointment,
     petName: string,
     setAppointments: useState
 }
-const AppointmentCard = ({ key, userId, appointmentData, petName, setAppointments }: AppointmentCardParams) => {
+const AppointmentCard = ({ userId, appointmentData, petName, setAppointments }: AppointmentCardParams) => {
     const [showDetails, setShowDetails] = useState(false)
     const cancelAppointment = async () => {
         await axios.delete(BASE_URL + "/appointment/delete/" + appointmentData.aid)

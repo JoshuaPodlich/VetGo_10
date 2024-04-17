@@ -20,7 +20,11 @@ import { PaymentStripeScreenParams } from '../screens/PaymentStripe/PaymentStrip
 import { SettingsScreenParams } from '../screens/SettingsScreen/SettingsScreen'
 import { ViewNearbyVetsParams } from '../screens/ClientVetInteraction/ViewNearbyVetsScreen'
 import { ScreeningQuestionsParams } from '../screens/ScreeningQuestions/ScreeningQuestionsScreen'
+import { UserInfoScreenParams } from '../screens/UserInfo/UserInfoScreen'
+import { ChangeAddressScreenParams } from '../screens/Location/AddressLocation'
 
+
+// Map where the keys represent route names and the values define the parameters that the navigated-to screens expect.
 export type RootStackParamList = {
     Welcome: WelcomeScreenParams
     Login: LoginScreenParams
@@ -51,6 +55,8 @@ export type RootStackParamList = {
     Account: undefined
     ForgotPassword: undefined
     ScreeningQuestions: ScreeningQuestionsParams
+    UserInfo: UserInfoScreenParams
+    ChangeAddress: ChangeAddressScreenParams
 }
 
 

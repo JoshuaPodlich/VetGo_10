@@ -3,7 +3,7 @@ import { SafeAreaView, ScrollView, StyleSheet, View, TextInput, Pressable, Alert
 import { Button, Card, Text, TopNavigation } from '@ui-kitten/components'
 import { Dimensions } from 'react-native'
 import { BASE_URL } from "../shared/Constants"
-import { styles } from "../shared/Styles"
+import { styles, toastConfig } from "../shared/Styles"
 import { homeStyles } from "./HomeStyles"
 import { FontAwesome5 } from '@expo/vector-icons'
 import { HomeClient_PetProfile } from "./HomeClient_PetProfile"
@@ -21,14 +21,18 @@ import { appointment, pet } from '@prisma/client'
 import { PaymentStripeScreenParams } from '../PaymentStripe/PaymentStripeScreen'
 import { SettingsScreenParams } from '../SettingsScreen/SettingsScreen'
 import { colors } from '../shared/Colors'
-import axios from 'axios'
 import { ScreeningQuestionsParams } from '../ScreeningQuestions/ScreeningQuestionsScreen'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Toast from 'react-native-toast-message';
+import { useNotification } from '../shared/NotificationContext'
 
 export interface HomeClientScreenParams {
     userId: string,
     userIsVet: boolean,
-    location: LocationInterface
+    location: LocationInterface,
 }
+
+
 function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation: ClientHomeScreenNavigationProp }) {
 
     //region States
@@ -51,6 +55,20 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     useEffect(() => {
         fetchPets()
     }, [])
+
+    const { notification, setNotification } = useNotification();
+    useEffect(() => {
+        if (notification.message) {
+            Toast.show({
+                type: notification.type,
+                text1: notification.header,
+                text2: notification.message,
+                position: 'bottom',
+                visibilityTime: 4000,
+            });
+            setNotification({ header: '', message: '', type: '' });
+        }
+    }, [notification]);
 
 
     const fetchPets = async () => {
@@ -121,13 +139,13 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     function createAppointment(index: number) {
         let createAppointmentParams: CreateAppointmentParams = {
             ...params,
-            petId: pets[index].pid
+            petId: pets[index].id
         }
         //props.navigation.navigate("CreateAppointment", createAppointmentParams)
 
         let screeningQuestionsParams: ScreeningQuestionsParams = {
             ...params,
-            petId: pets[index].pid
+            petId: pets[index].id
         }
         props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
     }
@@ -135,7 +153,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     function createAppointments(index: number) {
         let createAppointmentParams: CreateAppointmentParams = {
             ...params,
-            petId: pets[index].pid
+            petId: pets[index].id
             
         }
         console.log(createAppointmentParams)
@@ -200,8 +218,8 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     return (
         <SafeAreaView style={{ flex: 1 }} >
             <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: 'auto', justifyContent: 'space-between' }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 200, marginLeft: 20, marginVertical: 20 }}>
-                    <FontAwesome5 name='location-arrow' color={colors.blue} size={24} style={{ marginRight: 10 }} />
+                <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 15, marginVertical: 20 }}>
+                    <MaterialIcons name="location-pin" size={40} color={colors.action_Orange} />
                     <LocationDisplay location={params.location} navigation={props.navigation} userId={params.userId} userIsVet={params.userIsVet} />
                 </View>
             </View>
@@ -243,18 +261,18 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                     <Button onPress={() => fetchPets()} style={homeStyles.refreshButton}>
                         <Text>Refresh List</Text>
                     </Button>
-                   
+                
                     
                 </View>
 
                 
 
             </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />
-
+            <ClientNavbar navigation={props.navigation} {...params} />          
+            <View style={{zIndex: 1000}}>
+                <Toast config={toastConfig}/>
+            </View>
         </SafeAreaView>
-        
-        
     )
 
 }

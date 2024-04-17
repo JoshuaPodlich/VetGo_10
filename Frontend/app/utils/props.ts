@@ -1,6 +1,7 @@
 import { NavigationProp, RouteProp } from '@react-navigation/native'
 import { RootStackParamList, UserDetailsParams } from './params'
 
+// RouteProp Type Definitions: Ensures that any parameters passed to the screen via the route are accessed in a type-safe manner.
 export type WelcomeScreenRouteProp = RouteProp<RootStackParamList, 'Welcome'>
 export type LoginScreenRouteProp = RouteProp<RootStackParamList, 'Login'>
 export type SignUpScreenRouteProp = RouteProp<RootStackParamList, 'SignUp'>
@@ -27,7 +28,10 @@ export type PaymentSettingScreenRouteProp = RouteProp<RootStackParamList, 'Payme
 export type Vet1ScreenRouteProp = RouteProp<RootStackParamList, 'VetScreening1'>
 export type Vet2ScreenRouteProp = RouteProp<RootStackParamList, 'VetScreening2'>
 export type AccountScreenRouteProp = RouteProp<RootStackParamList, 'Account'>
+export type UserInfoScreenRouteProp = RouteProp<RootStackParamList, 'UserInfo'>
+export type ChangeAddressScreenRouteProp = RouteProp<RootStackParamList, 'ChangeAddress'>
  
+// NavigationProp Type Definitions: Ensures that all navigation actions are executed with the correct parameters and methods.
 export type WelcomeScreenNavigationProp = NavigationProp<RootStackParamList, 'Welcome'>
 export type LoginScreenNavigationProp = NavigationProp<RootStackParamList, 'Login'>
 export type SignUpScreenNavigationProp = NavigationProp<RootStackParamList, 'SignUp'>
@@ -55,3 +59,5 @@ export type Vet1ScreenNavigationProp = NavigationProp<RootStackParamList, 'VetSc
 export type Vet2ScreenNavigationProp = NavigationProp<RootStackParamList, 'VetScreening2'>
 export type AccountScreenNavigationProp = NavigationProp<RootStackParamList, 'Account'>
 export type ForgotPasswordScreenNavigationProp = NavigationProp<RootStackParamList, 'ForgotPassword'>
+export type UserInfoScreenNavigationProp = NavigationProp<RootStackParamList, 'UserInfo'>;
+export type ChangeAddressScreenNavigationProp = NavigationProp<RootStackParamList, 'ChangeAddress'>

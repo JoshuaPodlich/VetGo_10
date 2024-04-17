@@ -47,6 +47,16 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findById(uid).orElse(null));
     }
 
+    @GetMapping(value = "/info/{uid}")
+    public ResponseEntity<?> getUserInfo(@PathVariable Long uid) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(userService.getUserInfo(uid));
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
     @GetMapping(value = "/email/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findByEmail(email));
@@ -122,33 +132,29 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted user");
     }
 
-    @PutMapping(value = "/update/location/owner/{oid}")
+    @PutMapping(value = "/update/location/owner/{uid}")
     public ResponseEntity<?> updateOwnerLocation(@RequestBody LocationCoordinates location,
-                                            @PathVariable("oid") Long oid) {
-
-        Owner owner = ownerRepository.findById(oid).orElse(null);
-        if (owner == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find owner in database");
-
-        owner.setLatitude(location.getLatitude());
-        owner.setLongitude(location.getLongitude());
-        ownerRepository.save(owner);
-        return ResponseEntity.status(HttpStatus.OK).body(userRepository.findById(oid));
+                                                 @PathVariable("uid") Long uid) {
+        try {
+            userService.updateOwnersLocations(uid, location);
+            return ResponseEntity.status(HttpStatus.OK).body("Owner's location has been updated.");
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
 
-    @PutMapping(value = "/update/location/vet/{vid}")
+    @PutMapping(value = "/update/location/vet/{uid}")
     public ResponseEntity<?> updateVetLocation(@RequestBody LocationCoordinates location,
-                                               @PathVariable("vid") Long vid) {
-
-        Vet vet = vetRepository.findById(vid).orElse(null);
-        if (vet == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find owner in database.");
-
-        vet.setLatitude(location.getLatitude());
-        vet.setLongitude(location.getLongitude());
-        vetRepository.save(vet);
-        return ResponseEntity.status(HttpStatus.OK).body(userRepository.findById(vid));
+                                               @PathVariable("uid") Long uid) {
+        try {
+            userService.updateVetsLocations(uid, location);
+            return ResponseEntity.status(HttpStatus.OK).body("Vet's location has been updated.");
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PostMapping(value = "/forgot-password/{uid}")
@@ -191,5 +197,24 @@ public class UserController {
         }
     }
 
+    @PutMapping(value = "/update-address/{uid}")
+    public ResponseEntity<?> updateAddress(@PathVariable("uid") Long uid,
+                                           @RequestBody Address addressBody) {
+        try {
+            userService.updateAddress(uid, addressBody);
+            return ResponseEntity.status(HttpStatus.OK).body("Address has been successfully changed.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 
+    @GetMapping("/address-coords/{uid}")
+    public ResponseEntity<?> getAddressCoords(@PathVariable("uid") Long uid) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(userService.getAddressCoordinates(uid));
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 }

@@ -1,5 +1,6 @@
-import {StyleSheet} from "react-native"
+import {StyleSheet, View, Text,} from "react-native"
 import {colors} from "./Colors"
+import React from 'react';
 
 export const styles: any = StyleSheet.create({
     background: {
@@ -162,16 +163,16 @@ export const styles: any = StyleSheet.create({
     GAC_Container: {
         flex: 1,
     },
-    GAC_ContainerStyle: {
-        backgroundColor: colors.white,
-        borderColor: colors.grey,
-        borderRadius: 3,
-        borderWidth: 1,
-        fontSize: 20,
-        fontWeight: "normal",
-        height: 50,
-        width: "100%",
-    },
+    // GAC_ContainerStyle: {
+    //     backgroundColor: colors.white,
+    //     borderColor: colors.grey,
+    //     borderRadius: 3,
+    //     borderWidth: 1,
+    //     fontSize: 20,
+    //     fontWeight: "normal",
+    //     height: 50,
+    //     width: "100%",
+    // },
     //endregion
 
 
@@ -396,7 +397,292 @@ export const styles: any = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
     },
-        
-
-
+    loadingOverlay: {
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(255,255,255,0.8)',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },        
 })
+
+export const autoCompleteStyles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    textInput: {
+      height: 38,
+      color: colors.black,
+      fontSize: 16,
+      flex: 1,
+      backgroundColor: '#a8d8f0',
+      borderRadius: 4,
+      paddingHorizontal: 10,
+    },
+    listView: {
+      backgroundColor: colors.background,
+      marginTop: 0,
+      marginLeft: 0,
+      marginRight: 0,
+      elevation: 0,
+      shadowOpacity: 0,
+    },
+    separator: {
+      height: 1,
+      backgroundColor: '#ddd',
+    },
+    row: {
+      backgroundColor: colors.background,
+      flexDirection: 'row',
+      alignItems: 'center',
+      height: 45,
+    },
+    icon: {
+      width: 30,
+      height: 30,
+      marginRight: 5,
+    },
+    placeName: {
+      fontSize: 16,
+      fontWeight: '700'
+    },
+    placeAddress: {
+      fontSize: 12,
+      color: '#707070',
+    },
+    clearButton: {
+        position: 'absolute',
+        right: 10,
+        top: '50%',
+        marginTop: -10,
+    },
+  });
+
+export const mapStyles = StyleSheet.create({
+    locationHeader: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        padding: 10,
+        backgroundColor: colors.lightBlue,
+        alignItems: 'flex-start',
+        flexShrink: 1
+    },
+    locationText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
+        paddingHorizontal: 8,
+        paddingVertical: 4,
+    },
+    locationContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    footer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colors.lightBlue,
+        padding: 10,
+    },
+    footerText: {
+        color: 'white',
+        fontSize: 20,
+        fontWeight: 'bold',
+        paddingHorizontal: 8,
+    },
+    iconStyle: {
+        paddingHorizontal: 8,
+    },
+    buttonContainer: {
+        position: 'absolute',
+        right: 10,
+        bottom: 50,
+    },
+    button: {
+        backgroundColor: colors.action_Orange,
+        padding: 10,
+        borderRadius: 20,
+        marginBottom: 12,
+    }
+});
+
+export const lightMapStyle = [
+  {
+    "featureType": "administrative",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  }
+]
+
+export const addressStyles = StyleSheet.create({
+  container: {
+      padding: 20,
+  },
+  headerRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 20,
+  },
+  title: {
+      fontSize: 22,
+      fontWeight: 'bold',
+  },
+  inputEmpty: {
+      borderBottomWidth: 1,
+      borderBottomColor: '#000000',
+      padding: 10,
+  },
+  inputFilled: {
+      borderWidth: 1,
+      borderColor: '#000000',
+      padding: 10,
+  },
+  listView: {
+      backgroundColor: colors.background,
+      marginTop: 44,
+      marginLeft: 0,
+      marginRight: 0,
+      elevation: 0,
+      shadowOpacity: 0,
+      position: 'absolute',
+      zIndex: 1
+  },
+  inlineFields: {
+      flexDirection: 'row',
+  },
+  halfInput: {
+      flex: 1,
+      padding: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: '#000000',
+      marginTop: 20,
+      fontSize: 16
+  },
+  leftInput: {
+      marginRight: 5,
+  },
+  rightInput: {
+      marginLeft: 5,
+  },
+  fullInput: {
+      borderBottomWidth: 1,
+      borderBottomColor: '#000000',
+      padding: 10,
+      marginTop: 40,
+      fontSize: 16
+  },
+  button: {
+      backgroundColor: '#FFF',
+      borderColor: '#000',
+      borderWidth: 1,
+      borderRadius: 5,
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      marginTop: 40,
+      width: '40%',
+      alignItems: 'center'
+  },
+  buttonText: {
+      color: '#000',
+      fontSize: 16,
+      fontWeight: 'bold',
+  },
+});
+
+interface ToastProps {
+  text1?: string;
+  text2?: string;
+  props?: any;
+}
+
+export const toastConfig = {
+  success: ({ text1, text2, props }: ToastProps) => (
+      <View style={{
+          height: 60,
+          width: '90%',
+          backgroundColor: colors.lightBlue,
+          shadowColor: "#000",
+          shadowOffset: {
+              width: 0,
+              height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          elevation: 5,
+          borderRadius: 10,
+          borderWidth: 1,
+          borderColor: '#000',
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingHorizontal: 10,
+      }}>
+          <View>
+              <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{text1}</Text>
+              <Text>{text2}</Text>
+          </View>
+      </View>
+  ),
+  error: ({ text1, text2, props }: ToastProps) => (
+    <View style={{
+        height: 60,
+        width: '90%',
+        backgroundColor: colors.brightRed,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#000',
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 10,
+    }}>
+        <View>
+            <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{text1}</Text>
+            <Text>{text2}</Text>
+        </View>
+    </View>
+),
+};
+  
+  

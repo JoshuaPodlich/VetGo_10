@@ -19,5 +19,11 @@ export const colors = {
     action_Orange: "#FF7043",
     background_Grey: "#F5F5F5",
     hilight_yellow: "#FFD54F",
-
+    background: '#F5F5F5',
+    offWhite: '#FEFEFE',
+    primary: '#007BA7', // Cerulean Blue
+    primaryDark: '#003366', // Navy Blue
+    error: '#DC143C', // Crimson Red
+    lightError: '#B22222', // Firebrick
+    disabled: "#A9BACD",
 }

@@ -12,17 +12,16 @@ import TopNavbar from '../../components/TopNavbar'
 import { LocationInterface } from '../shared/Interfaces'
 import { VetAddChargesScreenParams } from '../VetAddCharges/VetAddChargesScreen'
 import { ViewAppointmentScreenParams } from '../ViewAppointment/ViewAppointmentScreen'
-import { MyAppointmentsOwnerScreenParams } from '../ViewAppointment/ViewAppointmentOwnerScreen'
-import { MyAppointmentsVetScreenParams } from '../ViewAppointment/ViewAppointmentVetScreen'
 import { VetDuringAppointmentMedicalHistoryScreenParams } from '../DuringAppointment/VetDuringAppointmentMedicalHistoryScreen'
 import { HomeScreenParams } from './HomeScreen'
 import ClientNavbar from '../../components/ClientNavbar'
 import { SettingsScreenParams } from '../SettingsScreen/SettingsScreen'
 import CalendarScreen from '../Calendar/CalendarScreen'
-import Stomp from "stompjs"
-import SockJS from "sockjs-client"
+// import Stomp from "stompjs"
+// import SockJS from "sockjs-client"
 import { colors } from '../shared/Colors'
 import { LocationDisplay } from '../../components/LocationDisplay'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export interface HomeVetScreenParams {
     userId: string,
@@ -153,78 +152,78 @@ function HomeVetScreen(props: any) {
 
         console.log(viewCalendarParams)
 
-        function createAuthAlert(url, client) {
-            Alert.alert('Alert', 'Allow VetGo to access your Google Account?', [
-                {
-                    text: 'Cancel',
-                    onPress: () => {
-                        console.log('Cancel Pressed')
-                        client.disconnect()
-                    },
-                    style: 'cancel',
-                },
-                {
-                    text: 'OK', onPress: async () => {
-                        //Linking.openURL(url)
-                        // TODO: in a perfect world, this Linking.open would
-                        // open the consent screen on your mobile browser,
-                        // but google doesnt respect the default android emu browser
-                        // so you gotta click on the link in the console :(
-                        console.log("OK pressed - this is a placeholder for opening a link!")
-                        let response = await fetch(url,
-                            { method: 'GET', }
-                        ).then((response) => response.text()
-                        )
-                    },
-                },
-            ])
-        }
+        // function createAuthAlert(url, client) {
+        //     Alert.alert('Alert', 'Allow VetGo to access your Google Account?', [
+        //         {
+        //             text: 'Cancel',
+        //             onPress: () => {
+        //                 console.log('Cancel Pressed')
+        //                 client.disconnect()
+        //             },
+        //             style: 'cancel',
+        //         },
+        //         {
+        //             text: 'OK', onPress: async () => {
+        //                 //Linking.openURL(url)
+        //                 // In a perfect world, this Linking.open would
+        //                 // open the consent screen on your mobile browser,
+        //                 // but google doesnt respect the default android emu browser
+        //                 // so you gotta click on the link in the console :(
+        //                 console.log("OK pressed - this is a placeholder for opening a link!")
+        //                 let response = await fetch(url,
+        //                     { method: 'GET', }
+        //                 ).then((response) => response.text()
+        //                 )
+        //             },
+        //         },
+        //     ])
+        // }
 
-        const socket = new SockJS(BASE_URL + "/ws")
-        const client = Stomp.over(socket)
+        // const socket = new SockJS(BASE_URL + "/ws")
+        // const client = Stomp.over(socket)
 
-        client.connect({}, async () => {
-            console.log(client.state)
-            client.subscribe("/topic/messages", (message: string) => {
-                //             console.log(client.status)
-                console.log(`Received: ${message}`)
-                const receivedMessage = message.body
-                let obj = JSON.parse(receivedMessage)
-                console.log(obj.content)
-                if (obj.content[4] == params.userId) {
-                    console.log("you got authed!")
-                    client.disconnect()
-                    props.navigation.navigate("CalendarScreen", viewCalendarParams)
-                }
-            })
+        // client.connect({}, async () => {
+        //     console.log(client.state)
+        //     client.subscribe("/topic/messages", (message: string) => {
+        //         //             console.log(client.status)
+        //         console.log(`Received: ${message}`)
+        //         const receivedMessage = message.body
+        //         let obj = JSON.parse(receivedMessage)
+        //         console.log(obj.content)
+        //         if (obj.content[4] == params.userId) {
+        //             console.log("you got authed!")
+        //             client.disconnect()
+        //             props.navigation.navigate("CalendarScreen", viewCalendarParams)
+        //         }
+        //     })
 
-            let url = BASE_URL + "/calendar/credentialExists/user" + params.userId
-            console.log(url)
+        //     let url = BASE_URL + "/calendar/credentialExists/user" + params.userId
+        //     console.log(url)
 
-            let response = await fetch(url,
-                { method: 'GET', }
-            ).then((response) => {
-                response.text()
-                console.log(response)
-                console.log("Status: " + response.status)
-                if (response.status == 200) {
-                    client.disconnect()
-                    props.navigation.navigate("CalendarScreen", viewCalendarParams)
-                }
-                else if (response.status == 404) {
-                    createAuthAlert(BASE_URL + "/calendar/addCredential/user" + params.userId, client)
-                }
-            }
-            )
+        //     let response = await fetch(url,
+        //         { method: 'GET', }
+        //     ).then((response) => {
+        //         response.text()
+        //         console.log(response)
+        //         console.log("Status: " + response.status)
+        //         if (response.status == 200) {
+        //             client.disconnect()
+        //             props.navigation.navigate("CalendarScreen", viewCalendarParams)
+        //         }
+        //         else if (response.status == 404) {
+        //             createAuthAlert(BASE_URL + "/calendar/addCredential/user" + params.userId, client)
+        //         }
+        //     }
+        //     )
 
 
 
-            //             const response = await fetch(url,
-            //                             { method: 'GET', }
-            //                             ).then((response) => response.text()
-            //                             )
-            //.then(props.navigation.navigate("CalendarScreen", appointmentData))
-        })
+        //                 const response = await fetch(url,
+        //                                 { method: 'GET', }
+        //                                 ).then((response) => response.text()
+        //                                 )
+        //     .then(props.navigation.navigate("CalendarScreen", appointmentData))
+        // })
         //       console.log("AA")
         //           setStompClient(client);
     }
@@ -251,11 +250,11 @@ function HomeVetScreen(props: any) {
                 {vetLicenseStatus &&
                     <View style={homeStyles.container}>
                         <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: 'auto', justifyContent: 'space-between' }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 200, marginLeft: 20, marginVertical: 20 }}>
-                                <FontAwesome5 name='location-arrow' color={colors.blue} size={24} style={{ marginRight: 10 }} />
-                                <LocationDisplay location={params.location} navigation={props.navigation} userId={params.userId} userIsVet={params.userIsVet} />
-                            </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 200, marginLeft: 20, marginVertical: 20 }}>
+                            <MaterialIcons name="location-pin" size={40} color={colors.action_Orange} />
+                            <LocationDisplay location={params.location} navigation={props.navigation} userId={params.userId} userIsVet={params.userIsVet} />
                         </View>
+                    </View>
                         {loading && <Text style={{ marginLeft: "auto", marginRight: "auto" }}>Loading..</Text>}
                         <View style={homeStyles.container}>
                             <View style={{ width: "90%", marginLeft: "auto", marginRight: "auto", marginTop: 20 }}>
