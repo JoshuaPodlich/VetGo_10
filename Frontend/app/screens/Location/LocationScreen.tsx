@@ -127,7 +127,6 @@ function LocationScreen(props: any) {
         }
     };
 
-    // Must use Expo's location API due to Expo managed workflow.
     async function getCurrentLocation() {
         let { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== 'granted') {
@@ -135,15 +134,29 @@ function LocationScreen(props: any) {
             return;
         }
     
+        // Set a timeout for location fetching because Expo's location fetching is quite poor.
+        // Thus, it does not alwasy work.
+        const locationPromise = Location.getCurrentPositionAsync({accuracy: Location.Accuracy.High});
+        const timeoutPromise = new Promise((resolve, reject) => {
+            const id = setTimeout(() => {
+                clearTimeout(id);
+                reject('Location request timed out');
+            }, 10000); // 10 seconds
+        });
+    
         try {
             setIsLoading(true);
-            let location = await Location.getCurrentPositionAsync({});
+            const location: any = await Promise.race([locationPromise, timeoutPromise]);
+            console.log(`Location received: ${JSON.stringify(location)}`);
             const address = await fetchGoogleLocation(location.coords.latitude, location.coords.longitude);
             fetchAddress(location.coords.latitude, location.coords.longitude, address);
+        } catch (error) {
+            Alert.alert('Location Error', 'Unable to fetch current location. Please try again or check app permissions.');
         } finally {
             setIsLoading(false);
         }
     }
+    
 
     const handleInfoPress = () => {
         Alert.alert("Information", "Set your preferred location from which you plan on traveling to a pet owner's residence, such as your office.");
@@ -187,11 +200,10 @@ function LocationScreen(props: any) {
                         <Icon name="info-outline" size={24} color="#000" onPress={handleInfoPress} style={{marginLeft: 4}} />
                     </View>
                     <GoogleAutoComplete
-                         
-                        placeholderText="Enter office address" 
+                        placeholderText="Enter office address"
                         fetchAddress={fetchAddress} 
                     />
-                    <TouchableOpacity onPress={getCurrentLocation} style={{padding: 10, backgroundColor: colors.black }}>
+                    <TouchableOpacity onPress={getCurrentLocation} style={{padding: 10, backgroundColor: colors.action_Orange }}>
                         <Text style={{ color: colors.white, textAlign: 'center', fontFamily:"Roboto", fontSize: 16, fontWeight: '700' }}>Use Current Location</Text>
                     </TouchableOpacity>
                 </SafeAreaView>
@@ -205,7 +217,7 @@ function LocationScreen(props: any) {
                         fetchAddress={fetchAddress} 
                     />
                     {homeAddress.address ? (
-                        <TouchableOpacity onPress={useHomeAddress} disabled={isLoading} style={{padding: 10, backgroundColor: colors.black }}>
+                        <TouchableOpacity onPress={useHomeAddress} disabled={isLoading} style={{padding: 10, backgroundColor: colors.action_Orange }}>
                             <Text style={{ color: colors.white, textAlign: 'center', fontFamily: "Roboto", fontSize: 16, fontWeight: '700' }}>
                                 Use Home Address
                             </Text>

@@ -10,6 +10,7 @@ import { appointment } from '@prisma/client'
 import { useEffect, useState } from 'react'
 import { MapScreenParams } from '../Map/MapScreen'
 import Entypo from 'react-native-vector-icons/Entypo';
+import { colors } from '../shared/Colors'
 
 export interface MyAppointmentsVetScreenParams {
     userId: string,
@@ -226,7 +227,7 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navig
                     <TouchableOpacity 
                         onPress={navigateToVetMap}
                         style={{
-                            backgroundColor: '#000000',
+                            backgroundColor: colors.action_Orange,
                             paddingHorizontal: 10,
                             paddingVertical: 6,
                             borderRadius: 4,
@@ -356,7 +357,7 @@ const AvailableAppointmentCard = ({ key, appointmentData, petName, vetId, params
                     <TouchableOpacity 
                         onPress={navigateToVetMap}
                         style={{
-                            backgroundColor: '#000000',
+                            backgroundColor: colors.action_Orange,
                             paddingHorizontal: 10,
                             paddingVertical: 6,
                             borderRadius: 4,

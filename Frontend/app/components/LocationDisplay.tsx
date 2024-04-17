@@ -25,7 +25,7 @@ export const LocationDisplay: React.FC<LocationDisplayProps> = ({ userId, userIs
     return (
         <View>
             <Text style={{ fontSize: 16, fontWeight: 'bold', flexShrink: 1 }}>{locationName}</Text>
-            <Text style={{ fontSize: 13, textDecorationLine: 'underline' }} onPress={() => navigation.navigate('Location', { userId, userIsVet, location })}>
+            <Text style={{ textDecorationLine: 'underline' }} onPress={() => navigation.navigate('Location', { userId, userIsVet, location })}>
                 Tap to change
             </Text>
         </View>

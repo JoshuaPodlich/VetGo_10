@@ -251,7 +251,7 @@ function HomeVetScreen(props: any) {
                     <View style={homeStyles.container}>
                         <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: 'auto', justifyContent: 'space-between' }}>
                         <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 200, marginLeft: 20, marginVertical: 20 }}>
-                            <MaterialIcons name="location-pin" size={40} color={colors.black} />
+                            <MaterialIcons name="location-pin" size={40} color={colors.action_Orange} />
                             <LocationDisplay location={params.location} navigation={props.navigation} userId={params.userId} userIsVet={params.userIsVet} />
                         </View>
                     </View>

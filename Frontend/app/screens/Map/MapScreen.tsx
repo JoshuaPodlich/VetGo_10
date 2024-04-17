@@ -5,7 +5,8 @@ import MapViewDirections from 'react-native-maps-directions'
 import { GOOGLE_MAPS_APIKEY } from "../shared/Constants"
 import { LocationInterface } from '../shared/Interfaces'
 import { MapScreenNavigationProp, MapScreenRouteProp } from '../../utils/props'
-import { mapStyles, darkMapStyle } from "../shared/Styles"
+import { mapStyles, lightMapStyle } from "../shared/Styles"
+import { colors } from "../shared/Colors"
 import axios from 'axios';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
@@ -16,7 +17,7 @@ export interface MapScreenParams {
     destinationLocation: LocationInterface
 }
 
-const originIcon1 = <MaterialIcon name="my-location" size={40} color="#4caf50" />;
+const originIcon1 = <MaterialIcon name="my-location" size={40} color={colors.black} />;
 const destinationIcon1 = <MaterialIcon name="location-pin" size={40} color="#d32f2f" />;
 const travelIcon = <MaterialIcon name="directions-car" size={24} color="#FFFFFF" />;
 
@@ -102,7 +103,7 @@ function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavi
                         latitudeDelta: LATITUDE_DELTA,
                         longitudeDelta: LONGITUDE_DELTA
                     }}
-                    customMapStyle={darkMapStyle}
+                    customMapStyle={lightMapStyle}
                     onMapReady={adjustMapView}
                 >
                     <Marker
@@ -123,8 +124,8 @@ function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavi
                         origin={origin}
                         destination={destination}
                         apikey={GOOGLE_MAPS_APIKEY}
+                        strokeColor={colors.blue}
                         strokeWidth={8}
-                        strokeColor="#ffffff"
                         optimizeWaypoints={true}
                         onReady={result => {
                             fetchTime(result.distance * 0.621371, result.duration)
