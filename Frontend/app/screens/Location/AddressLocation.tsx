@@ -80,7 +80,7 @@ function ChangeAddressScreen(props: { route: ChangeAddressScreenRouteProp, navig
 
     const handleSave = async () => {
         if (!addressInput || addressInput == '') {
-            setNotification({ header: 'Address Update', message: 'Your address field must not be empty.', type: 'error' });
+            setNotification({ header: 'Address Error', message: 'The address field must not be empty.', type: 'error' });
             return;
         }
 
@@ -102,13 +102,15 @@ function ChangeAddressScreen(props: { route: ChangeAddressScreenRouteProp, navig
                     'Content-Type': 'application/json',
                 }
             });
-            console.log(response.data);
+
+            props.navigation.goBack();
+            setNotification({ header: 'Address Update', message: 'Your address has been successfully updated.', type: 'success' });
+
         } catch (error) {
-            console.error('There was an error saving the address: ', error);
+            //console.error('There was an error saving the address: ', error);
+            props.navigation.goBack();
+            setNotification({ header: 'Address Error', message: 'Your address could not be updated.', type: 'error' });
         }
-        
-        props.navigation.goBack();
-        setNotification({ header: 'Address Update', message: 'Your address has been successfully updated.', type: 'success' });
     };
     
     const SHORT_NAME_ADDRESS_COMPONENT_TYPES = new Set(['street_number', 'route', 'locality', 'administrative_area_level_1', 'postal_code', 'country']);

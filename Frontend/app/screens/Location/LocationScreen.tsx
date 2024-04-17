@@ -151,7 +151,8 @@ function LocationScreen(props: any) {
             const address = await fetchGoogleLocation(location.coords.latitude, location.coords.longitude);
             fetchAddress(location.coords.latitude, location.coords.longitude, address);
         } catch (error) {
-            Alert.alert('Location Error', 'Unable to fetch current location. Please try again or check app permissions.');
+            //Alert.alert('Location Error', 'Unable to fetch current location. Please try again or check app permissions.');
+            setNotification({ header: 'Location Error', message: 'Unable to fetch current location. Please try again or check app permissions.', type: 'error' });
         } finally {
             setIsLoading(false);
         }
@@ -183,7 +184,9 @@ function LocationScreen(props: any) {
             });
             setNotification({ header: 'Location Update', message: 'Your location has been successfully updated.', type: 'success' });
         } catch (error) {
-            console.error('Error updating location:', error);
+            //console.error('Error updating location:', error);
+            setIsLoading(false);
+            setNotification({ header: 'Location Error', message: 'Your location could not be set.', type: 'error' });
         } finally {
             setIsLoading(false);
         }
