@@ -37,6 +37,17 @@ function SettingsScreen(props: any) {
         props.navigation.navigate("Welcome")
     }
 
+    function vetLoginNavigate() {
+        let vetRegisterInfo: vetRegisterInfo = {
+            userId: params.userId,
+            userIsVet: params.userIsVet
+        }
+        console.log(vetRegisterInfo)
+        props.navigation.navigate("VetLogin", vetRegisterInfo)
+
+        
+    }
+
     return (
         <SafeAreaView style={{ ...styles.background, justifyContent: "space-evenly" }}>
             <ScrollView>
@@ -75,6 +86,12 @@ function SettingsScreen(props: any) {
                     onPress={() => props.navigation.navigate("ChangeAddress", { ...params } as ChangeAddressScreenParams)}
                     >
                     <Text style={styles.buttonText}> Change Address </Text>
+                </TouchableHighlight>
+
+                <TouchableHighlight style={{ ...styles.secondaryButton }}
+                    underlayColor={colors.black_underlay}
+                    onPress={() => vetLoginNavigate()}>                
+                    <Text style={styles.buttonText}> Vet Login </Text>
                 </TouchableHighlight>
 
                 <TouchableHighlight style={{ ...styles.secondaryButton }}

@@ -1,6 +1,7 @@
 import { pet } from '@prisma/client'
 import { EditPetScreenParams } from '../screens/EditPet/EditPetScreen'
 import { ViewPetScreenParams } from '../screens/ViewPet/ViewPet' 
+import { vetRegisterInfo } from '../screens/VetLogin/VetLoginScreen'
 import { ViewAppointmentScreenParams } from '../screens/ViewAppointment/ViewAppointmentScreen'
 import { MapScreenParams } from '../screens/Map/MapScreen'
 import { LocationInterface } from '../screens/shared/Interfaces'
@@ -45,10 +46,12 @@ export type RootStackParamList = {
     CreatePet: CreatePetScreenParams
     EditPet: EditPetScreenParams
     ViewPet: ViewPetScreenParams
+    VetRegister: vetRegisterInfo
     CreateReview: undefined
     PaymentSetting: undefined
     VetScreening1: undefined
     VetScreening2: undefined
+    VetLogin: vetRegisterInfo
     Account: undefined
     ForgotPassword: undefined
     ScreeningQuestions: ScreeningQuestionsParams
