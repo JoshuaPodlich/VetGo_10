@@ -179,8 +179,9 @@ const userStyles = StyleSheet.create({
         borderRadius: 5,
     },
     editButtonText: {
-        color: colors.white,
+        color: colors.black,
         fontSize: 14,
+        fontWeight: 'bold',
     },
     editContainer: {
         flexDirection: 'row',
@@ -189,11 +190,12 @@ const userStyles = StyleSheet.create({
         marginTop: 10,
     },
     input: {
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: colors.primary_Blue,
-        borderRadius: 5,
+        borderRadius: 10,
         padding: 8,
-        width: '80%',
+        width: '60%',
+        marginRight: 10,
     },
     submitButton: {
         backgroundColor: colors.action_Orange,
@@ -201,7 +203,7 @@ const userStyles = StyleSheet.create({
         borderRadius: 5,
     },
     submitButtonText: {
-        color: colors.white,
+        color: colors.black,
         fontSize: 16,
         fontWeight: 'bold',
     },
@@ -210,7 +212,7 @@ const userStyles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 10,
-        marginTop: 300,
+        marginTop: 250,
         width: 150,
         alignItems: 'center'
 
