@@ -136,7 +136,6 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findById(oid));
     }
 
-
     @PutMapping(value = "/update/location/vet/{vid}")
     public ResponseEntity<?> updateVetLocation(@RequestBody LocationCoordinates location,
                                                @PathVariable("vid") Long vid) {
@@ -174,7 +173,6 @@ public class UserController {
         catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
-
     }
 
     @PostMapping(value = "/change-password/{uid}/session")
@@ -186,6 +184,18 @@ public class UserController {
             PasswordResetSession resetSession = userService.validatePasswordResetSession(uid, sessionToken);
             userService.changeUserPassword(uid, newPassword, resetSession);
             return ResponseEntity.status(HttpStatus.OK).body("Password has been successfully changed.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @PostMapping(value = "/grant-role/{uid}")
+    public ResponseEntity<?> grantRole(@PathVariable("uid") Long uid,
+                                         @RequestBody ObjectNode requestBody) {
+        try {
+            String role = requestBody.get("role").asText();
+            userService.grantRole(uid, new Role(role));
+            return ResponseEntity.status(HttpStatus.OK).body("Role has been successfully granted");
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
