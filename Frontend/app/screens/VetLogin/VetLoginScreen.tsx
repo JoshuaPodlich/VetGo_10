@@ -87,16 +87,17 @@ function VetRegisterScreen(props: { route: VetLoginNavigationProp, navigation: V
             vetInsurance: vetInsurance,
             vetLicense: vetLicense,
             vetCompany: vetCompany,
+            vetImg: vetImg,
             statePermit: statePermit
           }),
         });
-        if (!response.ok) {
-          throw new Error('Problem registering vet');
+        
+        console.log(await response.text());
+        if (response.ok) {
+          props.navigation.navigate({ name: "Welcome", params: {} });
         }
-        const data = await response.json();
-        console.log(data);
         // props.navigation.navigate("VetHome", { userId: userId, userIsVet: isUserVet } as HomeScreenParams)
-        Alert.alert("Success", "You have successfully registered as a vet. Please wait while we verify your information.")
+        //Alert.alert("Success", "You have successfully registered as a vet. Please wait while we verify your information.")
       } catch (error) {
         console.log(error)
         Alert.alert("Error", "Problem registering as a vet. Please try again.")

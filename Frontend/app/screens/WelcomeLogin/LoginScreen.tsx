@@ -123,21 +123,16 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
                 longitude: long
             }
 
+            console.log(location);
+
             let params = {
                 userId: responseBody.id,
                 userIsVet: userIsVet,
                 location: location
             };
             console.log('params:', params);
-
-            // If the user has no valid location, send him to this screen first.
-            if (lat === 0 && long === 0) {
-                props.navigation.navigate("Location", params);
-            }
-            // Otherwise, the user may proceed to the home screen.
-            else {        
-                props.navigation.navigate("Home", params)
-            }
+       
+            props.navigation.navigate("Home", params);
 
         } catch (error: any) {
             console.error('Login error:', error.message);

@@ -83,23 +83,16 @@ public class UserController {
         }
     }
 
-    // Updates the currently stored user
     @PutMapping(value = "/update/{uid}")
-    public ResponseEntity<?> updateUser(@RequestBody User updatedUser, @PathVariable("uid") Long uid) {
-
-        if (userRepository.findById(uid).isEmpty())
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find user in database");
-
-        userRepository.findById(uid)
-                .map(user -> {
-                    user.setEmail(updatedUser.getEmail());
-                    user.setPassword(updatedUser.getPassword());
-                    return userRepository.save(user);
-                }).orElseGet(() -> {
-                    return userRepository.save(updatedUser);
-                });
-
-        return ResponseEntity.status(HttpStatus.OK).body(userRepository.findById(uid));
+    public ResponseEntity<?> updateUser(@PathVariable Long uid,
+                                        @RequestBody ObjectNode newUserInfo) {
+        try {
+            userService.updateUsersInfo(uid, newUserInfo);
+            return ResponseEntity.ok("User's information successfully updated.");
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PutMapping(value = "/updatePassword/{uid}")
