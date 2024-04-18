@@ -192,8 +192,8 @@ public class AppointmentController {
         if (appointment.getStatus() != WAITING)
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Appointment has already been accepted");
 
-        if (vet.getVetLicense().equals(""))
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Action not allowed by current user type");
+//        if (vet.getVetLicense().equals(""))
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Action not allowed by current user type");
 
         appointment.setVet(vet);
         appointment.setStatus(ACCEPTED);

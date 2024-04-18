@@ -7,8 +7,9 @@ import { colors } from "../shared/Colors"
 import { styles } from "../shared/Styles"
 import { BASE_URL } from "../shared/Constants"
 import EntryButtons from "../../components/EntryButtons"
-import { LocationScreenParams } from '../Location/LocationScreen'
+import { LocationInterface } from '../shared/Interfaces'
 import { LoginScreenNavigationProp, LoginScreenRouteProp } from '../../utils/props'
+import { HomeScreenParams } from '../Home/HomeScreen'
 
 export interface LoginScreenParams {
 
@@ -102,8 +103,8 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
             const responseBody = await response.json(); // Parse the response body into JSON
             console.log('Response Body:', responseBody);
             console.log('LOGIN SUCCESSFUL LETS GO');
-            let lat = 0;
-            let long = 0;
+            let lat = responseBody.latitude;
+            let long = responseBody.longitude;
             let userIsVet = false;
 
             if (lat === undefined) {
@@ -112,25 +113,34 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
             if (long === undefined) {
                 long = 0;
             }
-
-            if (responseBody.role === "owner") {
-                userIsVet = false;
-            } else if (responseBody.role === "vet") {
+            
+            if (responseBody.role === "vet") {
                 userIsVet = true;
+            }
+
+            const location: LocationInterface = {
+                latitude: lat,
+                longitude: long
             }
 
             let params = {
                 userId: responseBody.id,
                 userIsVet: userIsVet,
-                latitude: 50, // Add the missing latitude property
-                longitude: 50
+                location: location
             };
             console.log('params:', params);
-            props.navigation.navigate("Location", params);
+
+            // If the user has no valid location, send him to this screen first.
+            if (lat === 0 && long === 0) {
+                props.navigation.navigate("Location", params);
+            }
+            // Otherwise, the user may proceed to the home screen.
+            else {        
+                props.navigation.navigate("Home", params)
+            }
 
         } catch (error: any) {
             console.error('Login error:', error.message);
-            // Handle login error, e.g., display an error message to the user
         }
 
     }

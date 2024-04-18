@@ -8,6 +8,7 @@ import { BASE_URL } from "../shared/Constants"
 import { LocationInterface } from "../shared/Interfaces"
 import { HomeScreenParams } from "../Home/HomeScreen"
 import { ScreeningQuestionsParams } from "../ScreeningQuestions/ScreeningQuestionsScreen"
+import axios from 'axios';
 
 export interface CreateAppointmentParams {
     userId: string,
@@ -62,69 +63,74 @@ const CreateAppointmentScreen = (props: any) => {
         props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
     }
 
-    const hardcodedCreateAppointment = async () => {
-        // /appointment/create/{oid}/{pid}/{description}
+    // const hardcodedCreateAppointment = async () => {
+    //     // /appointment/create/{oid}/{pid}/{description}
 
-        const fakeOid = '1'
-        const fakePid = '1'
-        const fakeDescription = 'random symptoms description'
-
-//         Body: 
-// {
-//     "latitude": 100,
-//     "longitude": 100,
-//     "radius": 10,
-//     "month": "01",
-//     "day": "01",
-//     "year": "01"
-// }
-
-        let body = {latitude: 100, longitude: 100, radius: 10, month: "01", day: "01", year: "01"}
+    //     const fakeOid = '1'
+    //     const fakePid = '1'
+    //     const fakeDescription = 'random symptoms description'
+    //     let body = {
+    //         latitude: params.location.latitude,
+    //         longitude: params.location.longitude, 
+    //         radius: 10, 
+    //         month: "01", 
+    //         day: "01", 
+    //         year: "01"
+    //     }
 
 
 
-        let url = BASE_URL + '/appointment/create/' + 1 + '/' + 1 + '/' + "test"
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        })
+    //     let url = BASE_URL + '/appointment/create/' + 1 + '/' + 1 + '/' + "test"
+    //     const response = await fetch(url, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(body)
+    //     })
 
-        console.log(response.status)
-        //console.log(response.statusText)
+    //     console.log(response.status)
+    //     //console.log(response.statusText)
 
-        const responseBody = await response.json(); // Parse the response body into JSON
-        console.log('Response:', response);
-        console.log('Response Body:', responseBody);
+    //     const responseBody = await response.json(); // Parse the response body into JSON
+    //     console.log('Response:', response);
+    //     console.log('Response Body:', responseBody);
 
-    }
+    // }
 
     const handleSubmit = async () => {
         if (!description.length) {
-            setError('Description is required!')
-            return
+            setError('Description is required!');
+            return;
         }
-        setError('')
-
-        let unsanitizedDate = date.toLocaleDateString()
-        let sanitizedDate = unsanitizedDate.split('/')
+    
+        let unsanitizedDate = date.toLocaleDateString();
+        let sanitizedDate = unsanitizedDate.split('/');
         const body = {
             ...params.location,
             day: ('0' + sanitizedDate[1]).slice(-2),
             month: ('0' + sanitizedDate[0]).slice(-2),
             year: sanitizedDate[2].slice(-2),
-        }
-        const options = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body),
-        }
-        const url = BASE_URL + '/appointment/create/' + params.userId + '/' + params.petId + '/' + description
+            description: description
+        };
 
-        await postAppointment(url, options)
-    }
+        console.log(params.petId);
+        console.log(params.userId);
+    
+        const url = `${BASE_URL}/appointment/create/${params.userId}/${params.petId}/${description}`;
+    
+        try {
+            const response = await axios.post(url, body, {
+                headers: { 'Content-Type': 'application/json' }
+            });
+            console.log('Appointment created:', response.data);
+            props.navigation.popToTop();
+            props.navigation.navigate('Home', { ...params } as HomeScreenParams);
+        } catch (error) {
+            console.error('Error creating appointment:', error);
+            setError('Failed to create appointment. Please try again.');
+        }
+    };
 
     return (<SafeAreaView style={styles.createAppointmentBackground}>
         <ScrollView>
@@ -164,7 +170,7 @@ const CreateAppointmentScreen = (props: any) => {
         <Text>{error}</Text>
         <View style={{paddingBottom: 50}}>
         <Button style={{ ...styles.submitButton, }}
-            onPress={hardcodedCreateAppointment}>
+            onPress={handleSubmit}>
             <Text>Submit</Text>
         </Button>
         <Button style={{ ...styles.submitButton, }}

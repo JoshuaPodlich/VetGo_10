@@ -124,10 +124,7 @@ function SignUpScreen(props: any) {
             setErrors((prevState: SignUpForm) => ({ ...prevState, telephone: "Invalid telephone number!" }))
             isValid = false
         }
-        if (!form.role) {
-            setErrors((prevState: SignUpForm) => ({ ...prevState, role: "Role is required!" }))
-            isValid = false
-        }
+
 
         return isValid
     }
@@ -143,7 +140,7 @@ function SignUpScreen(props: any) {
     async function submitSignUpForm() {
         isSubmittingRef.current = true
 
-        let body = {"email": form.email, "password": form.password, "firstName": form.firstname,  "lastName": form.lastname, "telephone": form.telephone, "role": form.role}
+        let body = {"email": form.email, "password": form.password, "firstName": form.firstname,  "lastName": form.lastname, "telephone": form.telephone, "role": "owner"}
 
         try{
         //let url = BASE_URL + "/api/user/register/" + (isVet ? "vet/" : "owner/") + form.username + "/" + form.email + "/" + form.password
@@ -188,6 +185,54 @@ function SignUpScreen(props: any) {
     }
 }
 
+
+    async function vetSignUp(): Promise<void> {
+        isSubmittingRef.current = true
+
+        let body = {"email": form.email, "password": form.password, "firstName": form.firstname,  "lastName": form.lastname, "telephone": form.telephone, "role": "owner"}
+
+        try{
+        let url = BASE_URL + "/user/register"
+
+        
+        console.log(body)
+        console.log(url)
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+
+        console.log(response.status)
+
+        const responseBody = await response.json(); 
+        console.log('Response:', response);
+        console.log('Response Body:', responseBody);
+        isSubmittingRef.current = false
+        
+        if(response.status === 200){
+                props.navigation.navigate("VetLogin", {email: form.email})
+        }
+        else if(response.status === 400){
+            const error = await response.text()
+            console.log('Error:', error)
+            Alert.alert("Error", error)
+        }
+    } catch (error: any) {
+        
+        console.error('Error:', error.message);
+    }
+
+
+
+
+
+
+
+
+    }
 
     //#endregion
 
@@ -260,17 +305,11 @@ function SignUpScreen(props: any) {
                             />
                             <Text style={styles.errorText}>{errors.telephone}</Text>
                             
-                            <Dropdown
-                                data={roles}
-                                value={form.role}
-                                onChange={handleRoleChange} // Call handleRoleChange when a role is selected
-                                style={styles.signUpDropDown}
-                                placeholder='Select Role' 
-                                labelField={'label'} 
-                                valueField={'value'}    
-                            />
+
+
                             
-                            <Text style={styles.errorText}>{errors.role}</Text>
+
+                            
                     </View>
 
                     <View id={"buttonGroup"} style={styles.signUpButtonGroup}>
@@ -283,6 +322,12 @@ function SignUpScreen(props: any) {
                             underlayColor={colors.brightRed_underlayColor}
                             onPress={() => props.navigation.navigate("Map")}>
                             <Text style={styles.buttonText}> EMERGENCY </Text>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight style={{ ...styles.secondaryButton, marginTop: 20}}
+                            underlayColor={colors.brightRed_underlayColor}
+                            onPress={() => vetSignUp()}>
+                            <Text style={styles.buttonText}> Vet Signup  </Text>
                         </TouchableHighlight>
                     </View>
                 </View>

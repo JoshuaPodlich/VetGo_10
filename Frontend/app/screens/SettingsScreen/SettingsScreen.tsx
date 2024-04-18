@@ -1,24 +1,51 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { SafeAreaView, StyleSheet, Text, View, TouchableHighlight, ScrollView } from "react-native"
-import { styles } from "../shared/Styles"
+import { styles, toastConfig } from "../shared/Styles"
 import { colors } from "../shared/Colors"
 import ClientNavbar from '../../components/ClientNavbar'
 import { LocationInterface } from '../shared/Interfaces'
 import { VetAddChargesScreenParams } from '../VetAddCharges/VetAddChargesScreen'
 import { ChangePasswordScreenParams } from '../ChangePassword/ChangePasswordScreen'
 import {UserInfoScreenParams} from '../UserInfo/UserInfoScreen'
+import { ChangeAddressScreenParams } from '../Location/AddressLocation'
+import { useNotification } from '../shared/NotificationContext'
+import Toast from 'react-native-toast-message';
 
 
 export interface SettingsScreenParams {
     userId: string,
     userIsVet: boolean,
-    location: LocationInterface
+    location: LocationInterface,
 }
 function SettingsScreen(props: any) {
     const params = props.route.params as SettingsScreenParams
+    const { notification, setNotification } = useNotification();
+    useEffect(() => {
+        if (notification.message) {
+            Toast.show({
+                type: notification.type,
+                text1: notification.header,
+                text2: notification.message,
+                position: 'bottom',
+                visibilityTime: 4000,
+            });
+            setNotification({ header: '', message: '', type: '' });
+        }
+    }, [notification]);
 
     function logout() {
         props.navigation.navigate("Welcome")
+    }
+
+    function vetLoginNavigate() {
+        let vetRegisterInfo: vetRegisterInfo = {
+            userId: params.userId,
+            userIsVet: params.userIsVet
+        }
+        console.log(vetRegisterInfo)
+        props.navigation.navigate("VetLogin", vetRegisterInfo)
+
+        
     }
 
     return (
@@ -47,11 +74,24 @@ function SettingsScreen(props: any) {
                     <Text style={styles.buttonText}> Change Password </Text>
                 </TouchableHighlight>
 
-                <TouchableHighlight style={{ ...styles.mainButton, marginBottom: 100}}
+                <TouchableHighlight style={{ ...styles.mainButton}}
                     underlayColor={colors.brightRed_underlayColor}
                     onPress={() => props.navigation.navigate("UserInfo", { ...params } as UserInfoScreenParams)}
                     >
                     <Text style={styles.buttonText}> User Info </Text>
+                </TouchableHighlight>
+
+                <TouchableHighlight style={{ ...styles.mainButton, marginBottom: 100}}
+                    underlayColor={colors.brightRed_underlayColor}
+                    onPress={() => props.navigation.navigate("ChangeAddress", { ...params } as ChangeAddressScreenParams)}
+                    >
+                    <Text style={styles.buttonText}> Change Address </Text>
+                </TouchableHighlight>
+
+                <TouchableHighlight style={{ ...styles.secondaryButton }}
+                    underlayColor={colors.black_underlay}
+                    onPress={() => vetLoginNavigate()}>                
+                    <Text style={styles.buttonText}> Vet Login </Text>
                 </TouchableHighlight>
 
                 <TouchableHighlight style={{ ...styles.secondaryButton }}
@@ -62,6 +102,9 @@ function SettingsScreen(props: any) {
             </View>
             </ScrollView>
             <ClientNavbar navigation={props.navigation} {...params} />
+            <View style={{zIndex: 1000}}>
+                <Toast config={toastConfig}/>
+            </View>
         </SafeAreaView>
         
     )

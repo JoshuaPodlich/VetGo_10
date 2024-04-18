@@ -1,6 +1,7 @@
 import { pet } from '@prisma/client'
 import { EditPetScreenParams } from '../screens/EditPet/EditPetScreen'
 import { ViewPetScreenParams } from '../screens/ViewPet/ViewPet' 
+import { vetRegisterInfo } from '../screens/VetLogin/VetLoginScreen'
 import { ViewAppointmentScreenParams } from '../screens/ViewAppointment/ViewAppointmentScreen'
 import { MapScreenParams } from '../screens/Map/MapScreen'
 import { LocationInterface } from '../screens/shared/Interfaces'
@@ -19,7 +20,11 @@ import { PaymentStripeScreenParams } from '../screens/PaymentStripe/PaymentStrip
 import { SettingsScreenParams } from '../screens/SettingsScreen/SettingsScreen'
 import { ViewNearbyVetsParams } from '../screens/ClientVetInteraction/ViewNearbyVetsScreen'
 import { ScreeningQuestionsParams } from '../screens/ScreeningQuestions/ScreeningQuestionsScreen'
+import { UserInfoScreenParams } from '../screens/UserInfo/UserInfoScreen'
+import { ChangeAddressScreenParams } from '../screens/Location/AddressLocation'
 
+
+// Map where the keys represent route names and the values define the parameters that the navigated-to screens expect.
 export type RootStackParamList = {
     Welcome: WelcomeScreenParams
     Login: LoginScreenParams
@@ -41,13 +46,17 @@ export type RootStackParamList = {
     CreatePet: CreatePetScreenParams
     EditPet: EditPetScreenParams
     ViewPet: ViewPetScreenParams
+    VetRegister: vetRegisterInfo
     CreateReview: undefined
     PaymentSetting: undefined
     VetScreening1: undefined
     VetScreening2: undefined
+    VetLogin: vetRegisterInfo
     Account: undefined
     ForgotPassword: undefined
     ScreeningQuestions: ScreeningQuestionsParams
+    UserInfo: UserInfoScreenParams
+    ChangeAddress: ChangeAddressScreenParams
 }
 
 

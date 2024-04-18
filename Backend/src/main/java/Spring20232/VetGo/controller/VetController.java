@@ -26,6 +26,7 @@ public class VetController {
     public ResponseEntity<List<Vet>> getAllVet() {
         List<Vet> vets = new ArrayList<>();
         vetRepository.findAll().forEach(vets::add);
+        System.out.println(vets);
         return ResponseEntity.status(HttpStatus.OK).body(vets);
     }
 
