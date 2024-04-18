@@ -50,6 +50,23 @@ function EmergencyScreen() {
         },
     };
         
+
+    const getVetInfo = async () => {
+
+    }
+
+    const getEmergencyInfo = async () => {
+            
+        }
+
+    const getUserLocation = async () => {
+        // Get user's location
+    }
+
+    const setLocation = async () => {
+        // navigate to the location screen
+
+    }
     
 
     return (
