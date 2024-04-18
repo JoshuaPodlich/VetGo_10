@@ -3,9 +3,10 @@ package Spring20232.VetGo.controller;
 import Spring20232.VetGo.model.Owner;
 import Spring20232.VetGo.model.User;
 import Spring20232.VetGo.model.Vet;
-import Spring20232.VetGo.repository.OwnerRepository;
-import Spring20232.VetGo.repository.UserRepository;
+import Spring20232.VetGo.service.UserService;
 import Spring20232.VetGo.repository.VetRepository;
+import Spring20232.VetGo.service.UserService;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,15 @@ import java.util.UUID;
 @RestController
 @RequestMapping("vet")
 public class VetController {
+    private final UserService userService;
     @Autowired
     private VetRepository vetRepository;
+
+
+    @Autowired
+    public VetController(UserService userService) {
+        this.userService = userService;
+    }
 
     //    @PreAuthorize("hasRole(@roles.ROLE_VET)")
     @GetMapping(value = "/all")
@@ -104,5 +112,15 @@ public class VetController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
         return ResponseEntity.status(HttpStatus.OK).body(vet.getUser());
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> registerVet(@RequestBody ObjectNode vetVerObject) {
+        try {
+            userService.registerVerifyVet(vetVerObject);
+            return ResponseEntity.ok("Vet has been successfully registered for verification.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 }

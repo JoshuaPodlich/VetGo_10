@@ -17,7 +17,7 @@ export interface MapScreenParams {
     destinationLocation: LocationInterface
 }
 
-const originIcon1 = <MaterialIcon name="my-location" size={40} color={colors.black} />;
+const originIcon1 = <MaterialIcon name="my-location" size={40} color='#00FFFF' />;
 const destinationIcon1 = <MaterialIcon name="location-pin" size={40} color="#d32f2f" />;
 const travelIcon = <MaterialIcon name="directions-car" size={24} color="#FFFFFF" />;
 
@@ -103,7 +103,6 @@ function MapScreen(props: { route: MapScreenRouteProp, navigation: MapScreenNavi
                         latitudeDelta: LATITUDE_DELTA,
                         longitudeDelta: LONGITUDE_DELTA
                     }}
-                    customMapStyle={lightMapStyle}
                     onMapReady={adjustMapView}
                 >
                     <Marker

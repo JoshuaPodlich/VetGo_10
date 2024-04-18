@@ -2,6 +2,7 @@ package Spring20232.VetGo.service;
 
 import Spring20232.VetGo.model.*;
 import Spring20232.VetGo.repository.*;
+import com.amazonaws.services.alexaforbusiness.model.AlreadyExistsException;
 import com.amazonaws.services.alexaforbusiness.model.NotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -142,15 +143,8 @@ public class UserService {
 
         userNode.put("telephone", user.getTelephone());
 
-        if (user.isUserOwner()) {
-            owner = ownerRepository.findByUser(user);
-            if (owner == null)
-                throw new NotFoundException("Unable to find owner in database.");
 
-            userNode.put("role", "Pet Owner");
-            userNode.put("numPets", owner.getPetList().size());
-        }
-        else if (user.isUserVet()) {
+        if (user.isUserVet() || user.isUserVetAndOwner()) {
             vet = vetRepository.findByUser(user);
             if (vet == null)
                 throw new NotFoundException("Unable to find vet in database.");
@@ -158,6 +152,14 @@ public class UserService {
             userNode.put("role", "Veterinarian");
             userNode.put("numReviews", vet.getNumReviews());
             userNode.put("vetLicense", vet.getVetLicense() != null ? vet.getVetLicense() : "N/A");
+        }
+        else if (user.isUserOwner()) {
+            owner = ownerRepository.findByUser(user);
+            if (owner == null)
+                throw new NotFoundException("Unable to find owner in database.");
+
+            userNode.put("role", "Pet Owner");
+            userNode.put("numPets", owner.getPetList().size());
         }
 
         return userNode;
@@ -298,8 +300,13 @@ public class UserService {
         userNode.put("firstName", user.getFirstName());
         userNode.put("lastName", user.getLastName());
 
-        if (user.isUserVetAndOwner()) {
-            userNode.put("role", "vet-owner");
+        if (user.isUserVet() || user.isUserVetAndOwner()) {
+            userNode.put("role", "vet");
+            Vet vet = vetRepository.findByUser(user);
+            if (vet == null)
+                throw new NotFoundException("Unable to find owner in database");
+            userNode.put("latitude", vet.getLatitude());
+            userNode.put("longitude", vet.getLongitude());
             return userNode;
         }
         else if (user.isUserOwner()) {
@@ -309,15 +316,6 @@ public class UserService {
                 throw new NotFoundException("Unable to find owner in database");
             userNode.put("latitude", owner.getLatitude());
             userNode.put("longitude", owner.getLongitude());
-            return userNode;
-        }
-        else if (user.isUserVet()) {
-            userNode.put("role", "vet");
-            Vet vet = vetRepository.findByUser(user);
-            if (vet == null)
-                throw new NotFoundException("Unable to find owner in database");
-            userNode.put("latitude", vet.getLatitude());
-            userNode.put("longitude", vet.getLongitude());
             return userNode;
         }
         else {
@@ -523,5 +521,52 @@ public class UserService {
         locationNode.put("longitude", address.getLongitude());
 
         return locationNode;
+    }
+
+    @Transactional
+    public void registerVerifyVet(ObjectNode vetVerObject) {
+        User user = userRepository.findById(vetVerObject.get("userId").asLong()).orElse(null);
+        if (user == null)
+            throw new NotFoundException("Unable to find user in database.");
+        Vet checkVet = vetRepository.findByUser(user);
+        if (checkVet != null)
+            throw new AlreadyExistsException("This user is already a vet.");
+
+        Vet vet = new Vet();
+        vet.setVetInsurance(vetVerObject.get("vetInsurance").asText());
+        vet.setVetLicense(vetVerObject.get("vetLicense").asText());
+        vet.setVetCompany(vetVerObject.get("vetCompany").asText());
+        vet.setVetImg(vetVerObject.get("vetImg").asText());
+        vet.setStatePermit(vetVerObject.get("statePermit").asText());
+        vet.setUser(user);
+        user.setRoles(new Role("VET"));
+
+        vetRepository.save(vet);
+    }
+
+    public void updateUsersInfo(Long uid, ObjectNode newUserInfo) {
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null) {
+            throw new NotFoundException("Unable to find user in database.");
+        }
+
+        newUserInfo.fields().forEachRemaining(entry -> {
+            switch (entry.getKey()) {
+                case "email":
+                    user.setEmail(entry.getValue().asText());
+                    break;
+                case "firstName":
+                    user.setFirstName(entry.getValue().asText());
+                    break;
+                case "lastName":
+                    user.setLastName(entry.getValue().asText());
+                    break;
+                case "telephone":
+                    user.setTelephone(entry.getValue().asText());
+                    break;
+            }
+        });
+
+        userRepository.save(user);
     }
 }

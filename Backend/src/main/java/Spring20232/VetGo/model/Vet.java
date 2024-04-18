@@ -3,13 +3,33 @@ package Spring20232.VetGo.model;
 import com.amazonaws.services.fms.model.App;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.*;
 
 @Entity
 @Table(name = "vets")
 public class Vet extends BaseEntity {
+
+    @Column(nullable = false)
+    @Getter
+    @Setter
+    private String vetInsurance;
+    @Column(nullable = false)
     private String vetLicense;
+    @Column
+    @Getter
+    @Setter
+    private String vetCompany;
+    @Column
+    @Getter
+    @Setter
+    private String vetImg;
+    @Column
+    @Getter
+    @Setter
+    private String statePermit;
     private Boolean status;
     private Double longitude;
     private Double latitude;
