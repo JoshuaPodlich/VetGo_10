@@ -4,12 +4,13 @@ import { GoogleAutoComplete } from "../shared/Components"
 import { LocationInterface } from '../shared/Interfaces'
 import { BASE_URL } from '../shared/Constants'
 import {colors} from "../shared/Colors"
-import { styles } from "../shared/Styles"
+import { styles, toastConfig } from "../shared/Styles"
 import axios from 'axios'
 import * as Location from 'expo-location';
 import { GOOGLE_MAPS_APIKEY } from '../shared/Constants'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNotification } from '../shared/NotificationContext'
+import Toast from 'react-native-toast-message';
 
 export interface LocationScreenParams {
     userId: string,
@@ -53,7 +54,7 @@ const updateVetLocation = async (uid: any, location: LocationInterface): Promise
 
 function LocationScreen(props: any) {
     const { params } = props.route;
-    const { setNotification } = useNotification();
+    const { notification, setNotification } = useNotification();
     const [isLoading, setIsLoading] = useState(false);
     const [location, setLocation] = useState({
       latitude: params.latitude || 0,
@@ -101,6 +102,19 @@ function LocationScreen(props: any) {
 
         fetchUserHomeAddress();
     }, [params.userId]);
+
+    useEffect(() => {
+        if (notification.message) {
+            Toast.show({
+                type: notification.type,
+                text1: notification.header,
+                text2: notification.message,
+                position: 'bottom',
+                visibilityTime: 4000,
+            });
+            setNotification({ header: '', message: '', type: '' });
+        }
+    }, [notification]);
   
     const fetchAddress = (lat: number, lng: number, address: string) => {
         setUsingHomeAddress(false);
@@ -152,7 +166,7 @@ function LocationScreen(props: any) {
             fetchAddress(location.coords.latitude, location.coords.longitude, address);
         } catch (error) {
             //Alert.alert('Location Error', 'Unable to fetch current location. Please try again or check app permissions.');
-            setNotification({ header: 'Location Error', message: 'Unable to fetch current location. Please try again or check app permissions.', type: 'error' });
+            setNotification({ header: 'Location Error', message: 'Unable to fetch current location. Please try again later or check app permissions.', type: 'error' });
         } finally {
             setIsLoading(false);
         }
@@ -233,6 +247,9 @@ function LocationScreen(props: any) {
                     <ActivityIndicator size="large" color={colors.action_Orange} />
                 </View>
             )}
+            <View style={{zIndex: 1000}}>
+                <Toast config={toastConfig}/>
+            </View>
         </>
     );    
 }
