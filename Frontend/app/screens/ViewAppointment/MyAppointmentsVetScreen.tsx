@@ -2,8 +2,10 @@ import { SafeAreaView, ScrollView, View, TouchableOpacity } from "react-native"
 import { MyAppointmentsVetScreenNavigationProp, MyAppointmentsScreenVetRouteProp } from '../../utils/props'
 import axios from 'axios'
 import { BASE_URL } from '../shared/Constants'
+import { UserDetailsParams } from '../../utils/params'
 import { Button, Card, Layout, Text } from '@ui-kitten/components'
 import { styles } from '../shared/Styles'
+import { colors } from '../shared/Colors'
 import { LocationInterface } from '../shared/Interfaces'
 import { appointment } from '@prisma/client'
 import { useEffect, useState } from 'react'
@@ -117,6 +119,7 @@ interface MyAppointmentCardParams {
     key: int,
     appointmentData: appointment,
     petName: string,
+    vetId: int,
     setAppointments: useState,
     props: props
     vetId: string,
@@ -195,6 +198,14 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navig
         getScreeningResults()
     }, [])
 
+    const gotoPayment = async () => {
+        let paymentParams: VetAddChargesScreenParams = {
+          ...props.route.params,
+          appointmentData: appointmentData
+        }
+        props.navigation.navigate('VetAddCharges', paymentParams);
+    }
+
     return (
         <Card style={{
             margin: 10,
@@ -240,7 +251,7 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navig
                 <Button style={{
                     marginHorizontal: 4,
                     display: appointmentData.status === 'PAYMENT' ? 'flex' : 'none'
-                }} size='small' onPress={() => props.navigation.navigate('VetAddCharges')}><Text>Send Payment</Text></Button>
+                }} size='small' onPress={gotoPayment}><Text>Request Payment</Text></Button>
                 <View style={{justifyContent: 'center', alignItems: 'center', marginHorizontal: 4,}}>
                     <TouchableOpacity
                         onPress={navigateToVetMap}

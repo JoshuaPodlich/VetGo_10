@@ -45,18 +45,6 @@ function VetAddChargesScreen(props: any) {
   const [selectedIndex, setSelectedIndex] = useState<any[]>([])
   const isSubmittingRef = useRef<boolean>(false)
 
-  const handleSubmit = async () => {
-    console.log(form.amount)
-    if (isSubmittingRef.current)
-      return
-
-    let isValid = validate()
-    if (isValid) {
-      submitVetAddChargesForm()
-
-    }
-  }
-
 
   useFocusEffect(
     React.useCallback(() => {
@@ -115,72 +103,69 @@ function VetAddChargesScreen(props: any) {
     return isValid
   }
 
-  async function submitVetAddChargesForm() {
-    isSubmittingRef.current = true
+  const submitVetAddChargesForm = async () => {
+    try {
+        isSubmittingRef.current = true
 
-    // Get pet owner data
-    let url = BASE_URL + "/pet/get/" + params.petId + "/owner"
-    let petOwnerId: string = ""
-    let petOwnerFirstName: string = ""
-    let petOwnerLastName: string = ""
-    let petOwnerAverageRating: number = 0
-    await fetch(url)
-      .then(response => response.json())
-      .then(responseJson => {
-        if (responseJson) {
-          console.log("DEBUGGGGG")
-          console.log(responseJson)
-          petOwnerId = responseJson.id
-          petOwnerFirstName = responseJson.userAccount.firstName,
-            petOwnerLastName = responseJson.userAccount.lastName
-          petOwnerAverageRating = responseJson.userAccount.averageRating
+        console.log("Log here")
+        console.log(JSON.stringify(params));
+
+        // Get user info
+        let url = BASE_URL + "/user/id/" + params.userId
+        console.log(url);
+        let firstName = "";
+        let lastName = "";
+        let userId = 0;
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+
+        const responseBody = await response.json();
+        console.log(responseBody)
+
+        firstName = responseBody.firstName
+        lastName = responseBody.lastName
+        userId = responseBody.id
+
+
+        let contentBody = {
+          tid: null,
+          name: lastName,
+          cardNumber: null,
+          zip: null,
+          receipt: form.receipt,
+          amount: form.amount,
+          transactionStatus: false,
         }
-      })
-      .catch(error => {
-        console.error(error)
-        console.log(error)
-      })
 
-    let contentBody = {
-      tid: null,
-      name: null,
-      cardNumber: null,
-      zip: null,
-      receipt: form.receipt,
-      amount: form.amount,
-      transactionStatus: false,
-    }
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(contentBody)
-    }
-    url = BASE_URL + "/transaction/set/" + params.appointmentId
+        url = BASE_URL + "/transaction/set/" + params.appointmentData.aid;
 
-    console.log(url)
-    let res = await fetch(url, requestOptions)
-      .then((response) => response.json())
-      .then(responseJson => {
-        console.log(responseJson)
+        console.log(url)
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(contentBody)
+        });
 
 
         let createReviewParams: CreateReviewScreenParams = {
           ...params,
           reviewerId: params.userId,
-          revieweeId: petOwnerId,
-          revieweeFirstName: petOwnerFirstName,
-          revieweeLastName: petOwnerLastName,
-          revieweeAverageRating: petOwnerAverageRating
+          revieweeId: userId,
+          revieweeFirstName: firstName,
+          revieweeLastName: lastName,
+          revieweeAverageRating: 5
         }
-        props.navigation.replace("MyAppointmentsVet", MyAppointmentsVetScreenParams)
-      })
-      .catch((error) => {
-        console.error("Invalid payment setting")
-        console.error(error)
-      })
+        props.navigation.replace("MyAppointmentsVet", createReviewParams)
 
+        isSubmittingRef.current = false
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
 
-    isSubmittingRef.current = false
 
   }
 
@@ -217,7 +202,7 @@ function VetAddChargesScreen(props: any) {
         <View id={"buttonGroup"} style={styles.buttonGroup}>
           <TouchableHighlight style={{ ...styles.submitButton}}
             underlayColor={colors.black_underlay}
-            onPress={handleSubmit}
+            onPress={submitVetAddChargesForm}
           >
             <Text style={styles.buttonText}> SUBMIT </Text>
           </TouchableHighlight>
