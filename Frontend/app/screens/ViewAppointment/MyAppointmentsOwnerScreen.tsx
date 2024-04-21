@@ -169,6 +169,14 @@ const AppointmentCard = ({ userId, appointmentData, petName, setAppointments }: 
         }
     }
 
+    const gotoPayment = async () => {
+            let paymentParams: VetAddChargesScreenParams = {
+              ...props.route.params,
+              appointmentData: appointmentData
+            }
+            props.navigation.navigate('VetAddCharges', paymentParams);
+        }
+
     return (
         <Card style={{
             margin: 10,
@@ -207,9 +215,14 @@ const AppointmentCard = ({ userId, appointmentData, petName, setAppointments }: 
                 justifyContent: 'flex-end',
                 marginTop: 16,
             }}>
-                <Button style={{
-                    marginHorizontal: 4,
-                }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
+            <Button style={{
+                marginHorizontal: 4,
+                display: appointmentData.status === 'ACCEPTED' ? 'flex' : 'none'
+            }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
+            <Button style={{
+                marginHorizontal: 4,
+                display: appointmentData.status === 'PAYMENT' ? 'flex' : 'none'
+            }} size='small' onPress={gotoPayment}><Text>Send Payment</Text></Button>
                 <Button style={{
                     marginHorizontal: 4,
                 }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
