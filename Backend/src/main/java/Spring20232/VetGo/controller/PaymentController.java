@@ -36,11 +36,10 @@ public class PaymentController {
         List<Object> paymentMethodTypes = new ArrayList<>();
         paymentMethodTypes.add("card");
 
-        // might have to add here tomorrow/wednesday
         Map<String, Object> params = new HashMap<>();
         params.put("amount", request.getAmount());
         params.put("currency", "usd");
-        params.put("payment_method_types", paymentMethodTypes);
+        params.put("payment_method_types[]", "card");
 
         try {
             PaymentIntent intent = PaymentIntent.create(params);
