@@ -16,14 +16,7 @@ export interface PaymentStripeScreenParams {
   userId: string,
   userIsVet: boolean,
   location: LocationInterface,
-  transactionId: string,
-  transactionAmount: number,
-  transactionReceipt: string,
-  appointmentId: string,
-  revieweeId: string,
-  revieweeFirstName: string,
-  revieweeLastName: string,
-  revieweeAverageRating: number
+  appointmentId: string
 }
 
 function PaymentStripeScreen(props: any) {
@@ -38,7 +31,10 @@ function PaymentStripeScreen(props: any) {
   const [isPaymentSheetReady, setPaymentSheetReady] = useState(false)
 
   const initializePaymentSheet = async () => {
+    console.log("Debug 1");
     const clientSecret = await fetchPaymentSheetParams()
+    console.log("Debug 2");
+    console.log(clientSecret);
     const { error } = await initPaymentSheet({
       paymentIntentClientSecret: clientSecret,
       merchantDisplayName: 'VetGo',
@@ -54,14 +50,14 @@ function PaymentStripeScreen(props: any) {
 
   const fetchPaymentSheetParams = async (): Promise<string> => {
     const response = await axios.post(`${BASE_URL}/payment/create-payment-intent`, {
-      amount: amount * 100,
+      amount: 50,
     })
     const clientSecret = response.data.clientSecret
     return clientSecret
   }
 
   useEffect(() => {
-    initializePaymentSheet() // issue is here
+    initializePaymentSheet()
     setNameOnCard('')
     setError({})
     setAmount(params.transactionAmount)
@@ -77,9 +73,9 @@ function PaymentStripeScreen(props: any) {
         ...params,
         reviewerId: params.userId,
       }
-      await axios.put(`${BASE_URL}/appointment/update/${params.appointmentId}`, {
-        status: "COMPLETED"
-      })
+//       await axios.put(`${BASE_URL}/appointment/update/${params.appointmentId}`, {
+//         status: "COMPLETED"
+//       })
       props.navigation.replace("CreateReview", createReviewParams)
 
       console.log('Success')
@@ -104,7 +100,7 @@ function PaymentStripeScreen(props: any) {
             onPress={openPaymentSheet}
           >
             <Text id={"payText"} style={styles.buttonText}>
-              {"Pay  " + params.transactionAmount.toString() + "  USD"}
+              {"Pay 50 USD"}
             </Text>
           </TouchableHighlight>
         </View>

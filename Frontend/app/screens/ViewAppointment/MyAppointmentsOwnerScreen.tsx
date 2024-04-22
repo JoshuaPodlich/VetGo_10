@@ -1,4 +1,5 @@
 import { SafeAreaView, ScrollView, View } from "react-native"
+import ClientNavbar, { ClientNavbarParams } from "../../components/ClientNavbar"
 import { MyAppointmentsOwnerScreenNavigationProp, MyAppointmentsScreenOwnerRouteProp } from '../../utils/props'
 import axios from 'axios'
 import { BASE_URL } from '../shared/Constants'
@@ -83,7 +84,6 @@ const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRout
             console.error('Error fetching data:', error);
         }
     }
-    //getAppointments();
 
     useEffect(() => {
         if (isFocused) {
@@ -96,15 +96,17 @@ const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRout
             <Text style={{ marginRight: 'auto', marginLeft: 20, fontSize: 28, fontWeight: 'bold', }}>My Appointments</Text>
             <ScrollView>
                 <View>
-                    {appointments.map(appointment => <AppointmentCard key={appointment.aid} appointmentData={appointment} userId={params.userId} petName={appointment.pet.name} setAppointments={setAppointments} />)}
+                    {appointments.map(appointment => <AppointmentCard key={appointment.aid} appointmentData={appointment} userId={params.userId} petName={appointment.pet.name} setAppointments={setAppointments}  props={props} />)}
                 </View>
             </ScrollView>
+            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
 
     )
 }
 
 interface AppointmentCardParams {
+    key: int,
     userId: string,
     appointmentData: appointment,
     petName: string,
@@ -170,11 +172,12 @@ const AppointmentCard = ({ userId, appointmentData, petName, setAppointments }: 
     }
 
     const gotoPayment = async () => {
-            let paymentParams: VetAddChargesScreenParams = {
+            let paymentParams: PaymentStripeScreenParams = {
               ...props.route.params,
-              appointmentData: appointmentData
+              appointmentData: appointmentData,
+
             }
-            props.navigation.navigate('VetAddCharges', paymentParams);
+            props.navigation.navigate('PaymentStripe', paymentParams);
         }
 
     return (
