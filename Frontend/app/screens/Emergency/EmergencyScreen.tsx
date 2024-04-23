@@ -1,181 +1,189 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import { styles } from "../shared/Styles"
-import { colors } from '../shared/Colors'
-
-
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert, SafeAreaView, Linking } from 'react-native';
+import { GoogleAutoComplete } from '../shared/Components';
+import { styles } from '../shared/Styles';
+import { GOOGLE_MAPS_APIKEY } from '../shared/Constants';
+import { set } from 'lodash';
 
 function EmergencyScreen() {
-    const [emergencyLocation, setEmergencyLocation] = useState('');
-    const [petSpecies, setPetSpecies] = useState('');
-    const [petSymptoms, setPetSymptoms] = useState('');
+  const [emergencyLocation, setEmergencyLocation] = useState('');
+  const [petSpecies, setPetSpecies] = useState('');
+  const [petSymptoms, setPetSymptoms] = useState('');
+  const [nearbyVets, setNearbyVets] = useState<Array<{ name: string; address: string; phone: string; openingHours: { open_now: boolean } }>>([]);
+  const [locationEntered, setLocationEntered] = useState("1");
+  const [helpNumber, setHelpNumber] = useState('123-456-7890');
 
-    const handleSubmit = () => {
-        // Handle submission logic here, e.g., sending data to backend
-        console.log('Emergency Location:', emergencyLocation);
-        console.log('Pet Species:', petSpecies);
-        console.log('Pet Symptoms:', petSymptoms);
-    };
-
-    const emergencyInfo = {
-        emergencyNumber: '911',
-        helpNumber: '123-456-7890',
-        websites: ['www.pets.com', 'www.vet.com'],
-    };
-
-    const emergencyVets = {
-        vet1: {
-            name: 'Vet 1',
-            address: '1234 Street, City, State',
-            phone: '123-456-7890',
-            distance: '1.2 miles',
-        },
-        vet2: {
-            name: 'Vet 2',
-            address: '5678 Street, City, State',
-            phone: '234-567-8901',
-            distance: '2.3 miles',
-        },
-        vet3: {
-            name: 'Vet 3',
-            address: '9012 Street, City, State',
-            phone: '345-678-9012',
-            distance: '3.4 miles',
-        },
-        vet4: {
-            name: 'Vet 4',
-            address: '3456 Street, City, State',
-            phone: '456-789-0123',
-            distance: '4.5 miles',
-        },
-    };
-        
-
-    const getVetInfo = async () => {
-
+  useEffect(() => {
+    if (nearbyVets.length > 0) {
+      const nearestOpenVet = nearbyVets.find(vet => vet.openingHours.open_now);
+      if (nearestOpenVet) {
+        setHelpNumber(nearestOpenVet.phone);
+      }
     }
+  }, [nearbyVets]);
 
-    const getEmergencyInfo = async () => {
-            
-        }
+  const handleSubmit = () => {
+    // Handle submission logic here, e.g., sending data to backend
+    console.log('Emergency Location:', emergencyLocation);
+    console.log('Pet Species:', petSpecies);
+    console.log('Pet Symptoms:', petSymptoms);
+  };
 
-    const getUserLocation = async () => {
-        // Get user's location
+  const emergencyInfo = {
+    emergencyNumber: '911',
+    helpNumber: helpNumber,
+    websites: ['www.webmd.com/pets/default.htm'],
+  };
+
+  const getNearbyVets = async (lat: any, lng: any) => {
+    try {
+      const apiKey = GOOGLE_MAPS_APIKEY;
+      const location = `${lat},${lng}`;
+      const radius = 5000; // 5km radius
+      const type = 'veterinary_care'; // Search for veterinary care places
+      const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location}&radius=${radius}&type=${type}&key=${apiKey}`;
+  
+      const response = await fetch(url);
+      const data = await response.json();
+      
+      const vets = await Promise.all(data.results.map(async (vet: { place_id: any; }) => {
+        const placeDetailsUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${vet.place_id}&fields=name,formatted_address,international_phone_number,opening_hours&key=${apiKey}`;
+        const placeDetailsResponse = await fetch(placeDetailsUrl);
+        const placeDetailsData = await placeDetailsResponse.json();
+        return {
+          name: placeDetailsData.result.name,
+          address: placeDetailsData.result.formatted_address,
+          phone: placeDetailsData.result.international_phone_number,
+          openingHours: placeDetailsData.result.opening_hours ? placeDetailsData.result.opening_hours : { open_now: false },
+        };
+      }));
+      setNearbyVets(vets);
+      setLocationEntered("0");
+    } catch (error) {
+      console.error('Error fetching nearby vets:', error);
     }
+  };
 
-    const setLocation = async () => {
-        // navigate to the location screen
+  const fetchAddress = (lat: any, lng: any, address: React.SetStateAction<string>) => {
+    console.log('Latitude:', lat);
+    console.log('Longitude:', lng);
+    console.log('Address:', address);
+    setEmergencyLocation(address);
+    getNearbyVets(lat, lng);    
+  };
 
-    }
-    
 
-    return (
+  const handleInfoPress = () => {
+    Alert.alert('Information', "Set your preferred location from which you plan on traveling to a pet owner's residence, such as your office.");
+  };
+
+
+  const handleCallHelpNumber = () => {
+    Linking.openURL(`tel:${helpNumber}`);
+  };
+
+
+  const handleOpenWebsite = (website: string) => {
+    Linking.openURL(`https://${website}`);
+  };
+
+
+  const reEnterLocation = () => {
+    setLocationEntered("1");
+  };
+
+  
+
+  return (
+    <>
+      {locationEntered == "1" ? (
+        <SafeAreaView style={{ flex: 1, padding: 20 }}> 
+          <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10, marginTop: 5 }}>
+              Set your preferred location
+            </Text>
+          </View>
+          <GoogleAutoComplete
+            placeholderText="Enter address"
+            fetchAddress={fetchAddress} 
+          />
+        </SafeAreaView>
+      ) : (
         <View style={emStyles.container}>
-            <Text style={{ fontSize: 30, fontWeight: "bold", marginTop: 30, color: colors.action_Orange, paddingBottom: 20}}  >
-                            Vet Emergency</Text>
-            <View style={emStyles.infoContainer}>
-                <Text style={emStyles.infoText}>Emergency Number: {emergencyInfo.emergencyNumber}</Text>
-                <Text style={emStyles.infoText}>Help Number: {emergencyInfo.helpNumber}</Text>
-                <Text style={emStyles.infoText}>Websites to help: {emergencyInfo.websites.join(', ')}</Text>
-                {/* <Text style={styles.infoText}>Emergency Number: </Text>
-                <Text style={styles.infoText}>Help Number:</Text>
-                <Text style={styles.infoText}>Websites to help:</Text> */}
-            </View>
-            {/* Near by vets info page  */}
-            <View style={emStyles.nearByVets}>
-            <ScrollView>
-                {/* displays the emergencyVets */}
-                <Text style={{ fontSize: 20, fontWeight: "bold", marginTop: 30, color: colors. action_Green, paddingBottom: 20}}  >
-                            Near By Vets</Text>
-                <View style={emStyles.infoContainer}>
-                    <Text style={emStyles.infoText}>Name: {emergencyVets.vet1.name}</Text>
-                    <Text style={emStyles.infoText}>Address: {emergencyVets.vet1.address}</Text>
-                    <Text style={emStyles.infoText}>Phone: {emergencyVets.vet1.phone}</Text>
-                    <Text style={emStyles.infoText}>Distance: {emergencyVets.vet1.distance}</Text>
-                </View>
-                <View style={emStyles.infoContainer}>
-                    <Text style={emStyles.infoText}>Name: {emergencyVets.vet2.name}</Text>
-                    <Text style={emStyles.infoText}>Address: {emergencyVets.vet2.address}</Text>
-                    <Text style={emStyles.infoText}>Phone: {emergencyVets.vet2.phone}</Text>
-                    <Text style={emStyles.infoText}>Distance: {emergencyVets.vet2.distance}</Text>
-                </View>
-                <View style={emStyles.infoContainer}>
-                    <Text style={emStyles.infoText}>Name: {emergencyVets.vet3.name}</Text>
-                    <Text style={emStyles.infoText}>Address: {emergencyVets.vet3.address}</Text>
-                    <Text style={emStyles.infoText}>Phone: {emergencyVets.vet3.phone}</Text>
-                    <Text style={emStyles.infoText}>Distance: {emergencyVets.vet3.distance}</Text>
-                </View>
-                <View style={emStyles.infoContainer}>
-                    <Text style={emStyles.infoText}>Name: {emergencyVets.vet4.name}</Text>
-                    <Text style={emStyles.infoText}>Address: {emergencyVets.vet4.address}</Text>
-                    <Text style={emStyles.infoText}>Phone: {emergencyVets.vet4.phone}</Text>
-                    <Text style={emStyles.infoText}>Distance: {emergencyVets.vet4.distance}</Text>
-                </View>
-            </ScrollView>
-            </View>
-
-
-            <TextInput
-                style={[emStyles.input, { borderColor: petSpecies ? '#000' : '#42A5F5' }]}
-                placeholder="Enter pet species"
-                value={petSpecies}
-                onChangeText={text => setPetSpecies(text)}
-            />
-            <TextInput
-                style={[emStyles.input, { borderColor: petSymptoms ? '#000' : '#42A5F5', height: 100 }]}
-                placeholder="Enter pet symptoms"
-                multiline={true}
-                value={petSymptoms}
-                onChangeText={text => setPetSymptoms(text)}
-            />
-            <TouchableOpacity style={styles.mainButton} onPress={handleSubmit}>
-                <Text style={styles.submitButtonText}>Submit</Text>
+            <TouchableOpacity onPress={reEnterLocation} style={styles.reenterLocationButton}>
+                <Text style={styles.clearButtonText}>Re-enter location</Text>
             </TouchableOpacity>
+          <ScrollView>
+            <Text style={{ fontSize: 30, fontWeight: 'bold'}}>
+              Vet Emergency
+            </Text>
+            <View style={emStyles.infoContainer}>
+                <Text style={emStyles.infoText}>Nearest Open Vet:</Text>
+                <TouchableOpacity onPress={handleCallHelpNumber}>
+                <Text style={emStyles.infoTextClick}> {emergencyInfo.helpNumber}</Text>
+              </TouchableOpacity>
+
+
+              
+              <Text style={emStyles.infoText}>Websites to help:</Text>
+              {emergencyInfo.websites.map((website, index) => (
+                <TouchableOpacity key={index} onPress={() => handleOpenWebsite(website)}>
+                  <Text style={emStyles.infoTextClick}>{website}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+            {nearbyVets.map((vet, index) => (
+              <View key={index} style={{ marginBottom: 10 }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{vet.name}</Text>
+                <Text>{vet.address}</Text>
+                <Text>{vet.phone}</Text>
+                <Text>{vet.openingHours.open_now ? 'Open now' : 'Closed'}</Text>
+              </View>
+            ))}
+          </ScrollView>
         </View>
-    );
+      )}
+    </>
+  );
 }
 
 const emStyles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        paddingHorizontal: 20,
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 20,
-    },
-    infoContainer: {
-        marginBottom: 20,
-    },
-    infoText: {
-        fontSize: 16,
-        marginBottom: 5,
-    },
-    input: {
-        borderWidth: 1,
-        borderRadius: 10,
-        paddingHorizontal: 10,
-        marginBottom: 20,
-        width: '100%',
-    },
-    submitButton: {
-        backgroundColor: 'blue',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 10,
-    },
-    submitButtonText: {
-        color: '#fff',
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-    nearByVets: {
-        flex: 1,
-        alignItems: 'center',
-        height: 200,
-    },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  infoContainer: {
+    marginBottom: 20,
+  },
+  infoText: {
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  infoTextClick: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: 'blue',
+    textDecorationLine: 'underline',
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginBottom: 20,
+    width: '100%',
+  },
+  submitButton: {
+    backgroundColor: 'blue',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+  },
+  submitButtonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
 });
 
 export default EmergencyScreen;
