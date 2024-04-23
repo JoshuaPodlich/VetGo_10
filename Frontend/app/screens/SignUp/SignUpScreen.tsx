@@ -147,8 +147,8 @@ function SignUpScreen(props: any) {
         let url = BASE_URL + "/user/register"
 
         
-        console.log(body)
-        console.log(url)
+        // console.log(body)
+        // console.log(url)
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -161,8 +161,8 @@ function SignUpScreen(props: any) {
         //console.log(response.statusText)
 
         const responseBody = await response.json(); // Parse the response body into JSON
-        console.log('Response:', response);
-        console.log('Response Body:', responseBody);
+        // console.log('Response:', response);
+        // console.log('Response Body:', responseBody);
         isSubmittingRef.current = false
         
         if(response.status === 200){
@@ -195,8 +195,8 @@ function SignUpScreen(props: any) {
         let url = BASE_URL + "/user/register"
 
         
-        console.log(body)
-        console.log(url)
+        // console.log(body)
+        // console.log(url)
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -205,11 +205,11 @@ function SignUpScreen(props: any) {
             body: JSON.stringify(body)
         })
 
-        console.log(response.status)
+        //console.log(response.status)
 
         const responseBody = await response.json(); 
-        console.log('Response:', response);
-        console.log('Response Body:', responseBody);
+        // console.log('Response:', response);
+        // console.log('Response Body:', responseBody);
         isSubmittingRef.current = false
         
         if(response.status === 200){
