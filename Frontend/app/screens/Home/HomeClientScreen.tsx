@@ -34,9 +34,11 @@ export interface HomeClientScreenParams {
 
 
 function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation: ClientHomeScreenNavigationProp }) {
-
+    console.log(props.route.params);
     //region States
     const params: HomeClientScreenParams = props.route.params as HomeClientScreenParams
+
+   
 
     const [pets, setPets] = useState<any[]>([])
     const [petsData, setPetsData] = useState<{ pet: any, appointment: any }[]>([])

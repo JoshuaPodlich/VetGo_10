@@ -9,12 +9,13 @@ import { BASE_URL } from "../shared/Constants"
 import EntryButtons from "../../components/EntryButtons"
 import { LocationInterface } from '../shared/Interfaces'
 import { LoginScreenNavigationProp, LoginScreenRouteProp } from '../../utils/props'
-import { HomeScreenParams } from '../Home/HomeScreen'
+import { useAuth } from '../shared/AuthContext';
 
 export interface LoginScreenParams {
 
 }
 function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: LoginScreenRouteProp }) {
+    const { isAuthenticated, setIsAuthenticated } = useAuth();
 
     // hydrate the params
     let params = props.route.params as LoginScreenParams
@@ -125,14 +126,24 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
 
             console.log(location);
 
-            let params = {
+            let homeParams = {
                 userId: responseBody.id,
                 userIsVet: userIsVet,
                 location: location
             };
-            console.log('params:', params);
-       
-            props.navigation.navigate("Home", params);
+
+            // Authenticates the user such that Tabs will be used alongside Stacks for navigation after logging in.
+            setIsAuthenticated(true);
+            props.navigation.navigate('MainTab', {
+                screen: 'HomeTab',
+                params: {
+                    screen: 'HomeClient',
+                    params: homeParams
+                }
+            });
+            
+            
+
 
         } catch (error: any) {
             console.error('Login error:', error.message);

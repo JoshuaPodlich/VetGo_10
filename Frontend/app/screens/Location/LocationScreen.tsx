@@ -191,11 +191,13 @@ function LocationScreen(props: any) {
                 await updateOwnerLocation(params.userId, locationInfo);
             }
 
-            props.navigation.navigate("Home", {
+            props.navigation.navigate("HomeTab", {
+                screen: "HomeClient", 
+                params: {
                 userId: params.userId,
                 userIsVet: params.userIsVet,
                 location: locationInfo
-            });
+            }});
             setNotification({ header: 'Location Update', message: 'Your location has been successfully updated.', type: 'success' });
         } catch (error) {
             //console.error('Error updating location:', error);

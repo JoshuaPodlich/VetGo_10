@@ -2,17 +2,22 @@ import { Text, View } from 'react-native'
 import { GOOGLE_MAPS_APIKEY } from '../screens/shared/Constants'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { UserDetailsParams } from '../utils/params'
-import { ClientHomeScreenNavigationProp, VetHomeScreenNavigationProp } from '../utils/props'
+import { RootStackParamList, HomeStackParamList, UserDetailsParams } from '../utils/params'
 import { LocationInterface } from '../screens/shared/Interfaces'
 import { LocationScreenParams } from '../screens/Location/LocationScreen'
 import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry'
+import { CompositeNavigationProp } from '@react-navigation/native'
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 interface LocationDisplayProps {
-    userId: string,
-    userIsVet: boolean,
-    location: LocationInterface
-    navigation: ClientHomeScreenNavigationProp
+    userId: string;
+    userIsVet: boolean;
+    location: LocationInterface;
+    navigation: CompositeNavigationProp<
+        BottomTabNavigationProp<HomeStackParamList, 'Location'>,
+        NativeStackNavigationProp<RootStackParamList>
+    >;
 }
 
 export const LocationDisplay: React.FC<LocationDisplayProps> = ({ userId, userIsVet, location, navigation }) => {
@@ -25,7 +30,10 @@ export const LocationDisplay: React.FC<LocationDisplayProps> = ({ userId, userIs
     return (
         <View>
             <Text style={{ fontSize: 16, fontWeight: 'bold', flexShrink: 1 }}>{locationName}</Text>
-            <Text style={{ textDecorationLine: 'underline' }} onPress={() => navigation.navigate('Location', { userId, userIsVet, location })}>
+            <Text style={{ textDecorationLine: 'underline' }} onPress={() => navigation.navigate('HomeTab', {
+                screen: 'Location',
+                params: { userId, userIsVet, location }
+            })}>
                 Tap to change
             </Text>
         </View>

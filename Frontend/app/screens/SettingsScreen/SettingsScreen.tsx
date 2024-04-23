@@ -10,6 +10,7 @@ import {UserInfoScreenParams} from '../UserInfo/UserInfoScreen'
 import { ChangeAddressScreenParams } from '../Location/AddressLocation'
 import { useNotification } from '../shared/NotificationContext'
 import Toast from 'react-native-toast-message';
+import { useAuth } from '../shared/AuthContext';
 
 
 export interface SettingsScreenParams {
@@ -20,6 +21,7 @@ export interface SettingsScreenParams {
 function SettingsScreen(props: any) {
     const params = props.route.params as SettingsScreenParams
     const { notification, setNotification } = useNotification();
+    const { isAuthenticated, setIsAuthenticated } = useAuth();
     useEffect(() => {
         if (notification.message) {
             Toast.show({
@@ -34,6 +36,8 @@ function SettingsScreen(props: any) {
     }, [notification]);
 
     function logout() {
+        // Remove authentication such that the user no longer sees (or can utilize) the Tabs for navigation.
+        setIsAuthenticated(false);
         props.navigation.navigate("Welcome")
     }
 
