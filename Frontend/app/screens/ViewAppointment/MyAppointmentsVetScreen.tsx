@@ -245,11 +245,10 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navig
     )
 }
 
-const AvailableAppointmentCard = ({ key, appointmentData, petName, vetId, params, navigation, setAppointments }: AvailableAppointmentCardParams) => {
+const AvailableAppointmentCard = ({ appointmentData, petName, vetId, params, navigation, setAppointments }: AvailableAppointmentCardParams) => {
     const [showDetails, setShowDetails] = useState(false)
 
     const cancelAppointment = async () => {
-        console.log(key)
         await axios.put(BASE_URL + "/appointment/cancel/" + appointmentData.aid)
         console.log(`Appointment for ${petName} has been cancelled.`)
         getAppointments(setAppointments);
