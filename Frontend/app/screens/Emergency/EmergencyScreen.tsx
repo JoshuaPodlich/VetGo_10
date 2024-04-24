@@ -4,6 +4,7 @@ import { GoogleAutoComplete } from '../shared/Components';
 import { styles } from '../shared/Styles';
 import { GOOGLE_MAPS_APIKEY } from '../shared/Constants';
 import { set } from 'lodash';
+import { colors } from '../shared/Colors';
 
 function EmergencyScreen() {
   const [emergencyLocation, setEmergencyLocation] = useState('');
@@ -114,7 +115,7 @@ function EmergencyScreen() {
                 <Text style={styles.clearButtonText}>Re-enter location</Text>
             </TouchableOpacity>
           <ScrollView>
-            <Text style={{ fontSize: 30, fontWeight: 'bold'}}>
+            <Text style={{ fontSize: 30, fontWeight: 'bold', color: colors.action_Orange, marginLeft: 60}}>
               Vet Emergency
             </Text>
             <View style={emStyles.infoContainer}>
@@ -136,7 +137,9 @@ function EmergencyScreen() {
               <View key={index} style={{ marginBottom: 10 }}>
                 <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{vet.name}</Text>
                 <Text>{vet.address}</Text>
-                <Text>{vet.phone}</Text>
+                <TouchableOpacity onPress={() => Linking.openURL(`tel:${vet.phone}`)}>
+                  <Text style={emStyles.infoTextClick}>{vet.phone}</Text>
+                </TouchableOpacity>
                 <Text>{vet.openingHours.open_now ? 'Open now' : 'Closed'}</Text>
               </View>
             ))}
