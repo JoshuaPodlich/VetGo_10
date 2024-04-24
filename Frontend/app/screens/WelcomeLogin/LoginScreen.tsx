@@ -97,8 +97,9 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
                 body: JSON.stringify(body)
             });
 
-            // console.log('Response status:', response.status);
-            // console.log('Response status text:', response.statusText);
+            console.log('Response status:', response.status);
+            console.log('Response status text:', response.statusText);
+            if (response.status === 200){
             const responseBody = await response.json(); // Parse the response body into JSON
             // console.log('Response Body:', responseBody);
             console.log('LOGIN SUCCESSFUL');
@@ -132,6 +133,10 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
             console.log('params:', params);
        
             props.navigation.navigate("Home", params);
+        } else {
+            console.log('Login failed. Invalid credentials.');
+            Alert.alert('Login failed. Invalid credentials.');
+        }
 
         } catch (error: any) {
             console.error('Login error:', error.message);
