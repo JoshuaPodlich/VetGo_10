@@ -56,6 +56,8 @@ import ScreeningQuestionsScreen from './app/screens/ScreeningQuestions/Screening
 import ChangeAddressScreen from './app/screens/Location/AddressLocation'
 import { AuthProvider } from './app/screens/shared/AuthContext';
 import { RootStackParamList, HomeStackParamList, MyAppointmentsStackParamList, ViewNearbyVetsStackParamList, SettingsStackParamList, TabParamList } from './app/utils/params';
+import { UserProvider } from './app/screens/shared/UserContext';
+
 // const Stack = createNativeStackNavigator()
 
 // export default function App() {
@@ -210,7 +212,7 @@ function MyTabs() {
   );
 }
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<any>();
 
 export default function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -229,13 +231,15 @@ export default function App() {
                 <ApplicationProvider {...eva} theme={eva.light}>
                     <NotificationProvider>
                         <NavigationContainer onStateChange={(state) => console.log('New navigation state', state)}>
-                            <AuthProvider>
-                            <Stack.Navigator initialRouteName={decideInitialRoute()} >
-                                <Stack.Screen name="AuthScreen" component={AuthStackScreen} options={{ headerShown: false }} />
-                                <Stack.Screen name="MainTab" component={MyTabs} options={{ headerShown: false }} />
-                                {/* other screens */}
-                            </Stack.Navigator>
-                            </AuthProvider>
+                            <UserProvider>
+                                <AuthProvider>
+                                    <Stack.Navigator initialRouteName={decideInitialRoute()} >
+                                        <Stack.Screen name="AuthScreen" component={AuthStackScreen} options={{ headerShown: false }} />
+                                        <Stack.Screen name="MainTab" component={MyTabs} options={{ headerShown: false }} />
+                                        {/* other screens */}
+                                    </Stack.Navigator>
+                                </AuthProvider>
+                            </UserProvider>
                         </NavigationContainer>
                     </NotificationProvider>    
                 </ApplicationProvider>

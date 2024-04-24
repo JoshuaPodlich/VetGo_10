@@ -33,6 +33,7 @@ export type HomeStackParamList = {
     CreatePet: CreatePetScreenParams;
     AdditionalPetInfo: undefined;
     Location: LocationScreenParams;
+    ViewAppointment: ViewAppointmentScreenParams;
 };
 
 export type MyAppointmentsStackParamList = {
@@ -74,7 +75,6 @@ export type RootStackParamList = {
     Login: LoginScreenParams;
     SignUp: undefined;
     Emergency: undefined;
-    HomeTab: NavigatorScreenParams<HomeStackParamList>;
     MainTab: NavigatorScreenParams<TabParamList>;
 };
 

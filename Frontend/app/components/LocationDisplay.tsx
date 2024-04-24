@@ -9,15 +9,13 @@ import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry'
 import { CompositeNavigationProp } from '@react-navigation/native'
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { ClientHomeScreenNavigationProp } from '../utils/props'
 
 interface LocationDisplayProps {
     userId: string;
     userIsVet: boolean;
     location: LocationInterface;
-    navigation: CompositeNavigationProp<
-        BottomTabNavigationProp<HomeStackParamList, 'Location'>,
-        NativeStackNavigationProp<RootStackParamList>
-    >;
+    navigation: ClientHomeScreenNavigationProp
 }
 
 export const LocationDisplay: React.FC<LocationDisplayProps> = ({ userId, userIsVet, location, navigation }) => {
@@ -30,10 +28,7 @@ export const LocationDisplay: React.FC<LocationDisplayProps> = ({ userId, userIs
     return (
         <View>
             <Text style={{ fontSize: 16, fontWeight: 'bold', flexShrink: 1 }}>{locationName}</Text>
-            <Text style={{ textDecorationLine: 'underline' }} onPress={() => navigation.navigate('HomeTab', {
-                screen: 'Location',
-                params: { userId, userIsVet, location }
-            })}>
+            <Text style={{ textDecorationLine: 'underline' }} onPress={() => navigation.navigate('Location', { userId, userIsVet, location })}>
                 Tap to change
             </Text>
         </View>

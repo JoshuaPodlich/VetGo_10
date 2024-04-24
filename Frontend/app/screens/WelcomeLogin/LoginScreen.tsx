@@ -10,12 +10,14 @@ import EntryButtons from "../../components/EntryButtons"
 import { LocationInterface } from '../shared/Interfaces'
 import { LoginScreenNavigationProp, LoginScreenRouteProp } from '../../utils/props'
 import { useAuth } from '../shared/AuthContext';
+import { useUser } from '../shared/UserContext';
 
 export interface LoginScreenParams {
 
 }
 function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: LoginScreenRouteProp }) {
-    const { isAuthenticated, setIsAuthenticated } = useAuth();
+    const { setIsAuthenticated } = useAuth();
+    const { setUser } = useUser();
 
     // hydrate the params
     let params = props.route.params as LoginScreenParams
@@ -134,6 +136,8 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
 
             // Authenticates the user such that Tabs will be used alongside Stacks for navigation after logging in.
             setIsAuthenticated(true);
+            // React Native global context of user data.
+            setUser(homeParams);
             props.navigation.navigate('MainTab', {
                 screen: 'HomeTab',
                 params: {

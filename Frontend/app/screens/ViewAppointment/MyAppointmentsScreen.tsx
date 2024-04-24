@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { LocationInterface } from '../shared/Interfaces'
+import { useUser } from '../shared/UserContext';
 
 export interface MyAppointmentsScreenParams {
     userId: string,
@@ -7,10 +8,12 @@ export interface MyAppointmentsScreenParams {
     location: LocationInterface,
     appointmentId: string
 }
-function MyAppointmentsScreen(props: any) {
 
+
+function MyAppointmentsScreen(props: any) {
+    const { user } = useUser();
     //region States
-    const params: MyAppointmentsScreenParams = props.route.params as MyAppointmentsScreenParams
+    const params: MyAppointmentsScreenParams = user as MyAppointmentsScreenParams
 
     //endregion
 
