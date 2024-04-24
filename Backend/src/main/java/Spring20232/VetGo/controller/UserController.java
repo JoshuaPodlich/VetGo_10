@@ -194,8 +194,12 @@ public class UserController {
                                          @RequestBody ObjectNode requestBody) {
         try {
             String role = requestBody.get("role").asText();
-            userService.grantRole(uid, new Role(role));
-            return ResponseEntity.status(HttpStatus.OK).body("Role has been successfully granted");
+            if (role.equals("ADMIN") || role.equals("OWNER") || role.equals("VET")) {
+                userService.grantRole(uid, new Role(role));
+                return ResponseEntity.status(HttpStatus.OK).body("Role has been successfully granted");
+            } else {
+                throw new RuntimeException("Role not valid");
+            }
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
