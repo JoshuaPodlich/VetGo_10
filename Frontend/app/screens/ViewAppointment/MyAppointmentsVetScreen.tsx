@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import { MapScreenParams } from '../Map/MapScreen'
 import Entypo from 'react-native-vector-icons/Entypo';
 import { colors } from '../shared/Colors'
+import { useUser } from "../shared/UserContext"
 
 export interface MyAppointmentsVetScreenParams {
     userId: string,
@@ -18,7 +19,8 @@ export interface MyAppointmentsVetScreenParams {
 }
 
 const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRouteProp, navigation: MyAppointmentsVetScreenNavigationProp }) => {
-    const params: MyAppointmentsVetScreenParams = props.route.params;
+    const { user } = useUser();
+    const params: MyAppointmentsVetScreenParams = user as MyAppointmentsVetScreenParams;
     const [appointments, setAppointments] = useState<any[]>([])
     let vetid;
 

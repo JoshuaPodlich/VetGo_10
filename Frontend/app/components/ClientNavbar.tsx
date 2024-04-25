@@ -75,27 +75,27 @@
 //     }, 400, { leading: true, trailing: false })
 
 //     return (
-// <BottomNavigation
-//     selectedIndex={selectedIndex}
-//     onSelect={handleTabSelect}
-// >
-//     <BottomNavigationTab
-//         title='Pets'
-//         icon={() => <FontAwesome5 name='dog' color={selectedIndex === 0 ? colors.blue : colors.darkGrey} size={24} />}
-//     />
-//     <BottomNavigationTab
-//         title='Appointments'
-//         icon={() => <FontAwesome5 name='calendar-alt' color={selectedIndex === 1 ? colors.blue : colors.darkGrey} size={24} />}
-//     />
-//     <BottomNavigationTab
-//         title='Veterinarians'
-//         icon={() => <FontAwesome5 name='user-md' color={selectedIndex === 2 ? colors.blue : colors.darkGrey} size={24} />}
-//     />
-//     <BottomNavigationTab
-//         title='Settings'
-//         icon={() => <FontAwesome5 name='cog' color={selectedIndex === 3 ? colors.blue : colors.darkGrey} size={24} />}
-//     />
-// </BottomNavigation>
+{/* <BottomNavigation
+    selectedIndex={selectedIndex}
+    onSelect={handleTabSelect}
+>
+    <BottomNavigationTab
+        title='Pets'
+        icon={() => <FontAwesome5 name='dog' color={selectedIndex === 0 ? colors.blue : colors.darkGrey} size={24} />}
+    />
+    <BottomNavigationTab
+        title='Appointments'
+        icon={() => <FontAwesome5 name='calendar-alt' color={selectedIndex === 1 ? colors.blue : colors.darkGrey} size={24} />}
+    />
+    <BottomNavigationTab
+        title='Veterinarians'
+        icon={() => <FontAwesome5 name='user-md' color={selectedIndex === 2 ? colors.blue : colors.darkGrey} size={24} />}
+    />
+    <BottomNavigationTab
+        title='Settings'
+        icon={() => <FontAwesome5 name='cog' color={selectedIndex === 3 ? colors.blue : colors.darkGrey} size={24} />}
+    />
+</BottomNavigation> */}
 
 //     )
 // }

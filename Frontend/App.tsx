@@ -42,7 +42,7 @@ import ViewAppointmentVetScreen from './app/screens/ViewAppointment/ViewAppointm
 import VetDuringAppointment1Screen from './app/screens/DuringAppointment/VetDuringAppointment1Screen'
 import VetDuringAppointment2Screen from './app/screens/DuringAppointment/VetDuringAppointment2Screen'
 import VetAddChargesScreen from './app/screens/VetAddCharges/VetAddChargesScreen'
-import MyAppointmentsScreen from './app/screens/ViewAppointment/MyAppointmentsScreen'
+//import MyAppointmentsScreen from './app/screens/ViewAppointment/MyAppointmentsScreen'
 import MyAppointmentsOwnerScreen from './app/screens/ViewAppointment/MyAppointmentsOwnerScreen'
 import MyAppointmentsVetScreen from './app/screens/ViewAppointment/MyAppointmentsVetScreen'
 import ViewNearbyVetsScreen from './app/screens/ClientVetInteraction/ViewNearbyVetsScreen'
@@ -56,7 +56,10 @@ import ScreeningQuestionsScreen from './app/screens/ScreeningQuestions/Screening
 import ChangeAddressScreen from './app/screens/Location/AddressLocation'
 import { AuthProvider } from './app/screens/shared/AuthContext';
 import { RootStackParamList, HomeStackParamList, MyAppointmentsStackParamList, ViewNearbyVetsStackParamList, SettingsStackParamList, TabParamList } from './app/utils/params';
-import { UserProvider } from './app/screens/shared/UserContext';
+import { UserProvider, useUser } from './app/screens/shared/UserContext';
+import { Text, View } from 'react-native';
+import { FontAwesome5 } from '@expo/vector-icons'
+import { colors } from "./app/screens/shared/Colors"
 
 // const Stack = createNativeStackNavigator()
 
@@ -154,11 +157,17 @@ function HomeStackScreen() {
 
 const MyAppointmentsStack = createNativeStackNavigator<MyAppointmentsStackParamList>();
 function MyAppointmentsStackScreen() {
+    const { user } = useUser();
     return (
         <MyAppointmentsStack.Navigator>
-            <MyAppointmentsStack.Screen name="MyAppointments" component={MyAppointmentsScreen as React.FC} options={{ title: "" }}/>
+            {/* <MyAppointmentsStack.Screen name="MyAppointments" component={MyAppointmentsScreen as React.FC} options={{ title: "" }}/>
             <MyAppointmentsStack.Screen name="MyAppointmentsOwner" component={MyAppointmentsOwnerScreen as React.FC} options={{ title: "" }} />
-            <MyAppointmentsStack.Screen name="MyAppointmentsVet" component={MyAppointmentsVetScreen as React.FC} options={{ title: "" }} />
+            <MyAppointmentsStack.Screen name="MyAppointmentsVet" component={MyAppointmentsVetScreen as React.FC} options={{ title: "" }} /> */}
+            <MyAppointmentsStack.Screen
+                name={user?.userIsVet ? 'MyAppointmentsVet' : 'MyAppointmentsOwner'}
+                component={user?.userIsVet ? MyAppointmentsVetScreen as React.FC : MyAppointmentsOwnerScreen as React.FC}
+                options={{ title: "" }}
+            />
             <MyAppointmentsStack.Screen name="CalendarScreen" component={CalendarScreen} options={{ title: "" }} />
             <MyAppointmentsStack.Screen name="ViewAppointment" component={ViewAppointmentScreen as React.FC} options={{ title: "" }} />
             <MyAppointmentsStack.Screen name="ViewAppointmentClient" component={ViewAppointmentClientScreen as React.FC} options={{ title: "" }} />
@@ -220,10 +229,66 @@ function MyTabs() {
             tabBarStyle: { display: getTabBarVisibility(route) },
         })}
     >
-      <Tab.Screen name="HomeTab" component={HomeStackScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="MyAppointmentsTab" component={MyAppointmentsStackScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="ViewNearbyVetsTab" component={ViewNearbyVetsStackScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="SettingsTab" component={SettingsStackScreen} options={{ headerShown: false }} />
+        <Tab.Screen name="HomeTab" component={HomeStackScreen} options={{ headerShown: false, tabBarIcon: ({ focused }) => (
+            <View style={{ top: 5 }}>
+                <FontAwesome5
+                name="dog"
+                style={{
+                    width: 40,
+                    height: 40,
+                    color: focused ? colors.hoverIcon : colors.nonHoverIcon,
+                }}
+                size={24}
+                />
+            </View>
+            ),
+            tabBarLabel: () => null,
+        }} />
+        <Tab.Screen name="MyAppointmentsTab" component={MyAppointmentsStackScreen} options={{ headerShown: false, tabBarIcon: ({ focused }) => (
+            <View style={{ top: 5 }}>
+                <FontAwesome5
+                name="calendar-alt"
+                style={{
+                    width: 40,
+                    height: 40,
+                    color: focused ? colors.hoverIcon : colors.nonHoverIcon,
+                }}
+                size={24}
+                />
+            </View>
+            ),
+            tabBarLabel: () => null,
+        }} />
+        <Tab.Screen name="ViewNearbyVetsTab" component={ViewNearbyVetsStackScreen} options={{ headerShown: false, tabBarIcon: ({ focused }) => (
+            <View style={{ top: 5 }}>
+                <FontAwesome5
+                name="user-md"
+                style={{
+                    width: 40,
+                    height: 40,
+                    color: focused ? colors.hoverIcon : colors.nonHoverIcon,
+                }}
+                size={24}
+                />
+            </View>
+            ),
+            tabBarLabel: () => null,
+        }} />
+        <Tab.Screen name="SettingsTab" component={SettingsStackScreen} options={{ headerShown: false, tabBarIcon: ({ focused }) => (
+            <View style={{ top: 5 }}>
+                <FontAwesome5
+                name="cog"
+                style={{
+                    width: 40,
+                    height: 40,
+                    color: focused ? colors.hoverIcon : colors.nonHoverIcon,
+                }}
+                size={24}
+                />
+            </View>
+            ),
+            tabBarLabel: () => null,
+        }} />
     </Tab.Navigator>
   );
 }

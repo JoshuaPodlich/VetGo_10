@@ -13,7 +13,7 @@ import { HomeClientScreenParams } from '../screens/Home/HomeClientScreen'
 import { HomeVetScreenParams } from '../screens/Home/HomeVetScreen'
 import { CreateAppointmentParams } from '../screens/CreateAppointment/CreateAppointmentScreen'
 import { CreatePetScreenParams } from '../screens/CreatePet/CreatePetScreen'
-import { MyAppointmentsScreenParams } from '../screens/ViewAppointment/MyAppointmentsScreen'
+//import { MyAppointmentsScreenParams } from '../screens/ViewAppointment/MyAppointmentsScreen'
 import { MyAppointmentsOwnerScreenParams } from '../screens/ViewAppointment/MyAppointmentsOwnerScreen'
 import { MyAppointmentsVetScreenParams } from '../screens/ViewAppointment/MyAppointmentsVetScreen'
 import { PaymentStripeScreenParams } from '../screens/PaymentStripe/PaymentStripeScreen'
@@ -38,7 +38,7 @@ export type HomeStackParamList = {
 };
 
 export type MyAppointmentsStackParamList = {
-    MyAppointments: MyAppointmentsScreenParams;
+    //MyAppointments: MyAppointmentsScreenParams;
     MyAppointmentsOwner: MyAppointmentsOwnerScreenParams;
     MyAppointmentsVet: MyAppointmentsVetScreenParams;
     CalendarScreen: undefined;

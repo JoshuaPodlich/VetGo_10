@@ -9,6 +9,7 @@ import { colors } from '../shared/Colors'
 import { LocationInterface } from '../shared/Interfaces'
 import { appointment } from '@prisma/client'
 import { useEffect, useState } from 'react'
+import { useUser } from "../shared/UserContext"
 
 export interface MyAppointmentsOwnerScreenParams {
     userId: string,
@@ -17,7 +18,8 @@ export interface MyAppointmentsOwnerScreenParams {
 }
 
 const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRouteProp, navigation: MyAppointmentsOwnerScreenNavigationProp }) => {
-    const params: MyAppointmentsOwnerScreenParams = props.route.params;
+    const { user } = useUser();
+    const params: MyAppointmentsOwnerScreenParams = user as MyAppointmentsOwnerScreenParams;
     const [appointments, setAppointments] = useState<any[]>([])
 
     const getAppointments = async () => {

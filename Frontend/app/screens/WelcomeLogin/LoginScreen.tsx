@@ -62,6 +62,8 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
 
     function validateCredentials() {
         let isValid = true
+        setEmail("vet2@example.com");
+        setPassword("Realpasswordlover2@");
         if (!email) {
             setEmailError("Email is required!")
             isValid = false
