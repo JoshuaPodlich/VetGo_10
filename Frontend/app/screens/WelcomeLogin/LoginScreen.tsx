@@ -105,44 +105,48 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
             console.log('Response status:', response.status);
             console.log('Response status text:', response.statusText);
             if (response.status === 200){
-            const responseBody = await response.json(); // Parse the response body into JSON
-            console.log('Response Body:', responseBody);
-            console.log('LOGIN SUCCESSFUL LETS GO');
-            let lat = responseBody.latitude;
-            let long = responseBody.longitude;
-            let userIsVet = false;
+                const responseBody = await response.json(); // Parse the response body into JSON
+                console.log('Response Body:', responseBody);
+                console.log('LOGIN SUCCESSFUL LETS GO');
+                let lat = responseBody.latitude;
+                let long = responseBody.longitude;
+                let userIsVet = false;
 
-            if (lat === undefined) {
-                lat = 0;
+                if (lat === undefined) {
+                    lat = 0;
+                }
+                if (long === undefined) {
+                    long = 0;
+                }
+                
+                if (responseBody.role === "vet") {
+                    userIsVet = true;
+                }
+
+                const location: LocationInterface = {
+                    latitude: lat,
+                    longitude: long
+                }
+
+                console.log(location);
+
+                let homeParams = {
+                    userId: responseBody.id,
+                    userIsVet: userIsVet,
+                    location: location
+                };
+
+                // Authenticates the user such that Tabs will be used alongside Stacks for navigation after logging in.
+                setIsAuthenticated(true);
+                // React Native global context of user data.
+                setUser(homeParams);
+                props.navigation.navigate('MainTab');
+                
+            } else {
+                console.log('Login failed. Invalid credentials.');
+                Alert.alert('Login failed. Invalid credentials.');
             }
-            if (long === undefined) {
-                long = 0;
-            }
-            
-            if (responseBody.role === "vet") {
-                userIsVet = true;
-            }
 
-            const location: LocationInterface = {
-                latitude: lat,
-                longitude: long
-            }
-
-            console.log(location);
-
-            let homeParams = {
-                userId: responseBody.id,
-                userIsVet: userIsVet,
-                location: location
-            };
-
-            // Authenticates the user such that Tabs will be used alongside Stacks for navigation after logging in.
-            setIsAuthenticated(true);
-            // React Native global context of user data.
-            setUser(homeParams);
-            props.navigation.navigate('MainTab');
-            
-            
 
 
         } catch (error: any) {

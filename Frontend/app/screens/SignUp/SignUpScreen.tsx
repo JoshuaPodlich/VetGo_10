@@ -279,39 +279,32 @@ function SignUpScreen(props: any) {
                         />
                         <Text style={styles.errorText}>{errors.confirmPassword}</Text>
 
+                        <Input clearButtonMode={"always"} size={"large"}
+                            value={form.firstname} style={styles.signUpLoginTextBox}
+                            placeholder={"First Name"}
+                            onChangeText={(newFirstName) => {
+                                setForm((prevForm: SignUpForm) => ({ ...prevForm, firstname: newFirstName }))
+                            }}
+                        />
+                        <Text style={styles.errorText}>{errors.firstname}</Text>
 
-                            <Input clearButtonMode={"always"} size={"large"}
-                                value={form.firstname} style={styles.signUpLoginTextBox}
-                                placeholder={"First Name"}
-                                onChangeText={(newFirstName) => {
-                                    setForm((prevForm: SignUpForm) => ({ ...prevForm, firstname: newFirstName }))
-                                }}
-                            />
-                            <Text style={styles.errorText}>{errors.firstname}</Text>
+                        <Input clearButtonMode={"always"} size={"large"}
+                            value={form.lastname} style={styles.signUpLoginTextBox}
+                            placeholder={"Last Name"}
+                            onChangeText={(newLastName) => {
+                                setForm((prevForm: SignUpForm) => ({ ...prevForm, lastname: newLastName }))
+                            }}
+                        />
+                        <Text style={styles.errorText}>{errors.lastname}</Text>
 
-                            <Input clearButtonMode={"always"} size={"large"}
-                                value={form.lastname} style={styles.signUpLoginTextBox}
-                                placeholder={"Last Name"}
-                                onChangeText={(newLastName) => {
-                                    setForm((prevForm: SignUpForm) => ({ ...prevForm, lastname: newLastName }))
-                                }}
-                            />
-                            <Text style={styles.errorText}>{errors.lastname}</Text>
-
-                            <Input clearButtonMode={"always"} size={"large"}
-                                value={form.telephone} style={styles.signUpLoginTextBox}
-                                placeholder={"Telephone"}
-                                onChangeText={(newTelephone) => {
-                                    setForm((prevForm: SignUpForm) => ({ ...prevForm, telephone: newTelephone }))
-                                }}
-                            />
-                            <Text style={styles.errorText}>{errors.telephone}</Text>
-                            
-
-
-                            
-
-                            
+                        <Input clearButtonMode={"always"} size={"large"}
+                            value={form.telephone} style={styles.signUpLoginTextBox}
+                            placeholder={"Telephone"}
+                            onChangeText={(newTelephone) => {
+                                setForm((prevForm: SignUpForm) => ({ ...prevForm, telephone: newTelephone }))
+                            }}
+                        />
+                        <Text style={styles.errorText}>{errors.telephone}</Text>      
                     </View>
 
                     <View id={"buttonGroup"} style={styles.signUpButtonGroup}>
