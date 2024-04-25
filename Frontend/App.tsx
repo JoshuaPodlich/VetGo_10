@@ -60,6 +60,7 @@ import { UserProvider, useUser } from './app/screens/shared/UserContext';
 import { Text, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons'
 import { colors } from "./app/screens/shared/Colors"
+import { Style } from 'victory-native';
 
 // const Stack = createNativeStackNavigator()
 
@@ -130,7 +131,7 @@ import { colors } from "./app/screens/shared/Colors"
 const AuthStack = createNativeStackNavigator<RootStackParamList>();
 function AuthStackScreen() {
   return (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator screenOptions={{animation: 'none'}}>
         <AuthStack.Screen name="Welcome" component={WelcomeScreen as React.FC} options={{ headerShown: false }} />
         <AuthStack.Screen name="Login" component={LoginScreen as React.FC} options={{ title: "" }} />
         <AuthStack.Screen name="SignUp" component={SignUpScreen as React.FC} options={{ title: "" }} />
@@ -143,14 +144,15 @@ function AuthStackScreen() {
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 function HomeStackScreen() {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator screenOptions={{animation: 'slide_from_right'}}>
         <HomeStack.Screen name="HomeClient" component={HomeClientScreen} options={{ title: "" }}/>
         <HomeStack.Screen name="CreateAppointment" component={CreateAppointmentScreen as React.FC} options={{ title: "" }} />
         <HomeStack.Screen name="EditPet" component={EditPetScreen as React.FC} options={{ title: "" }} />
         <HomeStack.Screen name="ViewPet" component={ViewPet as React.FC} options={{ title: "" }} />
         <HomeStack.Screen name="CreatePet" component={CreatePetScreen as React.FC} options={{ title: "" }} />
         <HomeStack.Screen name="AdditionalPetInfo" component={AddtionalPetInfo as React.FC} options={{ title: "" }} />
-        <HomeStack.Screen name="Location" component={LocationScreen as React.FC} options={{ title: "", headerBackVisible: false }} />
+        <HomeStack.Screen name="Location" component={LocationScreen as React.FC} options={{ title: "" }} />
+        <HomeStack.Screen name="ScreeningQuestions" component={ScreeningQuestionsScreen as React.FC} options={{title: ""}} />
     </HomeStack.Navigator>
   );
 }
@@ -159,7 +161,7 @@ const MyAppointmentsStack = createNativeStackNavigator<MyAppointmentsStackParamL
 function MyAppointmentsStackScreen() {
     const { user } = useUser();
     return (
-        <MyAppointmentsStack.Navigator>
+        <MyAppointmentsStack.Navigator screenOptions={{animation: 'slide_from_right'}}>
             {/* <MyAppointmentsStack.Screen name="MyAppointments" component={MyAppointmentsScreen as React.FC} options={{ title: "" }}/>
             <MyAppointmentsStack.Screen name="MyAppointmentsOwner" component={MyAppointmentsOwnerScreen as React.FC} options={{ title: "" }} />
             <MyAppointmentsStack.Screen name="MyAppointmentsVet" component={MyAppointmentsVetScreen as React.FC} options={{ title: "" }} /> */}
@@ -189,7 +191,7 @@ function MyAppointmentsStackScreen() {
 const ViewNearbyVetsStack = createNativeStackNavigator<ViewNearbyVetsStackParamList>();
 function ViewNearbyVetsStackScreen() {
     return (
-        <ViewNearbyVetsStack.Navigator initialRouteName="ViewNearbyVets">
+        <ViewNearbyVetsStack.Navigator initialRouteName="ViewNearbyVets" screenOptions={{animation: 'slide_from_right'}}>
             <ViewNearbyVetsStack.Screen name="ViewNearbyVets" component={ViewNearbyVetsScreen as React.FC} options={{ title: "" }} />
         </ViewNearbyVetsStack.Navigator>
     );
@@ -198,7 +200,7 @@ function ViewNearbyVetsStackScreen() {
 const SettingsStack = createNativeStackNavigator<SettingsStackParamList>();
 function SettingsStackScreen() {
     return (
-        <SettingsStack.Navigator initialRouteName="Settings">
+        <SettingsStack.Navigator initialRouteName="Settings" screenOptions={{animation: 'slide_from_right'}}>
             <SettingsStack.Screen name="Settings" component={SettingsScreen as React.FC} options={{ title: "" }}/>
             <SettingsStack.Screen name="ChangePassword" component={ChangePasswordScreen as React.FC} options={{ title: "" }} />
             <SettingsStack.Screen name="UserInfo" component={UserInfoScreen as React.FC} options={{ title: "" }} />
@@ -209,11 +211,15 @@ function SettingsStackScreen() {
     );
 }
 
+// Somewhat unfortunate workaround: If there is a route name (i.e., not an empty string), check to see if it is one of the initial screens in tabs.
+// If there is no route name, check to see that the preceeding route's name in the hierarchy is a tab; if it's not a tab, the preceeding route
+// in the hierarchy is some other stack screen.
+// 'flex': Show bottom tabs
+// 'none' Do not show bottom tabs
 function getTabBarVisibility(route: any) {
-    // Attempt to get the current route name
     //console.log("Complete Route Object:", JSON.stringify(route, null, 2));
     const routeName = getFocusedRouteNameFromRoute(route) ?? '';
-    console.log(route.name);
+    /// console.log(route.name);
     if ((routeName == 'HomeClient' || routeName == 'Settings' || routeName == 'MyAppointmentsOwner' || routeName == 'MyAppointmentsVet' || routeName == 'ViewNearbyVets') 
         || (routeName == "" && (route.name == 'SettingsTab' || route.name == 'HomeTab' || route.name == 'ViewNearbyVetsTab' || route.name == 'MyAppointmentsTab'))) {
         return 'flex';
@@ -226,65 +232,101 @@ function MyTabs() {
   return (
     <Tab.Navigator screenOptions={({ route }) => ({
             headerShown: false,
-            tabBarStyle: { display: getTabBarVisibility(route) },
+            tabBarStyle: { display: getTabBarVisibility(route), height: 60 },
         })}
     >
         <Tab.Screen name="HomeTab" component={HomeStackScreen} options={{ headerShown: false, tabBarIcon: ({ focused }) => (
-            <View style={{ top: 5 }}>
+            <View style={{alignItems:'center'}}>
                 <FontAwesome5
                 name="dog"
                 style={{
-                    width: 40,
-                    height: 40,
+                    width: 30,
+                    height: 30,
                     color: focused ? colors.hoverIcon : colors.nonHoverIcon,
                 }}
-                size={24}
+                size={28}
                 />
+                <Text
+                    style={{
+                        color: focused ? colors.hoverIcon  : colors.nonHoverIcon,
+                        fontSize: 14,
+                        fontWeight: '600'
+                    }}
+                    >
+                    Pets
+                </Text>
             </View>
             ),
             tabBarLabel: () => null,
         }} />
         <Tab.Screen name="MyAppointmentsTab" component={MyAppointmentsStackScreen} options={{ headerShown: false, tabBarIcon: ({ focused }) => (
-            <View style={{ top: 5 }}>
+            <View style={{alignItems:'center'}}>
                 <FontAwesome5
                 name="calendar-alt"
                 style={{
-                    width: 40,
-                    height: 40,
+                    width: 30,
+                    height: 30,
                     color: focused ? colors.hoverIcon : colors.nonHoverIcon,
                 }}
-                size={24}
+                size={28}
                 />
+                <Text
+                    style={{
+                        color: focused ? colors.hoverIcon  : colors.nonHoverIcon,
+                        fontSize: 14,
+                        fontWeight: '600'
+                    }}
+                    >
+                    Appointments
+                </Text>
             </View>
             ),
             tabBarLabel: () => null,
         }} />
         <Tab.Screen name="ViewNearbyVetsTab" component={ViewNearbyVetsStackScreen} options={{ headerShown: false, tabBarIcon: ({ focused }) => (
-            <View style={{ top: 5 }}>
+            <View style={{alignItems:'center'}}>
                 <FontAwesome5
                 name="user-md"
                 style={{
-                    width: 40,
-                    height: 40,
+                    width: 30,
+                    height: 30,
                     color: focused ? colors.hoverIcon : colors.nonHoverIcon,
                 }}
-                size={24}
+                size={28}
                 />
+                <Text
+                    style={{
+                        color: focused ? colors.hoverIcon  : colors.nonHoverIcon,
+                        fontSize: 14,
+                        fontWeight: '600'
+                    }}
+                    >
+                    Nearby Vets
+                </Text>
             </View>
             ),
             tabBarLabel: () => null,
         }} />
         <Tab.Screen name="SettingsTab" component={SettingsStackScreen} options={{ headerShown: false, tabBarIcon: ({ focused }) => (
-            <View style={{ top: 5 }}>
+            <View style={{alignItems:'center'}}>
                 <FontAwesome5
                 name="cog"
                 style={{
-                    width: 40,
-                    height: 40,
+                    width: 30,
+                    height: 30,
                     color: focused ? colors.hoverIcon : colors.nonHoverIcon,
                 }}
-                size={24}
+                size={28}
                 />
+                <Text
+                    style={{
+                        color: focused ? colors.hoverIcon  : colors.nonHoverIcon,
+                        fontSize: 14,
+                        fontWeight: '600'
+                    }}
+                    >
+                    Settings
+                </Text>
             </View>
             ),
             tabBarLabel: () => null,
@@ -298,7 +340,6 @@ const Stack = createNativeStackNavigator<any>();
 export default function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const decideInitialRoute = () => {
-        console.log(isAuthenticated);
         return isAuthenticated ? 'MainTab' : 'AuthScreen';
     };
     return (
@@ -310,19 +351,20 @@ export default function App() {
             >
                 <IconRegistry icons={EvaIconsPack} />
                 <ApplicationProvider {...eva} theme={eva.light}>
-                    <NotificationProvider>
-                        <NavigationContainer onStateChange={(state) => console.log('New navigation state', state)}>
-                            <UserProvider>
-                                <AuthProvider>
+                    {/*<NavigationContainer onStateChange={(state) => console.log('New navigation state', state)}>*/}
+                    <NavigationContainer>
+                        <UserProvider>
+                            <AuthProvider>
+                                <NotificationProvider>
                                     <Stack.Navigator initialRouteName={decideInitialRoute()} >
                                         <Stack.Screen name="AuthScreen" component={AuthStackScreen} options={{ headerShown: false }} />
                                         <Stack.Screen name="MainTab" component={MyTabs} options={{ headerShown: false }} />
                                         {/* other screens */}
                                     </Stack.Navigator>
-                                </AuthProvider>
-                            </UserProvider>
-                        </NavigationContainer>
-                    </NotificationProvider>    
+                                </NotificationProvider>  
+                            </AuthProvider>
+                        </UserProvider>
+                    </NavigationContainer>
                 </ApplicationProvider>
             </StripeProvider>
         </>

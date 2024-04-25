@@ -323,12 +323,6 @@ function SignUpScreen(props: any) {
                             onPress={() => props.navigation.navigate("Map")}>
                             <Text style={styles.buttonText}> EMERGENCY </Text>
                         </TouchableHighlight>
-
-                        <TouchableHighlight style={{ ...styles.secondaryButton, marginTop: 20}}
-                            underlayColor={colors.brightRed_underlayColor}
-                            onPress={() => vetSignUp()}>
-                            <Text style={styles.buttonText}> Vet Signup  </Text>
-                        </TouchableHighlight>
                     </View>
                 </View>
             </ScrollView>

@@ -19,7 +19,7 @@ interface LocationDisplayProps {
 }
 
 export const LocationDisplay: React.FC<LocationDisplayProps> = ({ userId, userIsVet, location, navigation }) => {
-    const [locationName, setLocationName] = useState<String>("")
+    const [locationName, setLocationName] = useState<String>("Loading Location...");
 
     useEffect(() => {
         getLocationString(location.latitude, location.longitude).then(setLocationName);

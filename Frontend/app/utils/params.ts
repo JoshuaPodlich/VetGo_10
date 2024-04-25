@@ -35,6 +35,7 @@ export type HomeStackParamList = {
     Location: LocationScreenParams;
     ViewAppointment: ViewAppointmentScreenParams;
     PaymentStripe: PaymentStripeScreenParams;
+    ScreeningQuestions: ScreeningQuestionsParams;
 };
 
 export type MyAppointmentsStackParamList = {
