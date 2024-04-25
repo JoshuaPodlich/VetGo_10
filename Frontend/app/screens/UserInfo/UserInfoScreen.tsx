@@ -1,91 +1,139 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { UserInfoScreenNavigationProp, UserInfoScreenRouteProp } from '../../utils/props'
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { styles } from '../shared/Styles';
 import { colors } from '../shared/Colors';
-import { BASE_URL } from "../shared/Constants"
-import axios from 'axios';
+import { BASE_URL } from '../shared/Constants';
+import { Log } from 'victory-native';
+import { Logo } from '../shared/Components';
 
 export interface UserInfoScreenParams {
-    userId: string,
-    userIsVet: boolean,
+    userId: string;
+    userIsVet: boolean;
 }
 
-interface UserInfo {
-    email: string;
-    firstName: string;
-    lastName: string;
-    address: string;
-    telephone: string;
-    role: string;
-    numPets?: number;
-    numReviews?: number;
-    vetLicense?: string;
-}
+// Hardcoded user info for demonstration
+const userInfo = {
+    email: 'not added',
+    userAddress: 'not added',
+    firstName: 'not added',
+    lastName: 'not added',
+    telephone: 'not added',
+};
 
-const getUserInfo = async (userId: string) => {
-    try {
-        const response = await axios.get(`${BASE_URL}/user/info/${userId}`);
-        
-        return response.data;
-    } catch (error: any) {
-        console.error("Error fetching user info:", error.response ? error.response.data : error.message);
-        throw error;
-    }
-}
+function UserInfoScreen(props: any) {
+    const [editingField, setEditingField] = useState<string | null>(null);
+    const [inputValue, setInputValue] = useState<string>('');
+    const [userData, setUserData] = useState(userInfo);
 
-const formatPhoneNumber = (phoneNumberString: string) => {
-    var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
-    var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-    if (match) {
-        return '(' + match[1] + ') ' + match[2] + '-' + match[3];
-    }
-    return null;
-}
-
-function UserInfoScreen(props: { route: UserInfoScreenRouteProp, navigation: UserInfoScreenNavigationProp }) {
-    const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
-    const params: UserInfoScreenParams = props.route.params
-    
     useEffect(() => {
-        getUserInfo(params.userId)
-            .then(data => setUserInfo(data))
-            .catch(error => {
-                console.error("Failed to load user info", error);
-            });
-    }, [params.userId]);
+        getUserInfo(props.route.params.userId);
+    }, []);
 
-    if (!userInfo) {
-        return (
-            <View style={userStyles.container}>
-                <Text style={{ fontSize: 30, marginTop: 30, color: colors.black, paddingBottom: 20}}  >
-                    Loading...
-                </Text>
-            </View>
-        );
-    }
+    const getUserInfo = async (userId: string) => {
+        try {
+            const response = await fetch(`${BASE_URL}/user/id/${userId}`);
+            if (!response.ok) {
+                throw new Error('Problem fetching user data');
+            }
+            const data = await response.json();
+            const { id, email, address, firstName, lastName, telephone } = data;
+
+            // Update user info state
+            setUserData({
+                email: email || 'not added',
+                userAddress: address || 'not added',
+                firstName: firstName || 'not added',
+                lastName: lastName || 'not added',
+                telephone: telephone || 'not added',
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleEdit = (field: keyof typeof userInfo) => {
+        setEditingField(field);
+        setInputValue(userData[field]);
+    };
+
+    const handleSubmit = () => {
+        setUserData((prevState) => ({
+            ...prevState,
+            [editingField as string]: inputValue,
+        }));
+        setEditingField(null);
+        setInputValue('');
+
+        // Update user info in the database
+    //     const body = {
+
+    //         [editingField as string]: inputValue,
+    //     };
+    //     console.log(body);
+    //     fetch(`${BASE_URL}/user/update/${props.route.params.userId}`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({
+    //             [editingField as string]: inputValue,
+    //         }),
+    //     }
+    // )
+    //         .then((response) => {
+    //             console.log(response);
+    //             if (!response.ok) {
+    //                 throw new Error('Problem updating user data');
+    //             }
+    //         })
+
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+
+
+    };
+
+    function handleInputChange(text: string): void {
+        setInputValue(text);}
 
     return (
         <View style={userStyles.container}>
-            <Text style={{ fontSize: 30, fontWeight: "bold", marginTop: 30, color: colors.action_Orange, paddingBottom: 20}}  >
-                            User Info</Text>
+            <Text style={userStyles.title}>User Info</Text>
             <View style={userStyles.userInfoContainer}>
-                <Text style={userStyles.userInfoText}>Email: {userInfo.email}</Text>
-                <Text style={userStyles.userInfoText}>First Name: {userInfo.firstName}</Text>
-                <Text style={userStyles.userInfoText}>Last Name: {userInfo.lastName}</Text>
-                <Text style={userStyles.userInfoText}>Address: {userInfo.address}</Text>
-                <Text style={userStyles.userInfoText}>Phone Number: {formatPhoneNumber(userInfo.telephone)}</Text>
+                {/* Display user info fields with edit button */}
+                {['firstName', 'lastName', 'telephone', 'userAddress', 'email'].map((field) => (
+                    <View style={userStyles.userInfoRow} key={field}>
+                        <Text style={userStyles.userInfoText}>
+                            {field.charAt(0).toUpperCase() + field.slice(1)}: {userData[field as keyof typeof userData]}
+                        </Text>
+                        <TouchableOpacity
+                            style={userStyles.editButton}
+                            onPress={() => handleEdit(field as keyof typeof userData)}
+                        >
+                            <Text style={userStyles.editButtonText}>Edit</Text>
+                        </TouchableOpacity>
+                    </View>
+                ))}
 
-                <Text style={userStyles.userInfoText}>Role: {userInfo.role}</Text>
-                {userInfo.role === 'Pet Owner' &&
-                    <Text style={userStyles.userInfoText}>Number of Pets: {userInfo.numPets}</Text>
-                }
-                {userInfo.role === 'Veterinarian' &&
-                    <Text style={userStyles.userInfoText}>Number of Reviews: {userInfo.numReviews}</Text> &&
-                    <Text style={userStyles.userInfoText}>Vet License: {userInfo.vetLicense}</Text>
-                }
+                {/* Display input box and submit button when editing */}
+                {editingField && (
+                    <View style={userStyles.editContainer}>
+                        <TextInput
+                            style={userStyles.input}
+                            value={inputValue}
+                            onChangeText={handleInputChange}
+                        />
+                        <TouchableOpacity
+                            style={userStyles.submitButton}
+                            onPress={handleSubmit}
+                        >
+                            <Text style={userStyles.submitButtonText}>Submit</Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
             </View>
-            <TouchableOpacity style={{...styles.mainButton, marginTop: 50}} onPress={() => props.navigation.goBack()}>
+            <TouchableOpacity style={userStyles.returnButton} onPress={() => props.navigation.goBack()}>
                 <Text style={userStyles.returnButtonText}>Return</Text>
             </TouchableOpacity>
         </View>
@@ -96,32 +144,85 @@ const userStyles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        padding: 20
+        padding: 20,
     },
     title: {
-        fontSize: 30,
+        fontSize: 40,
         fontWeight: 'bold',
-        marginBottom: 20,
+        marginBottom: 25,
+        padding: 10,
+        borderBottomWidth: 1,
     },
     userInfoContainer: {
-        marginBottom: 20,
+        width: '100%',
+        alignItems: 'center',
+    },
+    userInfoRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 10,
+        borderWidth: 1,
+        borderRadius: 10,
+        padding: 10,
+        backgroundColor: colors.primary_Blue,
+        borderColor: colors.primary_Blue,
+        color: colors.white,
+        width: 300,
     },
     userInfoText: {
         fontSize: 18,
-        marginBottom: 5,
-        flexShrink: 1
+        color: colors.white,
+    },
+    editButton: {
+        backgroundColor: colors.action_Orange,
+        padding: 5,
+        borderRadius: 5,
+    },
+    editButtonText: {
+        color: colors.black,
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
+    editContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    input: {
+        borderWidth: 2,
+        borderColor: colors.primary_Blue,
+        borderRadius: 10,
+        padding: 8,
+        width: '60%',
+        marginRight: 10,
+    },
+    submitButton: {
+        backgroundColor: colors.action_Orange,
+        padding: 10,
+        borderRadius: 5,
+    },
+    submitButtonText: {
+        color: colors.black,
+        fontSize: 16,
+        fontWeight: 'bold',
     },
     returnButton: {
-        backgroundColor: 'blue',
+        backgroundColor: colors.primary_Blue,
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 10,
+        marginTop: 250,
+        width: 150,
+        alignItems: 'center'
+
     },
     returnButtonText: {
-        color: '#fff',
+        color: colors.white,
         fontSize: 18,
         fontWeight: 'bold',
     },
 });
 
 export default UserInfoScreen;
+

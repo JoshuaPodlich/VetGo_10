@@ -160,12 +160,14 @@ function SignUpScreen(props: any) {
         console.log(response.status)
         //console.log(response.statusText)
 
+       
+        if(response.status === 200){
         const responseBody = await response.json(); // Parse the response body into JSON
         console.log('Response:', response);
         console.log('Response Body:', responseBody);
         isSubmittingRef.current = false
         
-        if(response.status === 200){
+        
             if(form.role === "vet"){
                 props.navigation.navigate("VetLogin", {email: form.email})
             } else {
@@ -174,7 +176,7 @@ function SignUpScreen(props: any) {
         }
 // the error message will return as a string instead of json so to read that 
 // we need to use response.text() instead of response.json()
-        else if(response.status === 400){
+        else {
             const error = await response.text()
             console.log('Error:', error)
             Alert.alert("Error", error)

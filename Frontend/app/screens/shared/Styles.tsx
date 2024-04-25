@@ -459,6 +459,10 @@ export const autoCompleteStyles = StyleSheet.create({
         top: '50%',
         marginTop: -10,
     },
+    reenterLocationButton: {
+        borderWidth: 1,
+        
+    },
   });
 
 export const mapStyles = StyleSheet.create({

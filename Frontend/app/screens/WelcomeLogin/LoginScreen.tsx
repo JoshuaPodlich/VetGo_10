@@ -104,7 +104,7 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
 
             console.log('Response status:', response.status);
             console.log('Response status text:', response.statusText);
-
+            if (response.status === 200){
             const responseBody = await response.json(); // Parse the response body into JSON
             console.log('Response Body:', responseBody);
             console.log('LOGIN SUCCESSFUL LETS GO');
