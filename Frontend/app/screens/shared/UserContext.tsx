@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useMemo, ReactNode } from 'react';
 import { LocationInterface } from './Interfaces'
 
-interface User {
+export interface User {
     userId: string;
     userIsVet: boolean;
     location: LocationInterface;

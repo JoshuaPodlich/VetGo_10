@@ -1,4 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, getFocusedRouteNameFromRoute } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
@@ -132,6 +132,7 @@ function AuthStackScreen() {
         <AuthStack.Screen name="Login" component={LoginScreen as React.FC} options={{ title: "" }} />
         <AuthStack.Screen name="SignUp" component={SignUpScreen as React.FC} options={{ title: "" }} />
         <AuthStack.Screen name="Emergency" component={EmergencyScreen} options={{ title: "Emergency" }} />
+        <AuthStack.Screen name="ForgotPassword" component={ForgotPaswordScreen as React.FC} options={{ title: "forgotPassword" }} />
     </AuthStack.Navigator>
   );
 }
@@ -146,7 +147,7 @@ function HomeStackScreen() {
         <HomeStack.Screen name="ViewPet" component={ViewPet as React.FC} options={{ title: "" }} />
         <HomeStack.Screen name="CreatePet" component={CreatePetScreen as React.FC} options={{ title: "" }} />
         <HomeStack.Screen name="AdditionalPetInfo" component={AddtionalPetInfo as React.FC} options={{ title: "" }} />
-        <HomeStack.Screen name="Location" component={LocationScreen as React.FC} options={{ title: "" }} />
+        <HomeStack.Screen name="Location" component={LocationScreen as React.FC} options={{ title: "", headerBackVisible: false }} />
     </HomeStack.Navigator>
   );
 }
@@ -179,7 +180,7 @@ function MyAppointmentsStackScreen() {
 const ViewNearbyVetsStack = createNativeStackNavigator<ViewNearbyVetsStackParamList>();
 function ViewNearbyVetsStackScreen() {
     return (
-        <ViewNearbyVetsStack.Navigator>
+        <ViewNearbyVetsStack.Navigator initialRouteName="ViewNearbyVets">
             <ViewNearbyVetsStack.Screen name="ViewNearbyVets" component={ViewNearbyVetsScreen as React.FC} options={{ title: "" }} />
         </ViewNearbyVetsStack.Navigator>
     );
@@ -188,22 +189,37 @@ function ViewNearbyVetsStackScreen() {
 const SettingsStack = createNativeStackNavigator<SettingsStackParamList>();
 function SettingsStackScreen() {
     return (
-        <SettingsStack.Navigator>
+        <SettingsStack.Navigator initialRouteName="Settings">
             <SettingsStack.Screen name="Settings" component={SettingsScreen as React.FC} options={{ title: "" }}/>
             <SettingsStack.Screen name="ChangePassword" component={ChangePasswordScreen as React.FC} options={{ title: "" }} />
             <SettingsStack.Screen name="UserInfo" component={UserInfoScreen as React.FC} options={{ title: "" }} />
             <SettingsStack.Screen name="Account" component={AccountScreen as React.FC} options={{ title: "" }} />
-            <SettingsStack.Screen name="ForgotPassword" component={ForgotPaswordScreen as React.FC} options={{ title: "forgotPassword" }} />
             <SettingsStack.Screen name="VetLogin" component={VetLoginScreen as React.FC} options={{ title: "VetLogin" }} />
             <SettingsStack.Screen name="ChangeAddress" component={ChangeAddressScreen as React.FC} options={{title: ""}} />
         </SettingsStack.Navigator>
     );
 }
 
+function getTabBarVisibility(route: any) {
+    // Attempt to get the current route name
+    //console.log("Complete Route Object:", JSON.stringify(route, null, 2));
+    const routeName = getFocusedRouteNameFromRoute(route) ?? '';
+    console.log(route.name);
+    if ((routeName == 'HomeClient' || routeName == 'Settings' || routeName == 'MyAppointmentsOwner' || routeName == 'MyAppointmentsVet' || routeName == 'ViewNearbyVets') 
+        || (routeName == "" && (route.name == 'SettingsTab' || route.name == 'HomeTab' || route.name == 'ViewNearbyVetsTab' || route.name == 'MyAppointmentsTab'))) {
+        return 'flex';
+    }
+    return 'none';
+}
+
 const Tab = createBottomTabNavigator<TabParamList>();
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={({ route }) => ({
+            headerShown: false,
+            tabBarStyle: { display: getTabBarVisibility(route) },
+        })}
+    >
       <Tab.Screen name="HomeTab" component={HomeStackScreen} options={{ headerShown: false }} />
       <Tab.Screen name="MyAppointmentsTab" component={MyAppointmentsStackScreen} options={{ headerShown: false }} />
       <Tab.Screen name="ViewNearbyVetsTab" component={ViewNearbyVetsStackScreen} options={{ headerShown: false }} />

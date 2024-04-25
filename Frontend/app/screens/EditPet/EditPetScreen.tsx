@@ -10,7 +10,6 @@ import Textfield from '../../components/Textfield'
 import { Buffer } from 'buffer'
 import { LocationInterface } from '../shared/Interfaces'
 import { HomeScreenParams } from '../Home/HomeScreen'
-import ClientNavbar from '../../components/ClientNavbar'
 
 
 export interface EditPetScreenParams {
@@ -220,7 +219,7 @@ function EditPetScreen(props: { route: EditPetScreenRouteProp, navigation: EditP
             }),
         })
         //         }
-        props.navigation.navigate("Home", { ...params } as HomeScreenParams)
+        props.navigation.navigate("HomeClient")
         //         props.navigation.navigate("ClientHome", { user: params.user, location: params.location })
         //         }
     }
@@ -230,7 +229,7 @@ function EditPetScreen(props: { route: EditPetScreenRouteProp, navigation: EditP
         let homeScreenParams: HomeScreenParams = {
             ...params
         }
-        props.navigation.navigate("Home", homeScreenParams)
+        props.navigation.navigate("HomeClient")
     }
 
 
@@ -364,8 +363,6 @@ function EditPetScreen(props: { route: EditPetScreenRouteProp, navigation: EditP
                     </Button>
                 </View>
             </View>
-
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
     )
 }

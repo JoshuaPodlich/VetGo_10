@@ -2,7 +2,6 @@ import { IndexPath, Menu, MenuItem } from '@ui-kitten/components'
 import { useState } from 'react'
 import { View, Text } from 'react-native'
 import { LocationInterface } from '../shared/Interfaces'
-import ClientNavbar from '../../components/ClientNavbar'
 
 export interface MenuScreenParams {
     userId: string,
@@ -37,8 +36,6 @@ const MenuScreen = (props: any) => {
 
 
             </Menu>
-
-            <ClientNavbar navigation={props.navigation} {...params} />
         </View>
     )
 }

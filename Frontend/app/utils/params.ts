@@ -1,7 +1,7 @@
 import { pet } from '@prisma/client'
 import { EditPetScreenParams } from '../screens/EditPet/EditPetScreen'
 import { ViewPetScreenParams } from '../screens/ViewPet/ViewPet' 
-import { vetRegisterInfo } from '../screens/VetLogin/VetLoginScreen'
+import { VetRegisterInfo } from '../screens/VetLogin/VetLoginScreen'
 import { ViewAppointmentScreenParams } from '../screens/ViewAppointment/ViewAppointmentScreen'
 import { MapScreenParams } from '../screens/Map/MapScreen'
 import { LocationInterface } from '../screens/shared/Interfaces'
@@ -26,7 +26,7 @@ import { NavigatorScreenParams } from '@react-navigation/native';
 
 // Map where the keys represent route names and the values define the parameters that the navigated-to screens expect.
 export type HomeStackParamList = {
-    HomeClient: HomeClientScreenParams;
+    HomeClient: undefined;
     CreateAppointment: CreateAppointmentParams;
     EditPet: EditPetScreenParams;
     ViewPet: ViewPetScreenParams;
@@ -34,6 +34,7 @@ export type HomeStackParamList = {
     AdditionalPetInfo: undefined;
     Location: LocationScreenParams;
     ViewAppointment: ViewAppointmentScreenParams;
+    PaymentStripe: PaymentStripeScreenParams;
 };
 
 export type MyAppointmentsStackParamList = {
@@ -65,24 +66,25 @@ export type SettingsStackParamList = {
     ChangePassword: undefined;
     UserInfo: UserInfoScreenParams;
     Account: undefined;
-    ForgotPassword: undefined;
-    VetLogin: vetRegisterInfo;
+    VetLogin: VetRegisterInfo;
     ChangeAddress: ChangeAddressScreenParams;
+    Welcome: undefined;
 };
 
 export type RootStackParamList = {
-    Welcome: WelcomeScreenParams;
+    Welcome: undefined;
     Login: LoginScreenParams;
     SignUp: undefined;
     Emergency: undefined;
-    MainTab: NavigatorScreenParams<TabParamList>;
+    ForgotPassword: undefined;
+    MainTab: undefined;
 };
 
 export type TabParamList = {
-    HomeTab: NavigatorScreenParams<HomeStackParamList>;
-    MyAppointmentsTab: NavigatorScreenParams<MyAppointmentsStackParamList>;
-    ViewNearbyVetsTab: NavigatorScreenParams<ViewNearbyVetsStackParamList>;
-    SettingsTab: NavigatorScreenParams<SettingsStackParamList>;
+    HomeTab: undefined;
+    MyAppointmentsTab: MyAppointmentsStackParamList;
+    ViewNearbyVetsTab: ViewNearbyVetsStackParamList;
+    SettingsTab: SettingsStackParamList;
 };
 
 

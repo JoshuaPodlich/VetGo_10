@@ -15,7 +15,6 @@ import { CreatePetScreenParams } from '../CreatePet/CreatePetScreen'
 import { CreateAppointmentParams } from '../CreateAppointment/CreateAppointmentScreen'
 import { ViewAppointmentScreenParams } from '../ViewAppointment/ViewAppointmentScreen'
 import { LocationDisplay } from '../../components/LocationDisplay'
-import ClientNavbar from '../../components/ClientNavbar'
 import { ClientHomeScreenNavigationProp, ClientHomeScreenRouteProp } from '../../utils/props'
 import { appointment, pet } from '@prisma/client'
 import { PaymentStripeScreenParams } from '../PaymentStripe/PaymentStripeScreen'
@@ -36,7 +35,6 @@ export interface HomeClientScreenParams {
 
 function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation: ClientHomeScreenNavigationProp }) {
     const { user } = useUser();
-
     //region States
     const params: HomeClientScreenParams = user as HomeClientScreenParams
 

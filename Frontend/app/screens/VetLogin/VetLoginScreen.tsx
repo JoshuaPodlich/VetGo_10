@@ -10,7 +10,6 @@ import Textfield from '../../components/Textfield'
 import { Buffer } from 'buffer'
 import { LocationInterface } from '../shared/Interfaces'
 import { HomeScreenParams } from '../Home/HomeScreen'
-import ClientNavbar from '../../components/ClientNavbar'
 import { signUpStyles } from '../SignUp/SignUpStyles'
 import { Logo } from '../shared/Components'
 import { VetLoginNavigationProp, VetLoginScreenNavigationProp } from '../../utils/props'
@@ -18,10 +17,7 @@ import { RouteProp } from '@react-navigation/native';
 import { ViewPetScreenParams } from '../ViewPet/ViewPet'
 
 
-
-
-
-export interface vetRegisterInfo {
+export interface VetRegisterInfo {
   userId: string,
   userIsVet: boolean,
 }
@@ -36,7 +32,7 @@ interface SignUpForm {
 
 function VetRegisterScreen(props: { route: VetLoginNavigationProp, navigation: VetLoginScreenNavigationProp }) {
 
-  const params: vetRegisterInfo = props.route.params as vetRegisterInfo
+  const params: VetRegisterInfo = props.route.params as VetRegisterInfo
   const [form, setForm] = useState<SignUpForm>({ vetInsurance: "", vetLicense: "", vetCompany: "", vetImg: "", statePermit: ""})
 
   const [errors, setErrors] = useState<SignUpForm>({ vetInsurance: "", vetLicense: "", vetCompany: "", vetImg: "", statePermit: ""})
@@ -94,7 +90,7 @@ function VetRegisterScreen(props: { route: VetLoginNavigationProp, navigation: V
         
         console.log(await response.text());
         if (response.ok) {
-          props.navigation.navigate({ name: "Welcome", params: {} });
+          props.navigation.navigate("Welcome");
         }
         // props.navigation.navigate("VetHome", { userId: userId, userIsVet: isUserVet } as HomeScreenParams)
         //Alert.alert("Success", "You have successfully registered as a vet. Please wait while we verify your information.")

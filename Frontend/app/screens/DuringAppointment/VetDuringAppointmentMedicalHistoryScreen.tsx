@@ -5,7 +5,6 @@ import { BASE_URL } from "../shared/Constants";
 import { styles } from "../shared/Styles";
 import { LocationInterface } from '../shared/Interfaces'
 import { AddtionalPetInfoParams } from '../AdditionalPetInfo/AddtionalPetInfo';
-import ClientNavbar from '../../components/ClientNavbar';
 import {homeStyles} from "../Home/HomeStyles"
 import { VetDuringAppointment1ScreenParams } from './VetDuringAppointment1Screen';
 export interface VetDuringAppointmentMedicalHistoryScreenParams {
@@ -101,7 +100,6 @@ function VetDuringAppointmentMedicalHistoryScreen(props: any) {
                     <Text  style={styles.boldText}> Add Pet Details </Text>
                 </Button>
                 </View>
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>)
 }
 

@@ -1,5 +1,4 @@
 import { SafeAreaView, ScrollView, View, TouchableOpacity } from "react-native"
-import ClientNavbar, { ClientNavbarParams } from "../../components/ClientNavbar"
 import { MyAppointmentsVetScreenNavigationProp, MyAppointmentsScreenVetRouteProp } from '../../utils/props'
 import axios from 'axios'
 import { BASE_URL } from '../shared/Constants'
@@ -96,7 +95,6 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
                     {waitingAppointments.map(appointment => <AvailableAppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} vetId={appointment.vet.id} params={params} navigation={props.navigation} setAppointments={setAppointments} />)}
                 </View>
             </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
 
     )

@@ -138,13 +138,7 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
             setIsAuthenticated(true);
             // React Native global context of user data.
             setUser(homeParams);
-            props.navigation.navigate('MainTab', {
-                screen: 'HomeTab',
-                params: {
-                    screen: 'HomeClient',
-                    params: homeParams
-                }
-            });
+            props.navigation.navigate('MainTab');
             
             
 

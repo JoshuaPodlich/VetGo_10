@@ -58,6 +58,6 @@ export type CreateReviewScreenNavigationProp = NavigationProp<MyAppointmentsStac
 // export type Vet1ScreenNavigationProp = NavigationProp<RootStackParamList, 'VetScreening1'>
 // export type Vet2ScreenNavigationProp = NavigationProp<RootStackParamList, 'VetScreening2'>
 export type AccountScreenNavigationProp = NavigationProp<SettingsStackParamList, 'Account'>
-export type ForgotPasswordScreenNavigationProp = NavigationProp<SettingsStackParamList, 'ForgotPassword'>
+export type ForgotPasswordScreenNavigationProp = NavigationProp<RootStackParamList, 'ForgotPassword'>
 export type UserInfoScreenNavigationProp = NavigationProp<SettingsStackParamList, 'UserInfo'>;
 export type ChangeAddressScreenNavigationProp = NavigationProp<SettingsStackParamList, 'ChangeAddress'>

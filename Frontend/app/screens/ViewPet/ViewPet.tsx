@@ -10,7 +10,6 @@ import Textfield from '../../components/Textfield'
 import { Buffer } from 'buffer'
 import { LocationInterface } from '../shared/Interfaces'
 import { HomeScreenParams } from '../Home/HomeScreen'
-import ClientNavbar from '../../components/ClientNavbar'
 import { homeStyles } from '../Home/HomeStyles'
 
 
@@ -151,7 +150,6 @@ function ViewPet (props: { route: ViewPetScreenRouteProp, navigation: ViewPetScr
             </View>
         </SafeAreaView>
 <View style={{paddingTop: '90%'}}>
-        <ClientNavbar navigation={props.navigation} {...params} />
         </View>
 
         </View>
