@@ -281,6 +281,14 @@ public class UserService {
         return newUser;
     }
 
+    public void grantRole(Long uid, Role role) {
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null) {
+            throw new UsernameNotFoundException("Unable to find user in the database.");
+        }
+        user.setRoles(role);
+    }
+
     public Object authenticateUser(ObjectNode userInfo) {
         String email = userInfo.get("email").asText();
         String password = userInfo.get("password").asText();
