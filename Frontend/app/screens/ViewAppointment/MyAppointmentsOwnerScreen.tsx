@@ -1,5 +1,4 @@
 import { SafeAreaView, ScrollView, View } from "react-native"
-import ClientNavbar, { ClientNavbarParams } from "../../components/ClientNavbar"
 import { MyAppointmentsOwnerScreenNavigationProp, MyAppointmentsScreenOwnerRouteProp } from '../../utils/props'
 import axios from 'axios'
 import { BASE_URL } from '../shared/Constants'
@@ -10,6 +9,7 @@ import { colors } from '../shared/Colors'
 import { LocationInterface } from '../shared/Interfaces'
 import { appointment } from '@prisma/client'
 import { useEffect, useState } from 'react'
+import { useUser } from "../shared/UserContext"
 
 export interface MyAppointmentsOwnerScreenParams {
     userId: string,
@@ -18,7 +18,8 @@ export interface MyAppointmentsOwnerScreenParams {
 }
 
 const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRouteProp, navigation: MyAppointmentsOwnerScreenNavigationProp }) => {
-    const params: MyAppointmentsOwnerScreenParams = props.route.params;
+    const { user } = useUser();
+    const params: MyAppointmentsOwnerScreenParams = user as MyAppointmentsOwnerScreenParams;
     const [appointments, setAppointments] = useState<any[]>([])
 
     const getAppointments = async () => {
@@ -87,7 +88,6 @@ const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRout
                     {appointments.map(appointment => <AppointmentCard key={appointment.aid} appointmentData={appointment} userId={params.userId} petName={appointment.pet.name} setAppointments={setAppointments} />)}
                 </View>
             </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
 
     )

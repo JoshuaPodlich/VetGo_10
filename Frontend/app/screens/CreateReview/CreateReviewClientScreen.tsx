@@ -6,7 +6,6 @@ import { styles } from "../shared/Styles"
 import StarRating from 'react-native-star-rating-widget'
 import { LocationInterface } from '../shared/Interfaces'
 import { HomeScreenParams } from '../Home/HomeScreen'
-import ClientNavbar from '../../components/ClientNavbar'
 
 export interface CreateReviewClientScreenParams {
     userId: string,
@@ -188,7 +187,6 @@ function CreateReviewClientScreen(props: any) {
                 </View>
 
             </View>
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
     )
 }

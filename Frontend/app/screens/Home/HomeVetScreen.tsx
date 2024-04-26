@@ -14,7 +14,6 @@ import { VetAddChargesScreenParams } from '../VetAddCharges/VetAddChargesScreen'
 import { ViewAppointmentScreenParams } from '../ViewAppointment/ViewAppointmentScreen'
 import { VetDuringAppointmentMedicalHistoryScreenParams } from '../DuringAppointment/VetDuringAppointmentMedicalHistoryScreen'
 import { HomeScreenParams } from './HomeScreen'
-import ClientNavbar from '../../components/ClientNavbar'
 import { SettingsScreenParams } from '../SettingsScreen/SettingsScreen'
 import CalendarScreen from '../Calendar/CalendarScreen'
 // import Stomp from "stompjs"
@@ -298,7 +297,6 @@ function HomeVetScreen(props: any) {
                     </View>
                 }
             </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
 
     )

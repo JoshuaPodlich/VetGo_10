@@ -4,7 +4,6 @@ import { Input, Button } from "@ui-kitten/components";
 import { BASE_URL } from "../shared/Constants";
 import { styles } from "../shared/Styles";
 import { LocationInterface } from '../shared/Interfaces'
-import ClientNavbar from '../../components/ClientNavbar';
 import {homeStyles} from "../Home/HomeStyles"
 export interface AddtionalPetInfoParams {
     additionalInfoId: string,
@@ -44,7 +43,6 @@ function AddtionalPetInfo(props: any) {
           <Text style={styles.boldText}>Height: {params.height}</Text>
         </View>
             </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />
             </SafeAreaView>)
 }
 export default AddtionalPetInfo;

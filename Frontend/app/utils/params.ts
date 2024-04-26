@@ -1,7 +1,7 @@
 import { pet } from '@prisma/client'
 import { EditPetScreenParams } from '../screens/EditPet/EditPetScreen'
 import { ViewPetScreenParams } from '../screens/ViewPet/ViewPet' 
-import { vetRegisterInfo } from '../screens/VetLogin/VetLoginScreen'
+import { VetRegisterInfo } from '../screens/VetLogin/VetLoginScreen'
 import { ViewAppointmentScreenParams } from '../screens/ViewAppointment/ViewAppointmentScreen'
 import { MapScreenParams } from '../screens/Map/MapScreen'
 import { LocationInterface } from '../screens/shared/Interfaces'
@@ -13,7 +13,7 @@ import { HomeClientScreenParams } from '../screens/Home/HomeClientScreen'
 import { HomeVetScreenParams } from '../screens/Home/HomeVetScreen'
 import { CreateAppointmentParams } from '../screens/CreateAppointment/CreateAppointmentScreen'
 import { CreatePetScreenParams } from '../screens/CreatePet/CreatePetScreen'
-import { MyAppointmentsScreenParams } from '../screens/ViewAppointment/MyAppointmentsScreen'
+//import { MyAppointmentsScreenParams } from '../screens/ViewAppointment/MyAppointmentsScreen'
 import { MyAppointmentsOwnerScreenParams } from '../screens/ViewAppointment/MyAppointmentsOwnerScreen'
 import { MyAppointmentsVetScreenParams } from '../screens/ViewAppointment/MyAppointmentsVetScreen'
 import { PaymentStripeScreenParams } from '../screens/PaymentStripe/PaymentStripeScreen'
@@ -22,42 +22,71 @@ import { ViewNearbyVetsParams } from '../screens/ClientVetInteraction/ViewNearby
 import { ScreeningQuestionsParams } from '../screens/ScreeningQuestions/ScreeningQuestionsScreen'
 import { UserInfoScreenParams } from '../screens/UserInfo/UserInfoScreen'
 import { ChangeAddressScreenParams } from '../screens/Location/AddressLocation'
-
+import { NavigatorScreenParams } from '@react-navigation/native';
 
 // Map where the keys represent route names and the values define the parameters that the navigated-to screens expect.
+export type HomeStackParamList = {
+    HomeClient: undefined;
+    CreateAppointment: CreateAppointmentParams;
+    EditPet: EditPetScreenParams;
+    ViewPet: ViewPetScreenParams;
+    CreatePet: CreatePetScreenParams;
+    AdditionalPetInfo: undefined;
+    Location: LocationScreenParams;
+    ViewAppointment: ViewAppointmentScreenParams;
+    PaymentStripe: PaymentStripeScreenParams;
+    ScreeningQuestions: ScreeningQuestionsParams;
+};
+
+export type MyAppointmentsStackParamList = {
+    //MyAppointments: MyAppointmentsScreenParams;
+    MyAppointmentsOwner: MyAppointmentsOwnerScreenParams;
+    MyAppointmentsVet: MyAppointmentsVetScreenParams;
+    CalendarScreen: undefined;
+    ViewAppointment: ViewAppointmentScreenParams;
+    ViewAppointmentClient: undefined;
+    ViewAppointmentVet: undefined;
+    Map: MapScreenParams;
+    PaymentStripe: PaymentStripeScreenParams;
+    CreateReview: undefined;
+    CreateReviewClient: undefined;
+    CreateReviewVet: undefined;
+    VetAddCharges: undefined;
+    VetDuringAppointmentMedicalHistory: undefined;
+    VetDuringAppointment1: undefined;
+    VetDuringAppointment2: undefined;
+    ScreeningQuestions: ScreeningQuestionsParams;
+};
+
+export type ViewNearbyVetsStackParamList = {
+    ViewNearbyVets: ViewNearbyVetsParams;
+};
+
+export type SettingsStackParamList = {
+    Settings: SettingsScreenParams;
+    ChangePassword: undefined;
+    UserInfo: UserInfoScreenParams;
+    Account: undefined;
+    VetLogin: VetRegisterInfo;
+    ChangeAddress: ChangeAddressScreenParams;
+    Welcome: undefined;
+};
+
 export type RootStackParamList = {
-    Welcome: WelcomeScreenParams
-    Login: LoginScreenParams
-    SignUp: undefined
-    Location: LocationScreenParams
-    Home: HomeScreenParams
-    HomeClient: HomeClientScreenParams
-    VetHome: HomeVetScreenParams
-    CreateAppointment: CreateAppointmentParams
-    ViewNearbyVets: ViewNearbyVetsParams
-    MyAppointments: MyAppointmentsScreenParams
-    MyAppointmentsOwner: MyAppointmentsOwnerScreenParams
-    MyAppointmentsVet: MyAppointmentsVetScreenParams
-    ViewAppointment: ViewAppointmentScreenParams
-    Map: MapScreenParams
-    Settings: SettingsScreenParams
-    ChangePassword: undefined
-    PaymentStripe: PaymentStripeScreenParams
-    CreatePet: CreatePetScreenParams
-    EditPet: EditPetScreenParams
-    ViewPet: ViewPetScreenParams
-    VetRegister: vetRegisterInfo
-    CreateReview: undefined
-    PaymentSetting: undefined
-    VetScreening1: undefined
-    VetScreening2: undefined
-    VetLogin: vetRegisterInfo
-    Account: undefined
-    ForgotPassword: undefined
-    ScreeningQuestions: ScreeningQuestionsParams
-    UserInfo: UserInfoScreenParams
-    ChangeAddress: ChangeAddressScreenParams
-}
+    Welcome: undefined;
+    Login: LoginScreenParams;
+    SignUp: undefined;
+    Emergency: undefined;
+    ForgotPassword: undefined;
+    MainTab: undefined;
+};
+
+export type TabParamList = {
+    HomeTab: undefined;
+    MyAppointmentsTab: MyAppointmentsStackParamList;
+    ViewNearbyVetsTab: ViewNearbyVetsStackParamList;
+    SettingsTab: SettingsStackParamList;
+};
 
 
 export interface UserDetailsParams {

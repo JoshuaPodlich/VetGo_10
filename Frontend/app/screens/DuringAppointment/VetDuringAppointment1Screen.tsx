@@ -5,7 +5,6 @@ import { BASE_URL } from "../shared/Constants"
 import { styles } from "../shared/Styles"
 import { LocationInterface } from '../shared/Interfaces'
 import { VetDuringAppointment2ScreenParams } from './VetDuringAppointment2Screen'
-import ClientNavbar from '../../components/ClientNavbar'
 
 export interface VetDuringAppointment1ScreenParams {
     userId: string,
@@ -127,8 +126,6 @@ function VetDuringAppointment1Screen(props: any) {
                     <Text> Next Step </Text>
                 </Button>
             </ScrollView>
-
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
     )
 }

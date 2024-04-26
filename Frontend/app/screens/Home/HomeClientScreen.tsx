@@ -15,7 +15,6 @@ import { CreatePetScreenParams } from '../CreatePet/CreatePetScreen'
 import { CreateAppointmentParams } from '../CreateAppointment/CreateAppointmentScreen'
 import { ViewAppointmentScreenParams } from '../ViewAppointment/ViewAppointmentScreen'
 import { LocationDisplay } from '../../components/LocationDisplay'
-import ClientNavbar from '../../components/ClientNavbar'
 import { ClientHomeScreenNavigationProp, ClientHomeScreenRouteProp } from '../../utils/props'
 import { appointment, pet } from '@prisma/client'
 import { PaymentStripeScreenParams } from '../PaymentStripe/PaymentStripeScreen'
@@ -25,6 +24,7 @@ import { ScreeningQuestionsParams } from '../ScreeningQuestions/ScreeningQuestio
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Toast from 'react-native-toast-message';
 import { useNotification } from '../shared/NotificationContext'
+import { useUser } from '../shared/UserContext';
 
 export interface HomeClientScreenParams {
     userId: string,
@@ -34,9 +34,11 @@ export interface HomeClientScreenParams {
 
 
 function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation: ClientHomeScreenNavigationProp }) {
-
+    const { user } = useUser();
     //region States
-    const params: HomeClientScreenParams = props.route.params as HomeClientScreenParams
+    const params: HomeClientScreenParams = user as HomeClientScreenParams
+
+   
 
     const [pets, setPets] = useState<any[]>([])
     const [petsData, setPetsData] = useState<{ pet: any, appointment: any }[]>([])
@@ -44,13 +46,6 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     //endregion
     const [loading, setLoading] = useState(true)
     //endregion
-
-    //region Functions
-    function settings() {
-        props.navigation.navigate("Settings", { ...params } as SettingsScreenParams)
-    }
-
-    // INITIALIZATION --- INITIALIZATION --- INITIALIZATION --- INITIALIZATION --- INITIALIZATION --- INITIALIZATION --- INITIALIZATION --- INITIALIZATION
 
     useEffect(() => {
         fetchPets()
@@ -134,22 +129,6 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     //     setLoading(false)
     // }
 
-
-    //region Create / Accept Appointment
-    function createAppointment(index: number) {
-        let createAppointmentParams: CreateAppointmentParams = {
-            ...params,
-            petId: pets[index].id
-        }
-        //props.navigation.navigate("CreateAppointment", createAppointmentParams)
-
-        let screeningQuestionsParams: ScreeningQuestionsParams = {
-            ...params,
-            petId: pets[index].id
-        }
-        props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
-    }
-
     function createAppointments(index: number) {
         let createAppointmentParams: CreateAppointmentParams = {
             ...params,
@@ -157,7 +136,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
             
         }
         console.log(createAppointmentParams)
-        props.navigation.navigate("CreateAppointment", createAppointmentParams)
+        props.navigation.navigate("CreateAppointment", createAppointmentParams);
 
     }
 
@@ -166,7 +145,8 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
             ...params,
             appointmentId: petsData[index]["appointment"].aid
         }
-        props.navigation.navigate("ViewAppointment", viewAppointmentParams)
+        props.navigation.navigate("ViewAppointment", viewAppointmentParams);
+          
     }
 
     async function payAppointment(index: number) {
@@ -267,8 +247,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
 
                 
 
-            </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />          
+            </ScrollView>      
             <View style={{zIndex: 1000}}>
                 <Toast config={toastConfig}/>
             </View>

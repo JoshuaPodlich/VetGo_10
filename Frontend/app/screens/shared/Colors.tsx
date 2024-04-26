@@ -15,6 +15,8 @@ export const colors = {
     red: "#FF0000",
     blue: "#3366FF",
     primary_Blue: "#42A5F5",
+    nonHoverIcon: "#003545",
+    hoverIcon: "#15918E",
     action_Green: "#4CAF50",
     action_Orange: "#FF7043",
     background_Grey: "#F5F5F5",

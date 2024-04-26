@@ -1,5 +1,4 @@
 import { SafeAreaView, ScrollView, View, TouchableOpacity } from "react-native"
-import ClientNavbar, { ClientNavbarParams } from "../../components/ClientNavbar"
 import { MyAppointmentsVetScreenNavigationProp, MyAppointmentsScreenVetRouteProp } from '../../utils/props'
 import axios from 'axios'
 import { BASE_URL } from '../shared/Constants'
@@ -11,6 +10,7 @@ import { useEffect, useState } from 'react'
 import { MapScreenParams } from '../Map/MapScreen'
 import Entypo from 'react-native-vector-icons/Entypo';
 import { colors } from '../shared/Colors'
+import { useUser } from "../shared/UserContext"
 
 export interface MyAppointmentsVetScreenParams {
     userId: string,
@@ -19,7 +19,8 @@ export interface MyAppointmentsVetScreenParams {
 }
 
 const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRouteProp, navigation: MyAppointmentsVetScreenNavigationProp }) => {
-    const params: MyAppointmentsVetScreenParams = props.route.params;
+    const { user } = useUser();
+    const params: MyAppointmentsVetScreenParams = user as MyAppointmentsVetScreenParams;
     const [appointments, setAppointments] = useState<any[]>([])
     let vetid;
 
@@ -96,7 +97,6 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
                     {waitingAppointments.map(appointment => <AvailableAppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} vetId={appointment.vet.id} params={params} navigation={props.navigation} setAppointments={setAppointments} />)}
                 </View>
             </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
 
     )
