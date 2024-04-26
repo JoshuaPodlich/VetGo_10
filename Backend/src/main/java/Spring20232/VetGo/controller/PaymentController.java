@@ -33,9 +33,6 @@ public class PaymentController {
     public ResponseEntity<Map<String, String>> createPaymentIntent(@RequestBody PaymentRequest request) {
         Stripe.apiKey = apiKey;
 
-        List<Object> paymentMethodTypes = new ArrayList<>();
-        paymentMethodTypes.add("card");
-
         Map<String, Object> params = new HashMap<>();
         params.put("amount", request.getAmount());
         params.put("currency", "usd");

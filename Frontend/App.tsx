@@ -346,7 +346,7 @@ export default function App() {
     return (
         <>
             <StripeProvider
-                publishableKey="pk_test_51NuSFtAKQypxdsPLEN8Es2E2rsjiHIoc1HciGPGkGJWlLXh7Swe6BzFmjatoB6Rzz3YMjrOzzpaWQGPv803HNRF100zjr9j19s"
+                publishableKey="pk_test_51P8VPg07ONbEpFU1A1piUVMM9alkm5OGcgPooetb4tFfva7rYBRxkgth4gUXIM9otdRf3FzrFybNFn19lt5pWeaQ00b1F3dbz0"
                 urlScheme="your-url-scheme" // required for 3D Secure and bank redirects
                 merchantIdentifier="merchant.com.{{YOUR_APP_NAME}}" // required for Apple Pay
             >
