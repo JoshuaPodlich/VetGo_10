@@ -62,8 +62,7 @@ export const homeStyles: any = StyleSheet.create({
     },
 
     addPetContainer: {
-        bottom: 40,
-        left: 15,
+        bottom: 20,
         position: "absolute",
         display: 'flex',
         flexDirection: 'row',

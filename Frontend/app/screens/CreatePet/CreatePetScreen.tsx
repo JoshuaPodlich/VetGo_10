@@ -10,7 +10,6 @@ import Textfield from '../../components/Textfield'
 import { Buffer } from 'buffer'
 import { LocationInterface } from '../shared/Interfaces'
 import { HomeScreenParams } from '../Home/HomeScreen'
-import ClientNavbar from '../../components/ClientNavbar'
 import { Dropdown } from 'react-native-element-dropdown'
 
 
@@ -210,7 +209,7 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
 
         if (status == 200) {
             // Pet creation successful
-            props.navigation.navigate("Home", { ...params } as HomeScreenParams);
+            props.navigation.navigate("HomeClient");
         }
         else {
             // Handle errors
@@ -224,7 +223,7 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
         let homeScreenParams: HomeScreenParams = {
             ...params
         }
-        props.navigation.navigate("Home", homeScreenParams)
+        props.navigation.navigate("HomeClient")
     }
 
 
@@ -599,7 +598,6 @@ const displayFur = (index: IndexPath) => {
                 
             </View>
             </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
     )
 }

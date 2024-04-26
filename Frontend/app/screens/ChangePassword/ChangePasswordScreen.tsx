@@ -13,8 +13,6 @@ import { BASE_URL } from "../shared/Constants"
 import { colors } from "../shared/Colors"
 import { styles } from "../shared/Styles"
 import { LocationInterface } from '../shared/Interfaces'
-import ClientNavbar from '../../components/ClientNavbar'
-
 export interface ChangePasswordScreenParams {
     userId: string,
     userIsVet: boolean,
@@ -166,7 +164,6 @@ function ChangePasswordScreen(props: any) {
                         </TouchableHighlight>
                     </View>
                 </ScrollView>
-                <ClientNavbar navigation={props.navigation} {...params} />
             </View>
         </SafeAreaView>
     )

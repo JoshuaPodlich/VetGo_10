@@ -11,6 +11,7 @@ import { GOOGLE_MAPS_APIKEY } from '../shared/Constants'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNotification } from '../shared/NotificationContext'
 import Toast from 'react-native-toast-message';
+import { useUser, User } from '../shared/UserContext';
 
 export interface LocationScreenParams {
     userId: string,
@@ -69,6 +70,7 @@ function LocationScreen(props: any) {
     // Assume true so the useEffect() does not automatically run, which if it did, it would submit an already-chosen
     // address after going to this screen after setting an address via that search bar.
     const [usingHomeAddress, setUsingHomeAddress] = useState(true);
+    const { user, setUser } = useUser();
 
     useEffect(() => {
         if (location.address && !usingHomeAddress) {
@@ -191,11 +193,14 @@ function LocationScreen(props: any) {
                 await updateOwnerLocation(params.userId, locationInfo);
             }
 
-            props.navigation.navigate("Home", {
-                userId: params.userId,
-                userIsVet: params.userIsVet,
+            let updatedUserInfo: User = {
+                userId: user?.userId || "",
+                userIsVet: user?.userIsVet || false,
                 location: locationInfo
-            });
+            }
+            setUser(updatedUserInfo);
+
+            props.navigation.navigate("HomeClient");
             setNotification({ header: 'Location Update', message: 'Your location has been successfully updated.', type: 'success' });
         } catch (error) {
             //console.error('Error updating location:', error);

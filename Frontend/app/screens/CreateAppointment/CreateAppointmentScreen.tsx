@@ -51,7 +51,7 @@ const CreateAppointmentScreen = (props: any) => {
                 console.error('Appointment created!')
                 props.navigation.popToTop()
 
-                props.navigation.navigate('Home', { ...params } as HomeScreenParams)
+                props.navigation.navigate("HomeClient")
             })
     }
 
@@ -125,7 +125,7 @@ const CreateAppointmentScreen = (props: any) => {
             });
             console.log('Appointment created:', response.data);
             props.navigation.popToTop();
-            props.navigation.navigate('Home', { ...params } as HomeScreenParams);
+            props.navigation.navigate("HomeClient");
         } catch (error) {
             console.error('Error creating appointment:', error);
             setError('Failed to create appointment. Please try again.');

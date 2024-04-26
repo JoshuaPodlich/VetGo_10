@@ -1,5 +1,4 @@
 import { Image, Linking, Pressable, SafeAreaView, ScrollView, StyleSheet, View } from "react-native"
-import ClientNavbar from "../../components/ClientNavbar"
 import { styles } from "../shared/Styles"
 import { LocationInterface } from '../shared/Interfaces'
 import { ViewNearbyVetsScreenNavigationProp, ViewNearbyVetsScreenRouteProp } from '../../utils/props'
@@ -11,6 +10,7 @@ import { getLocationString } from '../../components/LocationDisplay'
 import { homeStyles } from '../Home/HomeStyles'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { colors } from '../shared/Colors'
+import { useUser } from '../shared/UserContext';
 
 export interface ViewNearbyVetsParams {
     userId: string,
@@ -28,8 +28,9 @@ interface VetInternalModel {
 }
 
 const ViewNearbyVetsScreen = (props: { route: ViewNearbyVetsScreenRouteProp, navigation: ViewNearbyVetsScreenNavigationProp }) => {
-    const params: ViewNearbyVetsParams = props.route.params
-    const [vets, setVets] = useState<VetInternalModel[]>([])
+    const { user } = useUser();
+    const params: ViewNearbyVetsParams = user as ViewNearbyVetsParams;
+    const [vets, setVets] = useState<VetInternalModel[]>([]);
 
     const getAllVets = async () => {
         try {
@@ -73,7 +74,6 @@ const ViewNearbyVetsScreen = (props: { route: ViewNearbyVetsScreenRouteProp, nav
                     {vets.map((vet) => <VetCard key={vet.id} vet={vet} />)}
                 </View>
             </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
 
     )
