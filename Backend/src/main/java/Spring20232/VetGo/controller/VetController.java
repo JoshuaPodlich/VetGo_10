@@ -123,4 +123,13 @@ public class VetController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
+    @GetMapping("/nearby-vets/{uid}")
+    public ResponseEntity<?> getVetsNearUser(@PathVariable("uid") Long uid) {
+        try {
+            return ResponseEntity.ok(userService.findAllNearbyVets(uid));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 }
