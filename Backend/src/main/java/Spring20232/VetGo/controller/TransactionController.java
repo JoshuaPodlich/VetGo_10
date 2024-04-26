@@ -41,6 +41,13 @@ public class TransactionController {
         return ResponseEntity.status(HttpStatus.OK).body(transactionRepository.findById(tid).orElse(null));
     }
 
+    @GetMapping(value = "/get/appointment/{aid}")
+    public ResponseEntity<Transaction> getTransactionAppointment(@PathVariable Long aid) {
+        Appointment appointment = appointmentRepository.findById(aid).orElse(null);
+
+        return ResponseEntity.status(HttpStatus.OK).body(appointment.getTransaction());
+    }
+
     @PostMapping(value = "/stripe/{aid}")
     public ResponseEntity<String> completePaymentStripe(@RequestBody PaymentRequest request, @PathVariable Long aid) throws StripeException {
         String chargeId= paymentService.charge(request);
