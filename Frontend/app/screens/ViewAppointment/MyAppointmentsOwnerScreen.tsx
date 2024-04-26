@@ -213,6 +213,10 @@ const AppointmentCard = ({ userId, appointmentData, petName, setAppointments }: 
                 marginVertical: 8,
                 display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
             }}>Longitude: {appointmentData.screeningSession ? appointmentData.longitude : ""}</Text>
+            <Text style={{
+                marginVertical: 8,
+                display: appointmentData.status === 'PAYMENT' && appointmentData.transaction === null ? 'flex' : 'none'
+            }}>Vet Has Not Released Payment Yet</Text>
             <Layout style={{
                 flexDirection: 'row',
                 justifyContent: 'flex-end',
@@ -224,11 +228,15 @@ const AppointmentCard = ({ userId, appointmentData, petName, setAppointments }: 
             }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
             <Button style={{
                 marginHorizontal: 4,
-                display: appointmentData.status === 'PAYMENT' ? 'flex' : 'none'
+                display: appointmentData.status === 'PAYMENT' && appointmentData.transaction != null ? 'flex' : 'none'
             }} size='small' onPress={gotoPayment}><Text>Send Payment</Text></Button>
-                <Button style={{
-                    marginHorizontal: 4,
-                }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
+            <Button style={{
+                marginHorizontal: 4,
+                display: appointmentData.status === 'PAYMENT' && appointmentData.transaction === null ? 'flex' : 'none'
+            }} size='small' disabled title="Test"><Text>Send Payment</Text></Button>
+            <Button style={{
+                marginHorizontal: 4,
+            }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
 
             </Layout>
         </Card >
