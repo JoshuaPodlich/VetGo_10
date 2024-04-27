@@ -55,10 +55,36 @@ const CreateAppointmentScreen = (props: any) => {
     }
 
     const handleNext = () => {
+        if (!description.length) {
+            setError('Description is required!')
+            return
+        }
+
+        if(!date)
+        {
+            setError('Select a date')
+            return
+        }
+        setError('')
+
+        let unsanitizedDate = date.toLocaleDateString()
+        let sanitizedDate = unsanitizedDate.split('/')
+        const body = {
+            ...params.location,
+            day: ('0' + sanitizedDate[1]).slice(-2),
+            month: ('0' + sanitizedDate[0]).slice(-2),
+            year: sanitizedDate[2].slice(-2),
+        }
+
         let screeningQuestionsParams: ScreeningQuestionsParams = {
             ...params,
-            petId: params.petId
+            petId: params.petId,
+            description: description,
+            date: body
         }
+        console.log(params.petId);
+        console.log(description);
+        console.log(body);
         props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
     }
 

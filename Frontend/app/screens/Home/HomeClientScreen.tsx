@@ -135,7 +135,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
     function createAppointments(index: number) {
         let createAppointmentParams: CreateAppointmentParams = {
             ...params,
-            petId: pets[index].pid
+            petId: pets[index].id
             
         }
         console.log(createAppointmentParams)
