@@ -4,6 +4,7 @@ import Spring20232.VetGo.model.*;
 import Spring20232.VetGo.repository.*;
 import Spring20232.VetGo.service.EmailService;
 import Spring20232.VetGo.service.AppointmentService;
+import com.amazonaws.services.mq.model.NotFoundException;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -75,43 +76,44 @@ public class AppointmentController {
         return ResponseEntity.status(HttpStatus.OK).body(appointmentRepository.findById(aid).orElse(null));
     }
 
-    @GetMapping(value = "/demoAddPetDetails")
-    public ResponseEntity<?> DemoAddPetDetails()
-    {
-        Appointment ap=null;
-        for(Appointment a: appointmentRepository.findAll())
-        {
-            if(a.getStatus()==COMPLETED)
-            {
-                ap = a;
-                break;
-            }
-        }
-        AdditionalPetInformation api = new AdditionalPetInformation("","Needs some treats","None","None","Allergic to me","Yes he is being a naughty boy","None","None","None","None");
-         api = additionalPetInformationRepository.findById(api.getAdditionalInfoId()).orElse(null);
-        if (api == null) {
-            api = new AdditionalPetInformation();
-            api.setDiet("Eats my sadness away");
-            api.setMedications("He doing good");
-            api.setMedications("meds?");
-            api.setShots("Pfizer - johnson");
-            api.setAllergies("Allergic to me");
-            api.setChangesInBehavior("Started to bark");
-            additionalPetInformationRepository.save(api);
-        }
-        additionalPetInformationRepository.save(api);
-        if(ap!=null)
-        {
-            ap.setPetInformation(api);
-            appointmentRepository.save(ap);
-        }
-        else
-        {
-            Appointment app = new Appointment(new Random().nextLong(),null,null,null,1212.00,1212.00,"",null,COMPLETED,api,null);
-            appointmentRepository.save(ap);
-        }
-            return ResponseEntity.status(HttpStatus.OK).body(ap);
-    }
+//    @GetMapping(value = "/demoAddPetDetails")
+//    public ResponseEntity<?> DemoAddPetDetails()
+//    {
+//        Appointment ap=null;
+//        for(Appointment a: appointmentRepository.findAll())
+//        {
+//            if(a.getStatus()==COMPLETED)
+//            {
+//                ap = a;
+//                break;
+//            }
+//        }
+//        AdditionalPetInformation api = new AdditionalPetInformation("","Needs some treats","None","None","Allergic to me","Yes he is being a naughty boy","None","None","None","None");
+//         api = additionalPetInformationRepository.findById(api.getAdditionalInfoId()).orElse(null);
+//        if (api == null) {
+//            api = new AdditionalPetInformation();
+//            api.setDiet("Eats my sadness away");
+//            api.setMedications("He doing good");
+//            api.setMedications("meds?");
+//            api.setShots("Pfizer - johnson");
+//            api.setAllergies("Allergic to me");
+//            api.setChangesInBehavior("Started to bark");
+//            additionalPetInformationRepository.save(api);
+//        }
+//        additionalPetInformationRepository.save(api);
+//        if(ap!=null)
+//        {
+//            ap.setPetInformation(api);
+//            appointmentRepository.save(ap);
+//        }
+//        else
+//        {
+//            Appointment app = new Appointment(new Random().nextLong(),null,null,null,1212.00,1212.00,"",null,COMPLETED,api,null);
+//            appointmentRepository.save(ap);
+//        }
+//            return ResponseEntity.status(HttpStatus.OK).body(ap);
+//    }
+
     // Returns a list of nearby appointment by taking in longitude, latitude and radius around them
     @PostMapping(value = "/nearby/all")
     public ResponseEntity<List<Appointment>> getVetAppointmentList(@RequestBody ObjectNode objectNode) {
@@ -143,39 +145,16 @@ public class AppointmentController {
         return ResponseEntity.status(HttpStatus.OK).body(app);
     }
 
-
-    // Creates a new appointment for the pet and user passed in, returns profile of appointment
-    // ObjectNode accepts JSON with longitude and latitude field
-    @PostMapping(value = "/create/{oid}/{pid}/{description}")
+    @PostMapping(value = "/create/{uid}/{pid}")
     public ResponseEntity<?> addAppointment(@RequestBody ObjectNode objectNode,
-                                            @PathVariable("oid") Long oid, @PathVariable("pid") Long pid,
-                                            @PathVariable("description") String description) {
-        Pet pet = petRepository.findById(pid).orElse(null);
-
-        if (pet == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Unable to find pet in database");
-
-        List<Appointment> appointmentList = pet.getAppointments();
-
-        for (Appointment a : appointmentList) {
-            if (a.getStatus() != COMPLETED && a.getStatus() != PAYMENT)
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Pet is already in an appointment currently");
+                                            @PathVariable("uid") Long uid, @PathVariable("pid") Long pid) {
+        try {
+            appointmentService.createAppointment(uid, pid, objectNode);
+            return ResponseEntity.ok("Appointment successfully created for user with id " + uid + ".");
         }
-
-        Double longitude = objectNode.get("longitude").asDouble();
-        Double latitude = objectNode.get("latitude").asDouble();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yy");
-        String str = objectNode.get("month").asText() + "-" + objectNode.get("day").asText() + "-" + objectNode.get("year").asText();
-        LocalDate date = LocalDate.parse(str, formatter);
-
-        Appointment appointment = new Appointment(null, date, null, pet, longitude, latitude, description, null, WAITING, null, null);
-
-        pet.addAppointmentList(appointment);
-        appointmentRepository.save(appointment);
-        petRepository.save(pet);
-        appointmentService.broadcast(appointment);
-
-        return ResponseEntity.status(HttpStatus.OK).body(appointment);
+        catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PutMapping(value = "/accept/{aid}/{vid}")
