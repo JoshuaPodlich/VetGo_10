@@ -14,6 +14,26 @@ export const styles: any = StyleSheet.create({
         marginRight: 50,
     },
 
+    viewNearbyVets: {
+
+        backgroundColor: colors.primary_Blue,
+        borderRadius: 10,
+        padding: 10,
+        marginBottom: 10,
+    },
+
+    phoneButton: {
+        backgroundColor: colors.action_Orange,
+        borderRadius: 10,
+        padding: 10,
+       
+    },
+    phoneButtonDisabled: {
+        backgroundColor: colors.grey,
+        borderRadius: 10,
+        padding: 10,
+    },
+
 
     loginBackground: {
         flex: 1,
