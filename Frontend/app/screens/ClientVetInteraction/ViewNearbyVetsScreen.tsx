@@ -23,6 +23,7 @@ interface VetInternalModel {
     latitude: number,
     longitude: number,
     firstName: string,
+    lastName: string,
     email: string,
     telephone: string,
 }
@@ -43,6 +44,7 @@ const ViewNearbyVetsScreen = (props: { route: ViewNearbyVetsScreenRouteProp, nav
                     latitude: vet.latitude,
                     longitude: vet.longitude,
                     firstName: vet.user.firstName,
+                    lastName: vet.user.lastName,
                     email: vet.user.email,
                     telephone: vet.user.telephone
                 };
@@ -104,10 +106,24 @@ const VetCard: React.FC<VetCardProps> = ({ vet }) => {
             })
             .catch((err) => console.error('An error occurred', err))
     }
+
+    const openCalendar = () => {
+        Linking.openURL(`content://com.android.calendar/time/`)
+            .then((supported) => {
+                if (!supported) {
+                    console.log("Can't handle calendar")
+                } else {
+                    return Linking.openURL(`content://com.android.calendar/time/`)
+                }
+            })
+            .catch((err) => console.error('An error occurred', err))
+
+
+    }
     return (
-        <View style={[homeStyles.petInfo, {}]}>
+        <View style={[homeStyles.vetInfoBox, {}]}>
             <View style={{ width: "90%" }}>
-                <Pressable style={{ display: "flex", flexDirection: "row", alignItems: 'center' }} onPress={() => { }}>
+                <Pressable style={{ display: "flex", flexDirection: "row", alignItems: 'center', paddingLeft:5 }} onPress={() => { }}>
                     <Pressable onPress={() => { }}>
                         {imageEncoding ?
                             <Image source={{ uri: `data:image/png;base64,${imageEncoding}` }} style={homeStyles.tempPic} />
@@ -119,7 +135,7 @@ const VetCard: React.FC<VetCardProps> = ({ vet }) => {
                     </Pressable>
                     <View style={{ flexShrink: 1 }}>
                         <View style={{}}>
-                            <Text style={{ ...styles.boldText }}> {vet.firstName}</Text>
+                            <Text style={{ ...styles.boldText }}> {vet.firstName} {vet.lastName}</Text>
                             <Text style={{ color: `${colors.darkGrey}` }}> {locationString}</Text>
                         </View>
                     </View>
@@ -129,7 +145,7 @@ const VetCard: React.FC<VetCardProps> = ({ vet }) => {
                 <Text style={{ marginLeft: 20, marginTop: 10 }}>{vet.telephone}</Text>
                 <View style={{ display: 'flex', flexDirection: 'row', marginTop: 10, marginLeft: 'auto' }}>
                     <Button style={{ marginRight: 10 }} onPress={callVet} status='primary'><FontAwesome5 name='phone' size={32} /></Button>
-                    <Button style={{ marginRight: -20 }}><FontAwesome5 name='calendar-alt' size={32} /></Button>
+                    <Button style={{ marginRight: -20 }} onPress={openCalendar}><FontAwesome5 name='calendar-alt' size={32} /></Button>
                 </View>
             </View>
         </View>

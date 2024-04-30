@@ -586,6 +586,19 @@ export const addressStyles = StyleSheet.create({
       position: 'absolute',
       zIndex: 1
   },
+  vetInfoBox: {
+        alignItems: "center",
+
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingVertical: 10,
+        width: "90%",
+        backgroundColor: colors.primary_Blue,
+        borderRadius: 30,
+        marginBottom: 10,
+
+  },
   inlineFields: {
       flexDirection: 'row',
   },
