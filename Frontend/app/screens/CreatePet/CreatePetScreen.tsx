@@ -92,7 +92,7 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
         age: 0,
         weight: 0, 
         height: 0, 
-        type: titles[0], 
+        type: "", 
         sex: true, 
         breed: "", 
         petSize: "", // Initialize new values
@@ -122,13 +122,21 @@ function CreatePetScreen(props: { route: CreatePetScreenRouteProp, navigation: C
     }, [])
 
     const handleSubmit = async () => {
-        console.log(errors)
+        //console.log(errors)
         if (isSubmittingRef.current)
             return
 
         let isValid: boolean = validate()
+        //alert for failed validation
+
+
+
         if (isValid) {
             submitCreatePet()
+        }
+        else {
+            Alert.alert('Please fill in all required fields.');
+
         }
     }
 
@@ -277,21 +285,7 @@ const displayFur = (index: IndexPath) => {
                         </Text>
                 <View>
 
-                    {/* <Text> Name </Text>
-                    <Textfield 
-                    style={{ 
-                        backgroundColor: 'lightblue !important', 
-                        color: 'black !important',
-                        borderRadius: '5px !important',
-                        // Add more styles as needed
-                    }}
-                        value={petForm.name!}
-                        placeholder={petForm.name!}
-                        onChangeText={(newName: string) => {
-                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, name: newName }))
-                            //                             setName(name)
-                        }}
-                    /> */}
+                    
                     <Text style={{marginLeft: 20}}> Name </Text>
                     <Input 
                         clearButtonMode={"always"} size={"large"}
@@ -302,24 +296,8 @@ const displayFur = (index: IndexPath) => {
                             setPetForm((prevState: CreatePetForm) => ({ ...prevState, name: newName }))
                         }}
                     />
-                    {/* <Text style={styles.errorText}>{errors.name}</Text>
-                    <View style={{ marginBottom: 20 }}>
-                        <Text> Animal Type </Text>
-                        <Select
-                            selectedIndex={selectedIndex}
-                            onSelect={index => index instanceof IndexPath ? updatePetType(index) : null}
-                            value={displayValue(selectedIndex)}
-                            style={{ width: "100%" }}
-                        >
-                            <SelectItem title='Dog' />
-                            <SelectItem title='Cat' />
-                            <SelectItem title='Bird' />
-                            <SelectItem title='Reptile (Snake, Iguana, etc.)' />
-                            <SelectItem title='Fish' />
-                            <SelectItem title='Rodent (Hamster, Guinea Pig, etc.)' />
-                            <SelectItem title='Other' />
-                        </Select>
-                    </View> */}
+                    <Text style={{...styles.errorText, marginLeft: 20}}>{errors.name}</Text>
+                    
 
                     <Text style={{paddingTop: 20, marginLeft:20}}> Animal Type </Text>
 
@@ -330,18 +308,11 @@ const displayFur = (index: IndexPath) => {
                         onChange={handleTypeChange}
                         placeholder="Select Pet Type" labelField={'value'} valueField={'value'}
                         ></Dropdown>
+                    <Text style={{...styles.errorText, marginLeft: 20}}>{errors.type}</Text>
 
 
 
-                    {/* <Text> Breed </Text> */}
-                    {/* <Textfield
-                        value={petForm.breed!}
-                        placeholder={petForm.breed!}
-                        onChangeText={(newBreed: string) => {
-                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, breed: newBreed }))
-                            //                             setBreed(breed)
-                        }}
-                    /> */}
+                
 
                     <Text style={{marginLeft: 20}}> Breed </Text>
                     <Input 
@@ -354,17 +325,9 @@ const displayFur = (index: IndexPath) => {
                         }}
                     />
 
-                    <Text style={styles.errorText}>{errors.type}</Text>
+                    <Text style={{...styles.errorText, marginLeft: 20}}>{errors.breed}</Text>
 
-                    {/* <Text> Age (years) </Text>
-                    <Textfield
-                        value={petForm.age.toString()}
-                        placeholder={petForm.age.toString()}
-                        onChangeText={(newAge: number) => {
-                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, age: newAge }))
-                            //                             setAge(Number(age))
-                        }}
-                    /> */}
+                  
 
                 <Text style={{marginLeft: 20}}> Age (years) </Text>
                 <Input 
@@ -383,17 +346,8 @@ const displayFur = (index: IndexPath) => {
                         }
                     }}
                 />
-                    <Text style={styles.errorText}>{errors.age}</Text>
-{/* 
-                    <Text> Approximate Weight (lb) </Text>
-                    <Textfield
-                        value={petForm.weight.toString()}
-                        placeholder={petForm.weight.toString()}
-                        onChangeText={(newWeight: number) => {
-                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, weight: newWeight }))
-                            //                             setWeight(Number(weight))
-                        }}
-                    /> */}
+                    <Text style={{...styles.errorText, marginLeft: 20}}>{errors.age}</Text>
+
                     <Text style={{marginLeft: 20}}> Approximate Weight (lb) </Text>
                     <Input 
                         clearButtonMode={"always"}
@@ -411,17 +365,9 @@ const displayFur = (index: IndexPath) => {
                             }
                         }}
                     />
-                    <Text style={styles.errorText}>{errors.weight}</Text>
+                    <Text style={{...styles.errorText, marginLeft: 20}}>{errors.weight}</Text>
 
-                    {/* <Text> Approximate Height (in) </Text>
-                    <Textfield
-                        value={petForm.height.toString()}
-                        placeholder={petForm.height.toString()}
-                        onChangeText={(newHeight: number) => {
-                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, height: newHeight }))
-                            //                             setHeight(Number(height))
-                        }}
-                    /> */}
+                   
                     <Text style={{marginLeft: 20}}> Approximate Height (in) </Text>
                     <Input 
                         clearButtonMode={"always"}
@@ -439,23 +385,10 @@ const displayFur = (index: IndexPath) => {
                             }
                         }}
                     />
-                    <Text style={styles.errorText}>{errors.height}</Text>
+                    <Text style={{...styles.errorText, marginLeft: 20}}>{errors.height}</Text>
 
 
 
-            {/* <View style={{ marginBottom: 20 }}>
-                                <Text> Size </Text>
-                <Select
-                    selectedIndex={selectedSizeIndex}
-                    onSelect={index => index instanceof IndexPath ? updateSize(index) : null}
-                    value={displaySize(selectedSizeIndex)}
-                    style={{ width: "100%" }}
-                >
-                    <SelectItem title='Small' />
-                    <SelectItem title='Medium' />
-                    <SelectItem title='Large' />
-                </Select>
-            </View> */}
             <Text style={{paddingTop: 10, marginLeft:20}}> Size </Text>
             <Dropdown 
                             data={sizeList}
@@ -464,6 +397,7 @@ const displayFur = (index: IndexPath) => {
                             onChange={handleSizeChange}
                             placeholder="Select Size" labelField={'value'} valueField={'value'}            >
             </Dropdown>
+            <Text style={{...styles.errorText, marginLeft: 20}}>{errors.petSize}</Text>
 
 
             <Text style={{paddingTop: 10, marginLeft:20}}> Energy Level </Text>
@@ -474,6 +408,7 @@ const displayFur = (index: IndexPath) => {
                             onChange={handleEnergyChange}
                             placeholder="Select Energy Level" labelField={'value'} valueField={'value'}            >
             </Dropdown>
+            <Text style={{...styles.errorText, marginLeft: 20}}>{errors.energyLevel}</Text>
 
             <Text style={{paddingTop: 10, marginLeft:20}}> Fur Type </Text>
             <Dropdown 
@@ -483,76 +418,7 @@ const displayFur = (index: IndexPath) => {
                             onChange={handleFurChange}
                             placeholder="Select Fur Type" labelField={'value'} valueField={'value'}            >
             </Dropdown>
-
-
-
-            {/* <View style={{ marginBottom: 20 }}>
-                <Text> Energy Level </Text>
-                <Select
-                    selectedIndex={selectedEnergyIndex}
-                    onSelect={index => index instanceof IndexPath ? updateEnergyLevel(index) : null}
-                    value={displayEnergy(selectedEnergyIndex)}
-                    style={{ width: "100%" }}
-                >
-                    <SelectItem title='Low' />
-                    <SelectItem title='Medium' />
-                    <SelectItem title='High' />
-                </Select>
-            </View>
-
-            <View style={{ marginBottom: 20 }}>
-                <Text> Fur Type </Text>
-                <Select
-                    selectedIndex={selectedFurIndex}
-                    onSelect={index => index instanceof IndexPath ? updateFurType(index) : null}
-                    value={displayFur(selectedFurIndex)}
-                    style={{ width: "100%" }}
-                >
-                    <SelectItem title='Short' />
-                    <SelectItem title='Medium' />
-                    <SelectItem title='Long' />
-                    <SelectItem title='Hairless' />
-                </Select>
-            </View> */}
-
-
-
-                    {/* <Text style={{paddingTop: 10}}> Size </Text>
-                    <Textfield
-                        value={petForm.petSize}
-                        placeholder="Pet Size"
-                        onChangeText={(newValue: string) => {
-                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, petSize: newValue }))
-                        }}
-                        />
-
-                    <Text style={{paddingTop: 10}} > Energy Level </Text>
-                    <Textfield 
-                        value={petForm.energyLevel}
-                        placeholder="Energy Level"
-                        onChangeText={(newValue: string) => {
-                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, energyLevel: newValue }))
-                        }}
-                        style={{backgroundColor: 'lightgray', 
-                        borderRadius: 8, 
-                        padding: 10, 
-                        fontSize: 16, 
-                        color: 'black' }}
-                    />
-
-                    <Text style={{paddingTop: 10}}> Fur Type </Text>
-                    <Textfield
-                        value={petForm.furType}
-                        placeholder="Fur Type"
-                        onChangeText={(newValue: string) => {
-                            setPetForm((prevState: CreatePetForm) => ({ ...prevState, furType: newValue }))
-                        }}
-                    /> */}
-
-
-
-
-
+            <Text style={{...styles.errorText, marginLeft: 20}}>{errors.furType}</Text>
 
                     <View style={{ marginLeft: 20, paddingTop: 20 }}>
                         <Text style={{ marginBottom: 10, marginTop: -20 }}>Sex</Text>
