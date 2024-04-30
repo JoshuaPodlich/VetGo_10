@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import { SafeAreaView, StyleSheet, Text, View, TouchableHighlight, ScrollView } from "react-native"
 import { styles, toastConfig } from "../shared/Styles"
 import { colors } from "../shared/Colors"
-import ClientNavbar from '../../components/ClientNavbar'
 import { LocationInterface } from '../shared/Interfaces'
 import { VetAddChargesScreenParams } from '../VetAddCharges/VetAddChargesScreen'
 import { ChangePasswordScreenParams } from '../ChangePassword/ChangePasswordScreen'
@@ -10,7 +9,9 @@ import {UserInfoScreenParams} from '../UserInfo/UserInfoScreen'
 import { ChangeAddressScreenParams } from '../Location/AddressLocation'
 import { useNotification } from '../shared/NotificationContext'
 import Toast from 'react-native-toast-message';
-
+import { useAuth } from '../shared/AuthContext';
+import { useUser } from '../shared/UserContext';
+import { VetRegisterInfo } from '../VetLogin/VetLoginScreen'
 
 export interface SettingsScreenParams {
     userId: string,
@@ -18,8 +19,10 @@ export interface SettingsScreenParams {
     location: LocationInterface,
 }
 function SettingsScreen(props: any) {
-    const params = props.route.params as SettingsScreenParams
+    const { user } = useUser();
+    const params = user as SettingsScreenParams
     const { notification, setNotification } = useNotification();
+    const { isAuthenticated, setIsAuthenticated } = useAuth();
     useEffect(() => {
         if (notification.message) {
             Toast.show({
@@ -34,11 +37,13 @@ function SettingsScreen(props: any) {
     }, [notification]);
 
     function logout() {
+        // Remove authentication such that the user no longer sees (or can utilize) the Tabs for navigation.
+        setIsAuthenticated(false);
         props.navigation.navigate("Welcome")
     }
 
     function vetLoginNavigate() {
-        let vetRegisterInfo: vetRegisterInfo = {
+        let vetRegisterInfo: VetRegisterInfo = {
             userId: params.userId,
             userIsVet: params.userIsVet
         }
@@ -101,7 +106,6 @@ function SettingsScreen(props: any) {
                 </TouchableHighlight>
             </View>
             </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />
             <View style={{zIndex: 1000}}>
                 <Toast config={toastConfig}/>
             </View>

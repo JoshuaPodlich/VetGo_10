@@ -35,11 +35,8 @@ export const HomeClient_PetProfile = (props: { petData: any, editPet: any, creat
             quality: 1,
         })
 
-
-        console.log(`### result: ${JSON.stringify(result)}`);
-
         if (result.canceled) {
-            console.log('Image picking was canceled.');
+            //console.log('Image picking was canceled.');
             return;
         }
     

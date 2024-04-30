@@ -5,7 +5,6 @@ import { BASE_URL } from "../shared/Constants"
 import { styles } from "../shared/Styles"
 import { LocationInterface } from '../shared/Interfaces'
 import { VetAddChargesScreenParams } from '../VetAddCharges/VetAddChargesScreen'
-import ClientNavbar from '../../components/ClientNavbar'
 import axios from 'axios'
 
 export interface VetDuringAppointment2ScreenParams {
@@ -186,7 +185,6 @@ function VetDuringAppointment2Screen(props: any) {
                 </Button>
             </ScrollView>
 
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
     )
 }

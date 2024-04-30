@@ -5,19 +5,20 @@ import Spring20232.VetGo.repository.*;
 import com.amazonaws.services.alexaforbusiness.model.AlreadyExistsException;
 import com.amazonaws.services.alexaforbusiness.model.NotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import jakarta.transaction.Transactional;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import software.amazon.ion.NullValueException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -279,6 +280,14 @@ public class UserService {
         }
 
         return newUser;
+    }
+
+    public void grantRole(Long uid, Role role) {
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null) {
+            throw new UsernameNotFoundException("Unable to find user in the database.");
+        }
+        user.setRoles(role);
     }
 
     public Object authenticateUser(ObjectNode userInfo) {
@@ -568,5 +577,61 @@ public class UserService {
         });
 
         userRepository.save(user);
+    }
+
+    public ObjectNode findAllNearbyVets(long uid) {
+        List<VetFinder.VetDistancePair> nearByVets;
+
+        User user = userRepository.findById(uid).orElse(null);
+        if (user == null)
+            throw new NotFoundException("Unable to find user in database.");
+
+        ArrayList<Vet> vets = new ArrayList<>(vetRepository.findAll());
+        if (vets.isEmpty()) {
+            throw new NotFoundException("Cannot find vets in the database");
+        }
+
+        if (user.isUserVet()) {
+            Vet vet = vetRepository.findByUserId(uid);
+            if (vet == null) {
+                throw new NotFoundException("Unable to find vet in database.");
+            }
+            if (vet.getLatitude() == null || vet.getLongitude() == null)
+                throw new NullValueException("Requesting vet's location has not been set.");
+
+            nearByVets = VetFinder.findNearbyVetsForVet(vets, vet, 20);
+        }
+        else {
+            Owner owner = ownerRepository.findByUserId(uid);
+            if (owner == null) {
+                throw new NotFoundException("Unable to find owner in database.");
+            }
+            if (owner.getLatitude() == null || owner.getLongitude() == null)
+                throw new NullValueException("Requesting owner's location has not been set.");
+
+            nearByVets = VetFinder.findNearbyVetsForOwner(vets, owner, 20);
+        }
+
+        ObjectNode vetsNode = objectMapper.createObjectNode();
+        ArrayNode vetArray = vetsNode.putArray("vets");
+
+        for (VetFinder.VetDistancePair vetDistance : nearByVets) {
+            Vet vet = vetDistance.vet();
+            double distance = vetDistance.distance();
+
+            User vetUser = vet.getUser();
+            ObjectNode vetDetails = objectMapper.createObjectNode();
+            vetDetails.put("firstName", vetUser.getFirstName());
+            vetDetails.put("lastName", vetUser.getLastName());
+            vetDetails.put("email", vetUser.getEmail());
+            vetDetails.put("telephone", vetUser.getTelephone());
+            vetDetails.put("longitude", vet.getLongitude());
+            vetDetails.put("latitude", vet.getLatitude());
+            vetDetails.put("distance", distance);
+
+            vetArray.add(vetDetails);
+        }
+
+        return vetsNode;
     }
 }

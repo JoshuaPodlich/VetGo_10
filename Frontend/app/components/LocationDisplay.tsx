@@ -2,21 +2,24 @@ import { Text, View } from 'react-native'
 import { GOOGLE_MAPS_APIKEY } from '../screens/shared/Constants'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { UserDetailsParams } from '../utils/params'
-import { ClientHomeScreenNavigationProp, VetHomeScreenNavigationProp } from '../utils/props'
+import { RootStackParamList, HomeStackParamList, UserDetailsParams } from '../utils/params'
 import { LocationInterface } from '../screens/shared/Interfaces'
 import { LocationScreenParams } from '../screens/Location/LocationScreen'
 import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry'
+import { CompositeNavigationProp } from '@react-navigation/native'
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { ClientHomeScreenNavigationProp } from '../utils/props'
 
 interface LocationDisplayProps {
-    userId: string,
-    userIsVet: boolean,
-    location: LocationInterface
+    userId: string;
+    userIsVet: boolean;
+    location: LocationInterface;
     navigation: ClientHomeScreenNavigationProp
 }
 
 export const LocationDisplay: React.FC<LocationDisplayProps> = ({ userId, userIsVet, location, navigation }) => {
-    const [locationName, setLocationName] = useState<String>("")
+    const [locationName, setLocationName] = useState<String>("Loading Location...");
 
     useEffect(() => {
         getLocationString(location.latitude, location.longitude).then(setLocationName);

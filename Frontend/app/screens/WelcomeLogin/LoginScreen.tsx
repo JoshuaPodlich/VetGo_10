@@ -9,12 +9,15 @@ import { BASE_URL } from "../shared/Constants"
 import EntryButtons from "../../components/EntryButtons"
 import { LocationInterface } from '../shared/Interfaces'
 import { LoginScreenNavigationProp, LoginScreenRouteProp } from '../../utils/props'
-import { HomeScreenParams } from '../Home/HomeScreen'
+import { useAuth } from '../shared/AuthContext';
+import { useUser } from '../shared/UserContext';
 
 export interface LoginScreenParams {
 
 }
 function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: LoginScreenRouteProp }) {
+    const { setIsAuthenticated } = useAuth();
+    const { setUser } = useUser();
 
     // hydrate the params
     let params = props.route.params as LoginScreenParams
@@ -107,36 +110,42 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
             let long = responseBody.longitude;
             let userIsVet = false;
 
-            if (lat === undefined) {
-                lat = 0;
-            }
-            if (long === undefined) {
-                long = 0;
-            }
-            
-            if (responseBody.role === "vet") {
-                userIsVet = true;
+                if (lat === undefined) {
+                    lat = 0;
+                }
+                if (long === undefined) {
+                    long = 0;
+                }
+                
+                if (responseBody.role === "vet") {
+                    userIsVet = true;
+                }
+
+                const location: LocationInterface = {
+                    latitude: lat,
+                    longitude: long
+                }
+
+                console.log(location);
+
+                let homeParams = {
+                    userId: responseBody.id,
+                    userIsVet: userIsVet,
+                    location: location
+                };
+
+                // Authenticates the user such that Tabs will be used alongside Stacks for navigation after logging in.
+                setIsAuthenticated(true);
+                // React Native global context of user data.
+                setUser(homeParams);
+                props.navigation.navigate('MainTab');
+                
+            } else {
+                console.log('Login failed. Invalid credentials.');
+                Alert.alert('Login failed. Invalid credentials.');
             }
 
-            const location: LocationInterface = {
-                latitude: lat,
-                longitude: long
-            }
 
-            console.log(location);
-
-            let params = {
-                userId: responseBody.id,
-                userIsVet: userIsVet,
-                location: location
-            };
-            console.log('params:', params);
-       
-            props.navigation.navigate("Home", params);
-        } else {
-            console.log('Login failed. Invalid credentials.');
-            Alert.alert('Login failed. Invalid credentials.');
-        }
 
         } catch (error: any) {
             console.error('Login error:', error.message);

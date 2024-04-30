@@ -52,7 +52,7 @@ const CreateAppointmentScreen = (props: any) => {
                 console.error('Appointment created!')
                 props.navigation.popToTop()
 
-                props.navigation.navigate('Home', { ...params } as HomeScreenParams)
+                props.navigation.navigate("HomeClient")
             })
     }
 
@@ -75,17 +75,15 @@ const CreateAppointmentScreen = (props: any) => {
         let unsanitizedDate = date.toLocaleDateString();
         let sanitizedDate = unsanitizedDate.split('/');
         const body = {
+            description: description,
+            sessionId: 1, // TODO: Hardcoded placeholder!
             ...params.location,
             day: ('0' + sanitizedDate[1]).slice(-2),
             month: ('0' + sanitizedDate[0]).slice(-2),
             year: sanitizedDate[2].slice(-2),
-            description: description
         };
-
-        console.log(params.petId);
-        console.log(params.userId);
     
-        const url = `${BASE_URL}/appointment/create/${params.userId}/${params.petId}/${description}`;
+        const url = `${BASE_URL}/appointment/create/${params.userId}/${params.petId}`;
     
         try {
             const response = await axios.post(url, body, {
@@ -93,7 +91,7 @@ const CreateAppointmentScreen = (props: any) => {
             });
             console.log('Appointment created:', response.data);
             props.navigation.popToTop();
-            props.navigation.navigate('Home', { ...params } as HomeScreenParams);
+            props.navigation.navigate("HomeClient");
         } catch (error) {
             console.error('Error creating appointment:', error);
             setError('Failed to create appointment. Please try again.');

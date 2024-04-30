@@ -58,12 +58,16 @@ public class Appointment {
     @JoinColumn(name = "screening_session_id")
     private ScreeningSession screeningSession;
 
+    @ManyToOne
+    private User user;
+
     public Appointment() {
     }
 
-    public Appointment(Long aid, LocalDate time, Vet vet, Pet pet, Double longitude, Double latitude, String description, Transaction transaction, AppointmentStatus status, AdditionalPetInformation petInformation, ScreeningSession screeningSession) {
+    public Appointment(Long aid, LocalDate time, User user, Vet vet, Pet pet, Double longitude, Double latitude, String description, Transaction transaction, AppointmentStatus status, AdditionalPetInformation petInformation, ScreeningSession screeningSession) {
         this.aid = aid;
         this.time = time;
+        this.user = user;
         this.vet = vet;
         this.pet = pet;
         this.longitude = longitude;
@@ -81,6 +85,14 @@ public class Appointment {
 
     public void setAid(Long aid) {
         this.aid = aid;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public LocalDate getTime() {
