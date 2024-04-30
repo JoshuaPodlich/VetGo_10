@@ -100,8 +100,8 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
                 body: JSON.stringify(body)
             });
 
-            console.log('Response status:', response.status);
-            console.log('Response status text:', response.statusText);
+            //console.log('Response status:', response.status);
+            //console.log('Response status text:', response.statusText);
             if (response.status === 200){
             const responseBody = await response.json(); // Parse the response body into JSON
             // console.log('Response Body:', responseBody);
