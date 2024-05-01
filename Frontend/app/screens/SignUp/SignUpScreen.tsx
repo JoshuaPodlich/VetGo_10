@@ -147,8 +147,8 @@ function SignUpScreen(props: any) {
         let url = BASE_URL + "/user/register"
 
         
-        console.log(body)
-        console.log(url)
+        // console.log(body)
+        // console.log(url)
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -163,8 +163,8 @@ function SignUpScreen(props: any) {
        
         if(response.status === 200){
         const responseBody = await response.json(); // Parse the response body into JSON
-        console.log('Response:', response);
-        console.log('Response Body:', responseBody);
+        // console.log('Response:', response);
+        // console.log('Response Body:', responseBody);
         isSubmittingRef.current = false
         
         
@@ -197,8 +197,8 @@ function SignUpScreen(props: any) {
         let url = BASE_URL + "/user/register"
 
         
-        console.log(body)
-        console.log(url)
+        // console.log(body)
+        // console.log(url)
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -207,11 +207,11 @@ function SignUpScreen(props: any) {
             body: JSON.stringify(body)
         })
 
-        console.log(response.status)
+        //console.log(response.status)
 
         const responseBody = await response.json(); 
-        console.log('Response:', response);
-        console.log('Response Body:', responseBody);
+        // console.log('Response:', response);
+        // console.log('Response Body:', responseBody);
         isSubmittingRef.current = false
         
         if(response.status === 200){
@@ -313,11 +313,11 @@ function SignUpScreen(props: any) {
                             <Text style={styles.buttonText}> SIGNUP </Text>
                         </TouchableHighlight>
 
-                        <TouchableHighlight style={{ ...styles.secondaryButton, marginTop: 20}}
-                            underlayColor={colors.brightRed_underlayColor}
-                            onPress={() => props.navigation.navigate("Map")}>
-                            <Text style={styles.buttonText}> EMERGENCY </Text>
-                        </TouchableHighlight>
+                        <TouchableHighlight style={{...styles.secondaryButton, marginTop: 30}}
+                underlayColor={colors.action_Orange}
+                onPress={() => props.navigation.navigate("Emergency")}>
+                <Text style={styles.buttonText}> EMERGENCY </Text>
+            </TouchableHighlight>
                     </View>
                 </View>
             </ScrollView>
