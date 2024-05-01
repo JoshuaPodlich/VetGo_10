@@ -71,7 +71,7 @@ function PaymentStripeScreen(props: any) {
         ...params,
         reviewerId: params.userId,
       }
-      await axios.put(`${BASE_URL}/appointment/update/${params.appointmentId}`, {
+      await axios.put(`${BASE_URL}/appointment/update/${params.appointmentData.aid}`, {
         status: "COMPLETED"
       })
       props.navigation.replace("CreateReview", createReviewParams)

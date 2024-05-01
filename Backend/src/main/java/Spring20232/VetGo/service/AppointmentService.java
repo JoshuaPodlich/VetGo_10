@@ -64,7 +64,6 @@ public class AppointmentService {
         taskFutures.put(appointment.getAid(), taskFuture);
         remainingVetsList.put(appointment.getAid(), vets);
 
-        return appointment.getAid();
     }
 
     private Vet chooseBestVet(ArrayList<Vet> vets, Appointment appointment) {

@@ -13,6 +13,7 @@ import { colors } from "../shared/Colors"
 import { BASE_URL } from "../shared/Constants"
 import { LocationInterface } from '../shared/Interfaces'
 import { CreateReviewScreenParams } from '../CreateReview/CreateReviewScreen'
+import axios from 'axios'
 
 export interface VetAddChargesScreenParams {
   userId: string,
@@ -149,6 +150,12 @@ function VetAddChargesScreen(props: any) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(contentBody)
         });
+
+        console.log(params.appointmentData.aid);
+
+        await axios.put(`${BASE_URL}/appointment/update/${params.appointmentData.aid}`, {
+                status: "PAYMENT"
+              })
 
 
         let createReviewParams: CreateReviewScreenParams = {
