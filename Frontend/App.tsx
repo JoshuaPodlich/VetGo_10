@@ -153,6 +153,7 @@ function HomeStackScreen() {
         <HomeStack.Screen name="AdditionalPetInfo" component={AddtionalPetInfo as React.FC} options={{ title: "" }} />
         <HomeStack.Screen name="Location" component={LocationScreen as React.FC} options={{ title: "" }} />
         <HomeStack.Screen name="ScreeningQuestions" component={ScreeningQuestionsScreen as React.FC} options={{title: ""}} />
+        <HomeStack.Screen name="Emergency" component={EmergencyScreen} options={{ title: "Emergency" }} />
     </HomeStack.Navigator>
   );
 }
