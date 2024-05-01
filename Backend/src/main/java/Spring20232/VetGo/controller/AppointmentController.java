@@ -63,7 +63,7 @@ public class AppointmentController {
     public ResponseEntity<List<Appointment>> getAllAppointmentByVet(@PathVariable Long vid) {
         List<Appointment> apList = new ArrayList<>();
         for (Appointment app:appointmentRepository.findAll()) {
-            if(app.getVet().getId().equals(vid))
+            if(app.getVet().getId() != null && app.getVet().getId().equals(vid))
             {
                 apList.add(app);
             }
