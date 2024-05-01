@@ -91,8 +91,9 @@ function CreateReviewClientScreen(props: any) {
                 body: JSON.stringify(reviewObject)
             }
 
-            let url = BASE_URL + '/review/create/' + params.appointmentId
+            console.log(params)
 
+            let url = BASE_URL + '/review/create/' + params.appointmentData.aid
 
             let res = await fetch(url, requestOptions)
                 .then((response) => {
@@ -103,7 +104,7 @@ function CreateReviewClientScreen(props: any) {
                         userIsVet: params.userIsVet,
                         location: params.location
                     }
-                    props.navigation.replace("Home", homeParams)
+                    props.navigation.replace("MyAppointmentsOwner", homeParams)
                     isSubmittingRef.current = false
                 })
                 .catch((error) => {
@@ -141,15 +142,12 @@ function CreateReviewClientScreen(props: any) {
         <SafeAreaView style={styles.background}>
             <View style={styles.container}>
                 <View>
-
                     <Text style={styles.titleText}>Leave a review!</Text>
 
                     <View style={{ flexDirection: "row" }}>
-                        <View style={styles.tempPic}><Text> ifmg </Text></View>
                         <View style={{ justifyContent: "center" }}>
                             <View>
                                 <Text style={styles.boldText}> {params.revieweeFirstName} {params.revieweeLastName}</Text>
-                                <Text style={{ justifyContent: "center" }}> {params.revieweeAverageRating} star rating </Text>
                             </View>
                         </View>
                     </View>
