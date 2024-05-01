@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { LocationInterface } from '../shared/Interfaces'
 import { colors } from '../shared/Colors'
-import { SafeAreaView, ScrollView, StyleSheet, View, TextInput, Pressable, Alert, TouchableHighlight } from "react-native"
+import { SafeAreaView, ScrollView, StyleSheet, View, TextInput, Pressable, Alert, TouchableHighlight, Modal } from "react-native"
 import { Button, Card, Text, TopNavigation } from '@ui-kitten/components'
 import { Dimensions } from 'react-native'
 import { BASE_URL } from "../shared/Constants"
@@ -16,6 +16,8 @@ export interface ScreeningQuestionsParams {
     userIsVet: boolean,
     location: LocationInterface,
     petId: string,
+    description: string,
+    date: any
 }
 
 export interface Screening {
@@ -41,14 +43,23 @@ const ScreeningQuestionsScreen = (props: any) => {
     const [processing, setProcessing] = useState<any>();
     const [selectedOptions, setSelectedOptions] = useState<{ [key: string]: Screening }>({});
     const [showDropdown, setShowDropdown] = useState<any>({ showDrop: false})
+    const [appointmentPopup, setAppointmentPopup] = useState<any>({ showing: false });
+    const scrollViewRef = useRef<ScrollView>(null);
 
-    const urgencyLevel = "After answering the screening questions, you will be shown a result that contains an urgency level, those urgency levels mean the following: \n \n " +
-    "Selfcare: You do not need to visit your vet unless your pet's symptoms get worse \n" +
-    "Middle: You should make an appointment with your vet within the next 24 hours \n" +
-    "High: You should make an appointment with your vet within the next 12 hours \n" +
-    "Urgent: You should contact your vet or visit a pet hospital as soon as possible";
+    const urgencyLevel = "After answering the screening questions, you will be shown a result that contains an urgency level, those urgency levels mean the following: \n \n ";
+    const levelLow = "Low"; const levelLowDesc = ": You do not need to visit your vet unless your pet's symptoms get worse \n";
+    const levelMiddle = "Middle"; const levelMiddleDesc = ": You should make an appointment with your vet within the next 24 hours \n"
+    const levelHigh = "High"; const levelHighDesc = ": You should make an appointment with your vet within the next 12 hours \n"
+    const levelUrgent = "Urgent"; const levelUrgentDesc = ": You should contact your vet or visit a pet hospital as soon as possible";
     
 
+
+    const scrollToBottom = () => {
+        if(scrollViewRef.current)
+        {
+            scrollViewRef.current.scrollToEnd({animated: true})
+        }
+    }
 
     const optionChange = (selectedOption: any, questionId: string) => {
         setAnswer({ selectedOptionId: selectedOption.value, selectedOptionText: selectedOption.label });
@@ -73,6 +84,10 @@ const ScreeningQuestionsScreen = (props: any) => {
         processOption();
     }, [processing]);
 
+    useEffect(() => {
+        scrollToBottom();
+     }, [questionList]);
+
     const backToQuestion = () => {
         setTerminate({ showTopText: true})
         updateQuestionList();
@@ -90,6 +105,7 @@ const ScreeningQuestionsScreen = (props: any) => {
             console.log(responseBodyList);
             
             setQuestionList(responseBodyList.answeredDetails);
+            scrollToBottom();
         } catch (error: any) {
     
             console.error('Error:', error.message);
@@ -118,9 +134,9 @@ const ScreeningQuestionsScreen = (props: any) => {
 
 
     const fetchRoot = async () => {
-        //console.log(params.petId);
+        console.log(params.petId);
         setShowDropdown({ showDrop: true});
-        let url = BASE_URL + "/screening/start-session/user/" + params.userId + "/pet/1"// + params.petId  //--hardcoded petId for now
+        let url = BASE_URL + "/screening/start-session/user/" + params.userId + "/pet/" + params.petId  //--hardcoded petId for now
 
         console.log('Creating new screening questions session...');
         console.log('URL:', url);
@@ -139,10 +155,11 @@ const ScreeningQuestionsScreen = (props: any) => {
             setOptions(data.options)
             setQuestion({ questionText: data.questionText, startButtonText: "Restart Screening Questions"})
             setTerminate({ isTerminating: data.options.some((option: { isTerminating: any }) => option.isTerminating), showTopText: true})
+            setQuestionList([data]);
             //setAnswer({ selectedOptionId: "", selectedOptionText: answer.selectedOptionText });
             setSelectedOptions({});
 
-            setUpdateReady({Ready: false});
+            setUpdateReady({Ready: true});
             //updateQuestionList();
 
         } catch (error: any) {
@@ -201,34 +218,55 @@ const ScreeningQuestionsScreen = (props: any) => {
 
     }
 
+    const handleSubmit = async () => {
+        const options = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(params.date),
+        }
+        const url = BASE_URL + '/appointment/create/' + params.userId + '/' + params.petId + '/' + params.description
+        console.log(url)
+        console.log(options)
+
+        await postAppointment(url, options)
+    }
+
+    const postAppointment = async (url: string, options: any) => {
+        await fetch(url, options)
+            .then(response => response.json())
+            .then(_ => {
+                setAppointmentPopup({showing: true});
+                //console.error('Appointment created!')
+                //props.navigation.popToTop()
+                //props.navigation.navigate('Home', { ...params } as HomeScreenParams)
+            })
+    }
+
+    const returnToHome = async () => {
+        //props.navigation.popToTop()
+        setAppointmentPopup({showing: false})
+        props.navigation.navigate('Home', { ...params } as HomeScreenParams)
+    }
+
 
 
     return (
         <SafeAreaView style={styles.loginBackground}>
             {!terminate.showTopText ? null : (
                 
-            <ScrollView contentContainerStyle={{ flexGrow: 1}}>
-                <View style={{ width: "100%", marginTop: "10%", flex: 1, alignItems: "center" }}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1}} ref={scrollViewRef} onContentSizeChange={scrollToBottom}>
+                <View style={{ width: "100%", marginTop: "1%", flex: 1, alignItems: "center" }}>
                     {updateReady.Ready ? null : (
-                        <View style={{ width: "100%", marginTop: "10%", flex: 1, alignItems: "center" }}>
+                        <View style={{ width: "100%", marginTop: "10%", flex: 1, alignContent: 'flex-start' }}>
                             <Text style={{ color: 'black', fontWeight: "bold", fontSize: 26, textAlign: 'center', paddingBottom: 15 }}> {question.questionText}</Text>
 
                             {!showDropdown.showDrop && (
-                                <Text style={{ color: 'black', fontWeight: "bold", fontSize: 22, textAlign: 'center', paddingBottom: 15 }}> {urgencyLevel} </Text>
+                                <Text style={{ color: 'black', fontWeight: "bold", fontSize: 24, textAlign: 'center', paddingBottom: 15 }}> {urgencyLevel}
+                                <Text style={{textAlign: 'auto'}}>{}
+                                <Text style={{color: 'green', fontSize: 24}}>{levelLow}</Text> <Text style={{fontSize: 20}}>{levelLowDesc}</Text> <Text style={{color: 'rgb(240, 220, 0)', fontSize: 24}}>{levelMiddle}</Text>
+                                <Text style={{fontSize: 20}}>{levelMiddleDesc}</Text> <Text style={{color: 'orange', fontSize: 24}}>{levelHigh}</Text> <Text style={{fontSize: 20}}>{levelHighDesc}</Text>
+                                <Text style={{color: 'red', fontSize: 24}}>{levelUrgent}</Text> <Text style={{fontSize: 20}}>{levelUrgentDesc}</Text> </Text> </Text>
                             )}
-                            
-                            { showDropdown.showDrop && (
-                            <Dropdown
-                                data={options.map((option: any) => ({ label: option.optionText, value: option.optionId }))}
-                                value={selectedOptions['first']?.selectedOptionId || ""}
-                                onChange={(option: any) => optionChange(option, 'first')}
-                                style={[
-                                    styles.ScreeningDropDown,
-                                    { width: "97%", padding: 5, borderRadius: 20, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 2, color: colors.background_Grey }
-                                ]}
-                                placeholder='Select Answer' labelField={"label"} valueField={"value"}    />
-
-                                )}
                         </View>
 
                     )}
@@ -236,35 +274,37 @@ const ScreeningQuestionsScreen = (props: any) => {
                     
                     
                     {updateReady.Ready && questionList && questionList.map((question: any, index: any) => (
-                        <View style={{ width: "100%", marginTop: "10%", flex: 1, alignItems: "center" }} key={index}>
+                        <View style={{ width: "100%", marginTop: "5%", flex: 1, alignItems: "center" }} key={index}>
                         <Text style={{ color: 'black', fontWeight: "bold", fontSize: 26, textAlign: 'center', paddingBottom: 5 }}> {question.questionText}</Text>
 
         
-                    {question.options.length === 2 ? (
-                        <View style={{ flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
+                    {question.options.length < 6 ? (
+                        <View style={{ flexDirection: 'column', width: '90%' }}>
                             {question.options.map((option: any) => (
                                 <TouchableHighlight
                                     key={option.optionId}
-                                    style={{ ...styles.mainButton, backgroundColor: selectedOptions[question.questionId]?.selectedOptionText === option.optionText ? 'black' : colors.primary_Blue, marginTop: "auto", alignContent: "center", width: '35%' }}
+                                    style={{ ...styles.mainButton, backgroundColor: selectedOptions[question.questionId]?.selectedOptionText === option.optionText ? 'black' : colors.primary_Blue, marginTop: "auto", width: '100%' }}
                             onPress={() => optionChange({ value: option.optionId, label: option.optionText }, question.questionId)}
                                 >
-                                    <Text style={{ color: colors.white, textAlign: 'center' }}>{option.optionText}</Text>
+                                    <Text style={{ color: colors.white, textAlign: 'left' }}>{option.optionText}</Text>
                                  </TouchableHighlight>
                         ))}
                         </View>
                         ) : (
                         <Dropdown
                             data={question.options.map((option: any) => ({ label: option.optionText, value: option.optionId }))}
-                            value={selectedOptions['first']?.selectedOptionId || ""}
+                            value={selectedOptions[question.questionId]?.selectedOptionId || ""}
                             onChange={(option: any) => optionChange(option, question.questionId)}
                             style={[
                                 styles.ScreeningDropDown,
-                                { width: "97%", padding: 25, borderRadius: 20, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 2, color: colors.background_Grey }
+                                { width: "97%", padding: 25, borderRadius: 20, borderColor: colors.primary_Blue, backgroundColor: colors.white, borderWidth: 2, color: colors.background_Grey,
+                                marginBottom: index === questionList.length - 1 ? 100 : 0 }
                             ]}
                             placeholder={selectedOptions[question.questionId]?.selectedOptionText || "Select Answer"}
                             labelField={"label"} valueField={"value"}    
                             />
                             )}
+
 
                         </View>
                         ))}
@@ -272,11 +312,12 @@ const ScreeningQuestionsScreen = (props: any) => {
                     
                     
 
-
+                    {!showDropdown.showDrop && (
                     <TouchableHighlight style={{ ...styles.mainButton, marginTop: "auto", alignContent: "center" }}
                             underlayColor={colors.black_underlay} onPress={fetchRoot}>
                             <Text style={{...styles.buttonText, textAlign: "center"}}> {question.startButtonText} </Text>
                     </TouchableHighlight>
+                    )}
                 
                     </View>
                 </ScrollView>
@@ -287,17 +328,38 @@ const ScreeningQuestionsScreen = (props: any) => {
             {terminate.showTopText ? null : (
             <View style={{ width: "90%", marginTop: "5%", flex: 1, alignItems: "center" }}>
                 <ScrollView contentContainerStyle={{ flexGrow: 1}}>
-                <Text style={{ color: 'black', fontSize: 28, paddingBottom: 15, fontWeight: "bold" }}> {"Problem severity: " + result.resultPriority}</Text>
+                <Text style={{ color: 'black', fontSize: 28, paddingBottom: 15, fontWeight: "bold" }}>
+                {"Problem Severity: "}
+                    <Text style={{ color: result.resultPriority === 'LOW' ? 'green' : result.resultPriority === 'MIDDLE' ? 'rgb(240, 220, 0)' : result.resultPriority === 'HIGH' ? 'orange' : result.resultPriority === 'URGENT' ? 'red' : 'black', fontSize: 28, paddingBottom: 15, fontWeight: "bold" }}>
+                    {result.resultPriority}
+                    </Text>
+                </Text>
                 <Text style={{ color: 'black', fontSize: 26, paddingBottom: 5, fontWeight: "bold" }}> {"Problem:"}</Text>
                 <Text style={{ color: 'black', fontSize: 22, paddingBottom: 15 }}> {result.problem}</Text>
-                <Text style={{ color: 'black', fontSize: 26, paddingBottom: 5, fontWeight: "bold" }}> {"FirstAid advice:"}</Text>
+                <Text style={{ color: 'black', fontSize: 26, paddingBottom: 5, fontWeight: "bold" }}> {"First Aid Advice:"}</Text>
                 <Text style={{ color: 'black', fontSize: 22, paddingBottom: 15 }}> {result.firstAidAdvice}</Text>
-                <Text style={{ color: 'black', fontSize: 26, paddingBottom: 5, fontWeight: "bold" }}> {"What to do next:"}</Text>
+                <Text style={{ color: 'black', fontSize: 26, paddingBottom: 5, fontWeight: "bold" }}> {"What to Do Next:"}</Text>
                 <Text style={{ color: 'black', fontSize: 22, paddingBottom: 15 }}> {result.doNext}</Text>
+
+                <Modal transparent={true} visible={appointmentPopup.showing}>
+                    <View style={{flex:1, alignItems: 'center'}}>
+                        <View style={{backgroundColor:"#ffffff",margin:100, padding:60, borderRadius:10, flex:1}}>
+                        <Text style={{fontSize: 40, textAlign: 'center'}}>{"Appointment Created"}</Text>
+                        <TouchableHighlight style={{...styles.mainButton}} onPress={returnToHome}>
+                            <Text style={{...styles.buttonText,fontSize: 25}}>{"Continue"}</Text>
+                        </TouchableHighlight>
+                        </View>
+                    </View>
+
+                </Modal>
 
                 <TouchableHighlight style={{ ...styles.mainButton, paddingTop: 15, alignSelf: "center" }}
                         underlayColor={colors.black_underlay} onPress={backToQuestion}>
                         <Text style={styles.buttonText}> Back </Text>
+                </TouchableHighlight>
+                <TouchableHighlight style={{ ...styles.mainButton, paddingBottom: 15, alignSelf: "center" }}
+                        underlayColor={colors.black_underlay} onPress={handleSubmit}>
+                        <Text style={styles.buttonText}> Create Appointment </Text>
                 </TouchableHighlight>
                 </ScrollView>
             </View>

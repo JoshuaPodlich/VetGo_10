@@ -10,6 +10,7 @@ import { LocationInterface } from '../shared/Interfaces'
 import { appointment } from '@prisma/client'
 import { useEffect, useState } from 'react'
 import { useUser } from "../shared/UserContext"
+import { useIsFocused } from '@react-navigation/native';
 
 export interface MyAppointmentsOwnerScreenParams {
     userId: string,
@@ -19,6 +20,7 @@ export interface MyAppointmentsOwnerScreenParams {
 
 const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRouteProp, navigation: MyAppointmentsOwnerScreenNavigationProp }) => {
     const { user } = useUser();
+    const isFocused = useIsFocused();
     const params: MyAppointmentsOwnerScreenParams = user as MyAppointmentsOwnerScreenParams;
     const [appointments, setAppointments] = useState<any[]>([])
 
@@ -68,17 +70,26 @@ const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRout
                 allAppointments.push(...appointments);
             }));
 
+            // Sort appointments by proximity to today's date.
+            const now = new Date().getTime();
+            allAppointments.sort((a: any, b: any) => {
+                const timeA = new Date(a.time).getTime();
+                const timeB = new Date(b.time).getTime();
+                return Math.abs(timeA - now) - Math.abs(timeB - now);
+            });
+
             setAppointments(allAppointments)
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     }
+    //getAppointments();
 
     useEffect(() => {
-        console.log("useEffect")
-        getAppointments()
-        console.log('length' + appointments.length)
-    }, [])
+        if (isFocused) {
+            getAppointments();
+        }
+    }, [isFocused]);
 
     return (
         <SafeAreaView style={styles.background}>
