@@ -11,6 +11,7 @@ import { MapScreenParams } from '../Map/MapScreen'
 import Entypo from 'react-native-vector-icons/Entypo';
 import { colors } from '../shared/Colors'
 import { useUser } from "../shared/UserContext"
+import { useIsFocused } from '@react-navigation/native';
 
 export interface MyAppointmentsVetScreenParams {
     userId: string,
@@ -20,6 +21,7 @@ export interface MyAppointmentsVetScreenParams {
 
 const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRouteProp, navigation: MyAppointmentsVetScreenNavigationProp }) => {
     const { user } = useUser();
+    const isFocused = useIsFocused();
     const params: MyAppointmentsVetScreenParams = user as MyAppointmentsVetScreenParams;
     const [appointments, setAppointments] = useState<any[]>([])
     let vetid;
@@ -67,6 +69,14 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
             const appointmentsResponseBody = await appointmentsResponse.json();
             console.log('Appointments Response body:', appointmentsResponseBody); // Log entire response body
 
+            // Sort appointments by proximity to today's date.
+            const now = new Date().getTime();
+            appointmentsResponseBody.sort((a: any, b: any) => {
+                const timeA = new Date(a.time).getTime();
+                const timeB = new Date(b.time).getTime();
+                return Math.abs(timeA - now) - Math.abs(timeB - now);
+            });
+
             setAppointments(appointmentsResponseBody);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -75,10 +85,10 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
     }
 
     useEffect(() => {
-        console.log("useEffect")
-        getAppointments()
-        console.log('length' + appointments.length)
-    }, [])
+        if (isFocused) {
+            getAppointments();
+        }
+    }, [isFocused]);
 
     const acceptedAppointments = appointments.filter(appointment => appointment.status === 'ACCEPTED');
     const waitingAppointments = appointments.filter(appointment => appointment.status === 'WAITING');

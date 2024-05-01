@@ -70,8 +70,10 @@ public class AppointmentService {
         double minDistance = Double.MAX_VALUE;
 
         for (Vet elem : vets) {
-            // Skip vets with latitude and longitude both set to 0.
-            if (elem.getLatitude() == 0 && elem.getLongitude() == 0) {
+            // Skip vets with latitude and longitude both set to 0 or if either is null.
+            if (elem.getLatitude() == null || elem.getLongitude() == null ||
+                    (elem.getLatitude() == 0 && elem.getLongitude() == 0))
+            {
                 continue;
             }
             double currentDistance = Math.sqrt(Math.pow((elem.getLatitude() - appointment.getLatitude()), 2)
