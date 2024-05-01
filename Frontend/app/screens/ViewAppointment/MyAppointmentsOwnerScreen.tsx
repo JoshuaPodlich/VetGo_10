@@ -1,5 +1,4 @@
 import { SafeAreaView, ScrollView, View } from "react-native"
-import ClientNavbar, { ClientNavbarParams } from "../../components/ClientNavbar"
 import { MyAppointmentsOwnerScreenNavigationProp, MyAppointmentsScreenOwnerRouteProp } from '../../utils/props'
 import axios from 'axios'
 import { BASE_URL } from '../shared/Constants'
@@ -99,7 +98,6 @@ const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRout
                     {appointments.map(appointment => <AppointmentCard key={appointment.aid} appointmentData={appointment} userId={params.userId} petName={appointment.pet.name} setAppointments={setAppointments}  props={props} />)}
                 </View>
             </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
 
     )
@@ -112,7 +110,7 @@ interface AppointmentCardParams {
     petName: string,
     setAppointments: useState
 }
-const AppointmentCard = ({ userId, appointmentData, petName, setAppointments }: AppointmentCardParams) => {
+const AppointmentCard = ({ userId, appointmentData, petName, setAppointments, props }: AppointmentCardParams) => {
     const [showDetails, setShowDetails] = useState(false)
     const cancelAppointment = async () => {
         await axios.delete(BASE_URL + "/appointment/delete/" + appointmentData.aid)
@@ -172,13 +170,13 @@ const AppointmentCard = ({ userId, appointmentData, petName, setAppointments }: 
     }
 
     const gotoPayment = async () => {
-            let paymentParams: PaymentStripeScreenParams = {
-              ...props.route.params,
-              appointmentData: appointmentData,
+        let paymentParams: PaymentStripeScreenParams = {
+          ...props.route.params,
+          appointmentData: appointmentData,
 
-            }
-            props.navigation.navigate('PaymentStripe', paymentParams);
         }
+        props.navigation.navigate('PaymentStripe', paymentParams);
+    }
 
     return (
         <Card style={{
@@ -230,10 +228,6 @@ const AppointmentCard = ({ userId, appointmentData, petName, setAppointments }: 
                 marginHorizontal: 4,
                 display: appointmentData.status === 'PAYMENT' && appointmentData.transaction != null ? 'flex' : 'none'
             }} size='small' onPress={gotoPayment}><Text>Send Payment</Text></Button>
-            <Button style={{
-                marginHorizontal: 4,
-                display: appointmentData.status === 'PAYMENT' && appointmentData.transaction === null ? 'flex' : 'none'
-            }} size='small' disabled title="Test"><Text>Send Payment</Text></Button>
             <Button style={{
                 marginHorizontal: 4,
             }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>

@@ -11,7 +11,6 @@ import { appointment } from '@prisma/client'
 import { useEffect, useState } from 'react'
 import { MapScreenParams } from '../Map/MapScreen'
 import Entypo from 'react-native-vector-icons/Entypo';
-import { colors } from '../shared/Colors'
 import { useUser } from "../shared/UserContext"
 import { useIsFocused } from '@react-navigation/native';
 
@@ -92,7 +91,7 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
         }
     }, [isFocused]);
 
-    const acceptedAppointments = appointments.filter(appointment => appointment.status === 'ACCEPTED' || appointment.status === 'PAYMENT');
+    const acceptedAppointments = appointments.filter(appointment => appointment.status != 'WAITING');
     const waitingAppointments = appointments.filter(appointment => appointment.status === 'WAITING');
 
     return (
@@ -109,7 +108,6 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
                     {waitingAppointments.map(appointment => <AvailableAppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} vetId={appointment.vet.id} params={params} navigation={props.navigation} setAppointments={setAppointments} />)}
                 </View>
             </ScrollView>
-            <ClientNavbar navigation={props.navigation} {...params} />
         </SafeAreaView>
 
     )
@@ -248,10 +246,6 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navig
                     marginHorizontal: 4,
                     display: appointmentData.status === 'ACCEPTED' ? 'flex' : 'none'
                 }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
-                <Button style={{
-                    marginHorizontal: 4,
-                    display: appointmentData.status === 'PAYMENT' ? 'flex' : 'none'
-                }} size='small' onPress={gotoPayment}><Text>Request Payment</Text></Button>
                 <View style={{justifyContent: 'center', alignItems: 'center', marginHorizontal: 4,}}>
                     <TouchableOpacity
                         onPress={navigateToVetMap}
@@ -270,6 +264,21 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navig
                 }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
 
             </Layout>
+
+            <Layout style={{
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+                marginTop: 16,
+            }}>
+                <Button style={{
+                    marginHorizontal: 5,
+                    display: appointmentData.status === 'PAYMENT' ? 'flex' : 'none'
+                }} size='small' disabled><Text>Awaiting Payment</Text></Button>
+                <Button style={{
+                    marginHorizontal: 4,
+                    display: appointmentData.status === 'ACCEPTED' ? 'flex' : 'none'
+                }} size='small' onPress={gotoPayment}><Text>Request Payment</Text></Button>
+          </Layout>
         </Card >
     )
 }
@@ -350,11 +359,6 @@ const AvailableAppointmentCard = ({ appointmentData, petName, vetId, params, nav
                 marginVertical: 8,
                 display: showDetails ? 'flex' : 'none'
             }}>Reason for visit: {appointmentData.description ?? ""}</Text>
-            <Layout style={{
-                flexDirection: 'row',
-                justifyContent: 'flex-end',
-                marginTop: 16,
-            }}>
             <Text style={{
                 marginVertical: 8,
                 display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
@@ -375,6 +379,11 @@ const AvailableAppointmentCard = ({ appointmentData, petName, vetId, params, nav
                 marginVertical: 8,
                 display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
             }}>Longitude: {appointmentData.screeningSession ? appointmentData.longitude : ""}</Text>
+            <Layout style={{
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+                marginTop: 16,
+            }}>
                 <Button style={{
                     marginHorizontal: 4,
                 }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
