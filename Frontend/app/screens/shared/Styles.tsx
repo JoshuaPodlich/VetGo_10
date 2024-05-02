@@ -14,6 +14,26 @@ export const styles: any = StyleSheet.create({
         marginRight: 50,
     },
 
+    viewNearbyVets: {
+
+        backgroundColor: colors.primary_Blue,
+        borderRadius: 10,
+        padding: 10,
+        marginBottom: 10,
+    },
+
+    phoneButton: {
+        backgroundColor: colors.action_Orange,
+        borderRadius: 10,
+        padding: 10,
+       
+    },
+    phoneButtonDisabled: {
+        backgroundColor: colors.grey,
+        borderRadius: 10,
+        padding: 10,
+    },
+
 
     loginBackground: {
         flex: 1,
@@ -585,6 +605,19 @@ export const addressStyles = StyleSheet.create({
       shadowOpacity: 0,
       position: 'absolute',
       zIndex: 1
+  },
+  vetInfoBox: {
+        alignItems: "center",
+
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingVertical: 10,
+        width: "90%",
+        backgroundColor: colors.primary_Blue,
+        borderRadius: 30,
+        marginBottom: 10,
+
   },
   inlineFields: {
       flexDirection: 'row',

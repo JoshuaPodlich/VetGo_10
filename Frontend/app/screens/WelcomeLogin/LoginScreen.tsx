@@ -83,13 +83,13 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
 
 
         try {
-            console.log('Submitting login request...');
+            // console.log('Submitting login request...');
 
             let url = BASE_URL + "/user/login";
-            console.log('URL:', url);
+            // console.log('URL:', url);
 
             //const body = { emailJson, passwordJson };
-            console.log('Request body:', body);
+            // console.log('Request body:', body);
 
 
             const response = await fetch(url, {
@@ -100,15 +100,15 @@ function LoginScreen(props: { navigation: LoginScreenNavigationProp, route: Logi
                 body: JSON.stringify(body)
             });
 
-            console.log('Response status:', response.status);
-            console.log('Response status text:', response.statusText);
+            //console.log('Response status:', response.status);
+            //console.log('Response status text:', response.statusText);
             if (response.status === 200){
-                const responseBody = await response.json(); // Parse the response body into JSON
-                console.log('Response Body:', responseBody);
-                console.log('LOGIN SUCCESSFUL LETS GO');
-                let lat = responseBody.latitude;
-                let long = responseBody.longitude;
-                let userIsVet = false;
+            const responseBody = await response.json(); // Parse the response body into JSON
+            // console.log('Response Body:', responseBody);
+            console.log('LOGIN SUCCESSFUL');
+            let lat = responseBody.latitude;
+            let long = responseBody.longitude;
+            let userIsVet = false;
 
                 if (lat === undefined) {
                     lat = 0;

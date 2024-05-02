@@ -149,6 +149,7 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
           
     }
 
+
     async function payAppointment(index: number) {
         let appointment: any = petsData[index]["appointment"]
         let paymentStripeParams: PaymentStripeScreenParams = {
@@ -241,6 +242,10 @@ function HomeClientScreen(props: { route: ClientHomeScreenRouteProp, navigation:
                     <Button onPress={() => fetchPets()} style={homeStyles.refreshButton}>
                         <Text>Refresh List</Text>
                     </Button>
+                    <Button onPress={() => props.navigation.navigate("Emergency")} style={homeStyles.emergencyButton}>
+                        <Text>Emergency</Text>
+                    </Button>
+
                 
                     
                 </View>

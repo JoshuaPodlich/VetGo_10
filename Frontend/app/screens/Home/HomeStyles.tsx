@@ -25,6 +25,20 @@ export const homeStyles: any = StyleSheet.create({
         borderRadius: 30,
         marginBottom: 10,
     },
+    vetInfoBox: {
+        alignItems: "center",
+        marginLeft: 20,
+
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingVertical: 10,
+        width: "90%",
+        backgroundColor: colors.primary_Blue,
+        borderRadius: 30,
+        marginBottom: 10,
+
+  },
 
     createAppointment: {
         backgroundColor: colors.action_Orange,
@@ -109,7 +123,16 @@ export const homeStyles: any = StyleSheet.create({
         width: 150,
         color: colors.primary_Blue,
         backgroundColor: colors.primary_Blue,
+        borderColor: colors.primary_Blue,
 
+    },
+    emergencyButton: {  
+        margin: 5,
+        padding: 15,
+        width: 130,
+        color: colors.action_Orange,
+        backgroundColor: colors.action_Orange,
+        borderColor: colors.action_Orange,
     },
 
     mainButton: {

@@ -9,6 +9,7 @@ import { LocationInterface } from "../shared/Interfaces"
 import { HomeScreenParams } from "../Home/HomeScreen"
 import { ScreeningQuestionsParams } from "../ScreeningQuestions/ScreeningQuestionsScreen"
 import axios from 'axios';
+import { Border } from "victory-native"
 
 export interface CreateAppointmentParams {
     userId: string,
@@ -56,47 +57,39 @@ const CreateAppointmentScreen = (props: any) => {
     }
 
     const handleNext = () => {
+        if (!description.length) {
+            setError('Description is required!')
+            return
+        }
+
+        if(!date)
+        {
+            setError('Select a date')
+            return
+        }
+        setError('')
+
+        let unsanitizedDate = date.toLocaleDateString()
+        let sanitizedDate = unsanitizedDate.split('/')
+        const body = {
+            ...params.location,
+            day: ('0' + sanitizedDate[1]).slice(-2),
+            month: ('0' + sanitizedDate[0]).slice(-2),
+            year: sanitizedDate[2].slice(-2),
+        }
+
         let screeningQuestionsParams: ScreeningQuestionsParams = {
             ...params,
-            petId: params.petId
+            petId: params.petId,
+            description: description,
+            date: body
         }
+        console.log(params.petId);
+        console.log(description);
+        console.log(body);
         props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
+    
     }
-
-    // const hardcodedCreateAppointment = async () => {
-    //     // /appointment/create/{oid}/{pid}/{description}
-
-    //     const fakeOid = '1'
-    //     const fakePid = '1'
-    //     const fakeDescription = 'random symptoms description'
-    //     let body = {
-    //         latitude: params.location.latitude,
-    //         longitude: params.location.longitude, 
-    //         radius: 10, 
-    //         month: "01", 
-    //         day: "01", 
-    //         year: "01"
-    //     }
-
-
-
-    //     let url = BASE_URL + '/appointment/create/' + 1 + '/' + 1 + '/' + "test"
-    //     const response = await fetch(url, {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(body)
-    //     })
-
-    //     console.log(response.status)
-    //     //console.log(response.statusText)
-
-    //     const responseBody = await response.json(); // Parse the response body into JSON
-    //     console.log('Response:', response);
-    //     console.log('Response Body:', responseBody);
-
-    // }
 
     const handleSubmit = async () => {
         if (!description.length) {
@@ -132,14 +125,14 @@ const CreateAppointmentScreen = (props: any) => {
 
     return (<SafeAreaView style={styles.createAppointmentBackground}>
         <ScrollView>
-            <Text style={{...styles.header, paddingLeft: 30}}>Schedule Appointment {petName}</Text>
-            <Text style={{paddingLeft: 50}}>Reason for appointment</Text>
-            <Textfield placeholder='Give a quick summary of details' value={description} onChangeText={setDescription} />
-            <Text style={{...styles.appointmentHeader, paddingTop: 50}}>Select Date</Text>
+            <Text style={{...styles.header }}>Schedule Appointment {petName}</Text>
+            <Text style={{paddingLeft: "25%"}}>Reason for appointment</Text>
+            <Textfield placeholder='Give a quick summary of details' value={description} onChangeText={setDescription} style={{paddingLeft: "25%"}}/>
+            <Text style={{ paddingTop: 50, paddingLeft: "35%"}}>Select Date</Text>
 
             <Button
                     onPress={() => setDateNow()} 
-                    style={{ ...styles.mainButton}}>
+                    style={{ ...styles.mainButton, marginLeft: "10%"}}>
                     Set to ASAP
                 </Button>
 
@@ -157,7 +150,7 @@ const CreateAppointmentScreen = (props: any) => {
 
                 <Button
                     onPress={() => setShowCalendar(!showCalendar)} 
-                    style={{ ...styles.mainButton}}>
+                    style={{ ...styles.mainButton, marginLeft: "10%"}}>
                     {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
                 </Button>
                 </View>
@@ -167,10 +160,11 @@ const CreateAppointmentScreen = (props: any) => {
         </ScrollView>
         <Text>{error}</Text>
         <View style={{paddingBottom: 50}}>
-        <Button style={{ ...styles.submitButton, }}
+        {/* <Button style={{ ...styles.submitButton, }}
             onPress={handleSubmit}>
             <Text>Submit</Text>
-        </Button>
+        </Button> */}
+        <Text>Date selected: {date.toLocaleDateString()}</Text>
         <Button style={{ ...styles.submitButton, }}
             onPress={handleNext}>
             <Text>Next</Text>

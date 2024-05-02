@@ -4,6 +4,10 @@ import { GoogleAutoComplete } from '../shared/Components';
 import { styles } from '../shared/Styles';
 import { GOOGLE_MAPS_APIKEY } from '../shared/Constants';
 import { set } from 'lodash';
+import { colors } from '../shared/Colors';
+import { Button } from 'react-native';
+import { FontAwesome5 } from '@expo/vector-icons'
+
 
 function EmergencyScreen() {
   const [emergencyLocation, setEmergencyLocation] = useState('');
@@ -114,10 +118,10 @@ function EmergencyScreen() {
                 <Text style={styles.clearButtonText}>Re-enter location</Text>
             </TouchableOpacity>
           <ScrollView>
-            <Text style={{ fontSize: 30, fontWeight: 'bold'}}>
+            <Text style={{ fontSize: 30, fontWeight: 'bold', color: colors.action_Orange, marginLeft: 60}}>
               Vet Emergency
             </Text>
-            <View style={emStyles.infoContainer}>
+            {/* <View style={emStyles.infoContainer}>
                 <Text style={emStyles.infoText}>Nearest Open Vet:</Text>
                 <TouchableOpacity onPress={handleCallHelpNumber}>
                 <Text style={emStyles.infoTextClick}> {emergencyInfo.helpNumber}</Text>
@@ -131,13 +135,32 @@ function EmergencyScreen() {
                   <Text style={emStyles.infoTextClick}>{website}</Text>
                 </TouchableOpacity>
               ))}
-            </View>
+            </View> */}
             {nearbyVets.map((vet, index) => (
-              <View key={index} style={{ marginBottom: 10 }}>
-                <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{vet.name}</Text>
-                <Text>{vet.address}</Text>
-                <Text>{vet.phone}</Text>
+              <View key={index} style={{...styles.viewNearbyVets, marginBottom: 10 }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: colors.darkGrey }}>{vet.name}</Text>
+                <Text style={{color: colors.grey}}>{vet.address}</Text>
+                <TouchableOpacity onPress={() => Linking.openURL(`tel:${vet.phone}`)}>
+                  <Text style={emStyles.infoTextClick}>{vet.phone}</Text>
+                </TouchableOpacity>
                 <Text>{vet.openingHours.open_now ? 'Open now' : 'Closed'}</Text>
+                <View style={{ display: 'flex', flexDirection: 'row', marginTop: 10, marginLeft: 'auto' }}>
+                {/* if open */}
+                {vet.openingHours.open_now ? (
+                <TouchableOpacity style={{ ...styles.phoneButton, marginRight: 20 }} onPress={() => Linking.openURL(`tel:${vet.phone}`)}><FontAwesome5 name='phone' size={20} /></TouchableOpacity>
+              ) : (
+                <TouchableOpacity style={{ ...styles.phoneButtonDisabled, marginRight: 20}}><FontAwesome5 name='phone' size={20} /></TouchableOpacity>
+                )}
+
+              {vet.openingHours.open_now ? (
+                <TouchableOpacity style={{ ...styles.phoneButton, marginRight: 10 }} onPress={()=> Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(vet.address)}`)}><FontAwesome5 name='map' size={20} /></TouchableOpacity>
+              ) : (
+                <TouchableOpacity style={{ ...styles.phoneButtonDisabled, marginRight: 10 }} ><FontAwesome5 name='map' size={20} /></TouchableOpacity>
+              )}
+
+
+
+                  </View>
               </View>
             ))}
           </ScrollView>
