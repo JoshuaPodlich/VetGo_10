@@ -80,7 +80,7 @@ function CreateReviewClientScreen(props: any) {
                 reviewee: params.revieweeId,
                 description: reviewTextRef.current,
                 rating: rating,
-                appointment: null,
+                review_appointment: params.appointmentId,
                 tags: finalTagRef.current,
             }
 
@@ -91,13 +91,11 @@ function CreateReviewClientScreen(props: any) {
                 body: JSON.stringify(reviewObject)
             }
 
-            console.log(params)
 
             let url = BASE_URL + '/review/create/' + params.appointmentData.aid
 
             let res = await fetch(url, requestOptions)
                 .then((response) => {
-                    console.log(response)
                     console.log("Create Review Successful")
                     let homeParams: HomeScreenParams = {
                         userId: params.userId,
@@ -148,6 +146,7 @@ function CreateReviewClientScreen(props: any) {
                         <View style={{ justifyContent: "center" }}>
                             <View>
                                 <Text style={styles.boldText}> {params.revieweeFirstName} {params.revieweeLastName}</Text>
+                                <Text style={styles.boldText}> Current Rating: {params.revieweeAverageRating}</Text>
                             </View>
                         </View>
                     </View>

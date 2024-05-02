@@ -24,6 +24,7 @@ public class ReviewController {
     private UserRepository userRepository;
     @Autowired
     private VetRepository vetRepository;
+    @Autowired
     private TagRepository tagRepository;
 
     @GetMapping(value = "/all")

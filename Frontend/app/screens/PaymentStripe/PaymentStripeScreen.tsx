@@ -56,7 +56,6 @@ function PaymentStripeScreen(props: any) {
   }
 
   useEffect(() => {
-    console.log("Params:", params);
     initializePaymentSheet()
     setNameOnCard('')
     setError({})
@@ -69,11 +68,18 @@ function PaymentStripeScreen(props: any) {
     } else {
       let createReviewParams: { revieweeId: string; revieweeFirstName: string; reviewerId: string; transactionReceipt: string; revieweeAverageRating: number; userIsVet: boolean; appointmentId: string; transactionAmount: number; location: LocationInterface; userId: string; transactionId: string; revieweeLastName: string } = {
         ...params,
-        reviewerId: params.userId,
+        reviewerId: params.appointmentData.screeningSession.user.id,
+        revieweeId: params.appointmentData.vet.id,
+        appointmentId: params.appointmentData.aid,
+        revieweeFirstName: params.appointmentData.vet.user.firstName,
+        revieweeLastName: params.appointmentData.vet.user.lastName,
+        revieweeAverageRating: params.appointmentData.vet.averageRating
       }
-//       await axios.put(`${BASE_URL}/appointment/update/${params.appointmentData.aid}`, {
-//         status: "COMPLETED"
-//       })
+
+      await axios.put(`${BASE_URL}/appointment/update/${params.appointmentData.aid}`, {
+        status: "COMPLETED"
+      })
+
       props.navigation.replace("CreateReview", createReviewParams)
 
       console.log('Success')
