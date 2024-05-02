@@ -10,14 +10,14 @@ import { FontAwesome5 } from '@expo/vector-icons'
 import { HomeScreenParams } from "../Home/HomeScreen"
 import { Dropdown } from 'react-native-element-dropdown'
 import { Int32 } from 'react-native/Libraries/Types/CodegenTypes'
+import axios from 'axios';
 
 export interface ScreeningQuestionsParams {
     userId: string,
     userIsVet: boolean,
     location: LocationInterface,
     petId: string,
-    description: string,
-    date: any
+    body: any
 }
 
 export interface Screening {
@@ -198,10 +198,10 @@ const ScreeningQuestionsScreen = (props: any) => {
                 {
                     setResult({resultPriority: responseBody.resultPriority, doNext: responseBody.doNext, firstAidAdvice: responseBody.firstAidAdvice, problem: responseBody.problem})
                     setTerminate({ showTopText: false})
-                    console.log(result.resultPriority)
-                    console.log(result.doNext)
-                    console.log(result.firstAidAdvice)
-                    console.log(result.problem)
+                    //console.log(result.resultPriority)
+                    //console.log(result.doNext)
+                    //console.log(result.firstAidAdvice)
+                    //console.log(result.problem)
                 }
                 else
                 {
@@ -219,33 +219,40 @@ const ScreeningQuestionsScreen = (props: any) => {
     }
 
     const handleSubmit = async () => {
+        params.body.sessionId = sessionId;
+        console.log(params.body);
         const options = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(params.date),
+            body: JSON.stringify(params.body),
         }
-        const url = BASE_URL + '/appointment/create/' + params.userId + '/' + params.petId + '/' + params.description
+        const url = BASE_URL + '/appointment/create/' + params.userId + '/' + params.petId
         console.log(url)
         console.log(options)
 
-        await postAppointment(url, options)
+        await postAppointment(url, params.body)
     }
 
     const postAppointment = async (url: string, options: any) => {
-        await fetch(url, options)
-            .then(response => response.json())
-            .then(_ => {
-                setAppointmentPopup({showing: true});
-                //console.error('Appointment created!')
-                //props.navigation.popToTop()
-                //props.navigation.navigate('Home', { ...params } as HomeScreenParams)
-            })
+        try {
+            const response = await axios.post(url, options, {
+                headers: { 'Content-Type': 'application/json' }
+            });
+            console.log('Appointment created:', response.data);
+            setAppointmentPopup({showing: true})
+            //props.navigation.popToTop();
+            //props.navigation.navigate("HomeClient");
+        } catch (error) {
+            console.error('Error creating appointment:', error);
+            setError('Failed to create appointment. Please try again.');
+        }
     }
 
     const returnToHome = async () => {
         //props.navigation.popToTop()
         setAppointmentPopup({showing: false})
-        props.navigation.navigate('Home', { ...params } as HomeScreenParams)
+        props.navigation.popToTop()
+        props.navigation.navigate("HomeClient")
     }
 
 

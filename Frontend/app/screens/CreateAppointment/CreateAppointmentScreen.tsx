@@ -68,23 +68,26 @@ const CreateAppointmentScreen = (props: any) => {
         }
         setError('')
 
-        let unsanitizedDate = date.toLocaleDateString()
-        let sanitizedDate = unsanitizedDate.split('/')
+        let unsanitizedDate = date.toLocaleDateString();
+        let sanitizedDate = unsanitizedDate.split('/');
         const body = {
+            description: description,
+            sessionId: 1, // Gets changed in screening questions
             ...params.location,
             day: ('0' + sanitizedDate[1]).slice(-2),
             month: ('0' + sanitizedDate[0]).slice(-2),
             year: sanitizedDate[2].slice(-2),
-        }
+        };
+    
+        const url = `${BASE_URL}/appointment/create/${params.userId}/${params.petId}`;
 
         let screeningQuestionsParams: ScreeningQuestionsParams = {
             ...params,
             petId: params.petId,
-            description: description,
-            date: body
+            body: body
         }
         console.log(params.petId);
-        console.log(description);
+        //console.log(description);
         console.log(body);
         props.navigation.navigate("ScreeningQuestions", screeningQuestionsParams)
     }
@@ -144,6 +147,7 @@ const CreateAppointmentScreen = (props: any) => {
         const url = `${BASE_URL}/appointment/create/${params.userId}/${params.petId}`;
     
         try {
+            console.log(body);
             const response = await axios.post(url, body, {
                 headers: { 'Content-Type': 'application/json' }
             });
