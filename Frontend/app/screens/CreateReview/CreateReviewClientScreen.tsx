@@ -80,7 +80,7 @@ function CreateReviewClientScreen(props: any) {
                 reviewee: params.revieweeId,
                 description: reviewTextRef.current,
                 rating: rating,
-                appointment: null,
+                review_appointment: params.appointmentId,
                 tags: finalTagRef.current,
             }
 
@@ -91,19 +91,18 @@ function CreateReviewClientScreen(props: any) {
                 body: JSON.stringify(reviewObject)
             }
 
-            let url = BASE_URL + '/review/create/' + params.appointmentId
 
+            let url = BASE_URL + '/review/create/' + params.appointmentData.aid
 
             let res = await fetch(url, requestOptions)
                 .then((response) => {
-                    console.log(response)
                     console.log("Create Review Successful")
                     let homeParams: HomeScreenParams = {
                         userId: params.userId,
                         userIsVet: params.userIsVet,
                         location: params.location
                     }
-                    props.navigation.replace("Home", homeParams)
+                    props.navigation.replace("MyAppointmentsOwner", homeParams)
                     isSubmittingRef.current = false
                 })
                 .catch((error) => {
@@ -141,15 +140,13 @@ function CreateReviewClientScreen(props: any) {
         <SafeAreaView style={styles.background}>
             <View style={styles.container}>
                 <View>
-
                     <Text style={styles.titleText}>Leave a review!</Text>
 
                     <View style={{ flexDirection: "row" }}>
-                        <View style={styles.tempPic}><Text> ifmg </Text></View>
                         <View style={{ justifyContent: "center" }}>
                             <View>
                                 <Text style={styles.boldText}> {params.revieweeFirstName} {params.revieweeLastName}</Text>
-                                <Text style={{ justifyContent: "center" }}> {params.revieweeAverageRating} star rating </Text>
+                                <Text style={styles.boldText}> Current Rating: {params.revieweeAverageRating}</Text>
                             </View>
                         </View>
                     </View>
