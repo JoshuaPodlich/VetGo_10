@@ -16,14 +16,7 @@ export interface PaymentStripeScreenParams {
   userId: string,
   userIsVet: boolean,
   location: LocationInterface,
-  transactionId: string,
-  transactionAmount: number,
-  transactionReceipt: string,
-  appointmentId: string,
-  revieweeId: string,
-  revieweeFirstName: string,
-  revieweeLastName: string,
-  revieweeAverageRating: number
+  appointmentId: string
 }
 
 function PaymentStripeScreen(props: any) {
@@ -34,10 +27,12 @@ function PaymentStripeScreen(props: any) {
   const [errors, setError] = useState<any>({})
   const [loading, setLoading] = useState<boolean>(false)
   const isSubmittingRef = useRef(false)
-  const [amount, setAmount] = React.useState(params.transactionAmount)
+  const [amount, setAmount] = useState(params.appointmentData.transaction.amount)
+  const [receipt, setReceipt] = useState(params.appointmentData.transaction.receipt)
   const [isPaymentSheetReady, setPaymentSheetReady] = useState(false)
 
   const initializePaymentSheet = async () => {
+
     const clientSecret = await fetchPaymentSheetParams()
     const { error } = await initPaymentSheet({
       paymentIntentClientSecret: clientSecret,
@@ -61,11 +56,10 @@ function PaymentStripeScreen(props: any) {
   }
 
   useEffect(() => {
-    initializePaymentSheet() // issue is here
+    console.log("Params:", params);
+    initializePaymentSheet()
     setNameOnCard('')
     setError({})
-    setAmount(params.transactionAmount)
-    // initializePaymentSheet()
   }, [])
 
   const openPaymentSheet = async () => {
@@ -77,7 +71,7 @@ function PaymentStripeScreen(props: any) {
         ...params,
         reviewerId: params.userId,
       }
-      await axios.put(`${BASE_URL}/appointment/update/${params.appointmentId}`, {
+      await axios.put(`${BASE_URL}/appointment/update/${params.appointmentData.aid}`, {
         status: "COMPLETED"
       })
       props.navigation.replace("CreateReview", createReviewParams)
@@ -93,9 +87,9 @@ function PaymentStripeScreen(props: any) {
 
       <View style={{ width: "80%" }}>
 
-        <Text style={{ ...styles.ReceiptTitleText, marginTop: "5%", marginBottom: 10 }}>Receipt review</Text>
+        <Text style={{ ...styles.ReceiptTitleText, marginTop: "5%", marginBottom: 10 }}>Receipt: </Text>
         <ScrollView style={{ height: "20%", marginBottom: 15 }}>
-          <Text style={{ fontSize: 14 }}>{params.transactionReceipt}</Text>
+          <Text style={{ fontSize: 14 }}>{receipt}</Text>
         </ScrollView>
 
         <View id={"buttonGroup"} style={{ ...styles.buttonGroup }}>
@@ -104,7 +98,7 @@ function PaymentStripeScreen(props: any) {
             onPress={openPaymentSheet}
           >
             <Text id={"payText"} style={styles.buttonText}>
-              {"Pay  " + params.transactionAmount.toString() + "  USD"}
+              {"Pay " + amount +  " USD"}
             </Text>
           </TouchableHighlight>
         </View>

@@ -2,14 +2,15 @@ import { SafeAreaView, ScrollView, View, TouchableOpacity } from "react-native"
 import { MyAppointmentsVetScreenNavigationProp, MyAppointmentsScreenVetRouteProp } from '../../utils/props'
 import axios from 'axios'
 import { BASE_URL } from '../shared/Constants'
+import { UserDetailsParams } from '../../utils/params'
 import { Button, Card, Layout, Text } from '@ui-kitten/components'
 import { styles } from '../shared/Styles'
+import { colors } from '../shared/Colors'
 import { LocationInterface } from '../shared/Interfaces'
 import { appointment } from '@prisma/client'
 import { useEffect, useState } from 'react'
 import { MapScreenParams } from '../Map/MapScreen'
 import Entypo from 'react-native-vector-icons/Entypo';
-import { colors } from '../shared/Colors'
 import { useUser } from "../shared/UserContext"
 import { useIsFocused } from '@react-navigation/native';
 
@@ -90,7 +91,7 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
         }
     }, [isFocused]);
 
-    const acceptedAppointments = appointments.filter(appointment => appointment.status === 'ACCEPTED');
+    const acceptedAppointments = appointments.filter(appointment => appointment.status != 'WAITING');
     const waitingAppointments = appointments.filter(appointment => appointment.status === 'WAITING');
 
     return (
@@ -98,7 +99,7 @@ const MyAppointmentsVetScreen = (props: { route: MyAppointmentsScreenVetRoutePro
             <Text style={{ marginRight: 'auto', marginLeft: 20, fontSize: 28, fontWeight: 'bold', }}>My Appointments</Text>
             <ScrollView>
                 <View>
-                    {acceptedAppointments.map(appointment => <MyAppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} vetId={appointment.vet.id} params={params} navigation={props.navigation} setAppointments={setAppointments} />)}
+                    {acceptedAppointments.map(appointment => <MyAppointmentCard key={appointment.aid} appointmentData={appointment} petName={appointment.pet.name} vetId={appointment.vet.id} params={params} navigation={props.navigation} setAppointments={setAppointments} props={props}/>)}
                 </View>
             </ScrollView>
             <Text style={{ marginRight: 'auto', marginLeft: 20, fontSize: 28, fontWeight: 'bold', }}>Available Appointments</Text>
@@ -116,6 +117,9 @@ interface MyAppointmentCardParams {
     key: int,
     appointmentData: appointment,
     petName: string,
+    vetId: int,
+    setAppointments: useState,
+    props: props
     vetId: string,
     params: any,
     navigation: MyAppointmentsVetScreenNavigationProp,
@@ -132,7 +136,7 @@ interface AvailableAppointmentCardParams {
 }
 
 
-const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navigation, setAppointments }: MyAppointmentCardParams) => {
+const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navigation, setAppointments, props }: MyAppointmentCardParams) => {
     const [showDetails, setShowDetails] = useState(false)
 
     const cancelAppointment = async () => {
@@ -155,7 +159,7 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navig
             userId: params.userId,
             userIsVet: params.userIsVet,
             location: params.location,
-            destinationLocation: { 
+            destinationLocation: {
                 latitude: Number(appointmentData.latitude),
                 longitude: Number(appointmentData.longitude),
             }
@@ -191,6 +195,14 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navig
         console.log("useEffectScreeningSResults")
         getScreeningResults()
     }, [])
+
+    const gotoPayment = async () => {
+        let paymentParams: VetAddChargesScreenParams = {
+          ...props.route.params,
+          appointmentData: appointmentData
+        }
+        props.navigation.navigate('VetAddCharges', paymentParams);
+    }
 
     return (
         <Card style={{
@@ -232,9 +244,10 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navig
             }}>
                 <Button style={{
                     marginHorizontal: 4,
+                    display: appointmentData.status === 'ACCEPTED' ? 'flex' : 'none'
                 }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
                 <View style={{justifyContent: 'center', alignItems: 'center', marginHorizontal: 4,}}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         onPress={navigateToVetMap}
                         style={{
                             backgroundColor: colors.action_Orange,
@@ -251,6 +264,21 @@ const MyAppointmentCard = ({ key, appointmentData, petName, vetId, params, navig
                 }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
 
             </Layout>
+
+            <Layout style={{
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+                marginTop: 16,
+            }}>
+                <Button style={{
+                    marginHorizontal: 5,
+                    display: appointmentData.status === 'PAYMENT' ? 'flex' : 'none'
+                }} size='small' disabled><Text>Awaiting Payment</Text></Button>
+                <Button style={{
+                    marginHorizontal: 4,
+                    display: appointmentData.status === 'ACCEPTED' ? 'flex' : 'none'
+                }} size='small' onPress={gotoPayment}><Text>Request Payment</Text></Button>
+          </Layout>
         </Card >
     )
 }
@@ -275,7 +303,7 @@ const AvailableAppointmentCard = ({ appointmentData, petName, vetId, params, nav
             userId: params.userId,
             userIsVet: params.userIsVet,
             location: params.location,
-            destinationLocation: { 
+            destinationLocation: {
                 latitude: appointmentData.latitude,
                 longitude: appointmentData.longitude,
             }
@@ -331,11 +359,6 @@ const AvailableAppointmentCard = ({ appointmentData, petName, vetId, params, nav
                 marginVertical: 8,
                 display: showDetails ? 'flex' : 'none'
             }}>Reason for visit: {appointmentData.description ?? ""}</Text>
-            <Layout style={{
-                flexDirection: 'row',
-                justifyContent: 'flex-end',
-                marginTop: 16,
-            }}>
             <Text style={{
                 marginVertical: 8,
                 display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
@@ -356,6 +379,11 @@ const AvailableAppointmentCard = ({ appointmentData, petName, vetId, params, nav
                 marginVertical: 8,
                 display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
             }}>Longitude: {appointmentData.screeningSession ? appointmentData.longitude : ""}</Text>
+            <Layout style={{
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+                marginTop: 16,
+            }}>
                 <Button style={{
                     marginHorizontal: 4,
                 }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
@@ -363,7 +391,7 @@ const AvailableAppointmentCard = ({ appointmentData, petName, vetId, params, nav
                     marginHorizontal: 4,
                 }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
                 <View style={{justifyContent: 'center', alignItems: 'center', marginHorizontal: 4,}}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         onPress={navigateToVetMap}
                         style={{
                             backgroundColor: colors.action_Orange,

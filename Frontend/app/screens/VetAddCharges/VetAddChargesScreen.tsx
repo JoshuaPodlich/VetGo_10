@@ -13,6 +13,7 @@ import { colors } from "../shared/Colors"
 import { BASE_URL } from "../shared/Constants"
 import { LocationInterface } from '../shared/Interfaces'
 import { CreateReviewScreenParams } from '../CreateReview/CreateReviewScreen'
+import axios from 'axios'
 
 export interface VetAddChargesScreenParams {
   userId: string,
@@ -28,13 +29,12 @@ interface VetAddChargesForm {
 function VetAddChargesScreen(props: any) {
 
   const priceData = [
-    ['Appointment', '8.00'],
-    ['vaccine No.233', '30.00'],
-    ['Sterilization', '99.00'],
-    ['Euthanasia', '1145.14'],
-    ['Birth help', '107.21'],
-    ['Dental checkup', '11.22'],
-    ['Sex reassignment surgery', '999.99'],
+    ['Appointment', '50.00'],
+    ['Vaccination', '30.00'],
+    ['Sterilization', '100.00'],
+    ['Euthanasia', '400.00'],
+    ['Birth Help', '300.00'],
+    ['Dental Checkup', '75.00'],
   ]
   let htmlPriceData: any = []
   addItemOptions(priceData)
@@ -45,18 +45,6 @@ function VetAddChargesScreen(props: any) {
   const [groupDisplay, setGroupDisplay] = useState('')
   const [selectedIndex, setSelectedIndex] = useState<any[]>([])
   const isSubmittingRef = useRef<boolean>(false)
-
-  const handleSubmit = async () => {
-    console.log(form.amount)
-    if (isSubmittingRef.current)
-      return
-
-    let isValid = validate()
-    if (isValid) {
-      submitVetAddChargesForm()
-
-    }
-  }
 
 
   useFocusEffect(
@@ -116,73 +104,75 @@ function VetAddChargesScreen(props: any) {
     return isValid
   }
 
-  async function submitVetAddChargesForm() {
-    isSubmittingRef.current = true
+  const submitVetAddChargesForm = async () => {
+    try {
+        isSubmittingRef.current = true
 
-    // Get pet owner data
-    let url = BASE_URL + "/pet/get/" + params.petId + "/owner"
-    let petOwnerId: string = ""
-    let petOwnerFirstName: string = ""
-    let petOwnerLastName: string = ""
-    let petOwnerAverageRating: number = 0
-    await fetch(url)
-      .then(response => response.json())
-      .then(responseJson => {
-        if (responseJson) {
-          console.log("DEBUGGGGG")
-          console.log(responseJson)
-          petOwnerId = responseJson.id
-          petOwnerFirstName = responseJson.userAccount.firstName,
-            petOwnerLastName = responseJson.userAccount.lastName
-          petOwnerAverageRating = responseJson.userAccount.averageRating
+        console.log("Log here")
+        console.log(JSON.stringify(params));
+
+        // Get user info
+        let url = BASE_URL + "/user/id/" + params.userId
+        console.log(url);
+        let firstName = "";
+        let lastName = "";
+        let userId = 0;
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+
+        const responseBody = await response.json();
+        console.log(responseBody)
+
+        firstName = responseBody.firstName
+        lastName = responseBody.lastName
+        userId = responseBody.id
+
+
+        let contentBody = {
+          tid: null,
+          name: lastName,
+          cardNumber: null,
+          zip: null,
+          receipt: form.receipt,
+          amount: form.amount,
+          transactionStatus: false,
         }
-      })
-      .catch(error => {
-        console.error(error)
-        console.log(error)
-      })
 
-    let contentBody = {
-      tid: null,
-      name: null,
-      cardNumber: null,
-      zip: null,
-      receipt: form.receipt,
-      amount: form.amount,
-      transactionStatus: false,
-    }
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(contentBody)
-    }
-    url = BASE_URL + "/transaction/set/" + params.appointmentId
+        url = BASE_URL + "/transaction/set/" + params.appointmentData.aid;
 
-    console.log(url)
-    let res = await fetch(url, requestOptions)
-      .then((response) => response.json())
-      .then(responseJson => {
-        console.error("Payment set up successfully, \nDirecting to Review")
-        console.log(responseJson)
+        console.log(url)
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(contentBody)
+        });
+
+        console.log(params.appointmentData.aid);
+
+        await axios.put(`${BASE_URL}/appointment/update/${params.appointmentData.aid}`, {
+                status: "PAYMENT"
+              })
 
 
         let createReviewParams: CreateReviewScreenParams = {
           ...params,
           reviewerId: params.userId,
-          revieweeId: petOwnerId,
-          revieweeFirstName: petOwnerFirstName,
-          revieweeLastName: petOwnerLastName,
-          revieweeAverageRating: petOwnerAverageRating
+          revieweeId: userId,
+          revieweeFirstName: firstName,
+          revieweeLastName: lastName,
+          revieweeAverageRating: 5
         }
-        props.navigation.replace("CreateReview", createReviewParams)
-      })
-      .catch((error) => {
-        console.error("Invalid payment setting")
-        console.error(error)
-      })
+        props.navigation.replace("MyAppointmentsVet", createReviewParams)
 
+        isSubmittingRef.current = false
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
 
-    isSubmittingRef.current = false
 
   }
 
@@ -219,7 +209,7 @@ function VetAddChargesScreen(props: any) {
         <View id={"buttonGroup"} style={styles.buttonGroup}>
           <TouchableHighlight style={{ ...styles.submitButton}}
             underlayColor={colors.black_underlay}
-            onPress={handleSubmit}
+            onPress={submitVetAddChargesForm}
           >
             <Text style={styles.buttonText}> SUBMIT </Text>
           </TouchableHighlight>

@@ -63,6 +63,7 @@ public class AppointmentService {
         ScheduledFuture<?> taskFuture = scheduler.schedule(() -> checkVetResponse(appointment, vets), TIMERDEADLINE, TimeUnit.MINUTES);
         taskFutures.put(appointment.getAid(), taskFuture);
         remainingVetsList.put(appointment.getAid(), vets);
+
     }
 
     private Vet chooseBestVet(ArrayList<Vet> vets, Appointment appointment) {
@@ -130,7 +131,7 @@ public class AppointmentService {
     }
 
     private boolean vetHasAcceptedCheck(Appointment appointment) {
-        return findAppointmentByAid(appointment.getAid()).getStatus() == ACCEPTED;
+        return findAppointmentByAid(appointment.getAid()).getStatus() != WAITING;
     }
 
     public void vetHasAccepted(Appointment appointment) {

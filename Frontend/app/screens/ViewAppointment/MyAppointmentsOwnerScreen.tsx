@@ -83,7 +83,6 @@ const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRout
             console.error('Error fetching data:', error);
         }
     }
-    //getAppointments();
 
     useEffect(() => {
         if (isFocused) {
@@ -96,7 +95,7 @@ const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRout
             <Text style={{ marginRight: 'auto', marginLeft: 20, fontSize: 28, fontWeight: 'bold', }}>My Appointments</Text>
             <ScrollView>
                 <View>
-                    {appointments.map(appointment => <AppointmentCard key={appointment.aid} appointmentData={appointment} userId={params.userId} petName={appointment.pet.name} setAppointments={setAppointments} />)}
+                    {appointments.map(appointment => <AppointmentCard key={appointment.aid} appointmentData={appointment} userId={params.userId} petName={appointment.pet.name} setAppointments={setAppointments}  props={props} />)}
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -105,12 +104,13 @@ const MyAppointmentsOwnerScreen = (props: { route: MyAppointmentsScreenOwnerRout
 }
 
 interface AppointmentCardParams {
+    key: int,
     userId: string,
     appointmentData: appointment,
     petName: string,
     setAppointments: useState
 }
-const AppointmentCard = ({ userId, appointmentData, petName, setAppointments }: AppointmentCardParams) => {
+const AppointmentCard = ({ userId, appointmentData, petName, setAppointments, props }: AppointmentCardParams) => {
     const [showDetails, setShowDetails] = useState(false)
     const cancelAppointment = async () => {
         await axios.delete(BASE_URL + "/appointment/delete/" + appointmentData.aid)
@@ -169,6 +169,15 @@ const AppointmentCard = ({ userId, appointmentData, petName, setAppointments }: 
         }
     }
 
+    const gotoPayment = async () => {
+        let paymentParams: PaymentStripeScreenParams = {
+          ...props.route.params,
+          appointmentData: appointmentData,
+
+        }
+        props.navigation.navigate('PaymentStripe', paymentParams);
+    }
+
     return (
         <Card style={{
             margin: 10,
@@ -202,17 +211,26 @@ const AppointmentCard = ({ userId, appointmentData, petName, setAppointments }: 
                 marginVertical: 8,
                 display: showDetails && appointmentData.screeningSession ? 'flex' : 'none'
             }}>Longitude: {appointmentData.screeningSession ? appointmentData.longitude : ""}</Text>
+            <Text style={{
+                marginVertical: 8,
+                display: appointmentData.status === 'PAYMENT' && appointmentData.transaction === null ? 'flex' : 'none'
+            }}>Vet Has Not Released Payment Yet</Text>
             <Layout style={{
                 flexDirection: 'row',
                 justifyContent: 'flex-end',
                 marginTop: 16,
             }}>
-                <Button style={{
-                    marginHorizontal: 4,
-                }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
-                <Button style={{
-                    marginHorizontal: 4,
-                }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
+            <Button style={{
+                marginHorizontal: 4,
+                display: appointmentData.status === 'ACCEPTED' ? 'flex' : 'none'
+            }} status='basic' size='small' onPress={cancelAppointment}>Cancel</Button>
+            <Button style={{
+                marginHorizontal: 4,
+                display: appointmentData.status === 'PAYMENT' && appointmentData.transaction != null ? 'flex' : 'none'
+            }} size='small' onPress={gotoPayment}><Text>Send Payment</Text></Button>
+            <Button style={{
+                marginHorizontal: 4,
+            }} size='small' onPress={() => setShowDetails(prevState => !prevState)}> <Text>{showDetails ? 'Hide' : 'View'} Details</Text></Button>
 
             </Layout>
         </Card >
